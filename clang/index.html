@@ -1,0 +1,664 @@
+<html>
+<head>
+<title>xmms2-devel - scan-build results</title>
+<link type="text/css" rel="stylesheet" href="scanview.css"/>
+<script src="sorttable.js"></script>
+<script language='javascript' type="text/javascript">
+function SetDisplay(RowClass, DisplayVal)
+{
+  var Rows = document.getElementsByTagName("tr");
+  for ( var i = 0 ; i < Rows.length; ++i ) {
+    if (Rows[i].className == RowClass) {
+      Rows[i].style.display = DisplayVal;
+    }
+  }
+}
+
+function CopyCheckedStateToCheckButtons(SummaryCheckButton) {
+  var Inputs = document.getElementsByTagName("input");
+  for ( var i = 0 ; i < Inputs.length; ++i ) {
+    if (Inputs[i].type == "checkbox") {
+      if(Inputs[i] != SummaryCheckButton) {
+        Inputs[i].checked = SummaryCheckButton.checked;
+        Inputs[i].onclick();
+      }
+    }
+  }
+}
+
+function returnObjById( id ) {
+    if (document.getElementById)
+        var returnVar = document.getElementById(id);
+    else if (document.all)
+        var returnVar = document.all[id];
+    else if (document.layers)
+        var returnVar = document.layers[id];
+    return returnVar;
+}
+
+var NumUnchecked = 0;
+
+function ToggleDisplay(CheckButton, ClassName) {
+  if (CheckButton.checked) {
+    SetDisplay(ClassName, "");
+    if (--NumUnchecked == 0) {
+      returnObjById("AllBugsCheck").checked = true;
+    }
+  }
+  else {
+    SetDisplay(ClassName, "none");
+    NumUnchecked++;
+    returnObjById("AllBugsCheck").checked = false;
+  }
+}
+</script>
+<!-- SUMMARYENDHEAD -->
+</head>
+<body>
+<h1>xmms2-devel - scan-build results</h1>
+
+<table>
+<tr><th>User:</th><td>travis@testing-gce-d69f659b-82b5-4cb8-80c7-db567bb3b498</td></tr>
+<tr><th>Working Directory:</th><td>/home/travis/build/dsvensson/xmms2-devel</td></tr>
+<tr><th>Command Line:</th><td>./waf build --notests</td></tr>
+<tr><th>Clang Version:</th><td>Ubuntu clang version 3.7.1-svn253742-1~exp1 (branches/release_37) (based on LLVM 3.7.1)
+</td></tr>
+<tr><th>Date:</th><td>Thu Mar  3 07:35:44 2016</td></tr>
+</table>
+<h2>Bug Summary</h2><table>
+<thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">186</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr><th>Dead store</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">127</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_assignment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead increment</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_increment');" checked/></center></td></tr>
+<tr><th>Logic error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Array subscript is undefined</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_array_subscript_is_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Assigned value is garbage or undefined</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_assigned_value_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Called function pointer is null (null dereference)</td><td class="Q">8</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_called_function_pointer_is_null_null_dereference_');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">9</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of undefined pointer value</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_undefined_pointer_value');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Result of operation is garbage or undefined</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_result_of_operation_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">14</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
+<tr><th>Memory Error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Memory leak</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Use-after-free</td><td class="Q">8</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use-after-free');" checked/></center></td></tr>
+<tr><th>Unix API</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Allocator sizeof operand mismatch</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unix_api_allocator_sizeof_operand_mismatch');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_');" checked/></center></td></tr>
+</table>
+<h2>Reports</h2>
+
+<table class="sortable" style="table-layout:automatic">
+<thead><tr>
+  <td>Bug Group</td>
+  <td class="sorttable_sorted">Bug Type<span id="sorttable_sortfwdind">&nbsp;&#x25BE;</span></td>
+  <td>File</td>
+  <td>Function/Method</td>
+  <td class="Q">Line</td>
+  <td class="Q">Path Length</td>
+  <td class="sorttable_nosort"></td>
+  <!-- REPORTBUGCOL -->
+</tr></thead>
+<tbody>
+<tr class="bt_unix_api_allocator_sizeof_operand_mismatch"><td class="DESC">Unix API</td><td class="DESC">Allocator sizeof operand mismatch</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_header</td><td class="Q">230</td><td class="Q">1</td><td><a href="report-542b34.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-542b34.html" -->
+</tr>
+<tr class="bt_logic_error_array_subscript_is_undefined"><td class="DESC">Logic error</td><td class="DESC">Array subscript is undefined</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">178</td><td class="Q">11</td><td><a href="report-6e709b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6e709b.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/lib/s4/src/lib/s4.c</td><td class="DESC">_result_to_pairs</td><td class="Q">305</td><td class="Q">20</td><td><a href="report-2bfbd6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2bfbd6.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/faad/faad.c</td><td class="DESC">xmms_faad_init</td><td class="Q">236</td><td class="Q">17</td><td><a href="report-750cce.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-750cce.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/lib/s4/src/tools/s4/print.c</td><td class="DESC">print_row</td><td class="Q">93</td><td class="Q">16</td><td><a href="report-7194dd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7194dd.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/clients/nycli/cli_context.c</td><td class="DESC">cli_context_event_loop_select</td><td class="Q">558</td><td class="Q">4</td><td><a href="report-7990f6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7990f6.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/mp4/mp4ff/mp4util.c</td><td class="DESC">mp4ff_write_int32</td><td class="Q">76</td><td class="Q">1</td><td><a href="report-72a9fc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-72a9fc.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/jack/jack.c</td><td class="DESC">xmms_jack_process</td><td class="Q">421</td><td class="Q">19</td><td><a href="report-5764a0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5764a0.html" -->
+</tr>
+<tr class="bt_logic_error_called_function_pointer_is_null_null_dereference_"><td class="DESC">Logic error</td><td class="DESC">Called function pointer is null (null dereference)</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_f_9xmmsvalue_create_native_value</td><td class="Q">2463</td><td class="Q">18</td><td><a href="report-070725.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-070725.html" -->
+</tr>
+<tr class="bt_logic_error_called_function_pointer_is_null_null_dereference_"><td class="DESC">Logic error</td><td class="DESC">Called function pointer is null (null dereference)</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pf_7xmmsapi_11method_varg___init__</td><td class="Q">9718</td><td class="Q">10</td><td><a href="report-df95e0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-df95e0.html" -->
+</tr>
+<tr class="bt_logic_error_called_function_pointer_is_null_null_dereference_"><td class="DESC">Logic error</td><td class="DESC">Called function pointer is null (null dereference)</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_f_9xmmsvalue_18CollectionOperands_extend</td><td class="Q">14439</td><td class="Q">9</td><td><a href="report-8746fe.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8746fe.html" -->
+</tr>
+<tr class="bt_logic_error_called_function_pointer_is_null_null_dereference_"><td class="DESC">Logic error</td><td class="DESC">Called function pointer is null (null dereference)</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_f_7xmmsapi_17XmmsResultTracker_disconnect_all</td><td class="Q">5846</td><td class="Q">9</td><td><a href="report-87a5d5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-87a5d5.html" -->
+</tr>
+<tr class="bt_logic_error_called_function_pointer_is_null_null_dereference_"><td class="DESC">Logic error</td><td class="DESC">Called function pointer is null (null dereference)</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_f_9xmmsvalue_20CollectionAttributes_clear</td><td class="Q">12994</td><td class="Q">10</td><td><a href="report-11e7af.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-11e7af.html" -->
+</tr>
+<tr class="bt_logic_error_called_function_pointer_is_null_null_dereference_"><td class="DESC">Logic error</td><td class="DESC">Called function pointer is null (null dereference)</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_f_9xmmsvalue_18CollectionOperands_clear</td><td class="Q">14756</td><td class="Q">9</td><td><a href="report-519046.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-519046.html" -->
+</tr>
+<tr class="bt_logic_error_called_function_pointer_is_null_null_dereference_"><td class="DESC">Logic error</td><td class="DESC">Called function pointer is null (null dereference)</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pf_9xmmsvalue_20CollectionAttributes_44update</td><td class="Q">13215</td><td class="Q">88</td><td><a href="report-2ba3d1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2ba3d1.html" -->
+</tr>
+<tr class="bt_logic_error_called_function_pointer_is_null_null_dereference_"><td class="DESC">Logic error</td><td class="DESC">Called function pointer is null (null dereference)</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_f_9xmmsvalue_16CollectionIDList_extend</td><td class="Q">15727</td><td class="Q">9</td><td><a href="report-3867f5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3867f5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_69playlist_add_collection</td><td class="Q">29261</td><td class="Q">1</td><td><a href="report-1b57ec.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1b57ec.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12XmmsListIter_5__init__</td><td class="Q">6788</td><td class="Q">1</td><td><a href="report-19fc64.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-19fc64.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Union_1__init__</td><td class="Q">20786</td><td class="Q">1</td><td><a href="report-b0bccb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b0bccb.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Queue_1__init__</td><td class="Q">20370</td><td class="Q">1</td><td><a href="report-c95851.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c95851.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_3Has_1__init__</td><td class="Q">19183</td><td class="Q">1</td><td><a href="report-7c17d5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7c17d5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_6IDList_1__init__</td><td class="Q">20173</td><td class="Q">1</td><td><a href="report-0b6c44.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0b6c44.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12GreaterEqual_1__init__</td><td class="Q">18721</td><td class="Q">1</td><td><a href="report-c33655.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c33655.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_18AttributesIterator_5__init__</td><td class="Q">9942</td><td class="Q">1</td><td><a href="report-f3690b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f3690b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_6IDList_1__init__</td><td class="Q">20173</td><td class="Q">1</td><td><a href="report-f98198.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f98198.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_6Equals_1__init__</td><td class="Q">17951</td><td class="Q">1</td><td><a href="report-86fb41.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-86fb41.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_7Greater_1__init__</td><td class="Q">18567</td><td class="Q">1</td><td><a href="report-3483d6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3483d6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_10Complement_1__init__</td><td class="Q">21134</td><td class="Q">1</td><td><a href="report-6eda97.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6eda97.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12Intersection_1__init__</td><td class="Q">20961</td><td class="Q">1</td><td><a href="report-354aa0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-354aa0.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">261</td><td class="Q">1</td><td><a href="report-f99d46.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f99d46.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Token_1__init__</td><td class="Q">19029</td><td class="Q">1</td><td><a href="report-07f373.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-07f373.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12XmmsListIter_5__init__</td><td class="Q">6788</td><td class="Q">1</td><td><a href="report-eb61b6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-eb61b6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12XmmsListIter_5__init__</td><td class="Q">6788</td><td class="Q">1</td><td><a href="report-d2306c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d2306c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_13client_method_1__cinit__</td><td class="Q">15793</td><td class="Q">1</td><td><a href="report-3fbdd2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3fbdd2.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_18AttributesIterator_5__init__</td><td class="Q">9942</td><td class="Q">1</td><td><a href="report-1b017d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1b017d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8Mediaset_1__init__</td><td class="Q">19738</td><td class="Q">1</td><td><a href="report-dfc9e3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dfc9e3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Queue_1__init__</td><td class="Q">20370</td><td class="Q">1</td><td><a href="report-cb0ef7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cb0ef7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Match_1__init__</td><td class="Q">18875</td><td class="Q">1</td><td><a href="report-7f1a66.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7f1a66.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_14BaseCollection_1__init__</td><td class="Q">17012</td><td class="Q">1</td><td><a href="report-546e4b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-546e4b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_161coll_query_ids</td><td class="Q">38792</td><td class="Q">1</td><td><a href="report-deae4a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-deae4a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_7Smaller_1__init__</td><td class="Q">18259</td><td class="Q">1</td><td><a href="report-c64b18.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c64b18.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_teardown</td><td class="Q">366</td><td class="Q">1</td><td><a href="report-322c06.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-322c06.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_16client_broadcast_1__cinit__</td><td class="Q">15069</td><td class="Q">1</td><td><a href="report-8fb249.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8fb249.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/fluidsynth/fluidsynth.c</td><td class="DESC">xmms_fluidsynth_plugin_setup</td><td class="Q">153</td><td class="Q">1</td><td><a href="report-71a15c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-71a15c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_7Greater_1__init__</td><td class="Q">18567</td><td class="Q">1</td><td><a href="report-8e2c93.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8e2c93.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_20CollectionAttributes_1__init__</td><td class="Q">10609</td><td class="Q">1</td><td><a href="report-9af4a9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9af4a9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Limit_1__init__</td><td class="Q">19941</td><td class="Q">1</td><td><a href="report-0dccb4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0dccb4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Order_1__init__</td><td class="Q">19357</td><td class="Q">1</td><td><a href="report-6fcb9f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6fcb9f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_9Reference_1__init__</td><td class="Q">17328</td><td class="Q">1</td><td><a href="report-d2831d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d2831d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Match_1__init__</td><td class="Q">18875</td><td class="Q">1</td><td><a href="report-90013e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-90013e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Union_1__init__</td><td class="Q">20786</td><td class="Q">1</td><td><a href="report-afc488.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-afc488.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">254</td><td class="Q">1</td><td><a href="report-ef7c6c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ef7c6c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Token_1__init__</td><td class="Q">19029</td><td class="Q">1</td><td><a href="report-82fb07.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-82fb07.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Order_1__init__</td><td class="Q">19357</td><td class="Q">1</td><td><a href="report-0bbf7b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0bbf7b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_161coll_query_ids</td><td class="Q">38792</td><td class="Q">1</td><td><a href="report-00ae12.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-00ae12.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12Intersection_1__init__</td><td class="Q">20961</td><td class="Q">1</td><td><a href="report-609155.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-609155.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_69playlist_add_collection</td><td class="Q">29261</td><td class="Q">1</td><td><a href="report-54c36e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-54c36e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_record</td><td class="Q">312</td><td class="Q">1</td><td><a href="report-823fe9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-823fe9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_151coll_save</td><td class="Q">37585</td><td class="Q">1</td><td><a href="report-c115f2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c115f2.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8NotEqual_1__init__</td><td class="Q">18105</td><td class="Q">1</td><td><a href="report-e2b602.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e2b602.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8PShuffle_1__init__</td><td class="Q">20566</td><td class="Q">1</td><td><a href="report-e9a310.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e9a310.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_9Reference_1__init__</td><td class="Q">17328</td><td class="Q">1</td><td><a href="report-2658d4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2658d4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">main</td><td class="Q">166</td><td class="Q">1</td><td><a href="report-c1dcfb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c1dcfb.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_18AttributesIterator_5__init__</td><td class="Q">9942</td><td class="Q">1</td><td><a href="report-cbab71.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cbab71.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_3Has_1__init__</td><td class="Q">19183</td><td class="Q">1</td><td><a href="report-5547fa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5547fa.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Limit_1__init__</td><td class="Q">19941</td><td class="Q">1</td><td><a href="report-5f1476.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5f1476.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Union_1__init__</td><td class="Q">20786</td><td class="Q">1</td><td><a href="report-4eb4ca.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4eb4ca.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Token_1__init__</td><td class="Q">19029</td><td class="Q">1</td><td><a href="report-805a31.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-805a31.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/mp4/mp4ff/mp4atom.c</td><td class="DESC">mp4ff_read_mp4a</td><td class="Q">371</td><td class="Q">1</td><td><a href="report-520d0a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-520d0a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_16CollectionIDList_1__init__</td><td class="Q">15023</td><td class="Q">1</td><td><a href="report-1d33c3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1d33c3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_159coll_query</td><td class="Q">38489</td><td class="Q">1</td><td><a href="report-858fed.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-858fed.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Queue_1__init__</td><td class="Q">20370</td><td class="Q">1</td><td><a href="report-410c0e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-410c0e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_16client_broadcast_1__cinit__</td><td class="Q">15069</td><td class="Q">1</td><td><a href="report-1445c5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1445c5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_163coll_query_infos</td><td class="Q">39195</td><td class="Q">1</td><td><a href="report-525117.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-525117.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12GreaterEqual_1__init__</td><td class="Q">18721</td><td class="Q">1</td><td><a href="report-193f35.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-193f35.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_10Complement_1__init__</td><td class="Q">21134</td><td class="Q">1</td><td><a href="report-b056c1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b056c1.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_18CollectionOperands_1__init__</td><td class="Q">13539</td><td class="Q">1</td><td><a href="report-851c63.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-851c63.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_159coll_query</td><td class="Q">38489</td><td class="Q">1</td><td><a href="report-11cf29.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-11cf29.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12SmallerEqual_1__init__</td><td class="Q">18413</td><td class="Q">1</td><td><a href="report-a209e8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a209e8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_163coll_query_infos</td><td class="Q">39195</td><td class="Q">1</td><td><a href="report-016814.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-016814.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_20XmmsServiceNamespace_1__cinit__</td><td class="Q">11298</td><td class="Q">1</td><td><a href="report-247874.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-247874.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_6Equals_1__init__</td><td class="Q">17951</td><td class="Q">1</td><td><a href="report-9f8e75.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9f8e75.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_16CollectionIDList_1__init__</td><td class="Q">15023</td><td class="Q">1</td><td><a href="report-157ae8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-157ae8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Match_1__init__</td><td class="Q">18875</td><td class="Q">1</td><td><a href="report-0d23cc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0d23cc.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_151coll_save</td><td class="Q">37585</td><td class="Q">1</td><td><a href="report-3fd1de.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3fd1de.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_18CollectionOperands_1__init__</td><td class="Q">13539</td><td class="Q">1</td><td><a href="report-009917.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-009917.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_7Smaller_1__init__</td><td class="Q">18259</td><td class="Q">1</td><td><a href="report-b363ee.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b363ee.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_7Greater_1__init__</td><td class="Q">18567</td><td class="Q">1</td><td><a href="report-562fa6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-562fa6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_57playlist_insert_collection</td><td class="Q">27909</td><td class="Q">1</td><td><a href="report-abee0a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-abee0a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8Mediaset_1__init__</td><td class="Q">19738</td><td class="Q">1</td><td><a href="report-22d4f0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-22d4f0.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_set_params</td><td class="Q">346</td><td class="Q">1</td><td><a href="report-ffc239.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ffc239.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_57playlist_insert_collection</td><td class="Q">27909</td><td class="Q">1</td><td><a href="report-b933aa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b933aa.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12Intersection_1__init__</td><td class="Q">20961</td><td class="Q">1</td><td><a href="report-b896cb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b896cb.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8PShuffle_1__init__</td><td class="Q">20566</td><td class="Q">1</td><td><a href="report-30a9ce.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-30a9ce.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_14BaseCollection_1__init__</td><td class="Q">17012</td><td class="Q">1</td><td><a href="report-42c858.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-42c858.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_20XmmsServiceNamespace_1__cinit__</td><td class="Q">11298</td><td class="Q">1</td><td><a href="report-de480e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-de480e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_9Reference_1__init__</td><td class="Q">17328</td><td class="Q">1</td><td><a href="report-b3c33c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b3c33c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_10Complement_1__init__</td><td class="Q">21134</td><td class="Q">1</td><td><a href="report-170db8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-170db8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12XmmsDictIter_5__init__</td><td class="Q">7323</td><td class="Q">1</td><td><a href="report-0bd6c8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0bd6c8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_159coll_query</td><td class="Q">38489</td><td class="Q">1</td><td><a href="report-ed0a06.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ed0a06.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_161coll_query_ids</td><td class="Q">38792</td><td class="Q">1</td><td><a href="report-9f0990.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9f0990.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_16client_broadcast_1__cinit__</td><td class="Q">15069</td><td class="Q">1</td><td><a href="report-718176.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-718176.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_6Equals_1__init__</td><td class="Q">17951</td><td class="Q">1</td><td><a href="report-248b79.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-248b79.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_163coll_query_infos</td><td class="Q">39195</td><td class="Q">1</td><td><a href="report-ae65da.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ae65da.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_setup</td><td class="Q">297</td><td class="Q">1</td><td><a href="report-dabd44.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dabd44.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8NotEqual_1__init__</td><td class="Q">18105</td><td class="Q">1</td><td><a href="report-e174a6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e174a6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8PShuffle_1__init__</td><td class="Q">20566</td><td class="Q">1</td><td><a href="report-db75c1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-db75c1.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_18CollectionOperands_1__init__</td><td class="Q">13539</td><td class="Q">1</td><td><a href="report-fb1efb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fb1efb.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8Mediaset_1__init__</td><td class="Q">19738</td><td class="Q">1</td><td><a href="report-3de84e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3de84e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_20CollectionAttributes_1__init__</td><td class="Q">10609</td><td class="Q">1</td><td><a href="report-3791e5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3791e5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">258</td><td class="Q">1</td><td><a href="report-d734c0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d734c0.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/mp4/mp4ff/mp4tagupdate.c</td><td class="DESC">find_atom_v2</td><td class="Q">452</td><td class="Q">1</td><td><a href="report-025ac3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-025ac3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_151coll_save</td><td class="Q">37585</td><td class="Q">1</td><td><a href="report-c0d18b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c0d18b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">main</td><td class="Q">169</td><td class="Q">1</td><td><a href="report-0caf98.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0caf98.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_16CollectionIDList_1__init__</td><td class="Q">15023</td><td class="Q">1</td><td><a href="report-e4800e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e4800e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_57playlist_insert_collection</td><td class="Q">27909</td><td class="Q">1</td><td><a href="report-339e06.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-339e06.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/midsquash/midsquash.c</td><td class="DESC">xmms_midsquash_init</td><td class="Q">214</td><td class="Q">1</td><td><a href="report-cb77c3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cb77c3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_20CollectionAttributes_1__init__</td><td class="Q">10609</td><td class="Q">1</td><td><a href="report-66401b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-66401b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_13client_method_1__cinit__</td><td class="Q">15793</td><td class="Q">1</td><td><a href="report-6fd222.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6fd222.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/clients/lib/xmmsclient/visualization/udp.c</td><td class="DESC">read_do_udp</td><td class="Q">225</td><td class="Q">1</td><td><a href="report-28365f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-28365f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">256</td><td class="Q">1</td><td><a href="report-879c4a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-879c4a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Order_1__init__</td><td class="Q">19357</td><td class="Q">1</td><td><a href="report-d0ce89.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d0ce89.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_8NotEqual_1__init__</td><td class="Q">18105</td><td class="Q">1</td><td><a href="report-ebfc8c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ebfc8c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_flush</td><td class="Q">330</td><td class="Q">1</td><td><a href="report-c61525.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c61525.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/ofa/ofa.c</td><td class="DESC">xmms_ofa_init</td><td class="Q">124</td><td class="Q">1</td><td><a href="report-be19d7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-be19d7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_6IDList_1__init__</td><td class="Q">20173</td><td class="Q">1</td><td><a href="report-298fe7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-298fe7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_16FilterCollection_1__init__</td><td class="Q">17696</td><td class="Q">1</td><td><a href="report-d659ea.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d659ea.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_7Smaller_1__init__</td><td class="Q">18259</td><td class="Q">1</td><td><a href="report-cfa434.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cfa434.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12XmmsDictIter_5__init__</td><td class="Q">7323</td><td class="Q">1</td><td><a href="report-b50bd2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b50bd2.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/xmms/main.c</td><td class="DESC">main</td><td class="Q">723</td><td class="Q">1</td><td><a href="report-d280d4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d280d4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_7XmmsApi_69playlist_add_collection</td><td class="Q">29261</td><td class="Q">1</td><td><a href="report-517852.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-517852.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_16FilterCollection_1__init__</td><td class="Q">17696</td><td class="Q">1</td><td><a href="report-19edd1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-19edd1.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_3Has_1__init__</td><td class="Q">19183</td><td class="Q">1</td><td><a href="report-df2d39.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-df2d39.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_20XmmsServiceNamespace_1__cinit__</td><td class="Q">11298</td><td class="Q">1</td><td><a href="report-36ae7e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-36ae7e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_16FilterCollection_1__init__</td><td class="Q">17696</td><td class="Q">1</td><td><a href="report-e63e23.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e63e23.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12XmmsDictIter_5__init__</td><td class="Q">7323</td><td class="Q">1</td><td><a href="report-c59d58.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c59d58.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12SmallerEqual_1__init__</td><td class="Q">18413</td><td class="Q">1</td><td><a href="report-4eea1c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4eea1c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12SmallerEqual_1__init__</td><td class="Q">18413</td><td class="Q">1</td><td><a href="report-6ca12b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6ca12b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_12GreaterEqual_1__init__</td><td class="Q">18721</td><td class="Q">1</td><td><a href="report-bc3d8c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bc3d8c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__pyx_pw_7xmmsapi_13client_method_1__cinit__</td><td class="Q">15793</td><td class="Q">1</td><td><a href="report-bf627e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bf627e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/clients/lib/xmmsclient/collparser.c</td><td class="DESC">coll_parse_prepare</td><td class="Q">390</td><td class="Q">1</td><td><a href="report-a041a5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a041a5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_5Limit_1__init__</td><td class="Q">19941</td><td class="Q">1</td><td><a href="report-44200b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-44200b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pw_9xmmsvalue_14BaseCollection_1__init__</td><td class="Q">17012</td><td class="Q">1</td><td><a href="report-560c0e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-560c0e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/asf/libasf/data.c</td><td class="DESC">asf_data_read_packet_fields</td><td class="Q">51</td><td class="Q">1</td><td><a href="report-64693d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-64693d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/asf/libasf/data.c</td><td class="DESC">asf_data_read_payload_fields</td><td class="Q">74</td><td class="Q">1</td><td><a href="report-8ce110.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8ce110.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/apefile/apefile.c</td><td class="DESC">xmms_apefile_init_demuxer</td><td class="Q">440</td><td class="Q">1</td><td><a href="report-ebce6e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ebce6e.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/plugins/mp4/mp4ff/mp4atom.c</td><td class="DESC">mp4ff_read_alac</td><td class="Q">405</td><td class="Q">11</td><td><a href="report-bdf3bd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bdf3bd.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_exact_action</td><td class="Q">157</td><td class="Q">4</td><td><a href="report-b482fa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b482fa.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>build-analysis/src/clients/lib/python/xmmsapi.c</td><td class="DESC">__Pyx_Raise</td><td class="Q">52457</td><td class="Q">4</td><td><a href="report-fda9bb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fda9bb.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_exact_subtrie</td><td class="Q">182</td><td class="Q">4</td><td><a href="report-c0498f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c0498f.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/plugins/vocoder/pvocoder.c</td><td class="DESC">pvocoder_close</td><td class="Q">185</td><td class="Q">14</td><td><a href="report-3930ac.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3930ac.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__pyx_pf_9xmmsvalue_10Collection_2__repr__</td><td class="Q">9097</td><td class="Q">65</td><td><a href="report-cabfa1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cabfa1.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/clients/nycli/playlist_positions.c</td><td class="DESC">playlist_positions_foreach</td><td class="Q">131</td><td class="Q">7</td><td><a href="report-95c776.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-95c776.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_auto_unique_complete</td><td class="Q">132</td><td class="Q">4</td><td><a href="report-05067b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-05067b.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>build-analysis/src/clients/lib/python/xmmsvalue.c</td><td class="DESC">__Pyx_Raise</td><td class="Q">26583</td><td class="Q">4</td><td><a href="report-a404ac.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a404ac.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_undefined_pointer_value"><td class="DESC">Logic error</td><td class="DESC">Dereference of undefined pointer value</td><td>src/clients/nycli/command.c</td><td class="DESC">command_arg_time_get</td><td class="Q">474</td><td class="Q">10</td><td><a href="report-376c8c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-376c8c.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_header</td><td class="Q">238</td><td class="Q">43</td><td><a href="report-f47fb3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f47fb3.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/lib/s4/src/lib/relation.c</td><td class="DESC">_s4_add</td><td class="Q">241</td><td class="Q">9</td><td><a href="report-c93012.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c93012.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/lib/s4/src/lib/s4.c</td><td class="DESC">_read_string</td><td class="Q">71</td><td class="Q">4</td><td><a href="report-49af84.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-49af84.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/plugins/wavpack/wavpack.c</td><td class="DESC">xmms_wavpack_read</td><td class="Q">325</td><td class="Q">3</td><td><a href="report-f8c3b4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f8c3b4.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/plugins/faad/faad.c</td><td class="DESC">xmms_faad_init</td><td class="Q">225</td><td class="Q">11</td><td><a href="report-e022ff.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e022ff.html" -->
+</tr>
+<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/lib/s4/src/lib/sourcepref.c</td><td class="DESC">s4_sourcepref_create</td><td class="Q">65</td><td class="Q">2</td><td><a href="report-88c2ee.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-88c2ee.html" -->
+</tr>
+<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/plugins/mp4/mp4ff/mp4tagupdate.c</td><td class="DESC">membuffer_detach</td><td class="Q">181</td><td class="Q">23</td><td><a href="report-d931e1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d931e1.html" -->
+</tr>
+<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/lib/s4/src/lib/pattern.c</td><td class="DESC">_copy_str</td><td class="Q">231</td><td class="Q">7</td><td><a href="report-afacbc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-afacbc.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">source_callback</td><td class="Q">80</td><td class="Q">4</td><td><a href="report-32bdb1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-32bdb1.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">attribute_callback</td><td class="Q">215</td><td class="Q">4</td><td><a href="report-1eaeae.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1eaeae.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">178</td><td class="Q">16</td><td><a href="report-49d482.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-49d482.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">media_callback</td><td class="Q">121</td><td class="Q">8</td><td><a href="report-4277eb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4277eb.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">media_callback</td><td class="Q">111</td><td class="Q">4</td><td><a href="report-240cf3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-240cf3.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/xmms/fetchspec.c</td><td class="DESC">xmms_fetch_spec_new_cluster</td><td class="Q">410</td><td class="Q">36</td><td><a href="report-77bcd2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-77bcd2.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">171</td><td class="Q">4</td><td><a href="report-5fae05.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5fae05.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/xmms/medialib_query_result.c</td><td class="DESC">result_to_xmmsv</td><td class="Q">321</td><td class="Q">5</td><td><a href="report-761d5d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-761d5d.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">operator_callback</td><td class="Q">252</td><td class="Q">4</td><td><a href="report-be91a7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-be91a7.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/lib/xmmstypes/xmmsv_dict.c</td><td class="DESC">xmmsv_dict_iter_find</td><td class="Q">659</td><td class="Q">8</td><td><a href="report-931836.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-931836.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/clients/nycli/commands_playlist.c</td><td class="DESC">cli_list</td><td class="Q">345</td><td class="Q">9</td><td><a href="report-e36022.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e36022.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/lib/xmmstypes/xmmsv_dict.c</td><td class="DESC">xmmsv_dict_foreach</td><td class="Q">462</td><td class="Q">8</td><td><a href="report-e58f0e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e58f0e.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/plugins/daap/daap_mdns_avahi.c</td><td class="DESC">daap_mdns_setup</td><td class="Q">274</td><td class="Q">8</td><td><a href="report-c300a8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c300a8.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/plugins/mp4/mp4ff/mp4sample.c</td><td class="DESC">mp4ff_sample_to_offset</td><td class="Q">126</td><td class="Q">6</td><td><a href="report-d1d165.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d1d165.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xlist.c</td><td class="DESC">x_list_remove</td><td class="Q">219</td><td class="Q">12</td><td><a href="report-30c5bd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-30c5bd.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xmmsv_dict.c</td><td class="DESC">_xmmsv_dict_free</td><td class="Q">241</td><td class="Q">6</td><td><a href="report-e7a7bd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e7a7bd.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xmmsv_list.c</td><td class="DESC">_xmmsv_list_free</td><td class="Q">87</td><td class="Q">6</td><td><a href="report-d5abb9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d5abb9.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xlist.c</td><td class="DESC">x_list_remove_all</td><td class="Q">246</td><td class="Q">9</td><td><a href="report-688f4e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-688f4e.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_notifier_delete_all</td><td class="Q">714</td><td class="Q">16</td><td><a href="report-b7fcbf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b7fcbf.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_run</td><td class="Q">576</td><td class="Q">22</td><td><a href="report-ca93bb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ca93bb.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_run</td><td class="Q">565</td><td class="Q">22</td><td><a href="report-51cabc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-51cabc.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_notifier_delete_all</td><td class="Q">710</td><td class="Q">16</td><td><a href="report-a51f71.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a51f71.html" -->
+</tr>
+</tbody>
+</table>
+
+</body></html>
