@@ -58,16 +58,16 @@ function ToggleDisplay(CheckButton, ClassName) {
 <h1>xmms2-devel - scan-build results</h1>
 
 <table>
-<tr><th>User:</th><td>travis@testing-gce-4809cb28-1a46-433b-9f1b-63ff44ed9c58</td></tr>
+<tr><th>User:</th><td>travis@testing-gce-2afb91a0-61a1-4cab-adbf-26790fd04a45</td></tr>
 <tr><th>Working Directory:</th><td>/home/travis/build/dsvensson/xmms2-devel</td></tr>
 <tr><th>Command Line:</th><td>./waf build --notests</td></tr>
 <tr><th>Clang Version:</th><td>Ubuntu clang version 3.7.1-svn253742-1~exp1 (branches/release_37) (based on LLVM 3.7.1)
 </td></tr>
-<tr><th>Date:</th><td>Thu Mar  3 15:03:14 2016</td></tr>
+<tr><th>Date:</th><td>Wed Mar 16 00:39:13 2016</td></tr>
 </table>
 <h2>Bug Summary</h2><table>
 <thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
-<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">67</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">66</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
 <tr><th>Dead store</th><th colspan=2></th></tr>
 <tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">19</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_assignment');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Dead increment</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_increment');" checked/></center></td></tr>
@@ -77,7 +77,7 @@ function ToggleDisplay(CheckButton, ClassName) {
 <tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Dereference of undefined pointer value</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_undefined_pointer_value');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Result of operation is garbage or undefined</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_result_of_operation_is_garbage_or_undefined');" checked/></center></td></tr>
-<tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">14</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">13</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
 <tr><th>Memory Error</th><th colspan=2></th></tr>
 <tr><td class="SUMM_DESC">Memory leak</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Use-after-free</td><td class="Q">8</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use-after-free');" checked/></center></td></tr>
@@ -99,206 +99,203 @@ function ToggleDisplay(CheckButton, ClassName) {
   <!-- REPORTBUGCOL -->
 </tr></thead>
 <tbody>
-<tr class="bt_unix_api_allocator_sizeof_operand_mismatch"><td class="DESC">Unix API</td><td class="DESC">Allocator sizeof operand mismatch</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_header</td><td class="Q">230</td><td class="Q">1</td><td><a href="report-2aa951.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-2aa951.html" -->
+<tr class="bt_unix_api_allocator_sizeof_operand_mismatch"><td class="DESC">Unix API</td><td class="DESC">Allocator sizeof operand mismatch</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_header</td><td class="Q">230</td><td class="Q">1</td><td><a href="report-8ddc9b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8ddc9b.html" -->
 </tr>
-<tr class="bt_logic_error_array_subscript_is_undefined"><td class="DESC">Logic error</td><td class="DESC">Array subscript is undefined</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">178</td><td class="Q">11</td><td><a href="report-861895.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-861895.html" -->
+<tr class="bt_logic_error_array_subscript_is_undefined"><td class="DESC">Logic error</td><td class="DESC">Array subscript is undefined</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">178</td><td class="Q">11</td><td><a href="report-0ac959.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0ac959.html" -->
 </tr>
-<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/mp4/mp4ff/mp4util.c</td><td class="DESC">mp4ff_write_int32</td><td class="Q">76</td><td class="Q">1</td><td><a href="report-db67d0.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-db67d0.html" -->
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/clients/nycli/cli_context.c</td><td class="DESC">cli_context_event_loop_select</td><td class="Q">558</td><td class="Q">4</td><td><a href="report-75cfd6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-75cfd6.html" -->
 </tr>
-<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/lib/s4/src/lib/s4.c</td><td class="DESC">_result_to_pairs</td><td class="Q">305</td><td class="Q">20</td><td><a href="report-19d524.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-19d524.html" -->
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/mp4/mp4ff/mp4util.c</td><td class="DESC">mp4ff_write_int32</td><td class="Q">76</td><td class="Q">1</td><td><a href="report-68292e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-68292e.html" -->
 </tr>
-<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/faad/faad.c</td><td class="DESC">xmms_faad_init</td><td class="Q">236</td><td class="Q">17</td><td><a href="report-5c6df8.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-5c6df8.html" -->
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/jack/jack.c</td><td class="DESC">xmms_jack_process</td><td class="Q">421</td><td class="Q">19</td><td><a href="report-73090d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-73090d.html" -->
 </tr>
-<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/jack/jack.c</td><td class="DESC">xmms_jack_process</td><td class="Q">421</td><td class="Q">19</td><td><a href="report-8d8c9d.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-8d8c9d.html" -->
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/faad/faad.c</td><td class="DESC">xmms_faad_init</td><td class="Q">236</td><td class="Q">17</td><td><a href="report-6760d5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6760d5.html" -->
 </tr>
-<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/lib/s4/src/tools/s4/print.c</td><td class="DESC">print_row</td><td class="Q">93</td><td class="Q">16</td><td><a href="report-aa20dc.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-aa20dc.html" -->
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/lib/s4/src/tools/s4/print.c</td><td class="DESC">print_row</td><td class="Q">93</td><td class="Q">16</td><td><a href="report-35195d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-35195d.html" -->
 </tr>
-<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/clients/nycli/cli_context.c</td><td class="DESC">cli_context_event_loop_select</td><td class="Q">558</td><td class="Q">4</td><td><a href="report-b985a4.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-b985a4.html" -->
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/lib/s4/src/lib/s4.c</td><td class="DESC">_result_to_pairs</td><td class="Q">305</td><td class="Q">20</td><td><a href="report-bf7590.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bf7590.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/xmms/main.c</td><td class="DESC">main</td><td class="Q">723</td><td class="Q">1</td><td><a href="report-1cb740.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-1cb740.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/ofa/ofa.c</td><td class="DESC">xmms_ofa_init</td><td class="Q">124</td><td class="Q">1</td><td><a href="report-188a83.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-188a83.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/clients/lib/xmmsclient/visualization/udp.c</td><td class="DESC">read_do_udp</td><td class="Q">225</td><td class="Q">1</td><td><a href="report-261a77.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-261a77.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">main</td><td class="Q">169</td><td class="Q">1</td><td><a href="report-b41386.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b41386.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">256</td><td class="Q">1</td><td><a href="report-8af072.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-8af072.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/midsquash/midsquash.c</td><td class="DESC">xmms_midsquash_init</td><td class="Q">214</td><td class="Q">1</td><td><a href="report-cf89d4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cf89d4.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_setup</td><td class="Q">297</td><td class="Q">1</td><td><a href="report-b14795.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-b14795.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">258</td><td class="Q">1</td><td><a href="report-c5bdcb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c5bdcb.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/mp4/mp4ff/mp4atom.c</td><td class="DESC">mp4ff_read_mp4a</td><td class="Q">371</td><td class="Q">1</td><td><a href="report-e9fdbe.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-e9fdbe.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/mp4/mp4ff/mp4tagupdate.c</td><td class="DESC">find_atom_v2</td><td class="Q">452</td><td class="Q">1</td><td><a href="report-9332cb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9332cb.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_teardown</td><td class="Q">366</td><td class="Q">1</td><td><a href="report-f6a11f.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-f6a11f.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">main</td><td class="Q">166</td><td class="Q">1</td><td><a href="report-97eee4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-97eee4.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">254</td><td class="Q">1</td><td><a href="report-d5bec6.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-d5bec6.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">256</td><td class="Q">1</td><td><a href="report-e627bb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e627bb.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/midsquash/midsquash.c</td><td class="DESC">xmms_midsquash_init</td><td class="Q">214</td><td class="Q">1</td><td><a href="report-7381b7.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-7381b7.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/clients/lib/xmmsclient/visualization/udp.c</td><td class="DESC">read_do_udp</td><td class="Q">225</td><td class="Q">1</td><td><a href="report-d3eddd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d3eddd.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/clients/lib/xmmsclient/collparser.c</td><td class="DESC">coll_parse_prepare</td><td class="Q">390</td><td class="Q">1</td><td><a href="report-b47248.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-b47248.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_teardown</td><td class="Q">366</td><td class="Q">1</td><td><a href="report-ea64d6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ea64d6.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">main</td><td class="Q">166</td><td class="Q">1</td><td><a href="report-565c67.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-565c67.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_setup</td><td class="Q">297</td><td class="Q">1</td><td><a href="report-f1ea1a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f1ea1a.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_set_params</td><td class="Q">346</td><td class="Q">1</td><td><a href="report-37dd9d.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-37dd9d.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/mp4/mp4ff/mp4atom.c</td><td class="DESC">mp4ff_read_mp4a</td><td class="Q">371</td><td class="Q">1</td><td><a href="report-d15dd6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d15dd6.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/mp4/mp4ff/mp4tagupdate.c</td><td class="DESC">find_atom_v2</td><td class="Q">452</td><td class="Q">1</td><td><a href="report-bb88b5.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-bb88b5.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">254</td><td class="Q">1</td><td><a href="report-72af78.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-72af78.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">main</td><td class="Q">169</td><td class="Q">1</td><td><a href="report-6e3477.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-6e3477.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">261</td><td class="Q">1</td><td><a href="report-5e6302.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5e6302.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/fluidsynth/fluidsynth.c</td><td class="DESC">xmms_fluidsynth_plugin_setup</td><td class="Q">153</td><td class="Q">1</td><td><a href="report-4bf5e2.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-4bf5e2.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_flush</td><td class="Q">330</td><td class="Q">1</td><td><a href="report-95abc6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-95abc6.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/ofa/ofa.c</td><td class="DESC">xmms_ofa_init</td><td class="Q">124</td><td class="Q">1</td><td><a href="report-3b7872.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-3b7872.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/xmms/main.c</td><td class="DESC">main</td><td class="Q">723</td><td class="Q">1</td><td><a href="report-945437.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-945437.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_flush</td><td class="Q">330</td><td class="Q">1</td><td><a href="report-2d01d7.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-2d01d7.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_set_params</td><td class="Q">346</td><td class="Q">1</td><td><a href="report-78b258.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-78b258.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">261</td><td class="Q">1</td><td><a href="report-dd2b4c.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-dd2b4c.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/fluidsynth/fluidsynth.c</td><td class="DESC">xmms_fluidsynth_plugin_setup</td><td class="Q">153</td><td class="Q">1</td><td><a href="report-6dddc4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6dddc4.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_announce</td><td class="Q">258</td><td class="Q">1</td><td><a href="report-a6a1f2.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-a6a1f2.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/clients/lib/xmmsclient/collparser.c</td><td class="DESC">coll_parse_prepare</td><td class="Q">390</td><td class="Q">1</td><td><a href="report-7bc802.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7bc802.html" -->
 </tr>
-<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_record</td><td class="Q">312</td><td class="Q">1</td><td><a href="report-07ab56.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-07ab56.html" -->
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>src/plugins/airplay/raop_client.c</td><td class="DESC">raop_rtsp_record</td><td class="Q">312</td><td class="Q">1</td><td><a href="report-68d074.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-68d074.html" -->
 </tr>
-<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/asf/libasf/data.c</td><td class="DESC">asf_data_read_packet_fields</td><td class="Q">51</td><td class="Q">1</td><td><a href="report-657bca.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-657bca.html" -->
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/apefile/apefile.c</td><td class="DESC">xmms_apefile_init_demuxer</td><td class="Q">440</td><td class="Q">1</td><td><a href="report-962d44.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-962d44.html" -->
 </tr>
-<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/apefile/apefile.c</td><td class="DESC">xmms_apefile_init_demuxer</td><td class="Q">440</td><td class="Q">1</td><td><a href="report-66a450.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-66a450.html" -->
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/asf/libasf/data.c</td><td class="DESC">asf_data_read_payload_fields</td><td class="Q">74</td><td class="Q">1</td><td><a href="report-c95d8f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c95d8f.html" -->
 </tr>
-<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/asf/libasf/data.c</td><td class="DESC">asf_data_read_payload_fields</td><td class="Q">74</td><td class="Q">1</td><td><a href="report-51dc55.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-51dc55.html" -->
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>src/plugins/asf/libasf/data.c</td><td class="DESC">asf_data_read_packet_fields</td><td class="Q">51</td><td class="Q">1</td><td><a href="report-df7708.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-df7708.html" -->
 </tr>
-<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/plugins/vocoder/pvocoder.c</td><td class="DESC">pvocoder_close</td><td class="Q">185</td><td class="Q">14</td><td><a href="report-e6b431.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-e6b431.html" -->
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/plugins/mp4/mp4ff/mp4atom.c</td><td class="DESC">mp4ff_read_alac</td><td class="Q">405</td><td class="Q">11</td><td><a href="report-ba3db2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ba3db2.html" -->
 </tr>
-<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/plugins/mp4/mp4ff/mp4atom.c</td><td class="DESC">mp4ff_read_alac</td><td class="Q">405</td><td class="Q">11</td><td><a href="report-8cee1b.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-8cee1b.html" -->
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/plugins/vocoder/pvocoder.c</td><td class="DESC">pvocoder_close</td><td class="Q">185</td><td class="Q">14</td><td><a href="report-ca07da.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ca07da.html" -->
 </tr>
-<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_exact_subtrie</td><td class="Q">182</td><td class="Q">4</td><td><a href="report-e66b0f.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-e66b0f.html" -->
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_exact_action</td><td class="Q">157</td><td class="Q">4</td><td><a href="report-a974b3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a974b3.html" -->
 </tr>
-<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/clients/nycli/playlist_positions.c</td><td class="DESC">playlist_positions_foreach</td><td class="Q">131</td><td class="Q">7</td><td><a href="report-cfabbf.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-cfabbf.html" -->
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_auto_unique_complete</td><td class="Q">132</td><td class="Q">4</td><td><a href="report-4ad5f3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4ad5f3.html" -->
 </tr>
-<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_auto_unique_complete</td><td class="Q">132</td><td class="Q">4</td><td><a href="report-efb7b7.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-efb7b7.html" -->
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/clients/nycli/playlist_positions.c</td><td class="DESC">playlist_positions_foreach</td><td class="Q">131</td><td class="Q">7</td><td><a href="report-796bdd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-796bdd.html" -->
 </tr>
-<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_exact_action</td><td class="Q">157</td><td class="Q">4</td><td><a href="report-200996.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-200996.html" -->
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_exact_subtrie</td><td class="Q">182</td><td class="Q">4</td><td><a href="report-f04bdd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f04bdd.html" -->
 </tr>
-<tr class="bt_logic_error_dereference_of_undefined_pointer_value"><td class="DESC">Logic error</td><td class="DESC">Dereference of undefined pointer value</td><td>src/clients/nycli/command.c</td><td class="DESC">command_arg_time_get</td><td class="Q">474</td><td class="Q">10</td><td><a href="report-47f007.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-47f007.html" -->
+<tr class="bt_logic_error_dereference_of_undefined_pointer_value"><td class="DESC">Logic error</td><td class="DESC">Dereference of undefined pointer value</td><td>src/clients/nycli/command.c</td><td class="DESC">command_arg_time_get</td><td class="Q">474</td><td class="Q">10</td><td><a href="report-4c6e0e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4c6e0e.html" -->
 </tr>
-<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_header</td><td class="Q">238</td><td class="Q">43</td><td><a href="report-340af6.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-340af6.html" -->
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_header</td><td class="Q">238</td><td class="Q">43</td><td><a href="report-dbb5df.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dbb5df.html" -->
 </tr>
-<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/lib/s4/src/lib/relation.c</td><td class="DESC">_s4_add</td><td class="Q">241</td><td class="Q">9</td><td><a href="report-a53865.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-a53865.html" -->
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/lib/s4/src/lib/relation.c</td><td class="DESC">_s4_add</td><td class="Q">241</td><td class="Q">9</td><td><a href="report-831306.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-831306.html" -->
 </tr>
-<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/lib/s4/src/lib/s4.c</td><td class="DESC">_read_string</td><td class="Q">71</td><td class="Q">4</td><td><a href="report-74965d.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-74965d.html" -->
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/lib/s4/src/lib/s4.c</td><td class="DESC">_read_string</td><td class="Q">71</td><td class="Q">4</td><td><a href="report-e0cfa5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e0cfa5.html" -->
 </tr>
-<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/plugins/faad/faad.c</td><td class="DESC">xmms_faad_init</td><td class="Q">225</td><td class="Q">11</td><td><a href="report-eae5dc.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-eae5dc.html" -->
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/plugins/faad/faad.c</td><td class="DESC">xmms_faad_init</td><td class="Q">225</td><td class="Q">11</td><td><a href="report-bb5df6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bb5df6.html" -->
 </tr>
-<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/plugins/wavpack/wavpack.c</td><td class="DESC">xmms_wavpack_read</td><td class="Q">325</td><td class="Q">3</td><td><a href="report-820da8.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-820da8.html" -->
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/plugins/wavpack/wavpack.c</td><td class="DESC">xmms_wavpack_read</td><td class="Q">325</td><td class="Q">3</td><td><a href="report-77b676.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-77b676.html" -->
 </tr>
-<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/lib/s4/src/lib/pattern.c</td><td class="DESC">_copy_str</td><td class="Q">231</td><td class="Q">7</td><td><a href="report-f6bf73.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-f6bf73.html" -->
+<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/plugins/mp4/mp4ff/mp4tagupdate.c</td><td class="DESC">membuffer_detach</td><td class="Q">181</td><td class="Q">23</td><td><a href="report-0c0353.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0c0353.html" -->
 </tr>
-<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/plugins/mp4/mp4ff/mp4tagupdate.c</td><td class="DESC">membuffer_detach</td><td class="Q">181</td><td class="Q">23</td><td><a href="report-3c2aac.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-3c2aac.html" -->
+<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/lib/s4/src/lib/pattern.c</td><td class="DESC">_copy_str</td><td class="Q">231</td><td class="Q">7</td><td><a href="report-6bf3f2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6bf3f2.html" -->
 </tr>
-<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/lib/s4/src/lib/sourcepref.c</td><td class="DESC">s4_sourcepref_create</td><td class="Q">65</td><td class="Q">2</td><td><a href="report-057234.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-057234.html" -->
+<tr class="bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_"><td class="DESC">Unix API</td><td class="DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td>src/lib/s4/src/lib/sourcepref.c</td><td class="DESC">s4_sourcepref_create</td><td class="Q">65</td><td class="Q">2</td><td><a href="report-cc26c6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cc26c6.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/plugins/mp4/mp4ff/mp4sample.c</td><td class="DESC">mp4ff_sample_to_offset</td><td class="Q">126</td><td class="Q">6</td><td><a href="report-3fc4b0.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-3fc4b0.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">media_callback</td><td class="Q">111</td><td class="Q">4</td><td><a href="report-6e0e79.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6e0e79.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">source_callback</td><td class="Q">80</td><td class="Q">4</td><td><a href="report-fea016.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-fea016.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">attribute_callback</td><td class="Q">215</td><td class="Q">4</td><td><a href="report-97e4c3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-97e4c3.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">171</td><td class="Q">4</td><td><a href="report-1d2c1f.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-1d2c1f.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">operator_callback</td><td class="Q">252</td><td class="Q">4</td><td><a href="report-36082f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-36082f.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/plugins/daap/daap_mdns_avahi.c</td><td class="DESC">daap_mdns_setup</td><td class="Q">274</td><td class="Q">8</td><td><a href="report-aeef3c.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-aeef3c.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/plugins/daap/daap_mdns_avahi.c</td><td class="DESC">daap_mdns_setup</td><td class="Q">274</td><td class="Q">8</td><td><a href="report-325605.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-325605.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/xmms/medialib_query_result.c</td><td class="DESC">result_to_xmmsv</td><td class="Q">321</td><td class="Q">5</td><td><a href="report-133598.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-133598.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">source_callback</td><td class="Q">80</td><td class="Q">4</td><td><a href="report-920a71.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-920a71.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/xmms/fetchspec.c</td><td class="DESC">xmms_fetch_spec_new_cluster</td><td class="Q">410</td><td class="Q">36</td><td><a href="report-eaf53d.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-eaf53d.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">178</td><td class="Q">16</td><td><a href="report-2ae570.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2ae570.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">media_callback</td><td class="Q">111</td><td class="Q">4</td><td><a href="report-5d4db3.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-5d4db3.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">171</td><td class="Q">4</td><td><a href="report-c2b4d5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c2b4d5.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/lib/xmmstypes/xmmsv_dict.c</td><td class="DESC">xmmsv_dict_iter_find</td><td class="Q">659</td><td class="Q">8</td><td><a href="report-552592.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-552592.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/lib/xmmstypes/xmmsv_dict.c</td><td class="DESC">xmmsv_dict_iter_find</td><td class="Q">658</td><td class="Q">8</td><td><a href="report-680590.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-680590.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/lib/xmmstypes/xmmsv_dict.c</td><td class="DESC">xmmsv_dict_foreach</td><td class="Q">462</td><td class="Q">8</td><td><a href="report-865ad2.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-865ad2.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/clients/nycli/commands_playlist.c</td><td class="DESC">cli_list</td><td class="Q">345</td><td class="Q">9</td><td><a href="report-bcc085.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bcc085.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">operator_callback</td><td class="Q">252</td><td class="Q">4</td><td><a href="report-a746cb.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-a746cb.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/plugins/mp4/mp4ff/mp4sample.c</td><td class="DESC">mp4ff_sample_to_offset</td><td class="Q">126</td><td class="Q">6</td><td><a href="report-04a30f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-04a30f.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/clients/nycli/commands_playlist.c</td><td class="DESC">cli_list</td><td class="Q">345</td><td class="Q">9</td><td><a href="report-64674b.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-64674b.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/xmms/medialib_query_result.c</td><td class="DESC">result_to_xmmsv</td><td class="Q">321</td><td class="Q">5</td><td><a href="report-cba4b4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cba4b4.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">restore_callback</td><td class="Q">178</td><td class="Q">16</td><td><a href="report-c15d01.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-c15d01.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">media_callback</td><td class="Q">121</td><td class="Q">8</td><td><a href="report-8f06da.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8f06da.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/main.c</td><td class="DESC">media_callback</td><td class="Q">121</td><td class="Q">8</td><td><a href="report-f604ad.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-f604ad.html" -->
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/xmms/fetchspec.c</td><td class="DESC">xmms_fetch_spec_new_cluster</td><td class="Q">410</td><td class="Q">36</td><td><a href="report-2a9f88.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2a9f88.html" -->
 </tr>
-<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>src/tools/sqlite2s4/collsqlite.c</td><td class="DESC">attribute_callback</td><td class="Q">215</td><td class="Q">4</td><td><a href="report-28f1ee.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-28f1ee.html" -->
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xmmsv_dict.c</td><td class="DESC">_xmmsv_dict_free</td><td class="Q">241</td><td class="Q">6</td><td><a href="report-83dbc6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-83dbc6.html" -->
 </tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xmmsv_dict.c</td><td class="DESC">_xmmsv_dict_free</td><td class="Q">241</td><td class="Q">6</td><td><a href="report-57f531.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-57f531.html" -->
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xlist.c</td><td class="DESC">x_list_remove</td><td class="Q">219</td><td class="Q">12</td><td><a href="report-73543a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-73543a.html" -->
 </tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xmmsv_list.c</td><td class="DESC">_xmmsv_list_free</td><td class="Q">87</td><td class="Q">6</td><td><a href="report-2a8a33.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-2a8a33.html" -->
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_notifier_delete_all</td><td class="Q">710</td><td class="Q">16</td><td><a href="report-6cc3b3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6cc3b3.html" -->
 </tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_run</td><td class="Q">565</td><td class="Q">22</td><td><a href="report-8449b8.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-8449b8.html" -->
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_run</td><td class="Q">565</td><td class="Q">22</td><td><a href="report-2ba758.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2ba758.html" -->
 </tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xlist.c</td><td class="DESC">x_list_remove_all</td><td class="Q">246</td><td class="Q">9</td><td><a href="report-a99a96.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-a99a96.html" -->
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xmmsv_list.c</td><td class="DESC">_xmmsv_list_free</td><td class="Q">87</td><td class="Q">6</td><td><a href="report-c4a274.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c4a274.html" -->
 </tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xlist.c</td><td class="DESC">x_list_remove</td><td class="Q">219</td><td class="Q">12</td><td><a href="report-aaa605.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-aaa605.html" -->
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xlist.c</td><td class="DESC">x_list_remove_all</td><td class="Q">246</td><td class="Q">9</td><td><a href="report-4ca713.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4ca713.html" -->
 </tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_run</td><td class="Q">576</td><td class="Q">22</td><td><a href="report-2a9bc4.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-2a9bc4.html" -->
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_notifier_delete_all</td><td class="Q">714</td><td class="Q">16</td><td><a href="report-620d68.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-620d68.html" -->
 </tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_notifier_delete_all</td><td class="Q">714</td><td class="Q">16</td><td><a href="report-67fc62.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-67fc62.html" -->
-</tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_notifier_delete_all</td><td class="Q">710</td><td class="Q">16</td><td><a href="report-e1c315.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-e1c315.html" -->
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_run</td><td class="Q">576</td><td class="Q">22</td><td><a href="report-7a0ba8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7a0ba8.html" -->
 </tr>
 </tbody>
 </table>
