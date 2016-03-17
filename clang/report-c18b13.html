@@ -1,0 +1,490 @@
+<!doctype html>
+<html>
+<head>
+<title>../src/plugins/midsquash/midsquash.c</title>
+<style type="text/css">
+ body { color:#000000; background-color:#ffffff }
+ body { font-family:Helvetica, sans-serif; font-size:10pt }
+ h1 { font-size:14pt }
+ .code { border-collapse:collapse; width:100%; }
+ .code { font-family: "Monospace", monospace; font-size:10pt }
+ .code { line-height: 1.2em }
+ .comment { color: green; font-style: oblique }
+ .keyword { color: blue }
+ .string_literal { color: red }
+ .directive { color: darkmagenta }
+ .expansion { display: none; }
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
+ .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
+ .num { text-align:right; font-size:8pt }
+ .num { color:#444444 }
+ .line { padding-left: 1ex; border-left: 3px solid #ccc }
+ .line { white-space: pre }
+ .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { -webkit-border-radius:5px }
+ .msg { font-family:Helvetica, sans-serif; font-size:8pt }
+ .msg { float:left }
+ .msg { padding:0.25em 1ex 0.25em 1ex }
+ .msg { margin-top:10px; margin-bottom:10px }
+ .msg { font-weight:bold }
+ .msg { max-width:60em; word-wrap: break-word; white-space: pre-wrap }
+ .msgT { padding:0x; spacing:0x }
+ .msgEvent { background-color:#fff8b4; color:#000000 }
+ .msgControl { background-color:#bbbbbb; color:#000000 }
+ .mrange { background-color:#dfddf3 }
+ .mrange { border-bottom:1px solid #6F9DBE }
+ .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
+ .PathIndex { -webkit-border-radius:8px }
+ .PathIndexEvent { background-color:#bfba87 }
+ .PathIndexControl { background-color:#8c8c8c }
+ .PathNav a { text-decoration:none; font-size: larger }
+ .CodeInsertionHint { font-weight: bold; background-color: #10dd10 }
+ .CodeRemovalHint { background-color:#de1010 }
+ .CodeRemovalHint { border-bottom:1px solid #6F9DBE }
+ table.simpletable {
+   padding: 5px;
+   font-size:12pt;
+   margin:20px;
+   border-collapse: collapse; border-spacing: 0px;
+ }
+ td.rowname {
+   text-align:right; font-weight:bold; color:#444444;
+   padding-right:2ex; }
+</style>
+</head>
+<body>
+<!-- BUGDESC Value stored to 'ret' is never read -->
+
+<!-- BUGTYPE Dead assignment -->
+
+<!-- BUGCATEGORY Dead store -->
+
+<!-- BUGFILE /home/travis/build/dsvensson/xmms2-devel/build-analysis/../src/plugins/midsquash/midsquash.c -->
+
+<!-- FILENAME midsquash.c -->
+
+<!-- FUNCTIONNAME xmms_midsquash_init -->
+
+<!-- BUGLINE 214 -->
+
+<!-- BUGCOLUMN 3 -->
+
+<!-- BUGPATHLENGTH 1 -->
+
+<!-- BUGMETAEND -->
+<!-- REPORTHEADER -->
+<h3>Bug Summary</h3>
+<table class="simpletable">
+<tr><td class="rowname">File:</td><td>build-analysis/../src/plugins/midsquash/midsquash.c</td></tr>
+<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 214, column 3</a></td></tr>
+<tr><td class="rowname">Description:</td><td>Value stored to 'ret' is never read</td></tr>
+</table>
+<!-- REPORTSUMMARYEXTRA -->
+<h3>Annotated Source Code</h3>
+<table class="code">
+<tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/*  XMMS2 - X Music Multiplexer System</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2016 XMMS2 Team</span></td></tr>
+<tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>*  PLUGINS ARE NOT CONSIDERED TO BE DERIVED WORK !!!</span></td></tr>
+<tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN6">6</td><td class="line"> <span class='comment'>*  This library is free software; you can redistribute it and/or</span></td></tr>
+<tr><td class="num" id="LN7">7</td><td class="line"> <span class='comment'>*  modify it under the terms of the GNU Lesser General Public</span></td></tr>
+<tr><td class="num" id="LN8">8</td><td class="line"> <span class='comment'>*  License as published by the Free Software Foundation; either</span></td></tr>
+<tr><td class="num" id="LN9">9</td><td class="line"> <span class='comment'>*  version 2.1 of the License, or (at your option) any later version.</span></td></tr>
+<tr><td class="num" id="LN10">10</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN11">11</td><td class="line"> <span class='comment'>*  This library is distributed in the hope that it will be useful,</span></td></tr>
+<tr><td class="num" id="LN12">12</td><td class="line"> <span class='comment'>*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></td></tr>
+<tr><td class="num" id="LN13">13</td><td class="line"> <span class='comment'>*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span></td></tr>
+<tr><td class="num" id="LN14">14</td><td class="line"> <span class='comment'>*  Lesser General Public License for more details.</span></td></tr>
+<tr><td class="num" id="LN15">15</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN16">16</td><td class="line"> <span class='comment'>*  ---------------------------------</span></td></tr>
+<tr><td class="num" id="LN17">17</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN18">18</td><td class="line"> <span class='comment'>*  MIDISquash helper plugin for XMMS2 by Adam Nielsen &lt;malvineous@shikadi.net&gt;</span></td></tr>
+<tr><td class="num" id="LN19">19</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN20">20</td><td class="line"> <span class='comment'>*  This file implements a MIDI "squash" xform plugin, which converts multiple</span></td></tr>
+<tr><td class="num" id="LN21">21</td><td class="line"> <span class='comment'>*  MIDI tracks (like you might find in a format-1 .mid file) into a single</span></td></tr>
+<tr><td class="num" id="LN22">22</td><td class="line"> <span class='comment'>*  track (like in a format-0 file.)</span></td></tr>
+<tr><td class="num" id="LN23">23</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN24">24</td><td class="line"> <span class='comment'>*  Since the FluidSynth plugin is only designed to accept a single MIDI track,</span></td></tr>
+<tr><td class="num" id="LN25">25</td><td class="line"> <span class='comment'>*  all multi-track files must be converted to a single track to be played.</span></td></tr>
+<tr><td class="num" id="LN26">26</td><td class="line"> <span class='comment'>*  Rather than require each format handler to do this conversion itself,</span></td></tr>
+<tr><td class="num" id="LN27">27</td><td class="line"> <span class='comment'>*  those handlers can provide the MIDI data in audio/miditracks format, and</span></td></tr>
+<tr><td class="num" id="LN28">28</td><td class="line"> <span class='comment'>*  this plugin will take care of the conversion.</span></td></tr>
+<tr><td class="num" id="LN29">29</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN30">30</td><td class="line"> <span class='comment'>*  The audio/miditracks format is simply a list of chunks, where each chunk</span></td></tr>
+<tr><td class="num" id="LN31">31</td><td class="line"> <span class='comment'>*  contains a four-byte big endian length value, followed by that many</span></td></tr>
+<tr><td class="num" id="LN32">32</td><td class="line"> <span class='comment'>*  bytes of standard MIDI data.  It's like the MTrk chunks in a normal MIDI</span></td></tr>
+<tr><td class="num" id="LN33">33</td><td class="line"> <span class='comment'>*  file joined one after the other, just without the "MTrk" text.</span></td></tr>
+<tr><td class="num" id="LN34">34</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN35">35</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN36">36</td><td class="line"><span class='directive'>#include &lt;xmms/xmms_xformplugin.h&gt;</span></td></tr>
+<tr><td class="num" id="LN37">37</td><td class="line"><span class='directive'>#include &lt;xmms/xmms_sample.h&gt;</span></td></tr>
+<tr><td class="num" id="LN38">38</td><td class="line"><span class='directive'>#include &lt;xmms/xmms_medialib.h&gt;</span></td></tr>
+<tr><td class="num" id="LN39">39</td><td class="line"><span class='directive'>#include &lt;xmms/xmms_log.h&gt;</span></td></tr>
+<tr><td class="num" id="LN40">40</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN41">41</td><td class="line"><span class='directive'>#include &lt;glib.h&gt;</span></td></tr>
+<tr><td class="num" id="LN42">42</td><td class="line"><span class='directive'>#include &lt;string.h&gt;</span></td></tr>
+<tr><td class="num" id="LN43">43</td><td class="line"><span class='directive'>#include &lt;unistd.h&gt;</span></td></tr>
+<tr><td class="num" id="LN44">44</td><td class="line"><span class='directive'>#include &lt;stdlib.h&gt;</span></td></tr>
+<tr><td class="num" id="LN45">45</td><td class="line"><span class='directive'>#include &lt;ctype.h&gt;</span></td></tr>
+<tr><td class="num" id="LN46">46</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN47">47</td><td class="line"><span class='comment'>/*</span></td></tr>
+<tr><td class="num" id="LN48">48</td><td class="line"> <span class='comment'>* Type definitions</span></td></tr>
+<tr><td class="num" id="LN49">49</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN50">50</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN51">51</td><td class="line"><span class='keyword'>typedef</span> <span class='keyword'>struct</span> xmms_midsquash_data_St {</td></tr>
+<tr><td class="num" id="LN52">52</td><td class="line">	GString *midi0_data;</td></tr>
+<tr><td class="num" id="LN53">53</td><td class="line">	gulong pos;</td></tr>
+<tr><td class="num" id="LN54">54</td><td class="line">} xmms_midsquash_data_t;</td></tr>
+<tr><td class="num" id="LN55">55</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN56">56</td><td class="line"><span class='keyword'>typedef</span> <span class='keyword'>struct</span> xmms_midsquash_event_St {</td></tr>
+<tr><td class="num" id="LN57">57</td><td class="line">	gulong time;</td></tr>
+<tr><td class="num" id="LN58">58</td><td class="line">	guchar running_status;  <span class='comment'>/* 0 or the last event if this uses running status */</span></td></tr>
+<tr><td class="num" id="LN59">59</td><td class="line">	gchar *offset;</td></tr>
+<tr><td class="num" id="LN60">60</td><td class="line">	gulong length;</td></tr>
+<tr><td class="num" id="LN61">61</td><td class="line">} xmms_midsquash_event_t;</td></tr>
+<tr><td class="num" id="LN62">62</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN63">63</td><td class="line"><span class='comment'>/*</span></td></tr>
+<tr><td class="num" id="LN64">64</td><td class="line"> <span class='comment'>* Function prototypes</span></td></tr>
+<tr><td class="num" id="LN65">65</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN66">66</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN67">67</td><td class="line"><span class='keyword'>static</span> gboolean xmms_midsquash_plugin_setup (xmms_xform_plugin_t *xform_plugin);</td></tr>
+<tr><td class="num" id="LN68">68</td><td class="line"><span class='keyword'>static</span> gint xmms_midsquash_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len, xmms_error_t *err);</td></tr>
+<tr><td class="num" id="LN69">69</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>void</span> xmms_midsquash_destroy (xmms_xform_t *xform);</td></tr>
+<tr><td class="num" id="LN70">70</td><td class="line"><span class='keyword'>static</span> gboolean xmms_midsquash_init (xmms_xform_t *xform);</td></tr>
+<tr><td class="num" id="LN71">71</td><td class="line"><span class='keyword'>static</span> gint64 xmms_midsquash_seek (xmms_xform_t *xform, gint64 samples, xmms_xform_seek_mode_t whence, xmms_error_t *err);</td></tr>
+<tr><td class="num" id="LN72">72</td><td class="line"><span class='keyword'>static</span> gulong xmms_midisquash_read_midi_num (<span class='keyword'>const</span> gchar *s, gulong *j);</td></tr>
+<tr><td class="num" id="LN73">73</td><td class="line"><span class='keyword'>static</span> gint xmms_midsquash_sort_events(gconstpointer a, gconstpointer b);</td></tr>
+<tr><td class="num" id="LN74">74</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN75">75</td><td class="line"><span class='comment'>/*</span></td></tr>
+<tr><td class="num" id="LN76">76</td><td class="line"> <span class='comment'>* Plugin header</span></td></tr>
+<tr><td class="num" id="LN77">77</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN78">78</td><td class="line"><span class='macro'>XMMS_XFORM_PLUGIN_DEFINE (<span class='string_literal'>"midsquash"</span>,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "midsquash", "Multitrack MIDI squasher"<br>, "0.8 DrO_o (git commit: 08335bc6)", "Multitrack MIDI squasher"<br>, (gboolean (*)(gpointer))xmms_midsquash_plugin_setup };</span></span></td></tr>
+<tr><td class="num" id="LN79">79</td><td class="line">                          <span class='string_literal'><span class='macro'>"Multitrack MIDI squasher"</span>,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "midsquash", "Multitrack MIDI squasher"<br>, "0.8 DrO_o (git commit: 08335bc6)", "Multitrack MIDI squasher"<br>, (gboolean (*)(gpointer))xmms_midsquash_plugin_setup };</span></span></td></tr>
+<tr><td class="num" id="LN80">80</td><td class="line">                          <span class='macro'>XMMS_VERSION,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "midsquash", "Multitrack MIDI squasher"<br>, "0.8 DrO_o (git commit: 08335bc6)", "Multitrack MIDI squasher"<br>, (gboolean (*)(gpointer))xmms_midsquash_plugin_setup };</span></span></td></tr>
+<tr><td class="num" id="LN81">81</td><td class="line">                          <span class='string_literal'><span class='macro'>"Multitrack MIDI squasher"</span>,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "midsquash", "Multitrack MIDI squasher"<br>, "0.8 DrO_o (git commit: 08335bc6)", "Multitrack MIDI squasher"<br>, (gboolean (*)(gpointer))xmms_midsquash_plugin_setup };</span></span></td></tr>
+<tr><td class="num" id="LN82">82</td><td class="line">                          <span class='macro'>xmms_midsquash_plugin_setup)<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "midsquash", "Multitrack MIDI squasher"<br>, "0.8 DrO_o (git commit: 08335bc6)", "Multitrack MIDI squasher"<br>, (gboolean (*)(gpointer))xmms_midsquash_plugin_setup };</span></span>;</td></tr>
+<tr><td class="num" id="LN83">83</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN84">84</td><td class="line"><span class='keyword'>static</span> gboolean</td></tr>
+<tr><td class="num" id="LN85">85</td><td class="line">xmms_midsquash_plugin_setup (xmms_xform_plugin_t *xform_plugin)</td></tr>
+<tr><td class="num" id="LN86">86</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN87">87</td><td class="line">	xmms_xform_methods_t methods;</td></tr>
+<tr><td class="num" id="LN88">88</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN89">89</td><td class="line">	<span class='macro'>XMMS_XFORM_METHODS_INIT (methods)<span class='expansion'>memset (&amp;methods, 0, sizeof (xmms_xform_methods_t))</span></span>;</td></tr>
+<tr><td class="num" id="LN90">90</td><td class="line">	methods.init = xmms_midsquash_init;</td></tr>
+<tr><td class="num" id="LN91">91</td><td class="line">	methods.destroy = xmms_midsquash_destroy;</td></tr>
+<tr><td class="num" id="LN92">92</td><td class="line">	methods.read = xmms_midsquash_read;</td></tr>
+<tr><td class="num" id="LN93">93</td><td class="line">	methods.seek = xmms_midsquash_seek;</td></tr>
+<tr><td class="num" id="LN94">94</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN95">95</td><td class="line">	xmms_xform_plugin_methods_set (xform_plugin, &amp;methods);</td></tr>
+<tr><td class="num" id="LN96">96</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN97">97</td><td class="line">	<span class='comment'>/*</span></td></tr>
+<tr><td class="num" id="LN98">98</td><td class="line">	<span class='comment'>xmms_plugin_info_add (plugin, "URL", "http://www.xmms2.org/");</span></td></tr>
+<tr><td class="num" id="LN99">99</td><td class="line">	<span class='comment'>xmms_plugin_info_add (plugin, "Author", "Adam Nielsen &lt;malvineous@shikadi.net&gt;");</span></td></tr>
+<tr><td class="num" id="LN100">100</td><td class="line">	<span class='comment'>xmms_plugin_info_add (plugin, "License", "LGPL");</span></td></tr>
+<tr><td class="num" id="LN101">101</td><td class="line">	<span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN102">102</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN103">103</td><td class="line">	xmms_xform_plugin_indata_add (xform_plugin,</td></tr>
+<tr><td class="num" id="LN104">104</td><td class="line">	                              XMMS_STREAM_TYPE_MIMETYPE,</td></tr>
+<tr><td class="num" id="LN105">105</td><td class="line">	                              <span class='string_literal'>"audio/miditracks"</span>,</td></tr>
+<tr><td class="num" id="LN106">106</td><td class="line">	                              XMMS_STREAM_TYPE_END);</td></tr>
+<tr><td class="num" id="LN107">107</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>;</td></tr>
+<tr><td class="num" id="LN108">108</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN109">109</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN110">110</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>void</span></td></tr>
+<tr><td class="num" id="LN111">111</td><td class="line">xmms_midsquash_destroy (xmms_xform_t *xform)</td></tr>
+<tr><td class="num" id="LN112">112</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN113">113</td><td class="line">	xmms_midsquash_data_t *data;</td></tr>
+<tr><td class="num" id="LN114">114</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN115">115</td><td class="line">	<span class='macro'>g_return_if_fail (xform)<span class='expansion'>do{ if (xform) { } else { g_return_if_fail_warning (((gchar*)<br> 0), ((const char*) (__func__)), "xform"); return; }; }while (<br>0)</span></span>;</td></tr>
+<tr><td class="num" id="LN116">116</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN117">117</td><td class="line">	data = xmms_xform_private_data_get (xform);</td></tr>
+<tr><td class="num" id="LN118">118</td><td class="line">	<span class='macro'>g_return_if_fail (data)<span class='expansion'>do{ if (data) { } else { g_return_if_fail_warning (((gchar*) 0<br>), ((const char*) (__func__)), "data"); return; }; }while (0)</span></span>;</td></tr>
+<tr><td class="num" id="LN119">119</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN120">120</td><td class="line">	<span class='keyword'>if</span> (data-&gt;midi0_data)</td></tr>
+<tr><td class="num" id="LN121">121</td><td class="line">		g_string_free (data-&gt;midi0_data, <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>);</td></tr>
+<tr><td class="num" id="LN122">122</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN123">123</td><td class="line">	g_free (data);</td></tr>
+<tr><td class="num" id="LN124">124</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN125">125</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN126">126</td><td class="line"><span class='comment'>/* Seeking is in bytes.  This assumes the calling function is smart enough not</span></td></tr>
+<tr><td class="num" id="LN127">127</td><td class="line"> <span class='comment'>* to seek past the start or end of the file.</span></td></tr>
+<tr><td class="num" id="LN128">128</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN129">129</td><td class="line"><span class='keyword'>static</span> gint64</td></tr>
+<tr><td class="num" id="LN130">130</td><td class="line">xmms_midsquash_seek (xmms_xform_t *xform, gint64 samples,</td></tr>
+<tr><td class="num" id="LN131">131</td><td class="line">               xmms_xform_seek_mode_t whence, xmms_error_t *err)</td></tr>
+<tr><td class="num" id="LN132">132</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN133">133</td><td class="line">	xmms_midsquash_data_t *data;</td></tr>
+<tr><td class="num" id="LN134">134</td><td class="line">	<span class='macro'>g_return_val_if_fail (xform, -1)<span class='expansion'>do{ if (xform) { } else { g_return_if_fail_warning (((gchar*)<br> 0), ((const char*) (__func__)), "xform"); return (-1); }; }while<br> (0)</span></span>;</td></tr>
+<tr><td class="num" id="LN135">135</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN136">136</td><td class="line">	data = xmms_xform_private_data_get (xform);</td></tr>
+<tr><td class="num" id="LN137">137</td><td class="line">	<span class='macro'>g_return_val_if_fail (data, -1)<span class='expansion'>do{ if (data) { } else { g_return_if_fail_warning (((gchar*) 0<br>), ((const char*) (__func__)), "data"); return (-1); }; }while<br> (0)</span></span>;</td></tr>
+<tr><td class="num" id="LN138">138</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN139">139</td><td class="line">	<span class='comment'>/* Adjust our internal pointer by the seek amount */</span></td></tr>
+<tr><td class="num" id="LN140">140</td><td class="line">	<span class='keyword'>switch</span> (whence) {</td></tr>
+<tr><td class="num" id="LN141">141</td><td class="line">		<span class='keyword'>case</span> XMMS_XFORM_SEEK_CUR:</td></tr>
+<tr><td class="num" id="LN142">142</td><td class="line">			data-&gt;pos += samples;</td></tr>
+<tr><td class="num" id="LN143">143</td><td class="line">			<span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN144">144</td><td class="line">		<span class='keyword'>case</span> XMMS_XFORM_SEEK_SET:</td></tr>
+<tr><td class="num" id="LN145">145</td><td class="line">			data-&gt;pos = samples;</td></tr>
+<tr><td class="num" id="LN146">146</td><td class="line">			<span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN147">147</td><td class="line">		<span class='keyword'>case</span> XMMS_XFORM_SEEK_END:</td></tr>
+<tr><td class="num" id="LN148">148</td><td class="line">			data-&gt;pos = data-&gt;midi0_data-&gt;len + samples;</td></tr>
+<tr><td class="num" id="LN149">149</td><td class="line">			<span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN150">150</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN151">151</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN152">152</td><td class="line">	<span class='keyword'>return</span> data-&gt;pos;</td></tr>
+<tr><td class="num" id="LN153">153</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN154">154</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN155">155</td><td class="line"><span class='keyword'>static</span> gulong</td></tr>
+<tr><td class="num" id="LN156">156</td><td class="line">xmms_midisquash_read_midi_num (<span class='keyword'>const</span> gchar *s, gulong *j)</td></tr>
+<tr><td class="num" id="LN157">157</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN158">158</td><td class="line">	gint i;</td></tr>
+<tr><td class="num" id="LN159">159</td><td class="line">	gulong val = 0;</td></tr>
+<tr><td class="num" id="LN160">160</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN161">161</td><td class="line">	<span class='keyword'>for</span> (i = 0; i &lt; 4; i++) {</td></tr>
+<tr><td class="num" id="LN162">162</td><td class="line">		val |= s[*j] &amp; 0x7F;</td></tr>
+<tr><td class="num" id="LN163">163</td><td class="line">		<span class='keyword'>if</span> (s[(*j)++] &amp; 0x80) val &lt;&lt;= 7;</td></tr>
+<tr><td class="num" id="LN164">164</td><td class="line">		<span class='keyword'>else</span> <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN165">165</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN166">166</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN167">167</td><td class="line">	<span class='keyword'>return</span> val;</td></tr>
+<tr><td class="num" id="LN168">168</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN169">169</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN170">170</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN171">171</td><td class="line">xmms_midsquash_sort_events(gconstpointer a, gconstpointer b)</td></tr>
+<tr><td class="num" id="LN172">172</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN173">173</td><td class="line">	xmms_midsquash_event_t *ta = (xmms_midsquash_event_t *)a;</td></tr>
+<tr><td class="num" id="LN174">174</td><td class="line">	xmms_midsquash_event_t *tb = (xmms_midsquash_event_t *)b;</td></tr>
+<tr><td class="num" id="LN175">175</td><td class="line">	<span class='keyword'>if</span> (ta-&gt;time == tb-&gt;time) <span class='keyword'>return</span> 0;</td></tr>
+<tr><td class="num" id="LN176">176</td><td class="line">	<span class='keyword'>if</span> (ta-&gt;time &lt; tb-&gt;time) <span class='keyword'>return</span> -1;</td></tr>
+<tr><td class="num" id="LN177">177</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN178">178</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN179">179</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN180">180</td><td class="line"><span class='keyword'>static</span> gboolean</td></tr>
+<tr><td class="num" id="LN181">181</td><td class="line">xmms_midsquash_init (xmms_xform_t *xform)</td></tr>
+<tr><td class="num" id="LN182">182</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN183">183</td><td class="line">	xmms_error_t error;</td></tr>
+<tr><td class="num" id="LN184">184</td><td class="line">	xmms_midsquash_data_t *data;</td></tr>
+<tr><td class="num" id="LN185">185</td><td class="line">	gulong track_len, len;</td></tr>
+<tr><td class="num" id="LN186">186</td><td class="line">	gint32 ticks_per_quarter_note;</td></tr>
+<tr><td class="num" id="LN187">187</td><td class="line">	<span class='keyword'>const</span> gchar *metakey;</td></tr>
+<tr><td class="num" id="LN188">188</td><td class="line">	guchar buf[4096];</td></tr>
+<tr><td class="num" id="LN189">189</td><td class="line">	gint ret;</td></tr>
+<tr><td class="num" id="LN190">190</td><td class="line">	guchar prev_event = 0;</td></tr>
+<tr><td class="num" id="LN191">191</td><td class="line">	GArray *events = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN192">192</td><td class="line">	GArray *track_data = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN193">193</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN194">194</td><td class="line">	<span class='macro'>g_return_val_if_fail (xform, FALSE)<span class='expansion'>do{ if (xform) { } else { g_return_if_fail_warning (((gchar*)<br> 0), ((const char*) (__func__)), "xform"); return ((0)); }; }<br>while (0)</span></span>;</td></tr>
+<tr><td class="num" id="LN195">195</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN196">196</td><td class="line">	data = <span class='macro'>g_new0 (xmms_midsquash_data_t, 1)<span class='expansion'>((xmms_midsquash_data_t *) g_malloc0_n ((1), sizeof (xmms_midsquash_data_t<br>)))</span></span>;</td></tr>
+<tr><td class="num" id="LN197">197</td><td class="line">	xmms_xform_private_data_set (xform, data);</td></tr>
+<tr><td class="num" id="LN198">198</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN199">199</td><td class="line">	data-&gt;midi0_data = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN200">200</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN201">201</td><td class="line">	<span class='keyword'>if</span> (!<span class='macro'>xmms_xform_auxdata_get_int<span class='expansion'>xmms_xform_auxdata_get_int32</span></span> (xform, <span class='string_literal'>"tempo"</span>, &amp;ticks_per_quarter_note)) {</td></tr>
+<tr><td class="num" id="LN202">202</td><td class="line">		<span class='macro'>XMMS_DBG (<span class='string_literal'>"MIDI xform missing 'tempo' auxdata value"</span>)<span class='expansion'>g_debug ("../src/plugins/midsquash/midsquash.c" ":" "202" ": "<br> "MIDI xform missing 'tempo' auxdata value")</span></span>;</td></tr>
+<tr><td class="num" id="LN203">203</td><td class="line">		<span class='keyword'>goto</span> error_cleanup;</td></tr>
+<tr><td class="num" id="LN204">204</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN205">205</td><td class="line">	xmms_xform_auxdata_set_int (xform, <span class='string_literal'>"tempo"</span>, ticks_per_quarter_note);</td></tr>
+<tr><td class="num" id="LN206">206</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN207">207</td><td class="line">	<span class='comment'>/* Load all the tracks */</span></td></tr>
+<tr><td class="num" id="LN208">208</td><td class="line">	events = g_array_new(<span class='macro'>FALSE<span class='expansion'>(0)</span></span>, <span class='macro'>FALSE<span class='expansion'>(0)</span></span>, <span class='keyword'>sizeof</span>(xmms_midsquash_event_t));</td></tr>
+<tr><td class="num" id="LN209">209</td><td class="line">	track_data = g_array_new(<span class='macro'>FALSE<span class='expansion'>(0)</span></span>, <span class='macro'>FALSE<span class='expansion'>(0)</span></span>, <span class='keyword'>sizeof</span>(GString *));</td></tr>
+<tr><td class="num" id="LN210">210</td><td class="line">	<span class='keyword'>while</span> (xmms_xform_read (xform, buf, 4, &amp;error) == 4) {</td></tr>
+<tr><td class="num" id="LN211">211</td><td class="line">		track_len = (buf[0] &lt;&lt; 24) | (buf[1] &lt;&lt; 16) | (buf[2] &lt;&lt; 8) | buf[3];</td></tr>
+<tr><td class="num" id="LN212">212</td><td class="line">		GString *t = g_string_sized_new(track_len);</td></tr>
+<tr><td class="num" id="LN213">213</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN214">214</td><td class="line">		ret = <span class="mrange">xmms_xform_read (xform, t-&gt;str, track_len, &amp;error)</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:17ex">Value stored to 'ret' is never read</div></td></tr>
+<tr><td class="num" id="LN215">215</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN216">216</td><td class="line">		<span class='macro'>g_array_append_val(track_data, t)<span class='expansion'>g_array_append_vals (track_data, &amp;(t), 1)</span></span>;</td></tr>
+<tr><td class="num" id="LN217">217</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN218">218</td><td class="line">		<span class='comment'>/* Run through the MIDI data in this track, and convert it to a list of</span></td></tr>
+<tr><td class="num" id="LN219">219</td><td class="line">		 <span class='comment'>* events in absolute ticks (instead of delta ticks.)</span></td></tr>
+<tr><td class="num" id="LN220">220</td><td class="line">		 <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN221">221</td><td class="line">		gulong i = 0;</td></tr>
+<tr><td class="num" id="LN222">222</td><td class="line">		gulong abs_ticks = 0;</td></tr>
+<tr><td class="num" id="LN223">223</td><td class="line">		<span class='keyword'>while</span> (i &lt; track_len) {</td></tr>
+<tr><td class="num" id="LN224">224</td><td class="line">			abs_ticks += xmms_midisquash_read_midi_num(t-&gt;str, &amp;i);</td></tr>
+<tr><td class="num" id="LN225">225</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN226">226</td><td class="line">			xmms_midsquash_event_t event;</td></tr>
+<tr><td class="num" id="LN227">227</td><td class="line">			gboolean ignore_event = <span class='macro'>FALSE<span class='expansion'>(0)</span></span>;</td></tr>
+<tr><td class="num" id="LN228">228</td><td class="line">			event.time = abs_ticks;</td></tr>
+<tr><td class="num" id="LN229">229</td><td class="line">			event.offset = &amp;t-&gt;str[i];</td></tr>
+<tr><td class="num" id="LN230">230</td><td class="line">			gulong i0 = i;</td></tr>
+<tr><td class="num" id="LN231">231</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN232">232</td><td class="line">			<span class='comment'>/* Read MIDI event */</span></td></tr>
+<tr><td class="num" id="LN233">233</td><td class="line">			guchar midi_event = t-&gt;str[i];</td></tr>
+<tr><td class="num" id="LN234">234</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN235">235</td><td class="line">			<span class='keyword'>if</span> (!(midi_event &amp; 0x80)) {</td></tr>
+<tr><td class="num" id="LN236">236</td><td class="line">				<span class='comment'>/* This is a running-status byte */</span></td></tr>
+<tr><td class="num" id="LN237">237</td><td class="line">				midi_event = prev_event;</td></tr>
+<tr><td class="num" id="LN238">238</td><td class="line">				event.running_status = prev_event;</td></tr>
+<tr><td class="num" id="LN239">239</td><td class="line">			} <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN240">240</td><td class="line">				<span class='keyword'>if</span> ((midi_event &amp; 0xF0) != 0xF0) {</td></tr>
+<tr><td class="num" id="LN241">241</td><td class="line">					<span class='comment'>/* Meta events (0xF0 through 0xFF) can appear in the middle of</span></td></tr>
+<tr><td class="num" id="LN242">242</td><td class="line">					 <span class='comment'>* running-status data without affecting the running status, so we</span></td></tr>
+<tr><td class="num" id="LN243">243</td><td class="line">					 <span class='comment'>* only update the 'last event' if this isn't a meta-event.</span></td></tr>
+<tr><td class="num" id="LN244">244</td><td class="line">					 <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN245">245</td><td class="line">					prev_event = midi_event;</td></tr>
+<tr><td class="num" id="LN246">246</td><td class="line">				}</td></tr>
+<tr><td class="num" id="LN247">247</td><td class="line">				event.running_status = 0;</td></tr>
+<tr><td class="num" id="LN248">248</td><td class="line">				i++;</td></tr>
+<tr><td class="num" id="LN249">249</td><td class="line">			}</td></tr>
+<tr><td class="num" id="LN250">250</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN251">251</td><td class="line">			<span class='keyword'>switch</span> (midi_event &amp; 0xF0) {</td></tr>
+<tr><td class="num" id="LN252">252</td><td class="line">				<span class='keyword'>case</span> 0x80:  <span class='comment'>/* Note off (two bytes) */</span> i += 2; <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN253">253</td><td class="line">				<span class='keyword'>case</span> 0x90:  <span class='comment'>/* Note on (two bytes) */</span> i += 2; <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN254">254</td><td class="line">				<span class='keyword'>case</span> 0xA0:  <span class='comment'>/* Key pressure (two bytes) */</span> i += 2; <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN255">255</td><td class="line">				<span class='keyword'>case</span> 0xB0:  <span class='comment'>/* Controller change (two bytes) */</span> i += 2; <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN256">256</td><td class="line">				<span class='keyword'>case</span> 0xC0:  <span class='comment'>/* Instrument change (one byte) */</span> i += 1; <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN257">257</td><td class="line">				<span class='keyword'>case</span> 0xD0:  <span class='comment'>/* Channel pressure (one byte) */</span> i += 1; <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN258">258</td><td class="line">				<span class='keyword'>case</span> 0xE0:  <span class='comment'>/* Pitch bend (two bytes) */</span> i += 2; <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN259">259</td><td class="line">				<span class='keyword'>case</span> 0xF0: {</td></tr>
+<tr><td class="num" id="LN260">260</td><td class="line">					<span class='keyword'>if</span> (midi_event == 0xFF) { <span class='comment'>/* Meta-event */</span></td></tr>
+<tr><td class="num" id="LN261">261</td><td class="line">						<span class='keyword'>if</span> (t-&gt;str[i] == 0x2F) {</td></tr>
+<tr><td class="num" id="LN262">262</td><td class="line">							<span class='comment'>/* This is an end-of-track event, so we need to ignore it</span></td></tr>
+<tr><td class="num" id="LN263">263</td><td class="line">							 <span class='comment'>* otherwise the song will end as soon as we encounter the end</span></td></tr>
+<tr><td class="num" id="LN264">264</td><td class="line">							 <span class='comment'>* of the shortest track (which could be quite early on.)</span></td></tr>
+<tr><td class="num" id="LN265">265</td><td class="line">							 <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN266">266</td><td class="line">							ignore_event = <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>;</td></tr>
+<tr><td class="num" id="LN267">267</td><td class="line">						}</td></tr>
+<tr><td class="num" id="LN268">268</td><td class="line">						i++; <span class='comment'>/* event type */</span></td></tr>
+<tr><td class="num" id="LN269">269</td><td class="line">					} <span class='comment'>/* else sysex */</span></td></tr>
+<tr><td class="num" id="LN270">270</td><td class="line">					len = xmms_midisquash_read_midi_num(t-&gt;str, &amp;i);</td></tr>
+<tr><td class="num" id="LN271">271</td><td class="line">					i += len;</td></tr>
+<tr><td class="num" id="LN272">272</td><td class="line">					<span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN273">273</td><td class="line">				}</td></tr>
+<tr><td class="num" id="LN274">274</td><td class="line">				<span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN275">275</td><td class="line">					<span class='macro'>XMMS_DBG (<span class='string_literal'>"Corrupted MIDI file (invalid event 0x%02X)"</span>, midi_event)<span class='expansion'>g_debug ("../src/plugins/midsquash/midsquash.c" ":" "275" ": "<br> "Corrupted MIDI file (invalid event 0x%02X)", midi_event)</span></span>;</td></tr>
+<tr><td class="num" id="LN276">276</td><td class="line">					<span class='keyword'>goto</span> error_cleanup;</td></tr>
+<tr><td class="num" id="LN277">277</td><td class="line">			}</td></tr>
+<tr><td class="num" id="LN278">278</td><td class="line">			event.length = i - i0;</td></tr>
+<tr><td class="num" id="LN279">279</td><td class="line">			<span class='keyword'>if</span> (!ignore_event)</td></tr>
+<tr><td class="num" id="LN280">280</td><td class="line">				<span class='macro'>g_array_append_val(events, event)<span class='expansion'>g_array_append_vals (events, &amp;(event), 1)</span></span>;</td></tr>
+<tr><td class="num" id="LN281">281</td><td class="line">		} <span class='comment'>/* end loop: run through all the track's events */</span></td></tr>
+<tr><td class="num" id="LN282">282</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN283">283</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN284">284</td><td class="line">	<span class='comment'>/* Now that all the events have been read in, in absolute time, sorting them</span></td></tr>
+<tr><td class="num" id="LN285">285</td><td class="line">	 <span class='comment'>* will put them all in playable order.</span></td></tr>
+<tr><td class="num" id="LN286">286</td><td class="line">	 <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN287">287</td><td class="line">	g_array_sort(events, xmms_midsquash_sort_events);</td></tr>
+<tr><td class="num" id="LN288">288</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN289">289</td><td class="line">	<span class='comment'>/* Now copy all the sorted events into a big array, which will be used as</span></td></tr>
+<tr><td class="num" id="LN290">290</td><td class="line">	 <span class='comment'>* the output data.</span></td></tr>
+<tr><td class="num" id="LN291">291</td><td class="line">	 <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN292">292</td><td class="line">	data-&gt;midi0_data = g_string_new(<span class='string_literal'>""</span>);</td></tr>
+<tr><td class="num" id="LN293">293</td><td class="line">	gulong last_time = 0;</td></tr>
+<tr><td class="num" id="LN294">294</td><td class="line">	guint64 playtime_us = 0;</td></tr>
+<tr><td class="num" id="LN295">295</td><td class="line">	gulong us_per_quarter_note = 500000;</td></tr>
+<tr><td class="num" id="LN296">296</td><td class="line">	gulong i, j;</td></tr>
+<tr><td class="num" id="LN297">297</td><td class="line">	guchar val;</td></tr>
+<tr><td class="num" id="LN298">298</td><td class="line">	<span class='keyword'>for</span> (i = 0; i &lt; events-&gt;len; i++) {</td></tr>
+<tr><td class="num" id="LN299">299</td><td class="line">		xmms_midsquash_event_t *e;</td></tr>
+<tr><td class="num" id="LN300">300</td><td class="line">		e = &amp;<span class='macro'>g_array_index(events, xmms_midsquash_event_t, i)<span class='expansion'>(((xmms_midsquash_event_t*) (void *) (events)-&gt;data) [(i)]<br>)</span></span>;</td></tr>
+<tr><td class="num" id="LN301">301</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN302">302</td><td class="line">		<span class='comment'>/* Calculate the delta time and write it out in MIDI style */</span></td></tr>
+<tr><td class="num" id="LN303">303</td><td class="line">		gulong delta_ticks = e-&gt;time - last_time;</td></tr>
+<tr><td class="num" id="LN304">304</td><td class="line">		<span class='keyword'>if</span> (delta_ticks &amp; (0x7F &lt;&lt; 21)) {</td></tr>
+<tr><td class="num" id="LN305">305</td><td class="line">			val = ((delta_ticks &gt;&gt; 21) &amp; 0x7F) | 0x80;</td></tr>
+<tr><td class="num" id="LN306">306</td><td class="line">			g_string_append_len(data-&gt;midi0_data, (gchar *)&amp;val, 1);</td></tr>
+<tr><td class="num" id="LN307">307</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN308">308</td><td class="line">		<span class='keyword'>if</span> (delta_ticks &amp; ((0x7F &lt;&lt; 21) | (0x7F &lt;&lt; 14))) {</td></tr>
+<tr><td class="num" id="LN309">309</td><td class="line">			val = ((delta_ticks &gt;&gt; 14) &amp; 0x7F) | 0x80;</td></tr>
+<tr><td class="num" id="LN310">310</td><td class="line">			g_string_append_len(data-&gt;midi0_data, (gchar *)&amp;val, 1);</td></tr>
+<tr><td class="num" id="LN311">311</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN312">312</td><td class="line">		<span class='keyword'>if</span> (delta_ticks &amp; ((0x7F &lt;&lt; 21) | (0x7F &lt;&lt; 14) | (0x7F &lt;&lt; 7))) {</td></tr>
+<tr><td class="num" id="LN313">313</td><td class="line">			val = ((delta_ticks &gt;&gt;  7) &amp; 0x7F) | 0x80;</td></tr>
+<tr><td class="num" id="LN314">314</td><td class="line">			g_string_append_len(data-&gt;midi0_data, (gchar *)&amp;val, 1);</td></tr>
+<tr><td class="num" id="LN315">315</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN316">316</td><td class="line">		val = delta_ticks &amp; 0x7F;</td></tr>
+<tr><td class="num" id="LN317">317</td><td class="line">		g_string_append_len(data-&gt;midi0_data, (gchar *)&amp;val, 1);</td></tr>
+<tr><td class="num" id="LN318">318</td><td class="line">		last_time = e-&gt;time;</td></tr>
+<tr><td class="num" id="LN319">319</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN320">320</td><td class="line">		<span class='keyword'>if</span> (e-&gt;running_status) {</td></tr>
+<tr><td class="num" id="LN321">321</td><td class="line">			<span class='comment'>/* This event is a continuation of the previous event, but since we're</span></td></tr>
+<tr><td class="num" id="LN322">322</td><td class="line">			 <span class='comment'>* combining all the events the previous event may no longer be the same,</span></td></tr>
+<tr><td class="num" id="LN323">323</td><td class="line">			 <span class='comment'>* so we take the easy way out and just write the event out in full here.</span></td></tr>
+<tr><td class="num" id="LN324">324</td><td class="line">			 <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN325">325</td><td class="line">			g_string_append_len(data-&gt;midi0_data, (gchar *)&amp;e-&gt;running_status, 1);</td></tr>
+<tr><td class="num" id="LN326">326</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN327">327</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN328">328</td><td class="line">		<span class='comment'>/* Copy the actual event across from the track data */</span></td></tr>
+<tr><td class="num" id="LN329">329</td><td class="line">		g_string_append_len(data-&gt;midi0_data, e-&gt;offset, e-&gt;length);</td></tr>
+<tr><td class="num" id="LN330">330</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN331">331</td><td class="line">		<span class='comment'>/* Check for a tempo change event */</span></td></tr>
+<tr><td class="num" id="LN332">332</td><td class="line">		<span class='keyword'>if</span> ((e-&gt;offset[0] &amp; 0xF0) == 0xF0) {</td></tr>
+<tr><td class="num" id="LN333">333</td><td class="line">			<span class='keyword'>if</span> (e-&gt;offset[1] == 0x51) { <span class='comment'>/* tempo event */</span></td></tr>
+<tr><td class="num" id="LN334">334</td><td class="line">				j = 2;</td></tr>
+<tr><td class="num" id="LN335">335</td><td class="line">				len = xmms_midisquash_read_midi_num(e-&gt;offset, &amp;j);</td></tr>
+<tr><td class="num" id="LN336">336</td><td class="line">				len += j;</td></tr>
+<tr><td class="num" id="LN337">337</td><td class="line">				us_per_quarter_note = 0;</td></tr>
+<tr><td class="num" id="LN338">338</td><td class="line">				<span class='keyword'>for</span> (; j &lt; len; j++) {</td></tr>
+<tr><td class="num" id="LN339">339</td><td class="line">					us_per_quarter_note &lt;&lt;= 8;</td></tr>
+<tr><td class="num" id="LN340">340</td><td class="line">					us_per_quarter_note |= (<span class='keyword'>unsigned</span> <span class='keyword'>char</span>)(e-&gt;offset[j]);</td></tr>
+<tr><td class="num" id="LN341">341</td><td class="line">				}</td></tr>
+<tr><td class="num" id="LN342">342</td><td class="line">			}</td></tr>
+<tr><td class="num" id="LN343">343</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN344">344</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN345">345</td><td class="line">		<span class='comment'>/* Update the song length */</span></td></tr>
+<tr><td class="num" id="LN346">346</td><td class="line">		playtime_us += delta_ticks * (us_per_quarter_note / ticks_per_quarter_note);</td></tr>
+<tr><td class="num" id="LN347">347</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN348">348</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN349">349</td><td class="line">	xmms_xform_outdata_type_add (xform,</td></tr>
+<tr><td class="num" id="LN350">350</td><td class="line">	                             XMMS_STREAM_TYPE_MIMETYPE,</td></tr>
+<tr><td class="num" id="LN351">351</td><td class="line">	                             <span class='string_literal'>"audio/rawmidi"</span>,</td></tr>
+<tr><td class="num" id="LN352">352</td><td class="line">	                             XMMS_STREAM_TYPE_FMT_CHANNELS,</td></tr>
+<tr><td class="num" id="LN353">353</td><td class="line">	                             16,</td></tr>
+<tr><td class="num" id="LN354">354</td><td class="line">	                             XMMS_STREAM_TYPE_END);</td></tr>
+<tr><td class="num" id="LN355">355</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN356">356</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN357">357</td><td class="line">	metakey = <span class='macro'>XMMS_MEDIALIB_ENTRY_PROPERTY_DURATION<span class='expansion'>"duration"</span></span>;</td></tr>
+<tr><td class="num" id="LN358">358</td><td class="line">	xmms_xform_metadata_set_int (xform, metakey,</td></tr>
+<tr><td class="num" id="LN359">359</td><td class="line">	                             playtime_us / 1000);</td></tr>
+<tr><td class="num" id="LN360">360</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN361">361</td><td class="line">	ret = <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>;</td></tr>
+<tr><td class="num" id="LN362">362</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN363">363</td><td class="line">always_cleanup:</td></tr>
+<tr><td class="num" id="LN364">364</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN365">365</td><td class="line">	<span class='comment'>/* Release all the track and event data */</span></td></tr>
+<tr><td class="num" id="LN366">366</td><td class="line">	<span class='keyword'>if</span> (track_data) {</td></tr>
+<tr><td class="num" id="LN367">367</td><td class="line">		<span class='keyword'>for</span> (i = 0; i &lt; track_data-&gt;len; i++) {</td></tr>
+<tr><td class="num" id="LN368">368</td><td class="line">			g_string_free(<span class='macro'>g_array_index(track_data, GString *, i)<span class='expansion'>(((GString **) (void *) (track_data)-&gt;data) [(i)])</span></span>, <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>);</td></tr>
+<tr><td class="num" id="LN369">369</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN370">370</td><td class="line">		g_array_free(track_data, <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>);</td></tr>
+<tr><td class="num" id="LN371">371</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN372">372</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN373">373</td><td class="line">	<span class='keyword'>if</span> (events)</td></tr>
+<tr><td class="num" id="LN374">374</td><td class="line">		g_array_free(events, <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>);</td></tr>
+<tr><td class="num" id="LN375">375</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN376">376</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN377">377</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN378">378</td><td class="line">error_cleanup:</td></tr>
+<tr><td class="num" id="LN379">379</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN380">380</td><td class="line">	<span class='comment'>/* Don't need to free data-&gt;midi0_data as we don't goto cleanup after it</span></td></tr>
+<tr><td class="num" id="LN381">381</td><td class="line">	 <span class='comment'>* has been allocated.</span></td></tr>
+<tr><td class="num" id="LN382">382</td><td class="line">	 <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN383">383</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN384">384</td><td class="line">	g_free (data);</td></tr>
+<tr><td class="num" id="LN385">385</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN386">386</td><td class="line">	ret = <span class='macro'>FALSE<span class='expansion'>(0)</span></span>;</td></tr>
+<tr><td class="num" id="LN387">387</td><td class="line">	<span class='keyword'>goto</span> always_cleanup;</td></tr>
+<tr><td class="num" id="LN388">388</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN389">389</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN390">390</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN391">391</td><td class="line">xmms_midsquash_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len, xmms_error_t *err)</td></tr>
+<tr><td class="num" id="LN392">392</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN393">393</td><td class="line">	xmms_midsquash_data_t *data;</td></tr>
+<tr><td class="num" id="LN394">394</td><td class="line">	data = xmms_xform_private_data_get (xform);</td></tr>
+<tr><td class="num" id="LN395">395</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN396">396</td><td class="line">	<span class='keyword'>if</span> (data-&gt;pos + len &gt; data-&gt;midi0_data-&gt;len)</td></tr>
+<tr><td class="num" id="LN397">397</td><td class="line">		len = data-&gt;midi0_data-&gt;len - data-&gt;pos;</td></tr>
+<tr><td class="num" id="LN398">398</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN399">399</td><td class="line">	memcpy(buf, &amp;(data-&gt;midi0_data-&gt;str[data-&gt;pos]), len);</td></tr>
+<tr><td class="num" id="LN400">400</td><td class="line">	data-&gt;pos += len;</td></tr>
+<tr><td class="num" id="LN401">401</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN402">402</td><td class="line">	<span class='keyword'>return</span> len;</td></tr>
+<tr><td class="num" id="LN403">403</td><td class="line">}</td></tr>
+</table></body></html>
