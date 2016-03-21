@@ -1,0 +1,248 @@
+<html><head><title>Audio::XMMSClient::Result</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<link rel="stylesheet" title="blkbluw" type="text/css" href="../../_blkbluw.css" media="all" >
+<link rel="alternate stylesheet" title="blkmagw" type="text/css" href="../../_blkmagw.css" media="all" >
+<link rel="alternate stylesheet" title="blkcynw" type="text/css" href="../../_blkcynw.css" media="all" >
+<link rel="alternate stylesheet" title="whtprpk" type="text/css" href="../../_whtprpk.css" media="all" >
+<link rel="alternate stylesheet" title="whtnavk" type="text/css" href="../../_whtnavk.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnk" type="text/css" href="../../_grygrnk.css" media="all" >
+<link rel="alternate stylesheet" title="whtgrng" type="text/css" href="../../_whtgrng.css" media="all" >
+<link rel="alternate stylesheet" title="blkgrng" type="text/css" href="../../_blkgrng.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnw" type="text/css" href="../../_grygrnw.css" media="all" >
+<link rel="alternate stylesheet" title="blkbluw" type="text/css" href="../../_blkbluw.css" media="all" >
+<link rel="alternate stylesheet" title="whtpurk" type="text/css" href="../../_whtpurk.css" media="all" >
+<link rel="alternate stylesheet" title="whtgrng" type="text/css" href="../../_whtgrng.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnw" type="text/css" href="../../_grygrnw.css" media="all" >
+
+<script type="text/javascript" src="../../_podly.js"></script>
+
+</head>
+<body class='pod'>
+
+
+
+<p class="backlinktop"><b><a name="___top" href="../../index.html" accesskey="1" title="All Documents">&lt;&lt;</a></b></p>
+
+<div class='indexgroup'>
+<ul   class='indexList indexList1'>
+  <li class='indexItem indexItem1'><a href='#NAME'>NAME</a>
+  <li class='indexItem indexItem1'><a href='#SYNOPSIS'>SYNOPSIS</a>
+  <li class='indexItem indexItem1'><a href='#DESCRIPTION'>DESCRIPTION</a>
+  <li class='indexItem indexItem1'><a href='#METHODS'>METHODS</a>
+  <ul   class='indexList indexList2'>
+    <li class='indexItem indexItem2'><a href='#get_class'>get_class</a>
+    <li class='indexItem indexItem2'><a href='#notifier_set'>notifier_set</a>
+    <li class='indexItem indexItem2'><a href='#wait'>wait</a>
+    <li class='indexItem indexItem2'><a href='#get_type'>get_type</a>
+    <li class='indexItem indexItem2'><a href='#iserror'>iserror</a>
+    <li class='indexItem indexItem2'><a href='#get_error'>get_error</a>
+    <li class='indexItem indexItem2'><a href='#value'>value</a>
+    <li class='indexItem indexItem2'><a href='#decode_url'>decode_url</a>
+  </ul>
+  <li class='indexItem indexItem1'><a href='#AUTHOR'>AUTHOR</a>
+  <li class='indexItem indexItem1'><a href='#SEE_ALSO'>SEE ALSO</a>
+  <li class='indexItem indexItem1'><a href='#COPYRIGHT_AND_LICENSE'>COPYRIGHT AND LICENSE</a>
+</ul>
+</div>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="NAME"
+>NAME</a></h1>
+
+<p>Audio::XMMSClient::Result - Results of Audio::XMMSClient operations</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SYNOPSIS"
+>SYNOPSIS</a></h1>
+
+<pre>  use Audio::XMMSClient;
+
+  my $conn = Audio::XMMSClient-&#62;new($client_name);
+  $conn-&#62;connect or die $c-&#62;get_last_error;
+
+  my $result = $c-&#62;playback_status;
+  $result-&#62;wait;
+  print $result-&#62;value;</pre>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="DESCRIPTION"
+>DESCRIPTION</a></h1>
+
+<p>This module provides an abstract, asyncronous interface to for retrieving results of <code>Audio::XMMSClient</code> server operations.</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="METHODS"
+>METHODS</a></h1>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="get_class"
+>get_class</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$class"
+>Return Value: $class</a></dt>
+</dl>
+
+<pre>  my $class = $result-&#62;get_class;</pre>
+
+<p>Get the class of the result. This may be one of &#34;default&#34;, &#34;signal&#34; and &#34;broadcast&#34;.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="notifier_set"
+>notifier_set</a></h2>
+
+<dl>
+<dt><a name="Arguments:_\&#38;func,_$data?"
+>Arguments: \&#38;func, $data?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $result-&#62;notifier_set(sub { die &#39;got an answer!&#39; });</pre>
+
+<p>Set up a callback for the result retrival. This callback will be called when the answers arrives. It&#39;s arguments will be the result itself as well as an optional userdata if <code>$data</code> is passed.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="wait"
+>wait</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $value = $result-&#62;wait-&#62;value;</pre>
+
+<p>Block for the reply. In a synchronous application this can be used to wait for the result. Will return the <code>$result</code> this method was called when the server replyed.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="get_type"
+>get_type</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$type"
+>Return Value: $type</a></dt>
+</dl>
+
+<pre>  my $type = $result-&#62;get_type;</pre>
+
+<p>Get the type of the result. May be one of &#34;none&#34;, &#34;error&#34;, &#34;uint&#34;, &#34;int&#34;, &#34;string&#34;, &#34;dict&#34;, &#34;bin&#34;, &#34;coll&#34; or &#34;list&#34;.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="iserror"
+>iserror</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_1_|_0"
+>Return Value: 1 | 0</a></dt>
+</dl>
+
+<pre>  my $has_error = $result-&#62;iserror;</pre>
+
+<p>Check if the result represents an error. Returns a true value if the result is an error, false otherwise.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="get_error"
+>get_error</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$message"
+>Return Value: $message</a></dt>
+</dl>
+
+<pre>  my $message = $result-&#62;get_error;</pre>
+
+<p>Get an error <code>$message</code> describing the error that occoured.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="value"
+>value</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$scalar_|_\@arrayref_|_\%hashref_|_\%propdict"
+>Return Value: $scalar | \@arrayref | \%hashref | \%propdict</a></dt>
+</dl>
+
+<pre>  my $value = $result-&#62;value;</pre>
+
+<p>Gets the return value of the <code>$result</code>. Depending of the results type (<a href="#get_type" class="podlinkpod"
+>&#34;get_type&#34;</a>) you might get other types of return values.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="decode_url"
+>decode_url</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$string"
+>Arguments: $string</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$decoded_url"
+>Return Value: $decoded_url</a></dt>
+</dl>
+
+<pre>  my $decoded_url = $result-&#62;decode_url($url);
+  my $decoded_url = Audio::XMMSClient::Result-&#62;decode_url($url);</pre>
+
+<p>Decode an URL-encoded <code>$string</code>.</p>
+
+<p>Some strings (currently only the url of media) has no known encoding, and must be encoded in an UTF-8 clean way. This is done similar to the url encoding web browsers do. This functions decodes a string encoded in that way. OBSERVE that the decoded string HAS NO KNOWN ENCODING and you cannot display it on screen in a 100% guaranteed correct way (a good heuristic is to try to validate the decoded string as UTF-8, and if it validates assume that it is an UTF-8 encoded string, and otherwise fall back to some other encoding).</p>
+
+<p>Do not use this function if you don&#39;t understand the implications. The best thing is not to try to display the url at all.</p>
+
+<p>Note that the fact that the string has NO KNOWN ENCODING and CAN NOT BE DISPLAYED does not stop you from open the file if it is a local file (if it starts with &#34;file://&#34;).</p>
+
+<p>This method can either be called as a class or instance method.</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="AUTHOR"
+>AUTHOR</a></h1>
+
+<p>Florian Ragwitz &#60;rafl@debian.org&#62;</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SEE_ALSO"
+>SEE ALSO</a></h1>
+
+<p><a href="../../Audio/XMMSClient.html" class="podlinkpod"
+>Audio::XMMSClient</a>, <a href="../../Audio/XMMSClient/Result/PropDict.html" class="podlinkpod"
+>Audio::XMMSClient::Result::PropDict</a></p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="COPYRIGHT_AND_LICENSE"
+>COPYRIGHT AND LICENSE</a></h1>
+
+<p>Copyright (C) 2006-2008, Florian Ragwitz</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself, either Perl version 5.8.8 or, at your option, any later version of Perl 5 you may have available.</p>
+<p class="backlinkbottom"><b><a name="___bottom" href="../../index.html" title="All Documents">&lt;&lt;</a></b></p>
+
+
+
+</body></html>

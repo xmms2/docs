@@ -1,0 +1,1731 @@
+<html><head><title>Audio::XMMSClient</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<link rel="stylesheet" title="blkbluw" type="text/css" href="../_blkbluw.css" media="all" >
+<link rel="alternate stylesheet" title="blkmagw" type="text/css" href="../_blkmagw.css" media="all" >
+<link rel="alternate stylesheet" title="blkcynw" type="text/css" href="../_blkcynw.css" media="all" >
+<link rel="alternate stylesheet" title="whtprpk" type="text/css" href="../_whtprpk.css" media="all" >
+<link rel="alternate stylesheet" title="whtnavk" type="text/css" href="../_whtnavk.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnk" type="text/css" href="../_grygrnk.css" media="all" >
+<link rel="alternate stylesheet" title="whtgrng" type="text/css" href="../_whtgrng.css" media="all" >
+<link rel="alternate stylesheet" title="blkgrng" type="text/css" href="../_blkgrng.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnw" type="text/css" href="../_grygrnw.css" media="all" >
+<link rel="alternate stylesheet" title="blkbluw" type="text/css" href="../_blkbluw.css" media="all" >
+<link rel="alternate stylesheet" title="whtpurk" type="text/css" href="../_whtpurk.css" media="all" >
+<link rel="alternate stylesheet" title="whtgrng" type="text/css" href="../_whtgrng.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnw" type="text/css" href="../_grygrnw.css" media="all" >
+
+<script type="text/javascript" src="../_podly.js"></script>
+
+</head>
+<body class='pod'>
+
+
+
+<p class="backlinktop"><b><a name="___top" href="../index.html" accesskey="1" title="All Documents">&lt;&lt;</a></b></p>
+
+<div class='indexgroup'>
+<ul   class='indexList indexList1'>
+  <li class='indexItem indexItem1'><a href='#NAME'>NAME</a>
+  <li class='indexItem indexItem1'><a href='#SYNOPSIS'>SYNOPSIS</a>
+  <li class='indexItem indexItem1'><a href='#DESCRIPTION'>DESCRIPTION</a>
+  <li class='indexItem indexItem1'><a href='#METHODS'>METHODS</a>
+  <ul   class='indexList indexList2'>
+    <li class='indexItem indexItem2'><a href='#new'>new</a>
+    <li class='indexItem indexItem2'><a href='#connect'>connect</a>
+    <li class='indexItem indexItem2'><a href='#disconnect_callback_set'>disconnect_callback_set</a>
+    <li class='indexItem indexItem2'><a href='#io_disconnect'>io_disconnect</a>
+    <li class='indexItem indexItem2'><a href='#get_last_error'>get_last_error</a>
+    <li class='indexItem indexItem2'><a href='#main_list_plugins'>main_list_plugins</a>
+    <li class='indexItem indexItem2'><a href='#main_stats'>main_stats</a>
+    <li class='indexItem indexItem2'><a href='#quit'>quit</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_quit'>broadcast_quit</a>
+    <li class='indexItem indexItem2'><a href='#medialib_get_id'>medialib_get_id</a>
+    <li class='indexItem indexItem2'><a href='#medialib_move_entry'>medialib_move_entry</a>
+    <li class='indexItem indexItem2'><a href='#medialib_remove_entry'>medialib_remove_entry</a>
+    <li class='indexItem indexItem2'><a href='#medialib_add_entry'>medialib_add_entry</a>
+    <li class='indexItem indexItem2'><a href='#medialib_add_entry_args'>medialib_add_entry_args</a>
+    <li class='indexItem indexItem2'><a href='#medialib_add_entry_encoded'>medialib_add_entry_encoded</a>
+    <li class='indexItem indexItem2'><a href='#playlist'>playlist</a>
+    <li class='indexItem indexItem2'><a href='#medialib_import_path'>medialib_import_path</a>
+    <li class='indexItem indexItem2'><a href='#medialib_import_path_encoded'>medialib_import_path_encoded</a>
+    <li class='indexItem indexItem2'><a href='#medialib_rehash'>medialib_rehash</a>
+    <li class='indexItem indexItem2'><a href='#medialib_get_info'>medialib_get_info</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_medialib_entry_added'>broadcast_medialib_entry_added</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_medialib_entry_updated'>broadcast_medialib_entry_updated</a>
+    <li class='indexItem indexItem2'><a href='#medialib_entry_property_set_int'>medialib_entry_property_set_int</a>
+    <li class='indexItem indexItem2'><a href='#medialib_entry_property_set_int_with_source'>medialib_entry_property_set_int_with_source</a>
+    <li class='indexItem indexItem2'><a href='#medialib_entry_property_set_str'>medialib_entry_property_set_str</a>
+    <li class='indexItem indexItem2'><a href='#medialib_entry_property_set_str_with_source'>medialib_entry_property_set_str_with_source</a>
+    <li class='indexItem indexItem2'><a href='#medialib_entry_property_remove'>medialib_entry_property_remove</a>
+    <li class='indexItem indexItem2'><a href='#medialib_entry_property_remove_with_source'>medialib_entry_property_remove_with_source</a>
+    <li class='indexItem indexItem2'><a href='#coll_get'>coll_get</a>
+    <li class='indexItem indexItem2'><a href='#coll_sync'>coll_sync</a>
+    <li class='indexItem indexItem2'><a href='#coll_list'>coll_list</a>
+    <li class='indexItem indexItem2'><a href='#coll_save'>coll_save</a>
+    <li class='indexItem indexItem2'><a href='#coll_remove'>coll_remove</a>
+    <li class='indexItem indexItem2'><a href='#coll_find'>coll_find</a>
+    <li class='indexItem indexItem2'><a href='#coll_rename'>coll_rename</a>
+    <li class='indexItem indexItem2'><a href='#coll_query_ids'>coll_query_ids</a>
+    <li class='indexItem indexItem2'><a href='#coll_query_infos'>coll_query_infos</a>
+    <li class='indexItem indexItem2'><a href='#coll_query'>coll_query</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_collection_changed'>broadcast_collection_changed</a>
+    <li class='indexItem indexItem2'><a href='#xform_media_browse'>xform_media_browse</a>
+    <li class='indexItem indexItem2'><a href='#xform_media_browse_encoded'>xform_media_browse_encoded</a>
+    <li class='indexItem indexItem2'><a href='#bindata_add'>bindata_add</a>
+    <li class='indexItem indexItem2'><a href='#bindata_retrieve'>bindata_retrieve</a>
+    <li class='indexItem indexItem2'><a href='#bindata_remove'>bindata_remove</a>
+    <li class='indexItem indexItem2'><a href='#bindata_list'>bindata_list</a>
+    <li class='indexItem indexItem2'><a href='#config_register_value'>config_register_value</a>
+    <li class='indexItem indexItem2'><a href='#config_set_value'>config_set_value</a>
+    <li class='indexItem indexItem2'><a href='#config_get_value'>config_get_value</a>
+    <li class='indexItem indexItem2'><a href='#config_list_values'>config_list_values</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_config_value_changed'>broadcast_config_value_changed</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_mediainfo_reader_status'>broadcast_mediainfo_reader_status</a>
+    <li class='indexItem indexItem2'><a href='#signal_mediainfo_reader_unindexed'>signal_mediainfo_reader_unindexed</a>
+    <li class='indexItem indexItem2'><a href='#userconfdir_get'>userconfdir_get</a>
+    <li class='indexItem indexItem2'><a href='#playback_tickle'>playback_tickle</a>
+    <li class='indexItem indexItem2'><a href='#playback_stop'>playback_stop</a>
+    <li class='indexItem indexItem2'><a href='#playback_pause'>playback_pause</a>
+    <li class='indexItem indexItem2'><a href='#playback_start'>playback_start</a>
+    <li class='indexItem indexItem2'><a href='#playback_seek_ms'>playback_seek_ms</a>
+    <li class='indexItem indexItem2'><a href='#playback_seek_samples'>playback_seek_samples</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_playback_status'>broadcast_playback_status</a>
+    <li class='indexItem indexItem2'><a href='#playback_status'>playback_status</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_playback_current_id'>broadcast_playback_current_id</a>
+    <li class='indexItem indexItem2'><a href='#playback_current_id'>playback_current_id</a>
+    <li class='indexItem indexItem2'><a href='#signal_playback_playtime'>signal_playback_playtime</a>
+    <li class='indexItem indexItem2'><a href='#playback_playtime'>playback_playtime</a>
+    <li class='indexItem indexItem2'><a href='#playback_volume_set'>playback_volume_set</a>
+    <li class='indexItem indexItem2'><a href='#playback_volume_get'>playback_volume_get</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_playback_volume_changed'>broadcast_playback_volume_changed</a>
+    <li class='indexItem indexItem2'><a href='#playlist_list'>playlist_list</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_playlist_changed'>broadcast_playlist_changed</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_playlist_current_pos'>broadcast_playlist_current_pos</a>
+    <li class='indexItem indexItem2'><a href='#broadcast_playlist_loaded'>broadcast_playlist_loaded</a>
+    <li class='indexItem indexItem2'><a href='#playlist_current_active'>playlist_current_active</a>
+    <li class='indexItem indexItem2'><a href='#playlist_set_next'>playlist_set_next</a>
+    <li class='indexItem indexItem2'><a href='#playlist_set_next_rel'>playlist_set_next_rel</a>
+    <li class='indexItem indexItem2'><a href='#coll_idlist_from_playlist_file'>coll_idlist_from_playlist_file</a>
+    <li class='indexItem indexItem2'><a href='#io_want_out'>io_want_out</a>
+    <li class='indexItem indexItem2'><a href='#io_out_handle'>io_out_handle</a>
+    <li class='indexItem indexItem2'><a href='#io_in_handle'>io_in_handle</a>
+    <li class='indexItem indexItem2'><a href='#io_fd_get'>io_fd_get</a>
+    <li class='indexItem indexItem2'><a href='#io_need_out_callback_set'>io_need_out_callback_set</a>
+    <li class='indexItem indexItem2'><a href='#loop'>loop</a>
+    <li class='indexItem indexItem2'><a href='#quit_loop'>quit_loop</a>
+  </ul>
+  <li class='indexItem indexItem1'><a href='#AUTHOR'>AUTHOR</a>
+  <li class='indexItem indexItem1'><a href='#SUPPORT'>SUPPORT</a>
+  <li class='indexItem indexItem1'><a href='#SEE_ALSO'>SEE ALSO</a>
+  <li class='indexItem indexItem1'><a href='#COPYRIGHT_AND_LICENSE'>COPYRIGHT AND LICENSE</a>
+</ul>
+</div>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="NAME"
+>NAME</a></h1>
+
+<p>Audio::XMMSClient - Interface to the xmms2 music player</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SYNOPSIS"
+>SYNOPSIS</a></h1>
+
+<pre>  use Audio::XMMSClient;
+
+  my $conn = Audio::XMMSClient-&#62;new($client_name);
+  $conn-&#62;connect or die $c-&#62;get_last_error;
+
+  my $result = $c-&#62;playback_status;
+  $result-&#62;wait;
+  print $result-&#62;value;</pre>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="DESCRIPTION"
+>DESCRIPTION</a></h1>
+
+<p>This module provides a perl interface to the xmms2 client library.</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="METHODS"
+>METHODS</a></h1>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="new"
+>new</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$client_name?"
+>Arguments: $client_name?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$connection"
+>Return Value: $connection</a></dt>
+</dl>
+
+<pre>  my $conn = Audio::XMMSClient-&#62;new(&#39;foo&#39;);</pre>
+
+<p>Creates a new Audio::XMMSClient instance. If <code>$client_name</code> is omitted it will use the name of your application (see <code>$0</code>/<code>$PROGRAM_NAME</code> in <a href="../perlvar.html" class="podlinkpod"
+>perlvar</a>).</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="connect"
+>connect</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$ipcpath?"
+>Arguments: $ipcpath?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $conn-&#62;connect;</pre>
+
+<p>Tries to establish a connection to the xmms2 server. If <code>$ipcpath</code> is omitted it will fall back to <code>$ENV{XMMS_PATH}</code> and, if that&#39;s unset as well, the default ipcpath of libxmmsclient. If an error occurs a false value is returned and a message describing the error can be obtained using <a href="#get_last_error" class="podlinkpod"
+>&#34;get_last_error&#34;</a>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="disconnect_callback_set"
+>disconnect_callback_set</a></h2>
+
+<dl>
+<dt><a name="Arguments:_\&#38;func,_$data?"
+>Arguments: \&#38;func, $data?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $conn-&#62;disconnect_callback_set(sub { die &#39;got disconnected&#39; });</pre>
+
+<p>Registers a function which will be called if the connection to the xmms2 server gets abnormally terminated. <code>\&#38;func</code> will be called with either one or two arguments. The first one will be a reference to the connection. <code>$data</code>, if passed, will be the second argument of the callback.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="io_disconnect"
+>io_disconnect</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $conn-&#62;io_disconnect;</pre>
+
+<p>Flags the connection as disconected. This is to be called when the mainloop signals disconnection of the connection. This is optional, any call to <a href="#io_out_handle" class="podlinkpod"
+>&#34;io_out_handle&#34;</a> or <a href="#io_in_handle" class="podlinkpod"
+>&#34;io_in_handle&#34;</a> will notice the disconnection and handle it accordingly.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="get_last_error"
+>get_last_error</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$error_message"
+>Return Value: $error_message</a></dt>
+</dl>
+
+<pre>  my $message = $conn-&#62;get_last_error;</pre>
+
+<p>Returns a string that descibes the last error (if any).</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="main_list_plugins"
+>main_list_plugins</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$type?"
+>Arguments: $type?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;main_list_plugins;</pre>
+
+<p>Get a list of loaded plugins from the server. <code>$type</code>, which may be used to only get a list of plugins of a specific type, can be any of the following strings:</p>
+
+<ul>
+<li>output</li>
+
+<li>playlist</li>
+
+<li>effect</li>
+
+<li>xform</li>
+
+<li>all</li>
+</ul>
+
+<p>If <code>$type</code> is omitted &#34;all&#34; is assumed.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="main_stats"
+>main_stats</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;main_stats;</pre>
+
+<p>Get a list of statistics from the server.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="quit"
+>quit</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;quit;</pre>
+
+<p>Tell the server to quit. This will terminate the server. If you only want to disconnect just destroy all references to the connection instance.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_quit"
+>broadcast_quit</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_quit;</pre>
+
+<p>Request the quit broadcast. Will be called when the server is terminating.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_get_id"
+>medialib_get_id</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_get_id(&#39;file:///home/user/music/artist/album/track.flac&#39;);</pre>
+
+<p>Search for a entry (URL) in the medialib db and return its ID number.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_move_entry"
+>medialib_move_entry</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id,_$url"
+>Arguments: $id, $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+
+<dd>
+<pre>  my $result = $conn-&#62;medialib_move_entry(42, &#39;file:///new/path/to/file.flac&#39;);</pre>
+
+<p>Change the url property of an entry in the media library. Note that you need to handle the actual file move yourself.</p>
+</dd>
+</dl>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_remove_entry"
+>medialib_remove_entry</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$entry"
+>Arguments: $entry</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_remove_entry(1337);</pre>
+
+<p>Remove a entry with a given ID from the medialib.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_add_entry"
+>medialib_add_entry</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_add_entry;</pre>
+
+<p>Add a <code>$url</code> to the medialib. If you want to add mutiple files you should call <a href="#medialib_path_import" class="podlinkpod"
+>&#34;medialib_path_import&#34;</a>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_add_entry_args"
+>medialib_add_entry_args</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url,_@args?"
+>Arguments: $url, @args?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_add_entry_args(
+          &#34;file:///data/HVSC/C64Music/Hubbard_Rob/Commando.sid&#34;,
+          &#34;subtune=2&#34;,
+  );</pre>
+
+<p>Add a <code>$url</code> with arguments to the medialib.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_add_entry_encoded"
+>medialib_add_entry_encoded</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_add_entry_encoded($url);</pre>
+
+<p>Same as <a href="#medialib_add_entry" class="podlinkpod"
+>&#34;medialib_add_entry&#34;</a>, except it expects an encoded <code>$url</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playlist"
+>playlist</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$playlist_name?"
+>Arguments: $playlist_name?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$playlist"
+>Return Value: $playlist</a></dt>
+</dl>
+
+<pre>  my $playlist = $conn-&#62;playlist(&#39;jrock&#39;);</pre>
+
+<p>Returns an <a href="../Audio/XMMSClient/Playlist.html" class="podlinkpod"
+>Audio::XMMSClient::Playlist</a> instance representing a playlist specified by <code>$playlist_name</code>. If no <code>$playlist_name</code> is given &#34;_active&#34; will be used.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_import_path"
+>medialib_import_path</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$path"
+>Arguments: $path</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_import_path(&#39;file:///media/music/&#39;);</pre>
+
+<p>Import a all files recursivly from <code>$path</code>. <code>$path</code> must include the protocol, i.e. file://.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_import_path_encoded"
+>medialib_import_path_encoded</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$path"
+>Arguments: $path</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_import_path_encoded($path);</pre>
+
+<p>Same as <a href="#medialib_import_path" class="podlinkpod"
+>&#34;medialib_import_path&#34;</a> except it expects <code>$path</code> to be url encoded. You probably want to use <a href="#medialib_import_path" class="podlinkpod"
+>&#34;medialib_import_path&#34;</a> unless you want to add a path that comes as a result from the daemon, such as from <code>/xform_media_browse</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_rehash"
+>medialib_rehash</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id?"
+>Arguments: $id?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_rehash;</pre>
+
+<p>Rehash the medialib. This will check that data for entry <code>$id</code> in the medialib still is the same as in its data in files. If <code>$id</code> is omitted or set to 0 the full medialib will be rehashed.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_get_info"
+>medialib_get_info</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id"
+>Arguments: $id</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_get_info(9667);</pre>
+
+<p>Retrieve information about entry <code>$id</code> from the medialib.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_medialib_entry_added"
+>broadcast_medialib_entry_added</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_medialib_entry_added;</pre>
+
+<p>Request the medialib_entry_added broadcast. This will be called if a new entry is added to the medialib serverside.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_medialib_entry_updated"
+>broadcast_medialib_entry_updated</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_medialib_entry_changed;</pre>
+
+<p>Request the medialib_entry_changed broadcast. This will be called if a entry changes on the serverside.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_entry_property_set_int"
+>medialib_entry_property_set_int</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id,_$key,_$value"
+>Arguments: $id, $key, $value</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_entry_property_set_int(1337, &#39;leet_level&#39;, 42);</pre>
+
+<p>Associate an integer <code>$value</code> with a property <code>$key</code> for medialib entry <code>$id</code>. Uses default source which is <code>client/&#60;clientname&#62;</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_entry_property_set_int_with_source"
+>medialib_entry_property_set_int_with_source</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$source,_$id,_$key,_$valu"
+>Arguments: $source, $id, $key, $valu</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_entry_property_set_int_with_source(9667, &#39;client/generic&#39;, &#39;rating&#39;, 3);</pre>
+
+<p>Same as <a href="#medialib_entry_property_set_int" class="podlinkpod"
+>&#34;medialib_entry_property_set_int&#34;</a>, except it also allows to set the <code>$source</code> for the given property.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_entry_property_set_str"
+>medialib_entry_property_set_str</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id,_$key,_$value"
+>Arguments: $id, $key, $value</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_entry_property_set_str(431, &#39;fingerprint&#39;, &#39;13f3ad&#39;);</pre>
+
+<p>Same as <a href="#medialib_entry_property_set_int" class="podlinkpod"
+>&#34;medialib_entry_property_set_int&#34;</a>, except it sets a string <code>$value</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_entry_property_set_str_with_source"
+>medialib_entry_property_set_str_with_source</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id,_$source,_$key,_$value"
+>Arguments: $id, $source, $key, $value</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_entry_property_set_str_with_source(542, &#39;client/generic&#39;, &#39;lyrics&#39;, &#60;&#60;&#39;EOL&#39;);
+  Hey, Ho, Supergaul..
+  ...
+  EOL</pre>
+
+<p>Same as <a href="#medialib_entry_property_set_str" class="podlinkpod"
+>&#34;medialib_entry_property_set_str&#34;</a>, except it also allows to set the <code>$source</code> for the given property.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_entry_property_remove"
+>medialib_entry_property_remove</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id,_$key"
+>Arguments: $id, $key</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_entry_property_remove(431, &#39;fingerprint&#39;);</pre>
+
+<p>Remove a custom field specified by <code>$key</code> in the medialib associated with the entry <code>$id</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="medialib_entry_property_remove_with_source"
+>medialib_entry_property_remove_with_source</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id,_$source,_$key"
+>Arguments: $id, $source, $key</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;medialib_entry_property_remove_with_source(542, &#39;client/generic&#39;, &#39;lyrics&#39;);</pre>
+
+<p>Like <a href="#medialib_entry_property_remove" class="podlinkpod"
+>&#34;medialib_entry_property_remove&#34;</a>, but also allows to specify the <code>$source</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_get"
+>coll_get</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$name,_$namespace"
+>Arguments: $name, $namespace</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$collection"
+>Return Value: $collection</a></dt>
+</dl>
+
+<pre>  my $coll = $conn-&#62;coll_get(&#39;Funk&#39;, &#39;Collections&#39;);</pre>
+
+<p>Get the collection structure of the collection <code>$name</code> saved on the server in a given <code>$namespace</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_sync"
+>coll_sync</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_sync;</pre>
+
+<p>Synchronize collection data to the database.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_list"
+>coll_list</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$namespace"
+>Arguments: $namespace</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_list(&#39;Collections&#39;);</pre>
+
+<p>List all collections saved on the server in a given <code>$namespace</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_save"
+>coll_save</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$coll,_$name,_$namespace"
+>Arguments: $coll, $name, $namespace</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_save(&#39;Funk&#39;, $collection, &#39;Collections&#39;);</pre>
+
+<p>Saves a <code>$collection</code> on the server under a given <code>$name</code>, in a given <code>$namespace</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_remove"
+>coll_remove</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$name,_$namespace"
+>Arguments: $name, $namespace</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_remove(&#39;Funk&#39;, &#39;Collections&#39;);</pre>
+
+<p>Remove a collection from the server.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_find"
+>coll_find</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$mediaid,_$namespace"
+>Arguments: $mediaid, $namespace</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_find(542, &#39;Collections&#39;);</pre>
+
+<p>Find all collections in a given <code>$namespace</code> which contain the medialib entry with the given <code>$mediaid</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_rename"
+>coll_rename</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$from,_$to,_$namespace"
+>Arguments: $from, $to, $namespace</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_rename(&#39;Funk&#39;, &#39;Funky Music&#39;, &#39;Collections&#39;);</pre>
+
+<p>Rename a collection within a <code>$namespace</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_query_ids"
+>coll_query_ids</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$collection,_\%args"
+>Arguments: $collection, \%args</a></dt>
+
+<dd>
+<dt><a name="Arguments:_$collection,_\@order?,_$limit_start?,_$limit_len?"
+>Arguments: $collection, \@order?, $limit_start?, $limit_len?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_query_ids($collection, {
+          order       =&#62; [qw/artist album/],
+          limit_start =&#62; 0,
+          limit_len   =&#62; 10,
+  });</pre>
+
+<p>List the ids of all media matched by a given <code>$collection</code>. The returned list might be refined using the following parameters:</p>
+
+<ul>
+<li>order
+<p>The list of properties to order by. <code>undef</code> or an empty array reference to disable.</p>
+</li>
+
+<li>limit_start
+<p>The offset at which to start retrieving results. <code>0</code> to disable.</p>
+</li>
+
+<li>limit_len
+<p>The maximum number of entries to retrieve. <code>0</code> to disable.</p>
+</li>
+</ul>
+
+<p>The above parameters might be passed either positional or within a hash reference.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_query_infos"
+>coll_query_infos</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$collection,_\%args"
+>Arguments: $collection, \%args</a></dt>
+
+<dd>
+<dt><a name="Arguments:_$collection,_\@order?,_$limit_start?,_$limit_len?,_\@fetch?,_\@group?"
+>Arguments: $collection, \@order?, $limit_start?, $limit_len?, \@fetch?, \@group?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_query_infos($collection, {
+          order       =&#62; [qw/artist/],
+          limit_start =&#62; 0,
+          limit_len   =&#62; 10,
+          fetch       =&#62; [qw/artist/],
+          group       =&#62; [qw/artist/],
+  });</pre>
+
+<p>List the properties of all media matched by the given collection. The returned list might be refined using the following parameters:</p>
+
+<ul>
+<li>order
+<p>The list of properties to order by. <code>undef</code> or an empty array reference to disable.</p>
+</li>
+
+<li>limit_start
+<p>The offset at which to start retrieving results. <code>0</code> to disable.</p>
+</li>
+
+<li>limit_len
+<p>The maximum number of entries to retrieve. <code>0</code> to disable.</p>
+</li>
+
+<li>fetch
+<p>The list of properties to retrieve (at least one property required).</p>
+</li>
+
+<li>group
+<p>The list of properties to group by. <code>undef</code> or an empty array reference to disable.</p>
+</li>
+</ul>
+
+<p>The above parameters might be passed either positional or within a hash reference.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_query"
+>coll_query</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$collection,_\@spec"
+>Arguments: $collection, \@spec</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<p>my $result = $conn-&#62;coll_query($collection, \@spec);</p>
+
+<p>List the properties of all media matched by the given collection. The structure of the return value is determined by the fetch specification.</p>
+
+<ul>
+<li>spec
+<p>A collections fetch specification.</p>
+</li>
+</ul>
+
+<p>The above parameters might be passed either positional or within a hash reference.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_collection_changed"
+>broadcast_collection_changed</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_collection_changed;</pre>
+
+<p>Request the collection changed broadcast from the server. Everytime someone manipulates a collection this will be emitted.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="xform_media_browse"
+>xform_media_browse</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;xform_media_browse(&#39;file:///media/music/&#39;);</pre>
+
+<p>Browse available media in a <code>$url</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="xform_media_browse_encoded"
+>xform_media_browse_encoded</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;xform_media_browse_encoded($url);</pre>
+
+<p>Same as <a href="#xform_media_browse" class="podlinkpod"
+>&#34;xform_media_browse&#34;</a>, except it expects <code>url</code> to be url encoded already.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="bindata_add"
+>bindata_add</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$data"
+>Arguments: $data</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;bindata_add($data);</pre>
+
+<p>Add binary data to the servers bindata directory.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="bindata_retrieve"
+>bindata_retrieve</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$hash"
+>Arguments: $hash</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;bindata_retrieve($hash);</pre>
+
+<p>Retrieve a file from the servers bindata directory, based on the <code>$hash</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="bindata_remove"
+>bindata_remove</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$hash"
+>Arguments: $hash</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;bindata_remove($hash);</pre>
+
+<p>Remove a file from the servers bindata directory, based on the <code>$hash</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="bindata_list"
+>bindata_list</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;bindata_list;</pre>
+
+<p>List all bindata hashes stored on the server.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="config_register_value"
+>config_register_value</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$key,_$default_value"
+>Arguments: $key, $default_value</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;config_register_value(&#39;myclient.stop_playback_on_quit&#39;, 0);</pre>
+
+<p>Registers a configvalue called <code>$key</code> with a <code>$default_value</code> in the server.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="config_set_value"
+>config_set_value</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$key,_$value"
+>Arguments: $key, $value</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;config_set_value(&#39;myclient.stop_playback_on_quit&#39;, 1);</pre>
+
+<p>Sets a configvalue called <code>$key</code> to <code>$value</code> in the server.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="config_get_value"
+>config_get_value</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$key"
+>Arguments: $key</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;config_get_value(&#39;myclient.stop_playback_on_quit&#39;);</pre>
+
+<p>Retrieves the value of a configvalue called <code>$key</code> from the server.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="config_list_values"
+>config_list_values</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;config_list_values;</pre>
+
+<p>Lists all configuration values.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_config_value_changed"
+>broadcast_config_value_changed</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_config_value_changed;</pre>
+
+<p>Requests the config_value_changed broadcast. This will be called when a configvalue has been updated.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_mediainfo_reader_status"
+>broadcast_mediainfo_reader_status</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_mediainfo_reader_status;</pre>
+
+<p>Request status for the mediainfo reader. It can be idle or working.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="signal_mediainfo_reader_unindexed"
+>signal_mediainfo_reader_unindexed</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;signal_mediainfo_reader_unindexed;</pre>
+
+<p>Request number of unindexed entries in medialib.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="userconfdir_get"
+>userconfdir_get</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$path"
+>Return Value: $path</a></dt>
+</dl>
+
+<p>Get the absolute path to the user config dir.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_tickle"
+>playback_tickle</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_tickle;</pre>
+
+<p>Stop decoding of current song. This will start decoding of the song set with xmmsc_playlist_set_next, or the current song again if no xmmsc_playlist_set_next was executed.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_stop"
+>playback_stop</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_stop;</pre>
+
+<p>Stops the current playback. This will make the server idle.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_pause"
+>playback_pause</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_pause;</pre>
+
+<p>Pause the current playback, will tell the output to not read nor write.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_start"
+>playback_start</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_start;</pre>
+
+<p>Starts playback if server is idle.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_seek_ms"
+>playback_seek_ms</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$milliseconds"
+>Arguments: $milliseconds</a></dt>
+
+<dd>
+<dt><a name="Arguments:_$whence?"
+>Arguments: $whence?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_seek_ms(1000);</pre>
+
+<p>Seek in the current playback. The time is specified in <code>$milliseconds</code>. The whence parameter specifies whether the time is absolute (seek mode &#39;set&#39;) or relative to the current point in the song (seek mode &#39;cur&#39;). The default is to seek using an absolute time.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_seek_samples"
+>playback_seek_samples</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$samples"
+>Arguments: $samples</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_seek_samples(5000);</pre>
+
+<p>Seek in the current playback. The time is specified in <code>$samples</code>. The whence parameter specifies whether the time is absolute (seek mode &#39;set&#39;) or relative to the current point in the song (seek mode &#39;cur&#39;). The default is to seek using an absolute time.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_playback_status"
+>broadcast_playback_status</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_playback_status;</pre>
+
+<p>Requests the playback status broadcast. This will be called when events like play, stop and pause is triggered.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_status"
+>playback_status</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_status;</pre>
+
+<p>Request the playback status.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_playback_current_id"
+>broadcast_playback_current_id</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_playback_current_id;</pre>
+
+<p>Request the current id signal. This will be called then the current playing id is changed. New song for example.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_current_id"
+>playback_current_id</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_current_id;</pre>
+
+<p>Request the current playback id.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="signal_playback_playtime"
+>signal_playback_playtime</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;signal_playback_playtime;</pre>
+
+<p>Request the playback_playtime signal. Will update the time we have played the current entry.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_playtime"
+>playback_playtime</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_playtime;</pre>
+
+<p>Request the current playtime.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_volume_set"
+>playback_volume_set</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$channel,_$volume"
+>Arguments: $channel, $volume</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_volume_set(&#39;left&#39;, 75);</pre>
+
+<p>Set the <code>$volume</code> for a given <code>$channel</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playback_volume_get"
+>playback_volume_get</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playback_volume_get;</pre>
+
+<p>Get the current playback volume.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_playback_volume_changed"
+>broadcast_playback_volume_changed</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_playback_volume_changed;</pre>
+
+<p>Request the playback_volume_changed broadcast. This will be called when the playback volume changed.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playlist_list"
+>playlist_list</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playlist_list;</pre>
+
+<p>List the existing playlists.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_playlist_changed"
+>broadcast_playlist_changed</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_playlist_changed;</pre>
+
+<p>Request the playlist changed broadcast from the server. Everytime someone manipulate the playlist this will be emitted.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_playlist_current_pos"
+>broadcast_playlist_current_pos</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_playlist_current_pos;</pre>
+
+<p>Request the playlist current pos broadcast. When the position in the playlist is changed this will be called.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="broadcast_playlist_loaded"
+>broadcast_playlist_loaded</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;broadcast_playlist_loaded;</pre>
+
+<p>Request the playlist_loaded broadcast. This will be called if a playlist is loaded server-side.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playlist_current_active"
+>playlist_current_active</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playlist_current_active;</pre>
+
+<p>Retrive the name of the active playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playlist_set_next"
+>playlist_set_next</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$pos"
+>Arguments: $pos</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playlist_set_next(7);</pre>
+
+<p>Set next entry in the playlist to the absolute position <code>$pos</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="playlist_set_next_rel"
+>playlist_set_next_rel</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$pos"
+>Arguments: $pos</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;playlist_set_next_rel(-1);</pre>
+
+<p>Same as <a href="#playlist_set_next" class="podlinkpod"
+>&#34;playlist_set_next&#34;</a> but relative to the current position.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="coll_idlist_from_playlist_file"
+>coll_idlist_from_playlist_file</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$path"
+>Arguments: $path</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $conn-&#62;coll_idlist_from_playlist_file(&#39;file:///path/to/some/playlist.m3u&#39;);</pre>
+
+<p>Create a new collections structure with type idlist from a playlist file at <code>$path</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="io_want_out"
+>io_want_out</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_1_|_0"
+>Return Value: 1 | 0</a></dt>
+</dl>
+
+<pre>  my $has_pending_output = $conn-&#62;io_want_out;</pre>
+
+<p>Check for pending output.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="io_out_handle"
+>io_out_handle</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $conn-&#62;io_out_handle;</pre>
+
+<p>Write pending data. Should be called when the mainloop flags that writing is available on the socket.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="io_in_handle"
+>io_in_handle</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $conn-&#62;io_in_handle;</pre>
+
+<p>Read available data. Should be called when the mainloop flags that reading is available on the socket.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="io_fd_get"
+>io_fd_get</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$fd_|_-1"
+>Return Value: $fd | -1</a></dt>
+</dl>
+
+<pre>  my $fd = $conn-&#62;io_fd_get;</pre>
+
+<p>Retrieve filedescriptor for the connection. Returns -1 on error. This is to be used in a mainloop to do poll/select on. Reading and writing should <b>NOT</b> be done on this fd. <a href="#io_in_handle" class="podlinkpod"
+>&#34;io_in_handle&#34;</a> and <a href="#io_out_handle" class="podlinkpod"
+>&#34;io_out_handle&#34;</a> <b>MUST</b> be used to handle reading and writing.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="io_need_out_callback_set"
+>io_need_out_callback_set</a></h2>
+
+<dl>
+<dt><a name="Arguments:_\&#38;func,_$data?"
+>Arguments: \&#38;func, $data?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $conn-&#62;io_need_out_callback_set(sub { ... });</pre>
+
+<p>Set callback for enabling/disabling writing.</p>
+
+<p>If the mainloop doesn&#39;t provide a mechanism to run code before each iteration this function allows registration of a callback to be called when output is needed or not needed any more. The arguments to the callback are the connection, flags and <code>$data</code>, if specified; flag is true if output is wanted, false if not.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="loop"
+>loop</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $conn-&#62;loop;</pre>
+
+<p>Starts a select-based mainloop which may be terminated by calling <code>/quit_loop</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="quit_loop"
+>quit_loop</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $conn-&#62;quit_loop;</pre>
+
+<p>Terminates the mainloop started with <code>/loop</code>.</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="AUTHOR"
+>AUTHOR</a></h1>
+
+<p>Florian Ragwitz &#60;rafl@debian.org&#62;</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SUPPORT"
+>SUPPORT</a></h1>
+
+<p>You can find documentation for this module with the perldoc command.</p>
+
+<pre>  perldoc Audio::XMMSClient</pre>
+
+<p>You can also look for information at:</p>
+
+<ul>
+<li>AnnoCPAN: Annotated CPAN documentation
+<p><a href="http://annocpan.org/dist/Audio-XMMSClient" class="podlinkurl"
+>http://annocpan.org/dist/Audio-XMMSClient</a></p>
+</li>
+
+<li>CPAN Ratings
+<p><a href="http://cpanratings.perl.org/d/Audio-XMMSClient" class="podlinkurl"
+>http://cpanratings.perl.org/d/Audio-XMMSClient</a></p>
+</li>
+
+<li>RT: CPAN&#39;s request tracker
+<p><a href="http://rt.cpan.org/NoAuth/Bugs.html?Dist=Audio-XMMSClient" class="podlinkurl"
+>http://rt.cpan.org/NoAuth/Bugs.html?Dist=Audio-XMMSClient</a></p>
+</li>
+
+<li>Search CPAN
+<p><a href="http://search.cpan.org/dist/Audio-XMMSClient" class="podlinkurl"
+>http://search.cpan.org/dist/Audio-XMMSClient</a></p>
+</li>
+</ul>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SEE_ALSO"
+>SEE ALSO</a></h1>
+
+<p><a href="../Audio/XMMSClient/Result.html" class="podlinkpod"
+>Audio::XMMSClient::Result</a>, <a href="../Audio/XMMSClient/Playlist.html" class="podlinkpod"
+>Audio::XMMSClient::Playlist</a>, <a href="../Audio/XMMSClient/Collection.html" class="podlinkpod"
+>Audio::XMMSClient::Collection</a></p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="COPYRIGHT_AND_LICENSE"
+>COPYRIGHT AND LICENSE</a></h1>
+
+<p>Copyright (C) 2006-2008, Florian Ragwitz</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself, either Perl version 5.8.8 or, at your option, any later version of Perl 5 you may have available.</p>
+<p class="backlinkbottom"><b><a name="___bottom" href="../index.html" title="All Documents">&lt;&lt;</a></b></p>
+
+
+
+</body></html>

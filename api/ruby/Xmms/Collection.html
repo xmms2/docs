@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Xmms::Collection - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Object
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-c-parse">::parse</a>
+    
+    <li ><a href="#method-c-universe">::universe</a>
+    
+    <li ><a href="#method-i-26">#&amp;</a>
+    
+    <li ><a href="#method-i-and">#and</a>
+    
+    <li ><a href="#method-i-attributes">#attributes</a>
+    
+    <li ><a href="#method-i-complement">#complement</a>
+    
+    <li ><a href="#method-i-idlist">#idlist</a>
+    
+    <li ><a href="#method-i-idlist-3D">#idlist=</a>
+    
+    <li ><a href="#method-i-intersect">#intersect</a>
+    
+    <li ><a href="#method-i-not">#not</a>
+    
+    <li ><a href="#method-i-operands">#operands</a>
+    
+    <li ><a href="#method-i-or">#or</a>
+    
+    <li ><a href="#method-i-type">#type</a>
+    
+    <li ><a href="#method-i-union">#union</a>
+    
+    <li ><a href="#method-i-7C">#|</a>
+    
+    <li ><a href="#method-i-7E">#~</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Xmms::Collection">
+  <h1 id="class-Xmms::Collection" class="class">
+    class Xmms::Collection
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="ADD">ADD
+        
+        <dd>
+        
+      
+        <dt id="NS_ALL">NS_ALL
+        
+        <dd>
+        
+      
+        <dt id="NS_COLLECTIONS">NS_COLLECTIONS
+        
+        <dd>
+        
+      
+        <dt id="NS_PLAYLISTS">NS_PLAYLISTS
+        
+        <dd>
+        
+      
+        <dt id="REMOVE">REMOVE
+        
+        <dd>
+        
+      
+        <dt id="RENAME">RENAME
+        
+        <dd>
+        
+      
+        <dt id="TYPE_COMPLEMENT">TYPE_COMPLEMENT
+        
+        <dd>
+        
+      
+        <dt id="TYPE_EQUALS">TYPE_EQUALS
+        
+        <dd>
+        
+      
+        <dt id="TYPE_GREATER">TYPE_GREATER
+        
+        <dd>
+        
+      
+        <dt id="TYPE_GREATEREQ">TYPE_GREATEREQ
+        
+        <dd>
+        
+      
+        <dt id="TYPE_HAS">TYPE_HAS
+        
+        <dd>
+        
+      
+        <dt id="TYPE_IDLIST">TYPE_IDLIST
+        
+        <dd>
+        
+      
+        <dt id="TYPE_INTERSECTION">TYPE_INTERSECTION
+        
+        <dd>
+        
+      
+        <dt id="TYPE_LIMIT">TYPE_LIMIT
+        
+        <dd>
+        
+      
+        <dt id="TYPE_MATCH">TYPE_MATCH
+        
+        <dd>
+        
+      
+        <dt id="TYPE_MEDIASET">TYPE_MEDIASET
+        
+        <dd>
+        
+      
+        <dt id="TYPE_NOTEQUAL">TYPE_NOTEQUAL
+        
+        <dd>
+        
+      
+        <dt id="TYPE_ORDER">TYPE_ORDER
+        
+        <dd>
+        
+      
+        <dt id="TYPE_REFERENCE">TYPE_REFERENCE
+        
+        <dd>
+        
+      
+        <dt id="TYPE_SMALLER">TYPE_SMALLER
+        
+        <dd>
+        
+      
+        <dt id="TYPE_SMALLEREQ">TYPE_SMALLEREQ
+        
+        <dd>
+        
+      
+        <dt id="TYPE_TOKEN">TYPE_TOKEN
+        
+        <dd>
+        
+      
+        <dt id="TYPE_UNION">TYPE_UNION
+        
+        <dd>
+        
+      
+        <dt id="TYPE_UNIVERSE">TYPE_UNIVERSE
+        
+        <dd>
+        
+      
+        <dt id="UPDATE">UPDATE
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            c = Xmms::Collection.new(type)
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a new <a href="Collection.html">Xmms::Collection</a> object of type
+<em>type</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre>static VALUE
+c_coll_init (VALUE self, VALUE type)
+{
+        COLL_METHOD_HANDLER_HEADER
+
+        coll-&gt;real = xmmsv_new_coll (check_int32 (type));
+
+        return self;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-parse" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            c = Xmms::Collection.parse(pattern)
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a collection matching a String <em>pattern</em>. See the wiki for
+details on how to construct a pattern string.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre>static VALUE
+c_coll_parse (VALUE klass, VALUE pattern)
+{
+        VALUE obj = rb_obj_alloc (klass);
+        RbCollection *coll = NULL;
+
+        Data_Get_Struct (obj, RbCollection, coll);
+
+        if (!xmmsv_coll_parse (StringValuePtr (pattern), &amp;coll-&gt;real)) {
+                rb_raise (ePatternError, &quot;invalid pattern&quot;);
+        }
+
+        return obj;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-universe" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            c = Xmms::Collection.universe
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a collection referencing the “All Media” set.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="universe-source">
+            <pre>static VALUE
+c_coll_universe (VALUE klass)
+{
+        VALUE obj = rb_obj_alloc (klass);
+        RbCollection *coll = NULL;
+
+        Data_Get_Struct (obj, RbCollection, coll);
+
+        coll-&gt;real = xmmsv_new_coll (XMMS_COLLECTION_TYPE_UNIVERSE);
+
+        return obj;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-26" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">&amp;</span><span
+            class="method-args">(other)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Collection.html#method-i-intersect">intersect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-and" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">and</span><span
+            class="method-args">(other)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Collection.html#method-i-intersect">intersect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-attributes" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            attributes
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns the attributes of the collection.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="attributes-source">
+            <pre>static VALUE
+c_coll_attributes (VALUE self)
+{
+        RbCollection *coll = NULL;
+
+        Data_Get_Struct (self, RbCollection, coll);
+
+        if (NIL_P (coll-&gt;attributes))
+                coll-&gt;attributes = rb_class_new_instance (1, &amp;self, cAttributes);
+
+        return coll-&gt;attributes;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-complement" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            complement &rarr; collection
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a new collection that is the logical complement of <em>c</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="complement-source">
+            <pre><span class="ruby-comment"># File src/clients/lib/ruby/xmmsclient.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">complement</span>
+        <span class="ruby-identifier">c</span> = <span class="ruby-constant">Xmms</span><span class="ruby-operator">::</span><span class="ruby-constant">Collection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Xmms</span><span class="ruby-operator">::</span><span class="ruby-constant">Collection</span><span class="ruby-operator">::</span><span class="ruby-constant">TYPE_COMPLEMENT</span>)
+        <span class="ruby-identifier">c</span>.<span class="ruby-identifier">operands</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>
+        <span class="ruby-identifier">c</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Collection.html#method-i-not">not</a>, <a href="Collection.html#method-i-7E">~</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-idlist" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            idlist
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Gets the list of media ids that make up the collection.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="idlist-source">
+            <pre>static VALUE
+c_coll_idlist_get (VALUE self)
+{
+        VALUE ary = rb_ary_new ();
+        xmmsv_t *ret = NULL;
+        xmmsv_list_iter_t *it = NULL;
+        int32_t entry;
+
+        COLL_METHOD_ADD_HANDLER_RET (idlist_get)
+
+        xmmsv_get_list_iter (ret, &amp;it);
+        for (xmmsv_list_iter_first (it);
+             xmmsv_list_iter_valid (it);
+             xmmsv_list_iter_next (it)) {
+
+                xmmsv_list_iter_entry_int (it, &amp;entry);
+                rb_ary_push (ary, INT2NUM (entry));
+        }
+        xmmsv_list_iter_explicit_destroy (it);
+
+        return ary;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-idlist-3D" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            idlist=(_idlist_)
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Sets the list of media ids that make up the collection.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="idlist-3D-source">
+            <pre>static VALUE
+c_coll_idlist_set (VALUE self, VALUE ids)
+{
+        int i;
+        int *ary = NULL;
+        VALUE *rb_ary;
+        int rb_ary_len;
+
+        Check_Type (ids, T_ARRAY);
+        COLL_METHOD_HANDLER_HEADER
+
+        rb_ary = RARRAY_PTR (ids);
+        rb_ary_len = RARRAY_LEN (ids);
+
+        ary = malloc (sizeof (int) * (rb_ary_len + 1));
+
+        for (i = 0; i &lt; rb_ary_len; i++)
+                ary[i] = NUM2INT (rb_ary[i]);
+
+        ary[i] = 0;
+
+        xmmsv_coll_set_idlist (coll-&gt;real, ary);
+
+        return self;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-intersect" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            intersect(other) &rarr; collection
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a new collection that is the logical AND of <em>c</em> and
+<em>other</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="intersect-source">
+            <pre><span class="ruby-comment"># File src/clients/lib/ruby/xmmsclient.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">other</span>)
+        <span class="ruby-identifier">c</span> = <span class="ruby-constant">Xmms</span><span class="ruby-operator">::</span><span class="ruby-constant">Collection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Xmms</span><span class="ruby-operator">::</span><span class="ruby-constant">Collection</span><span class="ruby-operator">::</span><span class="ruby-constant">TYPE_INTERSECTION</span>)
+        <span class="ruby-identifier">c</span>.<span class="ruby-identifier">operands</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>
+        <span class="ruby-identifier">c</span>.<span class="ruby-identifier">operands</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">other</span>
+        <span class="ruby-identifier">c</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Collection.html#method-i-and">and</a>, <a href="Collection.html#method-i-26">&amp;</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-not" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">not</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Collection.html#method-i-complement">complement</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-operands" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            operands
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Gets a list of the operands that make up the collection.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="operands-source">
+            <pre>static VALUE
+c_coll_operands (VALUE self)
+{
+        RbCollection *coll = NULL;
+
+        Data_Get_Struct (self, RbCollection, coll);
+
+        if (NIL_P (coll-&gt;operands))
+                coll-&gt;operands = rb_class_new_instance (1, &amp;self, cOperands);
+
+        return coll-&gt;operands;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-or" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">or</span><span
+            class="method-args">(other)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Collection.html#method-i-union">union</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-type" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            type
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns the type of the collection as an Integer.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="type-source">
+            <pre>static VALUE
+c_coll_type_get (VALUE self)
+{
+        xmmsc_coll_type_t ret;
+
+        COLL_METHOD_ADD_HANDLER_RET (get_type)
+
+        return INT2NUM (ret);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-union" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            union(other) &rarr; collection
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a new collection that is the logical OR of <em>c</em> and
+<em>other</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="union-source">
+            <pre><span class="ruby-comment"># File src/clients/lib/ruby/xmmsclient.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">union</span>(<span class="ruby-identifier">other</span>)
+        <span class="ruby-identifier">c</span> = <span class="ruby-constant">Xmms</span><span class="ruby-operator">::</span><span class="ruby-constant">Collection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Xmms</span><span class="ruby-operator">::</span><span class="ruby-constant">Collection</span><span class="ruby-operator">::</span><span class="ruby-constant">TYPE_UNION</span>)
+        <span class="ruby-identifier">c</span>.<span class="ruby-identifier">operands</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>
+        <span class="ruby-identifier">c</span>.<span class="ruby-identifier">operands</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">other</span>
+        <span class="ruby-identifier">c</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Collection.html#method-i-or">or</a>, <a href="Collection.html#method-i-7C">|</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-7C" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">|</span><span
+            class="method-args">(other)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Collection.html#method-i-union">union</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-7E" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">~</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Collection.html#method-i-complement">complement</a>
+        </div>
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.3.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,450 @@
+<html><head><title>Audio::XMMSClient::Collection</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<link rel="stylesheet" title="blkbluw" type="text/css" href="../../_blkbluw.css" media="all" >
+<link rel="alternate stylesheet" title="blkmagw" type="text/css" href="../../_blkmagw.css" media="all" >
+<link rel="alternate stylesheet" title="blkcynw" type="text/css" href="../../_blkcynw.css" media="all" >
+<link rel="alternate stylesheet" title="whtprpk" type="text/css" href="../../_whtprpk.css" media="all" >
+<link rel="alternate stylesheet" title="whtnavk" type="text/css" href="../../_whtnavk.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnk" type="text/css" href="../../_grygrnk.css" media="all" >
+<link rel="alternate stylesheet" title="whtgrng" type="text/css" href="../../_whtgrng.css" media="all" >
+<link rel="alternate stylesheet" title="blkgrng" type="text/css" href="../../_blkgrng.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnw" type="text/css" href="../../_grygrnw.css" media="all" >
+<link rel="alternate stylesheet" title="blkbluw" type="text/css" href="../../_blkbluw.css" media="all" >
+<link rel="alternate stylesheet" title="whtpurk" type="text/css" href="../../_whtpurk.css" media="all" >
+<link rel="alternate stylesheet" title="whtgrng" type="text/css" href="../../_whtgrng.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnw" type="text/css" href="../../_grygrnw.css" media="all" >
+
+<script type="text/javascript" src="../../_podly.js"></script>
+
+</head>
+<body class='pod'>
+
+
+
+<p class="backlinktop"><b><a name="___top" href="../../index.html" accesskey="1" title="All Documents">&lt;&lt;</a></b></p>
+
+<div class='indexgroup'>
+<ul   class='indexList indexList1'>
+  <li class='indexItem indexItem1'><a href='#NAME'>NAME</a>
+  <li class='indexItem indexItem1'><a href='#SYNOPSIS'>SYNOPSIS</a>
+  <li class='indexItem indexItem1'><a href='#METHODS'>METHODS</a>
+  <ul   class='indexList indexList2'>
+    <li class='indexItem indexItem2'><a href='#new'>new</a>
+    <li class='indexItem indexItem2'><a href='#parse'>parse</a>
+    <li class='indexItem indexItem2'><a href='#set_idlist'>set_idlist</a>
+    <li class='indexItem indexItem2'><a href='#add_operand'>add_operand</a>
+    <li class='indexItem indexItem2'><a href='#remove_operand'>remove_operand</a>
+    <li class='indexItem indexItem2'><a href='#idlist_append'>idlist_append</a>
+    <li class='indexItem indexItem2'><a href='#idlist_insert'>idlist_insert</a>
+    <li class='indexItem indexItem2'><a href='#idlist_move'>idlist_move</a>
+    <li class='indexItem indexItem2'><a href='#idlist_clear'>idlist_clear</a>
+    <li class='indexItem indexItem2'><a href='#idlist_get_index'>idlist_get_index</a>
+    <li class='indexItem indexItem2'><a href='#idlist_set_index'>idlist_set_index</a>
+    <li class='indexItem indexItem2'><a href='#idlist_get_size'>idlist_get_size</a>
+    <li class='indexItem indexItem2'><a href='#get_type'>get_type</a>
+    <li class='indexItem indexItem2'><a href='#get_idlist'>get_idlist</a>
+    <li class='indexItem indexItem2'><a href='#operands'>operands</a>
+    <li class='indexItem indexItem2'><a href='#attribute_set'>attribute_set</a>
+    <li class='indexItem indexItem2'><a href='#attribute_remove'>attribute_remove</a>
+    <li class='indexItem indexItem2'><a href='#attribute_get'>attribute_get</a>
+    <li class='indexItem indexItem2'><a href='#attribute_list'>attribute_list</a>
+    <li class='indexItem indexItem2'><a href='#universe'>universe</a>
+  </ul>
+  <li class='indexItem indexItem1'><a href='#AUTHOR'>AUTHOR</a>
+  <li class='indexItem indexItem1'><a href='#SEE_ALSO'>SEE ALSO</a>
+  <li class='indexItem indexItem1'><a href='#COPYRIGHT_AND_LICENSE'>COPYRIGHT AND LICENSE</a>
+</ul>
+</div>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="NAME"
+>NAME</a></h1>
+
+<p>Audio::XMMSClient::Collection - Media collections for Audio::XMMSClient</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SYNOPSIS"
+>SYNOPSIS</a></h1>
+
+<pre>  use Audio::XMMSClient;
+
+  my $coll = Audio::XMMSClient::Collection-&#62;new(&#39;match&#39;, {
+          artist =&#62; &#39;Solche&#39;,
+  });</pre>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="METHODS"
+>METHODS</a></h1>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="new"
+>new</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$type,_\%attributes?"
+>Arguments: $type, \%attributes?</a></dt>
+
+<dd>
+<dt><a name="Arguments:_$type,_%attributes?"
+>Arguments: $type, %attributes?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$collection"
+>Return Value: $collection</a></dt>
+</dl>
+
+<pre>  my $coll = Audio::XMMSClient::Collection-&#62;new(&#39;match&#39;, {
+          artist =&#62; &#39;Solche&#39;,
+  });</pre>
+
+<p>Create a new collection instance of type <code>$type</code>. Also sets the collections <code>%attributes</code>, if given.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="parse"
+>parse</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$pattern"
+>Arguments: $pattern</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$collection"
+>Return Value: $collection</a></dt>
+</dl>
+
+<pre>  my $coll = Audio::XMMSClient::Collection-&#62;parse(&#34;artist:Solche +compilation&#34;);</pre>
+
+<p>Try to parse the given <code>$pattern</code> to produce a collection structure.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="set_idlist"
+>set_idlist</a></h2>
+
+<dl>
+<dt><a name="Arguments:_@ids"
+>Arguments: @ids</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $coll-&#62;set_idlist(qw/1 42 1337/);</pre>
+
+<p>Set the list of ids in the given collection. Note that the idlist is only relevant for idlist collections.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="add_operand"
+>add_operand</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$operand"
+>Arguments: $operand</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $coll-&#62;add_operand($other_coll);</pre>
+
+<p>Add the <code>$operand</code> to a given collection.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="remove_operand"
+>remove_operand</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$operand"
+>Arguments: $operand</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $coll-&#62;remove_operand($other_coll);</pre>
+
+<p>Remove all the occurences of the <code>$operand</code> in the given collection.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="idlist_append"
+>idlist_append</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id"
+>Arguments: $id</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $coll-&#62;idlist_append(5);</pre>
+
+<p>Append an <code>$id</code> to the idlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="idlist_insert"
+>idlist_insert</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$index,_$id"
+>Arguments: $index, $id</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $coll-&#62;idlist_insert(42, 2);</pre>
+
+<p>Insert an <code>$id</code> at a given <code>$index</code> in the idlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="idlist_move"
+>idlist_move</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$from,_$to"
+>Arguments: $from, $to</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $coll-&#62;idlist_move(0, 3);</pre>
+
+<p>Move a value of the idlist to a new position.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="idlist_clear"
+>idlist_clear</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $coll-&#62;idlist_clear;</pre>
+
+<p>Empties the idlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="idlist_get_index"
+>idlist_get_index</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$index"
+>Arguments: $index</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$value_|_undef"
+>Return Value: $value | undef</a></dt>
+</dl>
+
+<pre>  my $value = $coll-&#62;idlist_get_index(2);</pre>
+
+<p>Retrieves the value at the given <code>$index</code> in the idlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="idlist_set_index"
+>idlist_set_index</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$index,_$value"
+>Arguments: $index, $value</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $coll-&#62;idlist_set_index(3, 1);</pre>
+
+<p>Sets the <code>$value</code> at the given <code>$index</code> in the idlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="idlist_get_size"
+>idlist_get_size</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$size"
+>Return Value: $size</a></dt>
+</dl>
+
+<pre>  my $size = $coll-&#62;idlist_get_size;</pre>
+
+<p>Get the size of the idlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="get_type"
+>get_type</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$type"
+>Return Value: $type</a></dt>
+</dl>
+
+<pre>  my $type = $coll-&#62;get_type;</pre>
+
+<p>Return the type of the collection. Valid types are &#34;reference&#34;, &#34;union&#34;, &#34;intersection&#34;, &#34;complement&#34;, &#34;has&#34;, &#34;equals&#34;, &#34;notequal&#34;, &#34;match&#34;, &#34;smaller&#34;, &#34;smallereq&#34;, &#34;greater&#34;, &#34;greatereq&#34;, &#34;order&#34;, &#34;limit&#34;, &#34;mediaset&#34;, &#34;idlist&#34;</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="get_idlist"
+>get_idlist</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_@ids"
+>Return Value: @ids</a></dt>
+</dl>
+
+<pre>  my @ids = $coll-&#62;get_idlist;</pre>
+
+<p>Return the list of ids stored in the collection. Note that this must not be confused with the content of the collection, which must be queried using <a href="../../Audio/XMMSClient.html#coll_query_ids" class="podlinkpod"
+>&#34;coll_query_ids&#34; in Audio::XMMSClient</a>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="operands"
+>operands</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_@operands"
+>Return Value: @operands</a></dt>
+</dl>
+
+<pre>  my @operands = $coll-&#62;operands;</pre>
+
+<p>Get a list of operands of the collection.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="attribute_set"
+>attribute_set</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$key,_$value"
+>Arguments: $key, $value</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_none"
+>Return Value: none</a></dt>
+</dl>
+
+<pre>  $coll-&#62;attribute_set(field =&#62; &#39;artist&#39;);</pre>
+
+<p>Set an attribute <code>$key</code> to <code>$value</code> in the given collection.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="attribute_remove"
+>attribute_remove</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$key"
+>Arguments: $key</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$success"
+>Return Value: $success</a></dt>
+</dl>
+
+<pre>  my $success = $coll-&#62;attribute_remove;</pre>
+
+<p>Remove an attribute <code>$key</code> from the given collection. The return value indicated whether the attribute was found (and removed).</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="attribute_get"
+>attribute_get</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$key"
+>Arguments: $key</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$value_|_undef"
+>Return Value: $value | undef</a></dt>
+</dl>
+
+<pre>  my $value = $coll-&#62;attribute_get(&#39;field&#39;);</pre>
+
+<p>Retrieve the <code>$value</code> of the attribute <code>$key</code> of the given collection.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="attribute_list"
+>attribute_list</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_%attributes"
+>Return Value: %attributes</a></dt>
+</dl>
+
+<pre>  my %attributes = $coll-&#62;attributes_list;</pre>
+
+<p>Get a hash of all <code>%attributes</code> of the given collection.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="universe"
+>universe</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$collection"
+>Return Value: $collection</a></dt>
+</dl>
+
+<pre>  my $universe = Audio::XMMSClient::Collection-&#62;universe;</pre>
+
+<p>Returns a collection referencing the whole media library, i.e. the &#34;All Media&#34; collection.</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="AUTHOR"
+>AUTHOR</a></h1>
+
+<p>Florian Ragwitz &#60;rafl@debian.org&#62;</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SEE_ALSO"
+>SEE ALSO</a></h1>
+
+<p><a href="../../Audio/XMMSClient.html" class="podlinkpod"
+>Audio::XMMSClient</a></p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="COPYRIGHT_AND_LICENSE"
+>COPYRIGHT AND LICENSE</a></h1>
+
+<p>Copyright (C) 2006-2008, Florian Ragwitz</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself, either Perl version 5.8.8 or, at your option, any later version of Perl 5 you may have available.</p>
+<p class="backlinkbottom"><b><a name="___bottom" href="../../index.html" title="All Documents">&lt;&lt;</a></b></p>
+
+
+
+</body></html>

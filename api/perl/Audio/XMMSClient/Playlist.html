@@ -1,0 +1,526 @@
+<html><head><title>Audio::XMMSClient::Playlist</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<link rel="stylesheet" title="blkbluw" type="text/css" href="../../_blkbluw.css" media="all" >
+<link rel="alternate stylesheet" title="blkmagw" type="text/css" href="../../_blkmagw.css" media="all" >
+<link rel="alternate stylesheet" title="blkcynw" type="text/css" href="../../_blkcynw.css" media="all" >
+<link rel="alternate stylesheet" title="whtprpk" type="text/css" href="../../_whtprpk.css" media="all" >
+<link rel="alternate stylesheet" title="whtnavk" type="text/css" href="../../_whtnavk.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnk" type="text/css" href="../../_grygrnk.css" media="all" >
+<link rel="alternate stylesheet" title="whtgrng" type="text/css" href="../../_whtgrng.css" media="all" >
+<link rel="alternate stylesheet" title="blkgrng" type="text/css" href="../../_blkgrng.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnw" type="text/css" href="../../_grygrnw.css" media="all" >
+<link rel="alternate stylesheet" title="blkbluw" type="text/css" href="../../_blkbluw.css" media="all" >
+<link rel="alternate stylesheet" title="whtpurk" type="text/css" href="../../_whtpurk.css" media="all" >
+<link rel="alternate stylesheet" title="whtgrng" type="text/css" href="../../_whtgrng.css" media="all" >
+<link rel="alternate stylesheet" title="grygrnw" type="text/css" href="../../_grygrnw.css" media="all" >
+
+<script type="text/javascript" src="../../_podly.js"></script>
+
+</head>
+<body class='pod'>
+
+
+
+<p class="backlinktop"><b><a name="___top" href="../../index.html" accesskey="1" title="All Documents">&lt;&lt;</a></b></p>
+
+<div class='indexgroup'>
+<ul   class='indexList indexList1'>
+  <li class='indexItem indexItem1'><a href='#NAME'>NAME</a>
+  <li class='indexItem indexItem1'><a href='#SYNOPSIS'>SYNOPSIS</a>
+  <li class='indexItem indexItem1'><a href='#DESCRIPTION'>DESCRIPTION</a>
+  <li class='indexItem indexItem1'><a href='#METHODS'>METHODS</a>
+  <ul   class='indexList indexList2'>
+    <li class='indexItem indexItem2'><a href='#list_entries'>list_entries</a>
+    <li class='indexItem indexItem2'><a href='#create'>create</a>
+    <li class='indexItem indexItem2'><a href='#current_pos'>current_pos</a>
+    <li class='indexItem indexItem2'><a href='#shuffle'>shuffle</a>
+    <li class='indexItem indexItem2'><a href='#sort'>sort</a>
+    <li class='indexItem indexItem2'><a href='#clear'>clear</a>
+    <li class='indexItem indexItem2'><a href='#insert_id'>insert_id</a>
+    <li class='indexItem indexItem2'><a href='#insert_args'>insert_args</a>
+    <li class='indexItem indexItem2'><a href='#insert_url'>insert_url</a>
+    <li class='indexItem indexItem2'><a href='#insert_encoded'>insert_encoded</a>
+    <li class='indexItem indexItem2'><a href='#insert_collection'>insert_collection</a>
+    <li class='indexItem indexItem2'><a href='#add_id'>add_id</a>
+    <li class='indexItem indexItem2'><a href='#add_args'>add_args</a>
+    <li class='indexItem indexItem2'><a href='#add_url'>add_url</a>
+    <li class='indexItem indexItem2'><a href='#add_encoded'>add_encoded</a>
+    <li class='indexItem indexItem2'><a href='#add_collection'>add_collection</a>
+    <li class='indexItem indexItem2'><a href='#move_entry'>move_entry</a>
+    <li class='indexItem indexItem2'><a href='#remove_entry'>remove_entry</a>
+    <li class='indexItem indexItem2'><a href='#remove'>remove</a>
+    <li class='indexItem indexItem2'><a href='#load'>load</a>
+    <li class='indexItem indexItem2'><a href='#radd'>radd</a>
+    <li class='indexItem indexItem2'><a href='#radd_encoded'>radd_encoded</a>
+    <li class='indexItem indexItem2'><a href='#rinsert'>rinsert</a>
+    <li class='indexItem indexItem2'><a href='#rinsert_encoded'>rinsert_encoded</a>
+  </ul>
+  <li class='indexItem indexItem1'><a href='#AUTHOR'>AUTHOR</a>
+  <li class='indexItem indexItem1'><a href='#SEE_ALSO'>SEE ALSO</a>
+  <li class='indexItem indexItem1'><a href='#COPYRIGHT_AND_LICENSE'>COPYRIGHT AND LICENSE</a>
+</ul>
+</div>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="NAME"
+>NAME</a></h1>
+
+<p>Audio::XMMSClient::Playlist - Playlists for Audio::XMMSClient</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SYNOPSIS"
+>SYNOPSIS</a></h1>
+
+<pre>  use Audio::XMMSClient;
+
+  my $conn = Audio::XMMSClient-&#62;new($client_name);
+  $conn-&#62;connect or die $conn-&#62;get_last_error;
+
+  my $playlist = $conn-&#62;playlist($playlist_name);
+  $playlist-&#62;shuffle;</pre>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="DESCRIPTION"
+>DESCRIPTION</a></h1>
+
+<p>This module provides an abstraction for <a href="../../Audio/XMMSClient.html" class="podlinkpod"
+>Audio::XMMSClient</a>&#39;s playlists.</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="METHODS"
+>METHODS</a></h1>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="list_entries"
+>list_entries</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;list_entries;</pre>
+
+<p>List playlists content.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="create"
+>create</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;create;</pre>
+
+<p>Creates a new empty playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="current_pos"
+>current_pos</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;current_pos;</pre>
+
+<p>Retrives the current position in the playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="shuffle"
+>shuffle</a></h2>
+
+<dl>
+<dt><a name="Arguments;_none"
+>Arguments; none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;shuffle;</pre>
+
+<p>Shuffles the playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="sort"
+>sort</a></h2>
+
+<dl>
+<dt><a name="Arguments:_\@properties"
+>Arguments: \@properties</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;sort([qw/artist album tracknr/]);</pre>
+
+<p>Sorts the playlist according to the list of <code>\@properties</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="clear"
+>clear</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;clear;</pre>
+
+<p>Clears the playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="insert_id"
+>insert_id</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$position,_$id"
+>Arguments: $position, $id</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;insert_id(2, 1337);</pre>
+
+<p>Insert a medialib <code>$id</code> at given <code>$position</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="insert_args"
+>insert_args</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$position,_$url,_@args?"
+>Arguments: $position, $url, @args?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;insert_args(1, &#39;file://path/to/media/file.sid&#39;, &#39;subtune=2&#39;);</pre>
+
+<p>Insert a <code>$url</code> at <code>$position</code> with <code>@args</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="insert_url"
+>insert_url</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$position,_$url"
+>Arguments: $position, $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;insert_url(0, &#39;file://path/to/media/file.flac&#39;);</pre>
+
+<p>Insert <code>$url</code> at <code>$position</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="insert_encoded"
+>insert_encoded</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$position,_$url"
+>Arguments: $position, $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;insert_encoded(5, $url);</pre>
+
+<p>Like <a href="#insert_url" class="podlinkpod"
+>&#34;insert_url&#34;</a>, except it expects <code>$url</code> to be encoded already.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="insert_collection"
+>insert_collection</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$position,_$collection,_\@order"
+>Arguments: $position, $collection, \@order</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;insert_collection(5, $coll, [qw/artist album tracknr/]);</pre>
+
+<p>Queries the medialib for entries matching <code>$collection</code>, orders the results by <code>\@order</code> and inserts them at <code>$position</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="add_id"
+>add_id</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$id"
+>Arguments: $id</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;add_id(9667);</pre>
+
+<p>Add a medialib <code>$id</code> to the end of the playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="add_args"
+>add_args</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url,_@args?"
+>Arguments: $url, @args?</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;add_args(&#39;file:///path/to/media/file.sid&#39;, &#39;subtune=7&#39;);</pre>
+
+<p>Add a <code>$url</code> with the given <code>@args</code> to the playlists end.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="add_url"
+>add_url</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;add_url(&#39;file:///path/to/media/file.flac&#39;);</pre>
+
+<p>Add a <code>$url</code> to the end of the playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="add_encoded"
+>add_encoded</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;add_encoded($url);</pre>
+
+<p>Like <a href="#add_url" class="podlinkpod"
+>&#34;add_url&#34;</a>, except it expects <code>$url</code> to be encoded already.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="add_collection"
+>add_collection</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$collection,_\@order"
+>Arguments: $collection, \@order</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;add_collection($coll, [qw/artist album/]);</pre>
+
+<p>Query the medialib for entries matching <code>$coll</code>, sort the results by <code>\@order</code> and add the results to the end of the playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="move_entry"
+>move_entry</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$current_position,_$new_position"
+>Arguments: $current_position, $new_position</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;move_entry(3, 0);</pre>
+
+<p>Moves a playlist entry from <code>$current_position</code> to <code>$new_position</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="remove_entry"
+>remove_entry</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$position"
+>Arguments: $position</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;remove_entry(6);</pre>
+
+<p>Removes the playlist entry at <code>$position</code>.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="remove"
+>remove</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;remove;</pre>
+
+<p>Remove the playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="load"
+>load</a></h2>
+
+<dl>
+<dt><a name="Arguments:_none"
+>Arguments: none</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;load;</pre>
+
+<p>Load a playlist as the current active playlist.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="radd"
+>radd</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;radd($url);</pre>
+
+<p>Adds a <code>$url</code> recursivly to the playlist. The <code>$url</code> should be absolute to the server-side.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="radd_encoded"
+>radd_encoded</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$url"
+>Arguments: $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;radd_encoded($url);</pre>
+
+<p>Same as <a href="#radd" class="podlinkpod"
+>&#34;radd&#34;</a>, except it expects <code>$url</code> to be encoded already.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="rinsert"
+>rinsert</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$position,_$url"
+>Arguments: $position, $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;rinsert(42, $url);</pre>
+
+<p>Inserts a <code>$url</code> recursivly at a given position in the playlist. The <code>$url</code> should be absolute to the server-side.</p>
+
+<h2><a class='u' href='#___top' title='click to go to top of document'
+name="rinsert_encoded"
+>rinsert_encoded</a></h2>
+
+<dl>
+<dt><a name="Arguments:_$position,_$url"
+>Arguments: $position, $url</a></dt>
+
+<dd>
+<dt><a name="Return_Value:_$result"
+>Return Value: $result</a></dt>
+</dl>
+
+<pre>  my $result = $playlist-&#62;rinsert_encoded(5, $url);</pre>
+
+<p>Same as <a href="#rinsert" class="podlinkpod"
+>&#34;rinsert&#34;</a>, except it expects <code>$url</code> to be encoded already.</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="AUTHOR"
+>AUTHOR</a></h1>
+
+<p>Florian Ragwitz &#60;rafl@debian.org&#62;</p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="SEE_ALSO"
+>SEE ALSO</a></h1>
+
+<p><a href="../../Audio/XMMSClient.html" class="podlinkpod"
+>Audio::XMMSClient</a>, <a href="../../Audio/XMMSClient/Result.html" class="podlinkpod"
+>Audio::XMMSClient::Result</a></p>
+
+<h1><a class='u' href='#___top' title='click to go to top of document'
+name="COPYRIGHT_AND_LICENSE"
+>COPYRIGHT AND LICENSE</a></h1>
+
+<p>Copyright (C) 2006-2008, Florian Ragwitz</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself, either Perl version 5.8.8 or, at your option, any later version of Perl 5 you may have available.</p>
+<p class="backlinkbottom"><b><a name="___bottom" href="../../index.html" title="All Documents">&lt;&lt;</a></b></p>
+
+
+
+</body></html>

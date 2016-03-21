@@ -1,0 +1,3624 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Xmms::Client - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Object
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-bindata_add">#bindata_add</a>
+    
+    <li ><a href="#method-i-bindata_list">#bindata_list</a>
+    
+    <li ><a href="#method-i-bindata_remove">#bindata_remove</a>
+    
+    <li ><a href="#method-i-bindata_retrieve">#bindata_retrieve</a>
+    
+    <li ><a href="#method-i-broadcast_coll_changed">#broadcast_coll_changed</a>
+    
+    <li ><a href="#method-i-broadcast_config_value_changed">#broadcast_config_value_changed</a>
+    
+    <li ><a href="#method-i-broadcast_mediainfo_reader_status">#broadcast_mediainfo_reader_status</a>
+    
+    <li ><a href="#method-i-broadcast_medialib_entry_added">#broadcast_medialib_entry_added</a>
+    
+    <li ><a href="#method-i-broadcast_medialib_entry_changed">#broadcast_medialib_entry_changed</a>
+    
+    <li ><a href="#method-i-broadcast_medialib_entry_removed">#broadcast_medialib_entry_removed</a>
+    
+    <li ><a href="#method-i-broadcast_medialib_entry_updated">#broadcast_medialib_entry_updated</a>
+    
+    <li ><a href="#method-i-broadcast_playback_current_id">#broadcast_playback_current_id</a>
+    
+    <li ><a href="#method-i-broadcast_playback_status">#broadcast_playback_status</a>
+    
+    <li ><a href="#method-i-broadcast_playback_volume_changed">#broadcast_playback_volume_changed</a>
+    
+    <li ><a href="#method-i-broadcast_playlist_changed">#broadcast_playlist_changed</a>
+    
+    <li ><a href="#method-i-broadcast_playlist_current_pos">#broadcast_playlist_current_pos</a>
+    
+    <li ><a href="#method-i-broadcast_playlist_loaded">#broadcast_playlist_loaded</a>
+    
+    <li ><a href="#method-i-broadcast_quit">#broadcast_quit</a>
+    
+    <li ><a href="#method-i-coll_find">#coll_find</a>
+    
+    <li ><a href="#method-i-coll_get">#coll_get</a>
+    
+    <li ><a href="#method-i-coll_idlist_from_playlist_file">#coll_idlist_from_playlist_file</a>
+    
+    <li ><a href="#method-i-coll_list">#coll_list</a>
+    
+    <li ><a href="#method-i-coll_query">#coll_query</a>
+    
+    <li ><a href="#method-i-coll_query_ids">#coll_query_ids</a>
+    
+    <li ><a href="#method-i-coll_query_info">#coll_query_info</a>
+    
+    <li ><a href="#method-i-coll_remove">#coll_remove</a>
+    
+    <li ><a href="#method-i-coll_rename">#coll_rename</a>
+    
+    <li ><a href="#method-i-coll_save">#coll_save</a>
+    
+    <li ><a href="#method-i-config_get_value">#config_get_value</a>
+    
+    <li ><a href="#method-i-config_list_values">#config_list_values</a>
+    
+    <li ><a href="#method-i-config_register_value">#config_register_value</a>
+    
+    <li ><a href="#method-i-config_set_value">#config_set_value</a>
+    
+    <li ><a href="#method-i-connect">#connect</a>
+    
+    <li ><a href="#method-i-delete-21">#delete!</a>
+    
+    <li ><a href="#method-i-io_disconnect">#io_disconnect</a>
+    
+    <li ><a href="#method-i-io_fd">#io_fd</a>
+    
+    <li ><a href="#method-i-io_in_handle">#io_in_handle</a>
+    
+    <li ><a href="#method-i-io_on_need_out">#io_on_need_out</a>
+    
+    <li ><a href="#method-i-io_out_handle">#io_out_handle</a>
+    
+    <li ><a href="#method-i-io_want_out">#io_want_out</a>
+    
+    <li ><a href="#method-i-last_error">#last_error</a>
+    
+    <li ><a href="#method-i-main_stats">#main_stats</a>
+    
+    <li ><a href="#method-i-medialib_add_entry">#medialib_add_entry</a>
+    
+    <li ><a href="#method-i-medialib_entry_move">#medialib_entry_move</a>
+    
+    <li ><a href="#method-i-medialib_entry_property_remove">#medialib_entry_property_remove</a>
+    
+    <li ><a href="#method-i-medialib_entry_property_set">#medialib_entry_property_set</a>
+    
+    <li ><a href="#method-i-medialib_entry_remove">#medialib_entry_remove</a>
+    
+    <li ><a href="#method-i-medialib_get_id">#medialib_get_id</a>
+    
+    <li ><a href="#method-i-medialib_get_info">#medialib_get_info</a>
+    
+    <li ><a href="#method-i-medialib_path_import">#medialib_path_import</a>
+    
+    <li ><a href="#method-i-medialib_path_import_encoded">#medialib_path_import_encoded</a>
+    
+    <li ><a href="#method-i-medialib_rehash">#medialib_rehash</a>
+    
+    <li ><a href="#method-i-on_disconnect">#on_disconnect</a>
+    
+    <li ><a href="#method-i-playback_current_id">#playback_current_id</a>
+    
+    <li ><a href="#method-i-playback_pause">#playback_pause</a>
+    
+    <li ><a href="#method-i-playback_playtime">#playback_playtime</a>
+    
+    <li ><a href="#method-i-playback_seek_ms">#playback_seek_ms</a>
+    
+    <li ><a href="#method-i-playback_seek_ms_rel">#playback_seek_ms_rel</a>
+    
+    <li ><a href="#method-i-playback_seek_samples">#playback_seek_samples</a>
+    
+    <li ><a href="#method-i-playback_seek_samples_rel">#playback_seek_samples_rel</a>
+    
+    <li ><a href="#method-i-playback_start">#playback_start</a>
+    
+    <li ><a href="#method-i-playback_status">#playback_status</a>
+    
+    <li ><a href="#method-i-playback_stop">#playback_stop</a>
+    
+    <li ><a href="#method-i-playback_tickle">#playback_tickle</a>
+    
+    <li ><a href="#method-i-playback_volume_get">#playback_volume_get</a>
+    
+    <li ><a href="#method-i-playback_volume_set">#playback_volume_set</a>
+    
+    <li ><a href="#method-i-playlist">#playlist</a>
+    
+    <li ><a href="#method-i-playlist_current_active">#playlist_current_active</a>
+    
+    <li ><a href="#method-i-playlist_list">#playlist_list</a>
+    
+    <li ><a href="#method-i-playlist_set_next">#playlist_set_next</a>
+    
+    <li ><a href="#method-i-playlist_set_next_rel">#playlist_set_next_rel</a>
+    
+    <li ><a href="#method-i-plugin_list">#plugin_list</a>
+    
+    <li ><a href="#method-i-quit">#quit</a>
+    
+    <li ><a href="#method-i-signal_mediainfo_reader_unindexed">#signal_mediainfo_reader_unindexed</a>
+    
+    <li ><a href="#method-i-signal_playback_playtime">#signal_playback_playtime</a>
+    
+    <li ><a href="#method-i-xform_media_browse">#xform_media_browse</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Xmms::Client">
+  <h1 id="class-Xmms::Client" class="class">
+    class Xmms::Client
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="ALL_PLUGINS">ALL_PLUGINS
+        
+        <dd>
+        
+      
+        <dt id="ENTRY_STATUS_NEW">ENTRY_STATUS_NEW
+        
+        <dd>
+        
+      
+        <dt id="ENTRY_STATUS_NOT_AVAILABLE">ENTRY_STATUS_NOT_AVAILABLE
+        
+        <dd>
+        
+      
+        <dt id="ENTRY_STATUS_OK">ENTRY_STATUS_OK
+        
+        <dd>
+        
+      
+        <dt id="ENTRY_STATUS_REHASH">ENTRY_STATUS_REHASH
+        
+        <dd>
+        
+      
+        <dt id="ENTRY_STATUS_RESOLVING">ENTRY_STATUS_RESOLVING
+        
+        <dd>
+        
+      
+        <dt id="IDLE">IDLE
+        
+        <dd>
+        
+      
+        <dt id="OUTPUT">OUTPUT
+        
+        <dd>
+        
+      
+        <dt id="PAUSE">PAUSE
+        
+        <dd>
+        
+      
+        <dt id="PLAY">PLAY
+        
+        <dd>
+        
+      
+        <dt id="RUNNING">RUNNING
+        
+        <dd>
+        
+      
+        <dt id="STOP">STOP
+        
+        <dd>
+        
+      
+        <dt id="XFORM">XFORM
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            Xmms::Client.new(name) &rarr; xc
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Creates an <a href="Client.html">Xmms::Client</a> object.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre>static VALUE
+c_init (VALUE self, VALUE name)
+{
+        RbXmmsClient *xmms = NULL;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        if (!(xmms-&gt;real = xmmsc_init (StringValuePtr (name)))) {
+                rb_raise (rb_eNoMemError, &quot;failed to allocate memory&quot;);
+                return Qnil;
+        }
+
+        xmms-&gt;deleted = false;
+        xmms-&gt;result_callbacks = rb_ary_new ();
+        xmms-&gt;disconnect_cb = Qnil;
+        xmms-&gt;io_need_out_cb = Qnil;
+
+        return self;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-bindata_add" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            bindata_add(str) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Stores binary data on the server.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="bindata_add-source">
+            <pre>static VALUE
+c_bindata_add (VALUE self, VALUE data)
+{
+        METHOD_ADD_HANDLER_BIN (bindata_add, data);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-bindata_list" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            bindata_list &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>List all bindata hashes stored on the server.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="bindata_list-source">
+            <pre>static VALUE
+c_bindata_list (VALUE self)
+{
+        METHOD_ADD_HANDLER (bindata_list);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-bindata_remove" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            bindata_remove(hash) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Remove a datafile from the server.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="bindata_remove-source">
+            <pre>static VALUE
+c_bindata_remove (VALUE self, VALUE hash)
+{
+        METHOD_ADD_HANDLER_STR (bindata_remove, hash);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-bindata_retrieve" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            bindata_retrieve(hash) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the bindata entry specified by hash (hex string) from the server.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="bindata_retrieve-source">
+            <pre>static VALUE
+c_bindata_retrieve (VALUE self, VALUE hash)
+{
+        METHOD_ADD_HANDLER_STR (bindata_retrieve, hash);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_coll_changed" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_coll_changed &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>The collection_changed broadcast, if requested, is called anytime a
+collection is altered.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_coll_changed-source">
+            <pre>static VALUE
+c_broadcast_coll_changed (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_collection_changed)
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_config_value_changed" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_config_value_changed &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves configuration properties as a broadcast.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_config_value_changed-source">
+            <pre>static VALUE
+c_broadcast_config_value_changed (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_config_value_changed);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_mediainfo_reader_status" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_mediainfo_reader_status &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Requests the status of the mediainfo reader.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_mediainfo_reader_status-source">
+            <pre>static VALUE
+c_broadcast_mediainfo_reader_status (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_mediainfo_reader_status);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_medialib_entry_added" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_medialib_entry_added &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the id of an added medialib entry as a broadcast.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_medialib_entry_added-source">
+            <pre>static VALUE
+c_broadcast_medialib_entry_added (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_medialib_entry_added);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_medialib_entry_changed" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_medialib_entry_changed &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the id of a changed medialib entry as a broadcast.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_medialib_entry_changed-source">
+            <pre>static VALUE
+c_broadcast_medialib_entry_changed (VALUE self)
+{
+        RB_XMMS_DEPRECATED (broadcast_medialib_entry_changed, broadcast_medialib_entry_updated);
+        METHOD_ADD_HANDLER (broadcast_medialib_entry_updated);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_medialib_entry_removed" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_medialib_entry_removed &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the id of an removed medialib entry as a broadcast.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_medialib_entry_removed-source">
+            <pre>static VALUE
+c_broadcast_medialib_entry_removed (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_medialib_entry_removed);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_medialib_entry_updated" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_medialib_entry_changed &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the id of a changed medialib entry as a broadcast.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_medialib_entry_updated-source">
+            <pre>static VALUE
+c_broadcast_medialib_entry_updated (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_medialib_entry_updated);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_playback_current_id" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_playback_current_id &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the media id of the currently played track as a broadcast.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_playback_current_id-source">
+            <pre>static VALUE
+c_broadcast_playback_current_id (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_playback_current_id);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_playback_status" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_playback_status &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the playback status as a broadcast.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_playback_status-source">
+            <pre>static VALUE
+c_broadcast_playback_status (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_playback_status);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_playback_volume_changed" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_volume_changed &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Registers a broadcast handler that’s evoked when the playback volume
+changes.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_playback_volume_changed-source">
+            <pre>static VALUE
+c_broadcast_playback_volume_changed (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_playback_volume_changed);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_playlist_changed" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_playlist_changed &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves a hash describing the change to the playlist as a broadcast.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_playlist_changed-source">
+            <pre>static VALUE
+c_broadcast_playlist_changed (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_playlist_changed);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_playlist_current_pos" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_playlist_current_pos &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the current playlist position as a broadcast. See
+<em>playlist_current_pos</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_playlist_current_pos-source">
+            <pre>static VALUE
+c_broadcast_playlist_current_pos (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_playlist_current_pos);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_playlist_loaded" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_playlist_loaded &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Will be called when a playlist has been loaded.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_playlist_loaded-source">
+            <pre>static VALUE
+c_broadcast_playlist_loaded (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_playlist_loaded);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-broadcast_quit" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            broadcast_quit &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Will be called when the server is terminating.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="broadcast_quit-source">
+            <pre>static VALUE
+c_broadcast_quit (VALUE self)
+{
+        METHOD_ADD_HANDLER (broadcast_quit);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_find" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_find(id, ns) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Find all collections in the given namespace <em>ns</em> which contain
+<em>id</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_find-source">
+            <pre>static VALUE
+c_coll_find (VALUE self, VALUE id, VALUE ns)
+{
+        METHOD_HANDLER_HEADER
+
+        res = xmmsc_coll_find (xmms-&gt;real, check_int32 (id),
+                               StringValuePtr (ns));
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_get" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_get(name, [ns])
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a result containing an <a
+href="Collection.html">Xmms::Collection</a> object referencing the
+collection named <em>name</em>. The namespace <em>ns</em> is searched or
+all namespaces if unspecified.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_get-source">
+            <pre>static VALUE
+c_coll_get (int argc, VALUE *argv, VALUE self)
+{
+        VALUE name, ns = Qnil;
+        METHOD_HANDLER_HEADER
+
+        rb_scan_args (argc, argv, &quot;11&quot;, &amp;name, &amp;ns);
+
+        if (NIL_P (ns))
+                res = xmmsc_coll_get (xmms-&gt;real, StringValuePtr (name),
+                                      XMMS_COLLECTION_NS_ALL);
+        else
+                res = xmmsc_coll_get (xmms-&gt;real, StringValuePtr (name),
+                                      StringValuePtr (ns));
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_idlist_from_playlist_file" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_idlist_from_playlist_file(path) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns a collection of the idlist type from the playlist file at
+<em>path</em>. <em>path</em> must be an unencoded string.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_idlist_from_playlist_file-source">
+            <pre>static VALUE
+c_coll_idlist_from_playlist_file (VALUE self, VALUE path)
+{
+        METHOD_ADD_HANDLER_STR (coll_idlist_from_playlist_file, path)
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_list" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_list([ns]) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves an array of the names of all the collections stored in the
+medialib under the namespace <em>ns</em>. If <em>ns</em> is not specified,
+it defaults to Xmms::Collection::NS_ALL.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_list-source">
+            <pre>static VALUE
+c_coll_list (int argc, VALUE *argv, VALUE self)
+{
+        VALUE ns = Qnil;
+        METHOD_HANDLER_HEADER
+
+        rb_scan_args (argc, argv, &quot;01&quot;, &amp;ns);
+
+        if (NIL_P (ns))
+                ns = rb_str_new2 (XMMS_COLLECTION_NS_ALL);
+
+        res = xmmsc_coll_list (xmms-&gt;real, StringValuePtr (ns));
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_query" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_query(coll, spec) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="coll_query-source">
+            <pre>static VALUE
+c_coll_query (int argc, VALUE *argv, VALUE self)
+{
+        VALUE coll, spec;
+        xmmsv_t *cspec;
+        METHOD_HANDLER_HEADER
+
+        rb_scan_args (argc, argv, &quot;2&quot;, &amp;coll, &amp;spec);
+
+        cspec = xmmsv_new_dict ();
+
+        VALUE args = rb_ary_new3(4, xmms, coll, spec, (VALUE) cspec);
+
+        res = (xmmsc_result_t *) rb_ensure (c_coll_query_fragile, args,
+                                            c_coll_query_cleanup, (VALUE) cspec);
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_query_ids" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_query_ids(coll, [order], [start], [len]) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves a list of all the ids of media matched by the collection.
+<em>order</em> specifies a list of properties to order by or no order if
+omitted. <em>start</em> and <em>len</em> determine the offset at which to
+start retrieving ids and the maximum number of ids to retrieve,
+respectively.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_query_ids-source">
+            <pre>static VALUE
+c_coll_query_ids (int argc, VALUE *argv, VALUE self)
+{
+        VALUE coll, order = Qnil, start, len = Qnil;
+        xmmsv_t *corder = NULL;
+        METHOD_HANDLER_HEADER
+
+        rb_scan_args (argc, argv, &quot;13&quot;, &amp;coll, &amp;order, &amp;start, &amp;len);
+
+        if (!NIL_P (order))
+                corder = parse_string_array2 (order);
+
+        res = xmmsc_coll_query_ids (xmms-&gt;real,
+                                    FROM_XMMS_CLIENT_COLLECTION (coll),
+                                    corder,
+                                    NIL_P (start) ? 0 : NUM2INT (start),
+                                    NIL_P (start) ? 0 : NUM2INT (len));
+
+        if (corder)
+                xmmsv_unref (corder);
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_query_info" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_query_info(coll, fetch, [order], [start], [len], [group]) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves media info of media matched by the collection. <em>fetch</em>
+should contain an array of properties to retrieve from the collection.
+<em>order</em> specifies a list of properties to order by or no order if
+omitted. <em>start</em> and <em>len</em> determine the offset at which to
+start retrieving info and the maximum number of ids to retrieve,
+respectively. <em>group</em> defines a list of properties to group by or no
+grouping if omitted.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_query_info-source">
+            <pre>static VALUE
+c_coll_query_info (int argc, VALUE *argv, VALUE self)
+{
+        VALUE coll, order = Qnil, start, len, fetch, group = Qnil;
+        xmmsv_t *cfetch = NULL, *corder = NULL, *cgroup = NULL;
+        METHOD_HANDLER_HEADER
+
+        rb_scan_args (argc, argv, &quot;24&quot;, &amp;coll, &amp;fetch, &amp;order, &amp;start, &amp;len,
+                      &amp;group);
+
+        cfetch = parse_string_array2 (fetch);
+
+        if (!NIL_P (order))
+                corder = parse_string_array2 (order);
+
+        if (!NIL_P (group))
+                cgroup = parse_string_array2 (group);
+
+        res = xmmsc_coll_query_infos (xmms-&gt;real,
+                                    FROM_XMMS_CLIENT_COLLECTION (coll),
+                                    corder,
+                                    NIL_P (start) ? 0 : NUM2INT (start),
+                                    NIL_P (start) ? 0 : NUM2INT (len),
+                                    cfetch,
+                                    cgroup);
+        xmmsv_unref (cfetch);
+        if (corder) {
+                xmmsv_unref (corder);
+        }
+        if (cgroup) {
+                xmmsv_unref (cgroup);
+        }
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_remove" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_remove(name, [ns]) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Remove the collection named <em>name</em> from the media library. The
+collection is removed from the namespace <em>ns</em> or all namespaces if
+unspecified.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_remove-source">
+            <pre>static VALUE
+c_coll_remove (int argc, VALUE *argv, VALUE self)
+{
+        VALUE name, ns = Qnil;
+        METHOD_HANDLER_HEADER
+
+        rb_scan_args (argc, argv, &quot;11&quot;, &amp;name, &amp;ns);
+
+        if (NIL_P (ns))
+                res = xmmsc_coll_remove (xmms-&gt;real, StringValuePtr (name),
+                                         XMMS_COLLECTION_NS_ALL);
+        else
+                res = xmmsc_coll_remove (xmms-&gt;real, StringValuePtr (name),
+                                         StringValuePtr (ns));
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_rename" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_rename(old, new, [ns]) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Rename the saved collection from <em>old</em> to <em>new</em> within the
+namespace <em>ns</em> or all namespaces.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_rename-source">
+            <pre>static VALUE
+c_coll_rename (int argc, VALUE *argv, VALUE self)
+{
+        VALUE old, new, ns = Qnil;
+        METHOD_HANDLER_HEADER
+
+        rb_scan_args (argc, argv, &quot;21&quot;, &amp;old, &amp;new, &amp;ns);
+
+        if (NIL_P (ns))
+                res = xmmsc_coll_rename (xmms-&gt;real,
+                                         StringValuePtr (old),
+                                         StringValuePtr (new),
+                                         XMMS_COLLECTION_NS_ALL);
+        else
+                res = xmmsc_coll_rename (xmms-&gt;real,
+                                         StringValuePtr (old),
+                                         StringValuePtr (new),
+                                         StringValuePtr (ns));
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coll_save" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            coll_save(coll, name, ns) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Save the collection <em>coll</em> named <em>name</em> under the namespace
+<em>ns</em> to the media library.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="coll_save-source">
+            <pre>static VALUE
+c_coll_save (VALUE self, VALUE coll, VALUE name, VALUE ns)
+{
+        METHOD_HANDLER_HEADER
+
+        /* FIXME: Check that we actually have a Collection object */
+
+        res = xmmsc_coll_save (xmms-&gt;real,
+                               FROM_XMMS_CLIENT_COLLECTION (coll),
+                               StringValuePtr (name),
+                               StringValuePtr (ns));
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-config_get_value" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            config_get_value(key) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the value of the configuration property at <em>key</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="config_get_value-source">
+            <pre>static VALUE
+c_config_get_value (VALUE self, VALUE key)
+{
+        METHOD_ADD_HANDLER_STR (config_get_value, key);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-config_list_values" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            config_list_values &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves a list of all config values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="config_list_values-source">
+            <pre>static VALUE
+c_config_list_values (VALUE self)
+{
+        METHOD_ADD_HANDLER (config_list_values);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-config_register_value" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            config_register_value(key, default_value) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Registers a configuration property at <em>key</em> with the given default
+value.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="config_register_value-source">
+            <pre>static VALUE
+c_config_register_value (VALUE self, VALUE key, VALUE defval)
+{
+        METHOD_ADD_HANDLER_STR_STR (config_register_value, key, defval);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-config_set_value" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            config_set_value(key, value) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Sets the value of the configuration property at <em>key</em> to
+<em>value</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="config_set_value-source">
+            <pre>static VALUE
+c_config_set_value (VALUE self, VALUE key, VALUE val)
+{
+        METHOD_ADD_HANDLER_STR_STR (config_set_value, key, val);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-connect" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            connect([path]) &rarr; self
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Connects <em>xc</em> to the XMMS2 daemon listening at <em>path</em>. If
+<em>path</em> isn’t given, the default path is used.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="connect-source">
+            <pre>static VALUE
+c_connect (int argc, VALUE *argv, VALUE self)
+{
+        VALUE path;
+        RbXmmsClient *xmms = NULL;
+        char *p = NULL;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        rb_scan_args (argc, argv, &quot;01&quot;, &amp;path);
+
+        if (!NIL_P (path))
+                p = StringValuePtr (path);
+
+        if (!xmmsc_connect (xmms-&gt;real, p))
+                rb_raise (eClientError,
+                          &quot;cannot connect to daemon (%s)&quot;,
+                          xmmsc_get_last_error (xmms-&gt;real));
+
+        return self;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delete-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete-21-source">
+            <pre>static VALUE
+c_delete (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        xmmsc_unref (xmms-&gt;real);
+        xmms-&gt;deleted = true;
+
+        return Qnil;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-io_disconnect" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            io_disconnect &rarr; nil
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Disconnects the IPC socket. This should only be used by event loop
+implementations.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="io_disconnect-source">
+            <pre>static VALUE
+c_io_disconnect (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        xmmsc_io_disconnect (xmms-&gt;real);
+
+        return Qnil;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-io_fd" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            io_fd &rarr; integer
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns the file descriptor of the <a href="Client.html">Xmms::Client</a>
+IPC socket.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="io_fd-source">
+            <pre>static VALUE
+c_io_fd (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        return INT2NUM (xmmsc_io_fd_get (xmms-&gt;real));
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-io_in_handle" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            io_in_handle &rarr; nil
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves one incoming (from server) clientlib command if there are any in
+the buffer.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="io_in_handle-source">
+            <pre>static VALUE
+c_io_in_handle (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        xmmsc_io_in_handle (xmms-&gt;real);
+
+        return Qnil;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-io_on_need_out" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            io_on_need_out { |flag| }
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Sets the block that’s called when the output socket state changes.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="io_on_need_out-source">
+            <pre>static VALUE
+c_io_on_need_out (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+
+        if (!rb_block_given_p ())
+                return Qnil;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        xmms-&gt;io_need_out_cb = rb_block_proc ();
+
+        xmmsc_io_need_out_callback_set (xmms-&gt;real,
+                                        on_io_need_out, (void *) self);
+
+        return Qnil;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-io_out_handle" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            io_out_handle &rarr; nil
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Sends one outgoing (to server) clientlib command. You should check <a
+href="Client.html#method-i-io_want_out">io_want_out</a> before calling this
+method.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="io_out_handle-source">
+            <pre>static VALUE
+c_io_out_handle (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        xmmsc_io_out_handle (xmms-&gt;real);
+
+        return Qnil;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-io_want_out" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            io_want_out &rarr; true or false
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns <code>true</code> if an outgoing (to server) clientlib command is
+pending, <code>false</code> otherwise.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="io_want_out-source">
+            <pre>static VALUE
+c_io_want_out (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        return xmmsc_io_want_out (xmms-&gt;real) ? Qtrue : Qfalse;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-last_error" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            last_error &rarr; string or nil
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Returns the last error that occured in <em>xc</em> or <code>nil</code>, if
+no error occured yet.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="last_error-source">
+            <pre>static VALUE
+c_last_error_get (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+        const char *s;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        s = xmmsc_get_last_error (xmms-&gt;real);
+
+        return s ? rb_str_new2 (s) : Qnil;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-main_stats" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            main_stats &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves a hash containing statistics about the daemon.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="main_stats-source">
+            <pre>static VALUE
+c_main_stats (VALUE self)
+{
+        METHOD_ADD_HANDLER (main_stats);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_add_entry" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_add_entry(url) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Adds <em>url</em> to the medialib.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_add_entry-source">
+            <pre>static VALUE
+c_medialib_add_entry (VALUE self, VALUE url)
+{
+        METHOD_ADD_HANDLER_STR (medialib_add_entry, url);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_entry_move" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_entry_move(id, url) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Moves the entry specified by <em>id</em> to a new URL without changing
+mediainfo.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_entry_move-source">
+            <pre>static VALUE
+c_medialib_entry_move (VALUE self, VALUE id, VALUE url)
+{
+        METHOD_HANDLER_HEADER
+
+        res = xmmsc_medialib_move_entry (xmms-&gt;real, check_int32 (id),
+                                         StringValuePtr (url));
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_entry_property_remove" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_entry_property_remove(id, key, *source) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Remove a custom field in the medialib associated with the entry
+<em>id</em>. <em>source</em> is an optional argument that describes where
+to write the mediainfo. If <em>source</em> is omitted,
+“client/&lt;yourclient&gt;” is used, where &lt;yourclient&gt; is the name
+you specified in <a href="Client.html#method-c-new">::new</a>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_entry_property_remove-source">
+            <pre>static VALUE
+c_medialib_entry_property_remove (int argc, VALUE *argv, VALUE self)
+{
+        VALUE tmp, key, src = Qnil;
+        RbXmmsClient *xmms = NULL;
+        xmmsc_result_t *res;
+        const char *ckey;
+        int32_t id;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        rb_scan_args (argc, argv, &quot;21&quot;, &amp;tmp, &amp;key, &amp;src);
+
+        id = check_int32 (tmp);
+        Check_Type (key, T_SYMBOL);
+
+        ckey = rb_id2name (SYM2ID (key));
+
+        if (NIL_P (src))
+                res = xmmsc_medialib_entry_property_remove (xmms-&gt;real, id,
+                                                            ckey);
+        else
+                res = xmmsc_medialib_entry_property_remove_with_source (
+                        xmms-&gt;real, id,
+                        StringValuePtr (src),
+                        ckey);
+
+        return TO_XMMS_CLIENT_RESULT (self, res);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_entry_property_set" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_entry_property_set(id, key, value, *source) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Write info to the medialib at <em>id</em>. <em>source</em> is an optional
+argument that describes where to write the mediainfo. If <em>source</em> is
+omitted, the mediainfo is written to “client/&lt;yourclient&gt;” where
+&lt;yourclient&gt; is the name you specified in <a
+href="Client.html#method-c-new">::new</a>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_entry_property_set-source">
+            <pre>static VALUE
+c_medialib_entry_property_set (int argc, VALUE *argv, VALUE self)
+{
+        VALUE tmp, key, value, src = Qnil;
+        RbXmmsClient *xmms = NULL;
+        xmmsc_result_t *res;
+        const char *ckey;
+        bool is_str = false;
+        int32_t id, ivalue;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        rb_scan_args (argc, argv, &quot;31&quot;, &amp;tmp, &amp;key, &amp;value, &amp;src);
+
+        id = check_int32 (tmp);
+        Check_Type (key, T_SYMBOL);
+
+        if (!NIL_P (rb_check_string_type (value)))
+                is_str = true;
+        else
+                ivalue = check_int32 (value);
+
+        ckey = rb_id2name (SYM2ID (key));
+
+        if (NIL_P (src) &amp;&amp; is_str)
+                res = xmmsc_medialib_entry_property_set_str (xmms-&gt;real, id,
+                                                             ckey,
+                                                             StringValuePtr (value));
+        else if (NIL_P (src))
+                res = xmmsc_medialib_entry_property_set_int (xmms-&gt;real, id,
+                                                             ckey, ivalue);
+        else if (is_str)
+                res = xmmsc_medialib_entry_property_set_str_with_source (
+                        xmms-&gt;real, id,
+                        StringValuePtr (src),
+                        ckey,
+                        StringValuePtr (value));
+        else
+                res = xmmsc_medialib_entry_property_set_int_with_source (
+                        xmms-&gt;real, id,
+                        StringValuePtr (src),
+                        ckey, ivalue);
+
+        return TO_XMMS_CLIENT_RESULT (self, res);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_entry_remove" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_entry_remove(id) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Removes the entry specified by <em>id</em> from the medialib.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_entry_remove-source">
+            <pre>static VALUE
+c_medialib_entry_remove (VALUE self, VALUE id)
+{
+        METHOD_ADD_HANDLER_INT (medialib_remove_entry, id)
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_get_id" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_get_id(url) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the id corresponding to <em>url</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_get_id-source">
+            <pre>static VALUE
+c_medialib_get_id (VALUE self, VALUE url)
+{
+        METHOD_ADD_HANDLER_STR (medialib_get_id, url);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_get_info" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_get_info(id) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves medialib info for <em>id</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_get_info-source">
+            <pre>static VALUE
+c_medialib_get_info (VALUE self, VALUE id)
+{
+        METHOD_ADD_HANDLER_INT (medialib_get_info, id);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_path_import" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_path_import(path) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Recursively imports all media files under <em>path</em> to the medialib.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_path_import-source">
+            <pre>static VALUE
+c_medialib_path_import (VALUE self, VALUE path)
+{
+        METHOD_ADD_HANDLER_STR (medialib_import_path, path);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_path_import_encoded" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_path_import(path) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Recursively imports all media files under the url encoded <em>path</em> to
+the medialib.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_path_import_encoded-source">
+            <pre>static VALUE
+c_medialib_path_import_encoded (VALUE self, VALUE path)
+{
+        METHOD_ADD_HANDLER_STR (medialib_import_path_encoded, path);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-medialib_rehash" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            medialib_rehash(id) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Rehashes the medialib entry at <em>id</em> or the whole medialib if
+<em>id</em> == 0.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="medialib_rehash-source">
+            <pre>static VALUE
+c_medialib_rehash (VALUE self, VALUE id)
+{
+        METHOD_ADD_HANDLER_INT (medialib_rehash, id);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-on_disconnect" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            on_disconnect { } &rarr; self
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Sets the block that’s executed when <em>xc</em> is disconnected from the
+XMMS2 daemon.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="on_disconnect-source">
+            <pre>static VALUE
+c_on_disconnect (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+
+        if (!rb_block_given_p ())
+                return Qnil;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        xmms-&gt;disconnect_cb = rb_block_proc ();
+
+        xmmsc_disconnect_callback_set (xmms-&gt;real,
+                                       on_disconnect, (void *) self);
+
+        return self;
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_current_id" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_current_id &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the media id of the currently played track.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_current_id-source">
+            <pre>static VALUE
+c_playback_current_id (VALUE self)
+{
+        METHOD_ADD_HANDLER (playback_current_id);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_pause" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_pause &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Pauses playback.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_pause-source">
+            <pre>static VALUE
+c_playback_pause (VALUE self)
+{
+        METHOD_ADD_HANDLER (playback_pause);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_playtime" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_playtime &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the playtime.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_playtime-source">
+            <pre>static VALUE
+c_playback_playtime (VALUE self)
+{
+        METHOD_ADD_HANDLER (playback_playtime);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_seek_ms" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_seek_ms(ms) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Seek to the song position given in <em>ms</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_seek_ms-source">
+            <pre>static VALUE
+c_playback_seek_ms (VALUE self, VALUE ms)
+{
+        METHOD_HANDLER_HEADER
+
+        res = xmmsc_playback_seek_ms (xmms-&gt;real,
+                                      check_int32 (ms),
+                                      XMMS_PLAYBACK_SEEK_SET);
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_seek_ms_rel" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_seek_ms_rel(ms) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Seek in the song by the offset given in ms.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_seek_ms_rel-source">
+            <pre>static VALUE
+c_playback_seek_ms_rel (VALUE self, VALUE ms)
+{
+        METHOD_HANDLER_HEADER
+
+        res = xmmsc_playback_seek_ms (xmms-&gt;real,
+                                      check_int32 (ms),
+                                      XMMS_PLAYBACK_SEEK_CUR);
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_seek_samples" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_seek_samples(samples) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Seek to the song position given in <em>samples</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_seek_samples-source">
+            <pre>static VALUE
+c_playback_seek_samples (VALUE self, VALUE samples)
+{
+        METHOD_HANDLER_HEADER
+
+        res = xmmsc_playback_seek_samples (xmms-&gt;real,
+                                           check_int32 (samples),
+                                           XMMS_PLAYBACK_SEEK_SET);
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_seek_samples_rel" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_seek_samples_rel(samples) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Seek in the song position by the offset given in samples.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_seek_samples_rel-source">
+            <pre>static VALUE
+c_playback_seek_samples_rel (VALUE self, VALUE samples)
+{
+        METHOD_HANDLER_HEADER
+
+        res = xmmsc_playback_seek_samples (xmms-&gt;real,
+                                           check_int32 (samples),
+                                           XMMS_PLAYBACK_SEEK_CUR);
+
+        METHOD_HANDLER_FOOTER
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_start" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_start &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Starts playback.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_start-source">
+            <pre>static VALUE
+c_playback_start (VALUE self)
+{
+        METHOD_ADD_HANDLER (playback_start);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_status" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_status &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the playback status.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_status-source">
+            <pre>static VALUE
+c_playback_status (VALUE self)
+{
+        METHOD_ADD_HANDLER (playback_status);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_stop" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_stop &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Stops playback.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_stop-source">
+            <pre>static VALUE
+c_playback_stop (VALUE self)
+{
+        METHOD_ADD_HANDLER (playback_stop);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_tickle" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_tickle &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Advances to the next playlist entry.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_tickle-source">
+            <pre>static VALUE
+c_playback_tickle (VALUE self)
+{
+        METHOD_ADD_HANDLER (playback_tickle);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_volume_get" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_volume_get &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Gets the current playback volume.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_volume_get-source">
+            <pre>static VALUE
+c_playback_volume_get (VALUE self)
+{
+        RbXmmsClient *xmms = NULL;
+        xmmsc_result_t *res;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        res = xmmsc_playback_volume_get (xmms-&gt;real);
+
+        return TO_XMMS_CLIENT_RESULT (self, res);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playback_volume_set" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playback_volume_set(channel, volume) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Sets playback volume for <em>channel</em> to <em>volume</em>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playback_volume_set-source">
+            <pre>static VALUE
+c_playback_volume_set (VALUE self, VALUE channel, VALUE volume)
+{
+        RbXmmsClient *xmms = NULL;
+        xmmsc_result_t *res;
+
+        Data_Get_Struct (self, RbXmmsClient, xmms);
+
+        CHECK_DELETED (xmms);
+
+        Check_Type (channel, T_SYMBOL);
+        Check_Type (volume, T_FIXNUM);
+
+        res = xmmsc_playback_volume_set (xmms-&gt;real,
+                                         rb_id2name (SYM2ID (channel)),
+                                         NUM2INT (volume));
+
+        return TO_XMMS_CLIENT_RESULT (self, res);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playlist" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playlist([name]) &rarr; p
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Shortcut for <a href="Playlist.html#method-c-new">Xmms::Playlist.new</a>.
+Creates a new <a href="Playlist.html">Xmms::Playlist</a> object tied to the
+current <a href="Client.html">Xmms::Client</a> instance. <em>name</em> is
+is the name of the playlist and the active playlist will be used if it is
+not specified. Raises PlaylistError if the playlist name is invalid.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playlist-source">
+            <pre>static VALUE
+c_playlist (int argc, VALUE *argv, VALUE self)
+{
+        VALUE args[2] = {self, Qnil};
+
+        rb_scan_args (argc, argv, &quot;01&quot;, &amp;args[1]);
+
+        return rb_class_new_instance (2, args, cPlaylist);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playlist_current_active" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playlist_current_active &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the name of the active playlist.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playlist_current_active-source">
+            <pre>static VALUE
+c_playlist_current_active (VALUE self)
+{
+        METHOD_ADD_HANDLER (playlist_current_active);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playlist_list" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playlist_list &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves a list of all saved playlists from the medialib. Note that
+clients should treat internally used playlists (marked with a leading
+underscore) carefully.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playlist_list-source">
+            <pre>static VALUE
+c_playlist_list (VALUE self)
+{
+        METHOD_ADD_HANDLER (playlist_list);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playlist_set_next" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playlist_set_next(pos) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Sets the next song to be played to <em>pos</em> (an absolute position).</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playlist_set_next-source">
+            <pre>static VALUE
+c_playlist_set_next (VALUE self, VALUE pos)
+{
+        METHOD_ADD_HANDLER_INT (playlist_set_next, pos);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playlist_set_next_rel" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            playlist_set_next_rel(pos) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Sets the next song to be played based on the current position where
+<em>pos</em> is a value relative to the current position.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="playlist_set_next_rel-source">
+            <pre>static VALUE
+c_playlist_set_next_rel (VALUE self, VALUE pos)
+{
+        METHOD_ADD_HANDLER_INT (playlist_set_next_rel, pos);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-plugin_list" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            plugin_list &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves an array containing a hash of information for each plugin.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="plugin_list-source">
+            <pre>static VALUE
+c_plugin_list (int argc, VALUE *argv, VALUE self)
+{
+        VALUE type = Qnil;
+
+        rb_scan_args (argc, argv, &quot;01&quot;, &amp;type);
+
+        if (NIL_P (type))
+                type = INT2FIX (XMMS_PLUGIN_TYPE_ALL);
+
+        METHOD_ADD_HANDLER_INT (main_list_plugins, type);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-quit" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            quit &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Shuts down the XMMS2 daemon.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="quit-source">
+            <pre>static VALUE
+c_quit (VALUE self)
+{
+        METHOD_ADD_HANDLER (quit);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-signal_mediainfo_reader_unindexed" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            signal_mediainfo_reader_unindexed &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Requests the number of unindexed entries in the medialib.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="signal_mediainfo_reader_unindexed-source">
+            <pre>static VALUE
+c_signal_mediainfo_reader_unindexed (VALUE self)
+{
+        METHOD_ADD_HANDLER (signal_mediainfo_reader_unindexed);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-signal_playback_playtime" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            signal_playback_playtime &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves the playtime as a signal.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="signal_playback_playtime-source">
+            <pre>static VALUE
+c_signal_playback_playtime (VALUE self)
+{
+        METHOD_ADD_HANDLER (signal_playback_playtime);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-xform_media_browse" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            xform_media_browse(url) &rarr; result
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>returns a list of files from the server</p>
+          
+          
+
+          
+          <div class="method-source-code" id="xform_media_browse-source">
+            <pre>static VALUE
+c_xform_media_browse (VALUE self, VALUE url)
+{
+        METHOD_ADD_HANDLER_STR (xform_media_browse, url);
+}</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.3.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
