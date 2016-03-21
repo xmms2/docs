@@ -54,9 +54,9 @@
 </style>
 </head>
 <body>
-<!-- BUGDESC Assigned value is garbage or undefined -->
+<!-- BUGDESC The left operand of '<' is a garbage value -->
 
-<!-- BUGTYPE Assigned value is garbage or undefined -->
+<!-- BUGTYPE Result of operation is garbage or undefined -->
 
 <!-- BUGCATEGORY Logic error -->
 
@@ -66,19 +66,19 @@
 
 <!-- FUNCTIONNAME xmms_faad_init -->
 
-<!-- BUGLINE 236 -->
+<!-- BUGLINE 225 -->
 
-<!-- BUGCOLUMN 19 -->
+<!-- BUGCOLUMN 17 -->
 
-<!-- BUGPATHLENGTH 17 -->
+<!-- BUGPATHLENGTH 11 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/plugins/faad/faad.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 236, column 19</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Assigned value is garbage or undefined</td></tr>
+<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 225, column 17</a></td></tr>
+<tr><td class="rowname">Description:</td><td>The left operand of '<' is a garbage value</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
@@ -153,10 +153,10 @@
 <tr><td class="num" id="LN68">68</td><td class="line"> <span class='comment'>* Plugin header</span></td></tr>
 <tr><td class="num" id="LN69">69</td><td class="line"> <span class='comment'>*/</span></td></tr>
 <tr><td class="num" id="LN70">70</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN71">71</td><td class="line"><span class='macro'>XMMS_XFORM_PLUGIN_DEFINE (<span class='string_literal'>"faad"</span>,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "faad", "AAC Decoder", "0.8 DrO_o (git commit: b63814ab)"<br>, "Advanced Audio Coding decoder", (gboolean (*)(gpointer))xmms_faad_plugin_setup<br> };</span></span></td></tr>
-<tr><td class="num" id="LN72">72</td><td class="line">                          <span class='string_literal'><span class='macro'>"AAC Decoder"</span>, XMMS_VERSION,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "faad", "AAC Decoder", "0.8 DrO_o (git commit: b63814ab)"<br>, "Advanced Audio Coding decoder", (gboolean (*)(gpointer))xmms_faad_plugin_setup<br> };</span></span></td></tr>
-<tr><td class="num" id="LN73">73</td><td class="line">                          <span class='string_literal'><span class='macro'>"Advanced Audio Coding decoder"</span>,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "faad", "AAC Decoder", "0.8 DrO_o (git commit: b63814ab)"<br>, "Advanced Audio Coding decoder", (gboolean (*)(gpointer))xmms_faad_plugin_setup<br> };</span></span></td></tr>
-<tr><td class="num" id="LN74">74</td><td class="line">                          <span class='macro'>xmms_faad_plugin_setup)<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "faad", "AAC Decoder", "0.8 DrO_o (git commit: b63814ab)"<br>, "Advanced Audio Coding decoder", (gboolean (*)(gpointer))xmms_faad_plugin_setup<br> };</span></span>;</td></tr>
+<tr><td class="num" id="LN71">71</td><td class="line"><span class='macro'>XMMS_XFORM_PLUGIN_DEFINE (<span class='string_literal'>"faad"</span>,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "faad", "AAC Decoder", "0.8 DrO_o (git commit: 4876bba5)"<br>, "Advanced Audio Coding decoder", (gboolean (*)(gpointer))xmms_faad_plugin_setup<br> };</span></span></td></tr>
+<tr><td class="num" id="LN72">72</td><td class="line">                          <span class='string_literal'><span class='macro'>"AAC Decoder"</span>, XMMS_VERSION,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "faad", "AAC Decoder", "0.8 DrO_o (git commit: 4876bba5)"<br>, "Advanced Audio Coding decoder", (gboolean (*)(gpointer))xmms_faad_plugin_setup<br> };</span></span></td></tr>
+<tr><td class="num" id="LN73">73</td><td class="line">                          <span class='string_literal'><span class='macro'>"Advanced Audio Coding decoder"</span>,<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "faad", "AAC Decoder", "0.8 DrO_o (git commit: 4876bba5)"<br>, "Advanced Audio Coding decoder", (gboolean (*)(gpointer))xmms_faad_plugin_setup<br> };</span></span></td></tr>
+<tr><td class="num" id="LN74">74</td><td class="line">                          <span class='macro'>xmms_faad_plugin_setup)<span class='expansion'>xmms_plugin_desc_t __attribute__((visibility ("default"))) XMMS_PLUGIN_DESC<br> = { XMMS_PLUGIN_TYPE_XFORM, 7, "faad", "AAC Decoder", "0.8 DrO_o (git commit: 4876bba5)"<br>, "Advanced Audio Coding decoder", (gboolean (*)(gpointer))xmms_faad_plugin_setup<br> };</span></span>;</td></tr>
 <tr><td class="num" id="LN75">75</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN76">76</td><td class="line"><span class='keyword'>static</span> gboolean</td></tr>
 <tr><td class="num" id="LN77">77</td><td class="line">xmms_faad_plugin_setup (xmms_xform_plugin_t *xform_plugin)</td></tr>
@@ -207,9 +207,9 @@
 <tr><td class="num" id="LN122">122</td><td class="line">	xmms_error_t error;</td></tr>
 <tr><td class="num" id="LN123">123</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN124">124</td><td class="line">	NeAACDecConfigurationPtr config;</td></tr>
-<tr><td class="num" id="LN125">125</td><td class="line">	gint bytes_read;</td></tr>
-<tr><td class="num" id="LN126">126</td><td class="line">	<span class="mrange">gulong samplerate</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">1</div></td><td>'samplerate' declared without an initial value</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN125">125</td><td class="line">	<span class="mrange">gint bytes_read</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">1</div></td><td>'bytes_read' declared without an initial value</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN126">126</td><td class="line">	gulong samplerate;</td></tr>
 <tr><td class="num" id="LN127">127</td><td class="line">	guchar channels;</td></tr>
 <tr><td class="num" id="LN128">128</td><td class="line">	<span class='keyword'>const</span> gchar *mime;</td></tr>
 <tr><td class="num" id="LN129">129</td><td class="line"> </td></tr>
@@ -251,8 +251,7 @@
 <tr><td class="num" id="LN164">164</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN165">165</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN166">166</td><td class="line">	<span class='keyword'>while</span> (data-&gt;buffer_length &lt; 8) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 184</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 184</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN167">167</td><td class="line">		xmms_error_reset (&amp;error);</td></tr>
 <tr><td class="num" id="LN168">168</td><td class="line">		bytes_read = xmms_xform_read (xform,</td></tr>
 <tr><td class="num" id="LN169">169</td><td class="line">		                              (gchar *) data-&gt;buffer + data-&gt;buffer_length,</td></tr>
@@ -260,14 +259,10 @@
 <tr><td class="num" id="LN171">171</td><td class="line">		                              &amp;error);</td></tr>
 <tr><td class="num" id="LN172">172</td><td class="line">		data-&gt;buffer_length += bytes_read;</td></tr>
 <tr><td class="num" id="LN173">173</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN174">174</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange">bytes_read &lt; 0</span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming 'bytes_read' is &gt;= 0</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN174">174</td><td class="line">		<span class='keyword'>if</span> (bytes_read &lt; 0) {</td></tr>
 <tr><td class="num" id="LN175">175</td><td class="line">			<span class='macro'>xmms_log_error (<span class='string_literal'>"Error while trying to read data on init"</span>)<span class='expansion'>g_warning ("../src/plugins/faad/faad.c" ":" "175" ": " "Error while trying to read data on init"<br>)</span></span>;</td></tr>
 <tr><td class="num" id="LN176">176</td><td class="line">			<span class='keyword'>goto</span> err;</td></tr>
-<tr><td class="num" id="LN177">177</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (<span class="mrange">bytes_read == 0</span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgEvent" style="margin-left:28ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Assuming 'bytes_read' is not equal to 0</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN177">177</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (bytes_read == 0) {</td></tr>
 <tr><td class="num" id="LN178">178</td><td class="line">			<span class='macro'>XMMS_DBG (<span class='string_literal'>"Not enough bytes to check the AAC header"</span>)<span class='expansion'>g_debug ("../src/plugins/faad/faad.c" ":" "178" ": " "Not enough bytes to check the AAC header"<br>)</span></span>;</td></tr>
 <tr><td class="num" id="LN179">179</td><td class="line">			<span class='keyword'>goto</span> err;</td></tr>
 <tr><td class="num" id="LN180">180</td><td class="line">		}</td></tr>
@@ -276,10 +271,10 @@
 <tr><td class="num" id="LN183">183</td><td class="line">	<span class='comment'>/* which type of file are we dealing with? */</span></td></tr>
 <tr><td class="num" id="LN184">184</td><td class="line">	data-&gt;filetype = <span class='macro'>FAAD_TYPE_UNKNOWN<span class='expansion'>0</span></span>;</td></tr>
 <tr><td class="num" id="LN185">185</td><td class="line">	<span class='keyword'>if</span> (xmms_xform_auxdata_has_val (xform, <span class='string_literal'>"decoder_config"</span>)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN186">186</td><td class="line">		data-&gt;filetype = <span class='macro'>FAAD_TYPE_MP4<span class='expansion'>1</span></span>;</td></tr>
 <tr><td class="num" id="LN187">187</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (!strncmp ((<span class='keyword'>char</span> *) data-&gt;buffer, <span class='string_literal'>"ADIF"</span>, 4)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgControl" style="margin-left:16ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:16ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN188">188</td><td class="line">		data-&gt;filetype = <span class='macro'>FAAD_TYPE_ADIF<span class='expansion'>2</span></span>;</td></tr>
 <tr><td class="num" id="LN189">189</td><td class="line">	} <span class='keyword'>else</span> {</td></tr>
 <tr><td class="num" id="LN190">190</td><td class="line">		<span class='keyword'>int</span> i;</td></tr>
@@ -287,25 +282,25 @@
 <tr><td class="num" id="LN192">192</td><td class="line">		<span class='comment'>/* ADTS mpeg file can be a stream and start in the middle of a</span></td></tr>
 <tr><td class="num" id="LN193">193</td><td class="line">		 <span class='comment'>* frame so we need to have extra loop check here */</span></td></tr>
 <tr><td class="num" id="LN194">194</td><td class="line">		<span class='keyword'>for</span> (i=0; i&lt;data-&gt;buffer_length-1; i++) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN195">195</td><td class="line">			<span class='keyword'>if</span> (data-&gt;buffer[i] == 0xff &amp;&amp; (data-&gt;buffer[i+1]&amp;0xf6) == 0xf0) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN196">196</td><td class="line">				data-&gt;filetype = <span class='macro'>FAAD_TYPE_ADTS<span class='expansion'>3</span></span>;</td></tr>
 <tr><td class="num" id="LN197">197</td><td class="line">				<span class='macro'>g_memmove (data-&gt;buffer, data-&gt;buffer+i, data-&gt;buffer_length-i)<span class='expansion'>do { memmove ((data-&gt;buffer), (data-&gt;buffer+i), (data-&gt;<br>buffer_length-i)); } while (0)</span></span>;</td></tr>
 <tr><td class="num" id="LN198">198</td><td class="line">				data-&gt;buffer_length -= i;</td></tr>
 <tr><td class="num" id="LN199">199</td><td class="line">				<span class='keyword'>break</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgControl" style="margin-left:33ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td> Execution continues on line 204</td><td><div class="PathNav"><a href="#Path14" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:33ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td> Execution continues on line 204</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN200">200</td><td class="line">			}</td></tr>
 <tr><td class="num" id="LN201">201</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN202">202</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN203">203</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN204">204</td><td class="line">	<span class='keyword'>if</span> (data-&gt;filetype == <span class='macro'>FAAD_TYPE_ADTS<span class='expansion'>3</span></span> || data-&gt;filetype == <span class='macro'>FAAD_TYPE_ADIF<span class='expansion'>2</span></span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path14" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path15" title="Next event (15)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN205">205</td><td class="line">		bytes_read = NeAACDecInit (data-&gt;decoder, data-&gt;buffer,</td></tr>
 <tr><td class="num" id="LN206">206</td><td class="line">		                          data-&gt;buffer_length, &amp;samplerate,</td></tr>
 <tr><td class="num" id="LN207">207</td><td class="line">		                          &amp;channels);</td></tr>
 <tr><td class="num" id="LN208">208</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (data-&gt;filetype == <span class='macro'>FAAD_TYPE_MP4<span class='expansion'>1</span></span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path15" class="msg msgControl" style="margin-left:16ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">15</div></td><td><div class="PathNav"><a href="#Path14" title="Previous event (14)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path16" title="Next event (16)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgControl" style="margin-left:16ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN209">209</td><td class="line">		<span class='keyword'>const</span> guchar *tmpbuf;</td></tr>
 <tr><td class="num" id="LN210">210</td><td class="line">		gsize tmpbuflen;</td></tr>
 <tr><td class="num" id="LN211">211</td><td class="line">		guchar *copy;</td></tr>
@@ -322,8 +317,8 @@
 <tr><td class="num" id="LN222">222</td><td class="line">		g_free (copy);</td></tr>
 <tr><td class="num" id="LN223">223</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN224">224</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN225">225</td><td class="line">	<span class='keyword'>if</span> (bytes_read &lt; 0) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path16" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">16</div></td><td><div class="PathNav"><a href="#Path15" title="Previous event (15)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (17)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN225">225</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">bytes_read</span> &lt; 0) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>The left operand of '&lt;' is a garbage value</td></tr></table></div></td></tr>
 <tr><td class="num" id="LN226">226</td><td class="line">		<span class='macro'>XMMS_DBG (<span class='string_literal'>"Error initializing decoder library."</span>)<span class='expansion'>g_debug ("../src/plugins/faad/faad.c" ":" "226" ": " "Error initializing decoder library."<br>)</span></span>;</td></tr>
 <tr><td class="num" id="LN227">227</td><td class="line">		<span class='keyword'>goto</span> err;</td></tr>
 <tr><td class="num" id="LN228">228</td><td class="line">	}</td></tr>
@@ -334,8 +329,7 @@
 <tr><td class="num" id="LN233">233</td><td class="line">	           <span class='macro'>data-&gt;buffer_length - bytes_read)<span class='expansion'>do { memmove ((data-&gt;buffer), (data-&gt;buffer + bytes_read<br>), (data-&gt;buffer_length - bytes_read)); } while (0)</span></span>;</td></tr>
 <tr><td class="num" id="LN234">234</td><td class="line">	data-&gt;buffer_length -= bytes_read;</td></tr>
 <tr><td class="num" id="LN235">235</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN236">236</td><td class="line">	data-&gt;samplerate = <span class="mrange">samplerate</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:26ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">17</div></td><td><div class="PathNav"><a href="#Path16" title="Previous event (16)">&#x2190;</a></div></td></td><td>Assigned value is garbage or undefined</td></tr></table></div></td></tr>
+<tr><td class="num" id="LN236">236</td><td class="line">	data-&gt;samplerate = samplerate;</td></tr>
 <tr><td class="num" id="LN237">237</td><td class="line">	data-&gt;channels = channels;</td></tr>
 <tr><td class="num" id="LN238">238</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN239">239</td><td class="line">	<span class='comment'>/* XXX: Because of decoder delay the first frame is bad (as is the first</span></td></tr>
