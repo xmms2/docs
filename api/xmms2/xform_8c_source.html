@@ -1353,16 +1353,16 @@
 <div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;                                 <span class="stringliteral">&quot;application/x-url&quot;</span>, <a class="code" href="xmms_2xmms__streamtype_8h.html#a1d21f76ee29699dcf70f2d858275b380ad548add42ef0188b7e77ebf791d7da0d">XMMS_STREAM_TYPE_URL</a>,</div>
 <div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;                                 durl, <a class="code" href="xmms_2xmms__streamtype_8h.html#a1d21f76ee29699dcf70f2d858275b380af2653ad9d60750560eaa409040b9ead3">XMMS_STREAM_TYPE_END</a>);</div>
 <div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160;</div>
-<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;    g_free (durl);</div>
-<div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;</div>
-<div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;    last = xform;</div>
-<div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;</div>
-<div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;        xform = <a class="code" href="xform_8c.html#a8aada2de905485ab9afc6ebbe4fcd339">xmms_xform_find</a> (last, entry, goal_formats);</div>
-<div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;        <span class="keywordflow">if</span> (!xform) {</div>
-<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;            <a class="code" href="xmms_2xmms__log_8h.html#a3788018b34fff8398c00b7b30f58c047">xmms_log_error</a> (<span class="stringliteral">&quot;Couldn&#39;t set up chain for &#39;%s&#39; (%d)&quot;</span>,</div>
-<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;                            url, entry);</div>
-<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;            <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (last);</div>
+<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;</div>
+<div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;    last = xform;</div>
+<div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;</div>
+<div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160;        xform = <a class="code" href="xform_8c.html#a8aada2de905485ab9afc6ebbe4fcd339">xmms_xform_find</a> (last, entry, goal_formats);</div>
+<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;        <span class="keywordflow">if</span> (!xform) {</div>
+<div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;            <a class="code" href="xmms_2xmms__log_8h.html#a3788018b34fff8398c00b7b30f58c047">xmms_log_error</a> (<span class="stringliteral">&quot;Couldn&#39;t set up chain for &#39;%s&#39; (%d)&quot;</span>,</div>
+<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;                            durl, entry);</div>
+<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;            <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (last);</div>
+<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;            g_free (durl);</div>
 <div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;</div>
 <div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;        }</div>
@@ -1370,222 +1370,229 @@
 <div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;        last = xform;</div>
 <div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;    } <span class="keywordflow">while</span> (!has_goalformat (xform, goal_formats));</div>
 <div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;</div>
-<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;    outdata_type_metadata_collect (last);</div>
+<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;    g_free (durl);</div>
 <div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;</div>
-<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;    <span class="keywordflow">return</span> last;</div>
-<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;}</div>
-<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;</div>
-<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;chain_finalize (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session,</div>
-<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;                <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *xform, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
-<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;                <span class="keyword">const</span> gchar *url, gboolean rehashing)</div>
-<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;{</div>
-<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;    GString *namestr;</div>
-<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;</div>
-<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;    namestr = g_string_new (<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;    xmms_xform_metadata_collect (session, xform, namestr, rehashing);</div>
-<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;    <a class="code" href="xmms_2xmms__log_8h.html#a5977ae5d2a6fdfb22dcb475eb6d247f1">xmms_log_info</a> (<span class="stringliteral">&quot;Successfully setup chain for &#39;%s&#39; (%d) containing %s&quot;</span>,</div>
-<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;                   url, entry, namestr-&gt;str);</div>
-<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;</div>
-<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;    g_string_free (namestr, TRUE);</div>
-<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;}</div>
-<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;</div>
-<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;<span class="keyword">static</span> gchar *</div>
-<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;get_url_for_entry (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry)</div>
-<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;{</div>
-<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;    gchar *url = NULL;</div>
-<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;</div>
-<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;    url = <a class="code" href="group__Medialib.html#gac0302e18b5a67d22827105bfac402291">xmms_medialib_entry_property_get_str</a> (session, entry, <a class="code" href="xmms_2xmms__medialib_8h.html#ac9f232fef70f8681cad1dabfe96cd5c8">XMMS_MEDIALIB_ENTRY_PROPERTY_URL</a>);</div>
+<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;    outdata_type_metadata_collect (last);</div>
+<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;</div>
+<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;    <span class="keywordflow">return</span> last;</div>
+<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;}</div>
+<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;</div>
+<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;chain_finalize (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session,</div>
+<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;                <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *xform, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
+<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;                <span class="keyword">const</span> gchar *url, gboolean rehashing)</div>
+<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;{</div>
+<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;    GString *namestr;</div>
+<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;    gchar *durl;</div>
+<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;</div>
+<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;    durl = g_strdup (url);</div>
+<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;    <a class="code" href="medialib_8c.html#aa92a364677340cb86c9cf6508080ca3d">xmms_medialib_decode_url</a> (durl);</div>
+<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;</div>
+<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;    namestr = g_string_new (<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;    xmms_xform_metadata_collect (session, xform, namestr, rehashing);</div>
+<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;    <a class="code" href="xmms_2xmms__log_8h.html#a5977ae5d2a6fdfb22dcb475eb6d247f1">xmms_log_info</a> (<span class="stringliteral">&quot;Successfully setup chain for &#39;%s&#39; (%d) containing %s&quot;</span>,</div>
+<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;                   durl, entry, namestr-&gt;str);</div>
+<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;</div>
+<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;    g_string_free (namestr, TRUE);</div>
+<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;    g_free (durl);</div>
+<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;}</div>
 <div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;</div>
-<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;    <span class="keywordflow">if</span> (!url) {</div>
-<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;        <a class="code" href="xmms_2xmms__log_8h.html#a3788018b34fff8398c00b7b30f58c047">xmms_log_error</a> (<span class="stringliteral">&quot;Couldn&#39;t get url for entry (%d)&quot;</span>, entry);</div>
-<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;    }</div>
-<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;</div>
-<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;    <span class="keywordflow">return</span> url;</div>
-<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;}</div>
+<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;<span class="keyword">static</span> gchar *</div>
+<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;get_url_for_entry (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry)</div>
+<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;{</div>
+<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;    gchar *url = NULL;</div>
+<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;</div>
+<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;    url = <a class="code" href="group__Medialib.html#gac0302e18b5a67d22827105bfac402291">xmms_medialib_entry_property_get_str</a> (session, entry, <a class="code" href="xmms_2xmms__medialib_8h.html#ac9f232fef70f8681cad1dabfe96cd5c8">XMMS_MEDIALIB_ENTRY_PROPERTY_URL</a>);</div>
 <div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;</div>
-<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
-<div class="line"><a name="l01355"></a><span class="lineno"><a class="line" href="xmms__xform_8h.html#a64ce30eba892d1eff08f92a3bbd6f47e"> 1355</a></span>&#160;<a class="code" href="xform_8c.html#a64ce30eba892d1eff08f92a3bbd6f47e">xmms_xform_chain_setup</a> (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a8d5aacd73585e70b0e082351a5e43f44">xmms_medialib_t</a> *medialib, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
-<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;                        GList *goal_formats, gboolean rehash)</div>
-<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;{</div>
-<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;    <a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session;</div>
-<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *ret = NULL;</div>
+<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;    <span class="keywordflow">if</span> (!url) {</div>
+<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;        <a class="code" href="xmms_2xmms__log_8h.html#a3788018b34fff8398c00b7b30f58c047">xmms_log_error</a> (<span class="stringliteral">&quot;Couldn&#39;t get url for entry (%d)&quot;</span>, entry);</div>
+<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;    }</div>
+<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;</div>
+<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;    <span class="keywordflow">return</span> url;</div>
+<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;}</div>
 <div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;</div>
-<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;        session = <a class="code" href="medialib__session_8c.html#aa0c77531f540a16a7ef4c0b924b3530f">xmms_medialib_session_begin</a> (medialib);</div>
-<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;        <span class="keywordflow">if</span> (ret != NULL)</div>
-<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;            <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (ret);</div>
-<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;        ret = <a class="code" href="xform_8c.html#a252d236223187886dc9afbc5ae78286e">xmms_xform_chain_setup_session</a> (medialib, session, entry, goal_formats, rehash);</div>
-<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;    } <span class="keywordflow">while</span> (!<a class="code" href="medialib__session_8c.html#a5fe4a5dfd45b6dc6b682d3d48b57aad2">xmms_medialib_session_commit</a> (session));</div>
+<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
+<div class="line"><a name="l01362"></a><span class="lineno"><a class="line" href="xmms__xform_8h.html#a64ce30eba892d1eff08f92a3bbd6f47e"> 1362</a></span>&#160;<a class="code" href="xform_8c.html#a64ce30eba892d1eff08f92a3bbd6f47e">xmms_xform_chain_setup</a> (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a8d5aacd73585e70b0e082351a5e43f44">xmms_medialib_t</a> *medialib, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
+<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;                        GList *goal_formats, gboolean rehash)</div>
+<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;{</div>
+<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;    <a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session;</div>
+<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *ret = NULL;</div>
 <div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;</div>
-<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;}</div>
-<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;</div>
-<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
-<div class="line"><a name="l01372"></a><span class="lineno"><a class="line" href="xmms__xform_8h.html#a3a744c05e361d103bacc2ac7ef7dceba"> 1372</a></span>&#160;<a class="code" href="xform_8c.html#a252d236223187886dc9afbc5ae78286e">xmms_xform_chain_setup_session</a> (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a8d5aacd73585e70b0e082351a5e43f44">xmms_medialib_t</a> *medialib,</div>
-<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;                                <a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session,</div>
-<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;                                <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
-<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;                                GList *goal_formats, gboolean rehash)</div>
-<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;{</div>
-<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;    gchar *url;</div>
-<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *xform;</div>
-<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;</div>
-<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;    <span class="keywordflow">if</span> (!(url = get_url_for_entry (session, entry))) {</div>
-<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;    }</div>
-<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;</div>
-<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;    xform = <a class="code" href="xform_8c.html#a15a40532da16411c73f542ba2d9ca21d">xmms_xform_chain_setup_url_session</a> (medialib, session, entry,</div>
-<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;                                                url, goal_formats, rehash);</div>
-<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;    g_free (url);</div>
-<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;</div>
-<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;    <span class="keywordflow">return</span> xform;</div>
-<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;}</div>
+<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;        session = <a class="code" href="medialib__session_8c.html#aa0c77531f540a16a7ef4c0b924b3530f">xmms_medialib_session_begin</a> (medialib);</div>
+<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;        <span class="keywordflow">if</span> (ret != NULL)</div>
+<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;            <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (ret);</div>
+<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;        ret = <a class="code" href="xform_8c.html#a252d236223187886dc9afbc5ae78286e">xmms_xform_chain_setup_session</a> (medialib, session, entry, goal_formats, rehash);</div>
+<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;    } <span class="keywordflow">while</span> (!<a class="code" href="medialib__session_8c.html#a5fe4a5dfd45b6dc6b682d3d48b57aad2">xmms_medialib_session_commit</a> (session));</div>
+<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;</div>
+<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;}</div>
+<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;</div>
+<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
+<div class="line"><a name="l01379"></a><span class="lineno"><a class="line" href="xmms__xform_8h.html#a3a744c05e361d103bacc2ac7ef7dceba"> 1379</a></span>&#160;<a class="code" href="xform_8c.html#a252d236223187886dc9afbc5ae78286e">xmms_xform_chain_setup_session</a> (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a8d5aacd73585e70b0e082351a5e43f44">xmms_medialib_t</a> *medialib,</div>
+<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;                                <a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session,</div>
+<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;                                <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
+<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;                                GList *goal_formats, gboolean rehash)</div>
+<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;{</div>
+<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;    gchar *url;</div>
+<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *xform;</div>
+<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;</div>
+<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;    <span class="keywordflow">if</span> (!(url = get_url_for_entry (session, entry))) {</div>
+<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;    }</div>
 <div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;</div>
-<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
-<div class="line"><a name="l01392"></a><span class="lineno"><a class="line" href="xmms__xform_8h.html#a338db34f63d800ba5690078b8054ce76"> 1392</a></span>&#160;<a class="code" href="xform_8c.html#a15a40532da16411c73f542ba2d9ca21d">xmms_xform_chain_setup_url_session</a> (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a8d5aacd73585e70b0e082351a5e43f44">xmms_medialib_t</a> *medialib,</div>
-<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;                                    <a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session,</div>
-<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;                                    <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry, <span class="keyword">const</span> gchar *url,</div>
-<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;                                    GList *goal_formats, gboolean rehash)</div>
-<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;{</div>
-<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *last;</div>
-<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;    <a class="code" href="structxmms__plugin__St.html">xmms_plugin_t</a> *plugin;</div>
-<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;    <a class="code" href="group__XForm.html#ga03a316884b0de383142c7203de61b11e">xmms_xform_plugin_t</a> *xform_plugin;</div>
-<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;    gboolean add_segment = FALSE;</div>
-<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;    gint priority;</div>
-<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;</div>
-<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;    last = chain_setup (medialib, entry, url, goal_formats);</div>
-<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;    <span class="keywordflow">if</span> (!last) {</div>
-<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;    }</div>
-<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;</div>
-<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;    <span class="comment">/* first check that segment plugin is available in the system */</span></div>
-<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;    plugin = <a class="code" href="plugin_8c.html#a2a674e54de4159c53a51bad9fc31f99d">xmms_plugin_find</a> (XMMS_PLUGIN_TYPE_XFORM, <span class="stringliteral">&quot;segment&quot;</span>);</div>
-<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;    xform_plugin = (<a class="code" href="group__XForm.html#ga03a316884b0de383142c7203de61b11e">xmms_xform_plugin_t</a> *) plugin;</div>
-<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;</div>
-<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;    <span class="comment">/* if segment plugin input is the same as current output, include it</span></div>
-<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;<span class="comment">     * for collecting additional duration metadata on audio entries */</span></div>
-<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;    <span class="keywordflow">if</span> (xform_plugin) {</div>
-<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;        <span class="keyword">const</span> <a class="code" href="xmms_2xmms__streamtype_8h.html#ab47f34e878dcec5c45e98c2a478f7058">xmms_stream_type_t</a> *st = xmms_xform_get_out_stream_type (last);</div>
-<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;        add_segment = <a class="code" href="xform__plugin_8c.html#a7d8cd52cdc0423e9d1e8bef61804a4bc">xmms_xform_plugin_supports</a> (xform_plugin, st,</div>
-<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;                                                  &amp;priority);</div>
-<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;        <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (plugin);</div>
-<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;    }</div>
-<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;</div>
-<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;    <span class="comment">/* add segment plugin to the chain if it can be added */</span></div>
-<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;    <span class="keywordflow">if</span> (add_segment) {</div>
-<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;        last = xmms_xform_new_effect (last, entry, goal_formats, <span class="stringliteral">&quot;segment&quot;</span>);</div>
-<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;        <span class="keywordflow">if</span> (!last) {</div>
-<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;        }</div>
-<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;    }</div>
-<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;</div>
-<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;    <span class="comment">/* if not rehashing, also initialize all the effect plugins */</span></div>
-<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;    <span class="keywordflow">if</span> (!rehash) {</div>
-<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;        last = add_effects (last, entry, goal_formats);</div>
-<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;        <span class="keywordflow">if</span> (!last) {</div>
-<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;        }</div>
-<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;    }</div>
-<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;</div>
-<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;    chain_finalize (session, last, entry, url, rehash);</div>
-<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;    <span class="keywordflow">return</span> last;</div>
-<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;}</div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;</div>
-<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
-<div class="line"><a name="l01442"></a><span class="lineno"><a class="line" href="xmms__xform_8h.html#a2269d866ddbfac767fd32668790545a8"> 1442</a></span>&#160;<a class="code" href="xform_8c.html#a2269d866ddbfac767fd32668790545a8">xmms_xform_chain_setup_url</a> (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a8d5aacd73585e70b0e082351a5e43f44">xmms_medialib_t</a> *medialib,</div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;                            <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry, <span class="keyword">const</span> gchar *url,</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                            GList *goal_formats, gboolean rehash)</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;{</div>
-<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;    <a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session;</div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *ret = NULL;</div>
-<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;</div>
-<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;        session = <a class="code" href="medialib__session_8c.html#aa0c77531f540a16a7ef4c0b924b3530f">xmms_medialib_session_begin</a> (medialib);</div>
-<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;        <span class="keywordflow">if</span> (ret != NULL)</div>
-<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;            <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (ret);</div>
-<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;        ret = <a class="code" href="xform_8c.html#a15a40532da16411c73f542ba2d9ca21d">xmms_xform_chain_setup_url_session</a> (medialib, session, entry, url,</div>
-<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;                                                  goal_formats, rehash);</div>
-<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;    } <span class="keywordflow">while</span> (!<a class="code" href="medialib__session_8c.html#a5fe4a5dfd45b6dc6b682d3d48b57aad2">xmms_medialib_session_commit</a> (session));</div>
-<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;</div>
-<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;}</div>
-<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;</div>
-<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;<a class="code" href="xmms_2xmms__config_8h.html#a7a24d7f82aadc0968b51e254408f8b71">xmms_config_property_t</a> *</div>
-<div class="line"><a name="l01461"></a><span class="lineno"><a class="line" href="group__XForm.html#ga448ac762f0fb3c012a2c4d393ee5a1a2"> 1461</a></span>&#160;<a class="code" href="group__XForm.html#ga448ac762f0fb3c012a2c4d393ee5a1a2">xmms_xform_config_lookup</a> (<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *xform, <span class="keyword">const</span> gchar *path)</div>
-<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;{</div>
-<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;    g_return_val_if_fail (xform-&gt;plugin, NULL);</div>
-<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;</div>
-<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="plugin_8c.html#a532b22f61b55a6186aecdea943632c45">xmms_plugin_config_lookup</a> ((<a class="code" href="structxmms__plugin__St.html">xmms_plugin_t</a> *) xform-&gt;plugin, path);</div>
-<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;}</div>
-<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;</div>
-<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;<span class="keyword">static</span> <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
-<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;add_effects (<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *last, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
-<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;             GList *goal_formats)</div>
-<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;{</div>
-<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;    gint effect_no;</div>
-<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;</div>
-<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;    <span class="keywordflow">for</span> (effect_no = 0; TRUE; effect_no++) {</div>
-<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;        <a class="code" href="xmms_2xmms__config_8h.html#a7a24d7f82aadc0968b51e254408f8b71">xmms_config_property_t</a> *cfg;</div>
-<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;        gchar key[64];</div>
-<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;        <span class="keyword">const</span> gchar *<a class="code" href="t__s4_8c.html#a5ac083a645d964373f022d03df4849c8">name</a>;</div>
-<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;</div>
-<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;        g_snprintf (key, <span class="keyword">sizeof</span> (key), <span class="stringliteral">&quot;effect.order.%i&quot;</span>, effect_no);</div>
+<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;    xform = <a class="code" href="xform_8c.html#a15a40532da16411c73f542ba2d9ca21d">xmms_xform_chain_setup_url_session</a> (medialib, session, entry,</div>
+<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;                                                url, goal_formats, rehash);</div>
+<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;    g_free (url);</div>
+<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;</div>
+<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;    <span class="keywordflow">return</span> xform;</div>
+<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;}</div>
+<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;</div>
+<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
+<div class="line"><a name="l01399"></a><span class="lineno"><a class="line" href="xmms__xform_8h.html#a338db34f63d800ba5690078b8054ce76"> 1399</a></span>&#160;<a class="code" href="xform_8c.html#a15a40532da16411c73f542ba2d9ca21d">xmms_xform_chain_setup_url_session</a> (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a8d5aacd73585e70b0e082351a5e43f44">xmms_medialib_t</a> *medialib,</div>
+<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;                                    <a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session,</div>
+<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;                                    <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry, <span class="keyword">const</span> gchar *url,</div>
+<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;                                    GList *goal_formats, gboolean rehash)</div>
+<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;{</div>
+<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *last;</div>
+<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;    <a class="code" href="structxmms__plugin__St.html">xmms_plugin_t</a> *plugin;</div>
+<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;    <a class="code" href="group__XForm.html#ga03a316884b0de383142c7203de61b11e">xmms_xform_plugin_t</a> *xform_plugin;</div>
+<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;    gboolean add_segment = FALSE;</div>
+<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;    gint priority;</div>
+<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;</div>
+<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;    last = chain_setup (medialib, entry, url, goal_formats);</div>
+<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;    <span class="keywordflow">if</span> (!last) {</div>
+<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;    }</div>
+<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;</div>
+<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;    <span class="comment">/* first check that segment plugin is available in the system */</span></div>
+<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;    plugin = <a class="code" href="plugin_8c.html#a2a674e54de4159c53a51bad9fc31f99d">xmms_plugin_find</a> (XMMS_PLUGIN_TYPE_XFORM, <span class="stringliteral">&quot;segment&quot;</span>);</div>
+<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;    xform_plugin = (<a class="code" href="group__XForm.html#ga03a316884b0de383142c7203de61b11e">xmms_xform_plugin_t</a> *) plugin;</div>
+<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;</div>
+<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;    <span class="comment">/* if segment plugin input is the same as current output, include it</span></div>
+<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;<span class="comment">     * for collecting additional duration metadata on audio entries */</span></div>
+<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;    <span class="keywordflow">if</span> (xform_plugin) {</div>
+<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;        <span class="keyword">const</span> <a class="code" href="xmms_2xmms__streamtype_8h.html#ab47f34e878dcec5c45e98c2a478f7058">xmms_stream_type_t</a> *st = xmms_xform_get_out_stream_type (last);</div>
+<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;        add_segment = <a class="code" href="xform__plugin_8c.html#a7d8cd52cdc0423e9d1e8bef61804a4bc">xmms_xform_plugin_supports</a> (xform_plugin, st,</div>
+<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;                                                  &amp;priority);</div>
+<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;        <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (plugin);</div>
+<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;    }</div>
+<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;</div>
+<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;    <span class="comment">/* add segment plugin to the chain if it can be added */</span></div>
+<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;    <span class="keywordflow">if</span> (add_segment) {</div>
+<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;        last = xmms_xform_new_effect (last, entry, goal_formats, <span class="stringliteral">&quot;segment&quot;</span>);</div>
+<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;        <span class="keywordflow">if</span> (!last) {</div>
+<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;        }</div>
+<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;    }</div>
+<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;</div>
+<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;    <span class="comment">/* if not rehashing, also initialize all the effect plugins */</span></div>
+<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;    <span class="keywordflow">if</span> (!rehash) {</div>
+<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;        last = add_effects (last, entry, goal_formats);</div>
+<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;        <span class="keywordflow">if</span> (!last) {</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;        }</div>
+<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;    }</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;</div>
+<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;    chain_finalize (session, last, entry, url, rehash);</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;    <span class="keywordflow">return</span> last;</div>
+<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;}</div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;</div>
+<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
+<div class="line"><a name="l01449"></a><span class="lineno"><a class="line" href="xmms__xform_8h.html#a2269d866ddbfac767fd32668790545a8"> 1449</a></span>&#160;<a class="code" href="xform_8c.html#a2269d866ddbfac767fd32668790545a8">xmms_xform_chain_setup_url</a> (<a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a8d5aacd73585e70b0e082351a5e43f44">xmms_medialib_t</a> *medialib,</div>
+<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;                            <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry, <span class="keyword">const</span> gchar *url,</div>
+<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;                            GList *goal_formats, gboolean rehash)</div>
+<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;{</div>
+<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;    <a class="code" href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a> *session;</div>
+<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *ret = NULL;</div>
+<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;</div>
+<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;        session = <a class="code" href="medialib__session_8c.html#aa0c77531f540a16a7ef4c0b924b3530f">xmms_medialib_session_begin</a> (medialib);</div>
+<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;        <span class="keywordflow">if</span> (ret != NULL)</div>
+<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;            <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (ret);</div>
+<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;        ret = <a class="code" href="xform_8c.html#a15a40532da16411c73f542ba2d9ca21d">xmms_xform_chain_setup_url_session</a> (medialib, session, entry, url,</div>
+<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;                                                  goal_formats, rehash);</div>
+<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;    } <span class="keywordflow">while</span> (!<a class="code" href="medialib__session_8c.html#a5fe4a5dfd45b6dc6b682d3d48b57aad2">xmms_medialib_session_commit</a> (session));</div>
+<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;</div>
+<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;}</div>
+<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;</div>
+<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;<a class="code" href="xmms_2xmms__config_8h.html#a7a24d7f82aadc0968b51e254408f8b71">xmms_config_property_t</a> *</div>
+<div class="line"><a name="l01468"></a><span class="lineno"><a class="line" href="group__XForm.html#ga448ac762f0fb3c012a2c4d393ee5a1a2"> 1468</a></span>&#160;<a class="code" href="group__XForm.html#ga448ac762f0fb3c012a2c4d393ee5a1a2">xmms_xform_config_lookup</a> (<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *xform, <span class="keyword">const</span> gchar *path)</div>
+<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;{</div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;    g_return_val_if_fail (xform-&gt;plugin, NULL);</div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;</div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="plugin_8c.html#a532b22f61b55a6186aecdea943632c45">xmms_plugin_config_lookup</a> ((<a class="code" href="structxmms__plugin__St.html">xmms_plugin_t</a> *) xform-&gt;plugin, path);</div>
+<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;}</div>
+<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;</div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;<span class="keyword">static</span> <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;add_effects (<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *last, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
+<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;             GList *goal_formats)</div>
+<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;{</div>
+<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;    gint effect_no;</div>
 <div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;</div>
-<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;        cfg = <a class="code" href="group__Config.html#gae3c078865b621beb04ad5191edc5b43f">xmms_config_lookup</a> (key);</div>
-<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;        <span class="keywordflow">if</span> (!cfg) {</div>
-<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;        }</div>
+<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;    <span class="keywordflow">for</span> (effect_no = 0; TRUE; effect_no++) {</div>
+<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;        <a class="code" href="xmms_2xmms__config_8h.html#a7a24d7f82aadc0968b51e254408f8b71">xmms_config_property_t</a> *cfg;</div>
+<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;        gchar key[64];</div>
+<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;        <span class="keyword">const</span> gchar *<a class="code" href="t__s4_8c.html#a5ac083a645d964373f022d03df4849c8">name</a>;</div>
 <div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;</div>
-<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;        name = <a class="code" href="group__Config.html#ga39bdfa5cc1d662cd8e27a5d0c8423e1e">xmms_config_property_get_string</a> (cfg);</div>
+<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;        g_snprintf (key, <span class="keyword">sizeof</span> (key), <span class="stringliteral">&quot;effect.order.%i&quot;</span>, effect_no);</div>
 <div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;</div>
-<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;        <span class="keywordflow">if</span> (!name[0]) {</div>
-<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;        }</div>
-<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;</div>
-<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;        last = xmms_xform_new_effect (last, entry, goal_formats, name);</div>
-<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;    }</div>
+<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;        cfg = <a class="code" href="group__Config.html#gae3c078865b621beb04ad5191edc5b43f">xmms_config_lookup</a> (key);</div>
+<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;        <span class="keywordflow">if</span> (!cfg) {</div>
+<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;        }</div>
+<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;</div>
+<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;        name = <a class="code" href="group__Config.html#ga39bdfa5cc1d662cd8e27a5d0c8423e1e">xmms_config_property_get_string</a> (cfg);</div>
 <div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;</div>
-<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;    <span class="keywordflow">return</span> last;</div>
-<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;}</div>
-<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;</div>
-<div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;<span class="keyword">static</span> <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
-<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;xmms_xform_new_effect (<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *last, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
-<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;                       GList *goal_formats, <span class="keyword">const</span> gchar *name)</div>
-<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;{</div>
-<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;    <a class="code" href="structxmms__plugin__St.html">xmms_plugin_t</a> *plugin;</div>
-<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;    <a class="code" href="group__XForm.html#ga03a316884b0de383142c7203de61b11e">xmms_xform_plugin_t</a> *xform_plugin;</div>
-<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *xform;</div>
-<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;    gint priority;</div>
-<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;</div>
-<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;    plugin = <a class="code" href="plugin_8c.html#a2a674e54de4159c53a51bad9fc31f99d">xmms_plugin_find</a> (XMMS_PLUGIN_TYPE_XFORM, name);</div>
-<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;    <span class="keywordflow">if</span> (!plugin) {</div>
-<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;        <a class="code" href="xmms_2xmms__log_8h.html#a3788018b34fff8398c00b7b30f58c047">xmms_log_error</a> (<span class="stringliteral">&quot;Couldn&#39;t find any effect named &#39;%s&#39;&quot;</span>, name);</div>
-<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;        <span class="keywordflow">return</span> last;</div>
-<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;    }</div>
-<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;</div>
-<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;    xform_plugin = (<a class="code" href="group__XForm.html#ga03a316884b0de383142c7203de61b11e">xmms_xform_plugin_t</a> *) plugin;</div>
-<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="xform__plugin_8c.html#a7d8cd52cdc0423e9d1e8bef61804a4bc">xmms_xform_plugin_supports</a> (xform_plugin, last-&gt;out_type, &amp;priority)) {</div>
-<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;        <a class="code" href="xmms_2xmms__log_8h.html#a5977ae5d2a6fdfb22dcb475eb6d247f1">xmms_log_info</a> (<span class="stringliteral">&quot;Effect &#39;%s&#39; doesn&#39;t support format, skipping&quot;</span>,</div>
-<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;                       <a class="code" href="plugin_8c.html#a826661781002e3e720aa5610978c5701">xmms_plugin_shortname_get</a> (plugin));</div>
-<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;        <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (plugin);</div>
-<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;        <span class="keywordflow">return</span> last;</div>
-<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;    }</div>
-<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;</div>
-<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;    xform = <a class="code" href="xform_8c.html#a4fbeb6c0bccd83162360d534aaef528d">xmms_xform_new</a> (xform_plugin, last, last-&gt;medialib, entry, goal_formats);</div>
-<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;</div>
-<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;    <span class="keywordflow">if</span> (xform) {</div>
-<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;        <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (last);</div>
-<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;        last = xform;</div>
-<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;        <a class="code" href="xmms_2xmms__log_8h.html#a5977ae5d2a6fdfb22dcb475eb6d247f1">xmms_log_info</a> (<span class="stringliteral">&quot;Effect &#39;%s&#39; failed to initialize, skipping&quot;</span>,</div>
-<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;                       <a class="code" href="plugin_8c.html#a826661781002e3e720aa5610978c5701">xmms_plugin_shortname_get</a> (plugin));</div>
-<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;    }</div>
-<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;    <a class="code" href="group__XForm.html#gab95b81c8f4890b46ccae2305f0a146c7">xmms_xform_plugin_config_property_register</a> (xform_plugin,</div>
-<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;                                                <span class="stringliteral">&quot;enabled&quot;</span>, <span class="stringliteral">&quot;0&quot;</span>,</div>
-<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;                                                NULL, NULL);</div>
-<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;    <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (plugin);</div>
-<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;    <span class="keywordflow">return</span> last;</div>
-<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;}</div>
+<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;        <span class="keywordflow">if</span> (!name[0]) {</div>
+<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;        }</div>
+<div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;</div>
+<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;        last = xmms_xform_new_effect (last, entry, goal_formats, name);</div>
+<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;    }</div>
+<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;</div>
+<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;    <span class="keywordflow">return</span> last;</div>
+<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;}</div>
+<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;</div>
+<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;<span class="keyword">static</span> <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *</div>
+<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;xmms_xform_new_effect (<a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *last, <a class="code" href="xmms_2xmms__medialib_8h.html#a9c4450a8d5ebe85bfb8072bca8ed280b">xmms_medialib_entry_t</a> entry,</div>
+<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;                       GList *goal_formats, <span class="keyword">const</span> gchar *name)</div>
+<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;{</div>
+<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;    <a class="code" href="structxmms__plugin__St.html">xmms_plugin_t</a> *plugin;</div>
+<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;    <a class="code" href="group__XForm.html#ga03a316884b0de383142c7203de61b11e">xmms_xform_plugin_t</a> *xform_plugin;</div>
+<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;    <a class="code" href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a> *xform;</div>
+<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;    gint priority;</div>
+<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;</div>
+<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;    plugin = <a class="code" href="plugin_8c.html#a2a674e54de4159c53a51bad9fc31f99d">xmms_plugin_find</a> (XMMS_PLUGIN_TYPE_XFORM, name);</div>
+<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;    <span class="keywordflow">if</span> (!plugin) {</div>
+<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;        <a class="code" href="xmms_2xmms__log_8h.html#a3788018b34fff8398c00b7b30f58c047">xmms_log_error</a> (<span class="stringliteral">&quot;Couldn&#39;t find any effect named &#39;%s&#39;&quot;</span>, name);</div>
+<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;        <span class="keywordflow">return</span> last;</div>
+<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;    }</div>
+<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;</div>
+<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;    xform_plugin = (<a class="code" href="group__XForm.html#ga03a316884b0de383142c7203de61b11e">xmms_xform_plugin_t</a> *) plugin;</div>
+<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="xform__plugin_8c.html#a7d8cd52cdc0423e9d1e8bef61804a4bc">xmms_xform_plugin_supports</a> (xform_plugin, last-&gt;out_type, &amp;priority)) {</div>
+<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;        <a class="code" href="xmms_2xmms__log_8h.html#a5977ae5d2a6fdfb22dcb475eb6d247f1">xmms_log_info</a> (<span class="stringliteral">&quot;Effect &#39;%s&#39; doesn&#39;t support format, skipping&quot;</span>,</div>
+<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;                       <a class="code" href="plugin_8c.html#a826661781002e3e720aa5610978c5701">xmms_plugin_shortname_get</a> (plugin));</div>
+<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;        <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (plugin);</div>
+<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;        <span class="keywordflow">return</span> last;</div>
+<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;    }</div>
+<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;</div>
+<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;    xform = <a class="code" href="xform_8c.html#a4fbeb6c0bccd83162360d534aaef528d">xmms_xform_new</a> (xform_plugin, last, last-&gt;medialib, entry, goal_formats);</div>
+<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;</div>
+<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;    <span class="keywordflow">if</span> (xform) {</div>
+<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;        <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (last);</div>
+<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;        last = xform;</div>
+<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;        <a class="code" href="xmms_2xmms__log_8h.html#a5977ae5d2a6fdfb22dcb475eb6d247f1">xmms_log_info</a> (<span class="stringliteral">&quot;Effect &#39;%s&#39; failed to initialize, skipping&quot;</span>,</div>
+<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;                       <a class="code" href="plugin_8c.html#a826661781002e3e720aa5610978c5701">xmms_plugin_shortname_get</a> (plugin));</div>
+<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;    }</div>
+<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;    <a class="code" href="group__XForm.html#gab95b81c8f4890b46ccae2305f0a146c7">xmms_xform_plugin_config_property_register</a> (xform_plugin,</div>
+<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;                                                <span class="stringliteral">&quot;enabled&quot;</span>, <span class="stringliteral">&quot;0&quot;</span>,</div>
+<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;                                                NULL, NULL);</div>
+<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;    <a class="code" href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a> (plugin);</div>
+<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;    <span class="keywordflow">return</span> last;</div>
+<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;}</div>
 <div class="ttc" id="object_8c_html_ad1e850918ed47a5ecc0793e37237df78"><div class="ttname"><a href="object_8c.html#ad1e850918ed47a5ecc0793e37237df78">xmms_object_unref</a></div><div class="ttdeci">void xmms_object_unref(gpointer obj)</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00343">object.c:343</a></div></div>
 <div class="ttc" id="medialib_8c_html_a904cc1903d889dd36105001b908c6bbe"><div class="ttname"><a href="medialib_8c.html#a904cc1903d889dd36105001b908c6bbe">xmms_medialib_url_encode</a></div><div class="ttdeci">gchar * xmms_medialib_url_encode(const gchar *path)</div><div class="ttdef"><b>Definition:</b> <a href="medialib_8c_source.html#l01346">medialib.c:1346</a></div></div>
 <div class="ttc" id="xmms_2xmms__streamtype_8h_html_a6b3be1d7515f4065269e700334984e12"><div class="ttname"><a href="xmms_2xmms__streamtype_8h.html#a6b3be1d7515f4065269e700334984e12">xmms_stream_type_key_t</a></div><div class="ttdeci">enum xmms_stream_type_key_E xmms_stream_type_key_t</div></div>
@@ -1612,7 +1619,7 @@
 <div class="ttc" id="group__XForm_html_ga5d856f8cb7a884564876f8a96c18151b"><div class="ttname"><a href="group__XForm.html#ga5d856f8cb7a884564876f8a96c18151b">xmms_xform_browse_add_entry_property</a></div><div class="ttdeci">void xmms_xform_browse_add_entry_property(xmms_xform_t *xform, const gchar *key, xmmsv_t *val)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00157">xform.c:157</a></div></div>
 <div class="ttc" id="group__XForm_html_gac1f94dd65257de56ee6c46470541689d"><div class="ttname"><a href="group__XForm.html#gac1f94dd65257de56ee6c46470541689d">XMMS_XFORM_MAX_LINE_SIZE</a></div><div class="ttdeci">#define XMMS_XFORM_MAX_LINE_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="xmms__xformplugin_8h_source.html#l00443">xmms_xformplugin.h:443</a></div></div>
 <div class="ttc" id="group__ValueType_html_gae7f3a1b56b2df4e430cf321e17120274"><div class="ttname"><a href="group__ValueType.html#gae7f3a1b56b2df4e430cf321e17120274">xmmsv_new_none</a></div><div class="ttdeci">xmmsv_t * xmmsv_new_none(void)</div><div class="ttdoc">Allocates a new empty xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00119">xmmsv_general.c:119</a></div></div>
-<div class="ttc" id="xform_8c_html_a2269d866ddbfac767fd32668790545a8"><div class="ttname"><a href="xform_8c.html#a2269d866ddbfac767fd32668790545a8">xmms_xform_chain_setup_url</a></div><div class="ttdeci">xmms_xform_t * xmms_xform_chain_setup_url(xmms_medialib_t *medialib, xmms_medialib_entry_t entry, const gchar *url, GList *goal_formats, gboolean rehash)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01442">xform.c:1442</a></div></div>
+<div class="ttc" id="xform_8c_html_a2269d866ddbfac767fd32668790545a8"><div class="ttname"><a href="xform_8c.html#a2269d866ddbfac767fd32668790545a8">xmms_xform_chain_setup_url</a></div><div class="ttdeci">xmms_xform_t * xmms_xform_chain_setup_url(xmms_medialib_t *medialib, xmms_medialib_entry_t entry, const gchar *url, GList *goal_formats, gboolean rehash)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01449">xform.c:1449</a></div></div>
 <div class="ttc" id="group__Medialib_html_ga26ace561e9a8323baa80cf19daea211a"><div class="ttname"><a href="group__Medialib.html#ga26ace561e9a8323baa80cf19daea211a">xmms_medialib_entry_cleanup</a></div><div class="ttdeci">void xmms_medialib_entry_cleanup(xmms_medialib_session_t *session, xmms_medialib_entry_t entry)</div><div class="ttdef"><b>Definition:</b> <a href="medialib_8c_source.html#l00639">medialib.c:639</a></div></div>
 <div class="ttc" id="group__ValueType_html_gae24ce52974a10c466ab11040cad6d0b6"><div class="ttname"><a href="group__ValueType.html#gae24ce52974a10c466ab11040cad6d0b6">xmmsv_new_string</a></div><div class="ttdeci">xmmsv_t * xmmsv_new_string(const char *s)</div><div class="ttdoc">Allocates a new string xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00188">xmmsv_general.c:188</a></div></div>
 <div class="ttc" id="group__XForm_html_ga0eb18933fa070b50e01cddc912636b15"><div class="ttname"><a href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a></div><div class="ttdeci">struct xmms_xform_St xmms_xform_t</div><div class="ttdef"><b>Definition:</b> <a href="xmms__xformplugin_8h_source.html#l00098">xmms_xformplugin.h:98</a></div></div>
@@ -1631,7 +1638,7 @@
 <div class="ttc" id="plugin_8c_html_a826661781002e3e720aa5610978c5701"><div class="ttname"><a href="plugin_8c.html#a826661781002e3e720aa5610978c5701">xmms_plugin_shortname_get</a></div><div class="ttdeci">const gchar * xmms_plugin_shortname_get(const xmms_plugin_t *plugin)</div><div class="ttdef"><b>Definition:</b> <a href="plugin_8c_source.html#l00158">plugin.c:158</a></div></div>
 <div class="ttc" id="group__DictType_html_ga6bcef93778e1307b129647e69f8c876c"><div class="ttname"><a href="group__DictType.html#ga6bcef93778e1307b129647e69f8c876c">xmmsv_new_dict</a></div><div class="ttdeci">xmmsv_t * xmmsv_new_dict(void)</div><div class="ttdoc">Allocates a new dict xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00263">xmmsv_dict.c:263</a></div></div>
 <div class="ttc" id="xform__plugin_8c_html_a5c9d739ba0e2c789bd3f106b1eb334fa"><div class="ttname"><a href="xform__plugin_8c.html#a5c9d739ba0e2c789bd3f106b1eb334fa">xmms_xform_plugin_can_destroy</a></div><div class="ttdeci">gboolean xmms_xform_plugin_can_destroy(const xmms_xform_plugin_t *plugin)</div><div class="ttdef"><b>Definition:</b> <a href="xform__plugin_8c_source.html#l00241">xform_plugin.c:241</a></div></div>
-<div class="ttc" id="xform_8c_html_a15a40532da16411c73f542ba2d9ca21d"><div class="ttname"><a href="xform_8c.html#a15a40532da16411c73f542ba2d9ca21d">xmms_xform_chain_setup_url_session</a></div><div class="ttdeci">xmms_xform_t * xmms_xform_chain_setup_url_session(xmms_medialib_t *medialib, xmms_medialib_session_t *session, xmms_medialib_entry_t entry, const gchar *url, GList *goal_formats, gboolean rehash)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01392">xform.c:1392</a></div></div>
+<div class="ttc" id="xform_8c_html_a15a40532da16411c73f542ba2d9ca21d"><div class="ttname"><a href="xform_8c.html#a15a40532da16411c73f542ba2d9ca21d">xmms_xform_chain_setup_url_session</a></div><div class="ttdeci">xmms_xform_t * xmms_xform_chain_setup_url_session(xmms_medialib_t *medialib, xmms_medialib_session_t *session, xmms_medialib_entry_t entry, const gchar *url, GList *goal_formats, gboolean rehash)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01399">xform.c:1399</a></div></div>
 <div class="ttc" id="xform_8c_html_adb77daf1e50d6f419c247052dda62a9e"><div class="ttname"><a href="xform_8c.html#adb77daf1e50d6f419c247052dda62a9e">READ_CHUNK</a></div><div class="ttdeci">#define READ_CHUNK</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00083">xform.c:83</a></div></div>
 <div class="ttc" id="group__XForm_html_ga1c068567033432ee9928fc0a4eb0f9fd"><div class="ttname"><a href="group__XForm.html#ga1c068567033432ee9928fc0a4eb0f9fd">xmms_xform_browse_add_entry_property_int</a></div><div class="ttdeci">void xmms_xform_browse_add_entry_property_int(xmms_xform_t *xform, const gchar *key, gint value)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00111">xform.c:111</a></div></div>
 <div class="ttc" id="xform_8c_html_a52b5094de9b16ad5434c7446ee138330"><div class="ttname"><a href="xform_8c.html#a52b5094de9b16ad5434c7446ee138330">xmms_xform_browse_method</a></div><div class="ttdeci">xmmsv_t * xmms_xform_browse_method(xmms_xform_t *xform, const gchar *url, xmms_error_t *error)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00250">xform.c:250</a></div></div>
@@ -1661,7 +1668,7 @@
 <div class="ttc" id="group__Config_html_ga39bdfa5cc1d662cd8e27a5d0c8423e1e"><div class="ttname"><a href="group__Config.html#ga39bdfa5cc1d662cd8e27a5d0c8423e1e">xmms_config_property_get_string</a></div><div class="ttdeci">const gchar * xmms_config_property_get_string(const xmms_config_property_t *prop)</div><div class="ttdoc">Return the value of a config property as a string. </div><div class="ttdef"><b>Definition:</b> <a href="xmms_2config_8c_source.html#l00235">config.c:235</a></div></div>
 <div class="ttc" id="xmms_2utils_8c_html_a4e6bdaa03b8ac537ece4a96a76c73b8e"><div class="ttname"><a href="xmms_2utils_8c.html#a4e6bdaa03b8ac537ece4a96a76c73b8e">xmms_natcmp</a></div><div class="ttdeci">gint xmms_natcmp(const gchar *str1, const gchar *str2)</div><div class="ttdef"><b>Definition:</b> <a href="xmms_2utils_8c_source.html#l00151">utils.c:151</a></div></div>
 <div class="ttc" id="group__XForm_html_ga66748d7c1b4b78fe092fa91618278807"><div class="ttname"><a href="group__XForm.html#ga66748d7c1b4b78fe092fa91618278807">xmms_xform_auxdata_set_str</a></div><div class="ttdeci">void xmms_xform_auxdata_set_str(xmms_xform_t *xform, const gchar *key, const gchar *strval)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00743">xform.c:743</a></div></div>
-<div class="ttc" id="xform_8c_html_a252d236223187886dc9afbc5ae78286e"><div class="ttname"><a href="xform_8c.html#a252d236223187886dc9afbc5ae78286e">xmms_xform_chain_setup_session</a></div><div class="ttdeci">xmms_xform_t * xmms_xform_chain_setup_session(xmms_medialib_t *medialib, xmms_medialib_session_t *session, xmms_medialib_entry_t entry, GList *goal_formats, gboolean rehash)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01372">xform.c:1372</a></div></div>
+<div class="ttc" id="xform_8c_html_a252d236223187886dc9afbc5ae78286e"><div class="ttname"><a href="xform_8c.html#a252d236223187886dc9afbc5ae78286e">xmms_xform_chain_setup_session</a></div><div class="ttdeci">xmms_xform_t * xmms_xform_chain_setup_session(xmms_medialib_t *medialib, xmms_medialib_session_t *session, xmms_medialib_entry_t entry, GList *goal_formats, gboolean rehash)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01379">xform.c:1379</a></div></div>
 <div class="ttc" id="group__XForm_html_ga82fb8d765defb1098dd1099da70a6ba9"><div class="ttname"><a href="group__XForm.html#ga82fb8d765defb1098dd1099da70a6ba9">xmms_xform_get_url</a></div><div class="ttdeci">const gchar * xmms_xform_get_url(xmms_xform_t *xform)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01095">xform.c:1095</a></div></div>
 <div class="ttc" id="group__XForm_html_ga62b1b93567eaffae4dba7a18d7937ecf"><div class="ttname"><a href="group__XForm.html#ga62b1b93567eaffae4dba7a18d7937ecf">xmms_xform_seek</a></div><div class="ttdeci">gint64 xmms_xform_seek(xmms_xform_t *xform, gint64 offset, xmms_xform_seek_mode_t whence, xmms_error_t *err)</div><div class="ttdoc">Change offset in stream. </div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01087">xform.c:1087</a></div></div>
 <div class="ttc" id="group__ValueType_html_ga9bad0c6c3d0153ebc4c8cdfbbfe2bd5e"><div class="ttname"><a href="group__ValueType.html#ga9bad0c6c3d0153ebc4c8cdfbbfe2bd5e">xmmsv_get_type</a></div><div class="ttdeci">xmmsv_type_t xmmsv_get_type(const xmmsv_t *val)</div><div class="ttdoc">Get the type of the value. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00270">xmmsv_general.c:270</a></div></div>
@@ -1669,7 +1676,7 @@
 <div class="ttc" id="group__XForm_html_ga5a6c576751ce91042f56e0c68b51b9a8"><div class="ttname"><a href="group__XForm.html#ga5a6c576751ce91042f56e0c68b51b9a8">xmms_xform_entry_get</a></div><div class="ttdeci">xmms_medialib_entry_t xmms_xform_entry_get(xmms_xform_t *xform)</div><div class="ttdoc">Get the medialib entry played by this xform. </div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00391">xform.c:391</a></div></div>
 <div class="ttc" id="xmms_2xmms__medialib_8h_html_a41a5401c5cb59e849b880d50d1309284"><div class="ttname"><a href="xmms_2xmms__medialib_8h.html#a41a5401c5cb59e849b880d50d1309284">XMMS_MEDIALIB_ENTRY_PROPERTY_LASTSTARTED</a></div><div class="ttdeci">#define XMMS_MEDIALIB_ENTRY_PROPERTY_LASTSTARTED</div><div class="ttdef"><b>Definition:</b> <a href="xmms_2xmms__medialib_8h_source.html#l00064">xmms_medialib.h:64</a></div></div>
 <div class="ttc" id="group__ListType_html_ga752ae0813c87945f608d28d8feea4be5"><div class="ttname"><a href="group__ListType.html#ga752ae0813c87945f608d28d8feea4be5">xmmsv_list_sort</a></div><div class="ttdeci">int xmmsv_list_sort(xmmsv_t *listv, xmmsv_list_compare_func_t comparator)</div><div class="ttdoc">Sort the list using the supplied comparator. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8c_source.html#l00482">xmmsv_list.c:482</a></div></div>
-<div class="ttc" id="group__XForm_html_ga448ac762f0fb3c012a2c4d393ee5a1a2"><div class="ttname"><a href="group__XForm.html#ga448ac762f0fb3c012a2c4d393ee5a1a2">xmms_xform_config_lookup</a></div><div class="ttdeci">xmms_config_property_t * xmms_xform_config_lookup(xmms_xform_t *xform, const gchar *path)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01461">xform.c:1461</a></div></div>
+<div class="ttc" id="group__XForm_html_ga448ac762f0fb3c012a2c4d393ee5a1a2"><div class="ttname"><a href="group__XForm.html#ga448ac762f0fb3c012a2c4d393ee5a1a2">xmms_xform_config_lookup</a></div><div class="ttdeci">xmms_config_property_t * xmms_xform_config_lookup(xmms_xform_t *xform, const gchar *path)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01468">xform.c:1468</a></div></div>
 <div class="ttc" id="object_8c_html_adcfa53efb0ebce875faeeee1410f05d1"><div class="ttname"><a href="object_8c.html#adcfa53efb0ebce875faeeee1410f05d1">xmms_object_ref</a></div><div class="ttdeci">gpointer xmms_object_ref(gpointer obj)</div><div class="ttdef"><b>Definition:</b> <a href="object_8c_source.html#l00330">object.c:330</a></div></div>
 <div class="ttc" id="xform__plugin_8c_html_abe2c1a83ff629228acc9deb04dcb099b"><div class="ttname"><a href="xform__plugin_8c.html#abe2c1a83ff629228acc9deb04dcb099b">xmms_xform_plugin_seek</a></div><div class="ttdeci">gint64 xmms_xform_plugin_seek(const xmms_xform_plugin_t *plugin, xmms_xform_t *xform, gint64 offset, xmms_xform_seek_mode_t whence, xmms_error_t *err)</div><div class="ttdef"><b>Definition:</b> <a href="xform__plugin_8c_source.html#l00262">xform_plugin.c:262</a></div></div>
 <div class="ttc" id="xform_8c_html_ae823c8ef90ab3dc8579875defcd04817"><div class="ttname"><a href="xform_8c.html#ae823c8ef90ab3dc8579875defcd04817">xmms_xform_this_seek</a></div><div class="ttdeci">gint64 xmms_xform_this_seek(xmms_xform_t *xform, gint64 offset, xmms_xform_seek_mode_t whence, xmms_error_t *err)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00988">xform.c:988</a></div></div>
@@ -1722,7 +1729,7 @@
 <div class="ttc" id="xform_8c_html_ac94e9f6caecf1f402cd299c15b9d900f"><div class="ttname"><a href="xform_8c.html#ac94e9f6caecf1f402cd299c15b9d900f">match_state_t</a></div><div class="ttdeci">struct match_state_St match_state_t</div></div>
 <div class="ttc" id="t__transactions_8c_html_a001684f6391353afb79f347f5ab86f87"><div class="ttname"><a href="t__transactions_8c.html#a001684f6391353afb79f347f5ab86f87">val</a></div><div class="ttdeci">s4_val_t * val</div><div class="ttdef"><b>Definition:</b> <a href="t__transactions_8c_source.html#l00023">t_transactions.c:23</a></div></div>
 <div class="ttc" id="riv_2xmmspriv_2xmms__medialib_8h_html_a32bf33a8b926c9f66f13edf91045a7ad"><div class="ttname"><a href="riv_2xmmspriv_2xmms__medialib_8h.html#a32bf33a8b926c9f66f13edf91045a7ad">xmms_medialib_session_t</a></div><div class="ttdeci">struct xmms_medialib_session_St xmms_medialib_session_t</div><div class="ttdef"><b>Definition:</b> <a href="riv_2xmmspriv_2xmms__medialib_8h_source.html#l00026">xmms_medialib.h:26</a></div></div>
-<div class="ttc" id="xform_8c_html_a64ce30eba892d1eff08f92a3bbd6f47e"><div class="ttname"><a href="xform_8c.html#a64ce30eba892d1eff08f92a3bbd6f47e">xmms_xform_chain_setup</a></div><div class="ttdeci">xmms_xform_t * xmms_xform_chain_setup(xmms_medialib_t *medialib, xmms_medialib_entry_t entry, GList *goal_formats, gboolean rehash)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01355">xform.c:1355</a></div></div>
+<div class="ttc" id="xform_8c_html_a64ce30eba892d1eff08f92a3bbd6f47e"><div class="ttname"><a href="xform_8c.html#a64ce30eba892d1eff08f92a3bbd6f47e">xmms_xform_chain_setup</a></div><div class="ttdeci">xmms_xform_t * xmms_xform_chain_setup(xmms_medialib_t *medialib, xmms_medialib_entry_t entry, GList *goal_formats, gboolean rehash)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l01362">xform.c:1362</a></div></div>
 <div class="ttc" id="xform_8c_html_a3c50842917955a8fec2636bfba6e0d11"><div class="ttname"><a href="xform_8c.html#a3c50842917955a8fec2636bfba6e0d11">xmms_xform_shortname</a></div><div class="ttdeci">const char * xmms_xform_shortname(xmms_xform_t *xform)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00832">xform.c:832</a></div></div>
 <div class="ttc" id="xmms_2xmms__medialib_8h_html_ac9f232fef70f8681cad1dabfe96cd5c8"><div class="ttname"><a href="xmms_2xmms__medialib_8h.html#ac9f232fef70f8681cad1dabfe96cd5c8">XMMS_MEDIALIB_ENTRY_PROPERTY_URL</a></div><div class="ttdeci">#define XMMS_MEDIALIB_ENTRY_PROPERTY_URL</div><div class="ttdef"><b>Definition:</b> <a href="xmms_2xmms__medialib_8h_source.html#l00029">xmms_medialib.h:29</a></div></div>
 <div class="ttc" id="group__XForm_html_ga65f4b7c934ab525fc29f14b81ac06391"><div class="ttname"><a href="group__XForm.html#ga65f4b7c934ab525fc29f14b81ac06391">xmms_xform_browse_add_entry</a></div><div class="ttdeci">void xmms_xform_browse_add_entry(xmms_xform_t *xform, const gchar *filename, guint32 flags)</div><div class="ttdef"><b>Definition:</b> <a href="xform_8c_source.html#l00169">xform.c:169</a></div></div>
