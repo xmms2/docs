@@ -97,6 +97,12 @@ Functions</h2></td></tr>
 <tr class="separator:ga6bcef93778e1307b129647e69f8c876c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9a2578933ab5ffbd382c3e848ed90c16"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DictType.html#ga9a2578933ab5ffbd382c3e848ed90c16">xmmsv_dict_has_key</a> (<a class="el" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> *dictv, const char *key)</td></tr>
 <tr class="separator:ga9a2578933ab5ffbd382c3e848ed90c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga93ba57957691941ee5bc792dfce2348d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DictType.html#ga93ba57957691941ee5bc792dfce2348d">xmmsv_dict_keys</a> (<a class="el" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> *dictv, <a class="el" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> **keys)</td></tr>
+<tr class="memdesc:ga93ba57957691941ee5bc792dfce2348d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a <a class="el" href="group__ValueType.html#gga8c7f0155bcf4baac5703b5ddaccfbfdcad5437bb2c773e3a1e5ae680e0a687efc">XMMSV_TYPE_LIST</a> of all the keys.  <a href="group__DictType.html#ga93ba57957691941ee5bc792dfce2348d">More...</a><br/></td></tr>
+<tr class="separator:ga93ba57957691941ee5bc792dfce2348d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91577503bfb230a6a542a0a2bcca1400"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DictType.html#ga91577503bfb230a6a542a0a2bcca1400">xmmsv_dict_values</a> (<a class="el" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> *dictv, <a class="el" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> **values)</td></tr>
+<tr class="memdesc:ga91577503bfb230a6a542a0a2bcca1400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a <a class="el" href="group__ValueType.html#gga8c7f0155bcf4baac5703b5ddaccfbfdcad5437bb2c773e3a1e5ae680e0a687efc">XMMSV_TYPE_LIST</a> of all the values.  <a href="group__DictType.html#ga91577503bfb230a6a542a0a2bcca1400">More...</a><br/></td></tr>
+<tr class="separator:ga91577503bfb230a6a542a0a2bcca1400"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadd8fa7823ec06bb9dcad24eae4eb3587"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ValueType.html#ga8c7f0155bcf4baac5703b5ddaccfbfdc">xmmsv_type_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DictType.html#gadd8fa7823ec06bb9dcad24eae4eb3587">xmmsv_dict_entry_get_type</a> (<a class="el" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> *<a class="el" href="t__transactions_8c.html#a001684f6391353afb79f347f5ab86f87">val</a>, const char *key)</td></tr>
 <tr class="memdesc:gadd8fa7823ec06bb9dcad24eae4eb3587"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of a dict entry.  <a href="group__DictType.html#gadd8fa7823ec06bb9dcad24eae4eb3587">More...</a><br/></td></tr>
 <tr class="separator:gadd8fa7823ec06bb9dcad24eae4eb3587"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,7 +201,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00046">46</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
 
-<p>Referenced by <a class="el" href="xmmsv__dict_8c_source.html#l00233">_xmmsv_dict_free()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00416">xmmsv_dict_clear()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00311">xmmsv_dict_get()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00609">xmmsv_dict_iter_first()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00626">xmmsv_dict_iter_next()</a>, and <a class="el" href="xmmsv__dict_8c_source.html#l00595">xmmsv_dict_iter_valid()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsv__dict_8c_source.html#l00233">_xmmsv_dict_free()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00471">xmmsv_dict_clear()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00366">xmmsv_dict_get()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00664">xmmsv_dict_iter_first()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00681">xmmsv_dict_iter_next()</a>, and <a class="el" href="xmmsv__dict_8c_source.html#l00650">xmmsv_dict_iter_valid()</a>.</p>
 
 </div>
 </div>
@@ -215,7 +221,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00047">47</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
 
-<p>Referenced by <a class="el" href="xmmsv__dict_8c_source.html#l00311">xmmsv_dict_get()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00387">xmmsv_dict_remove()</a>, and <a class="el" href="xmmsv__dict_8c_source.html#l00354">xmmsv_dict_set()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsv__dict_8c_source.html#l00366">xmmsv_dict_get()</a>, <a class="el" href="xmmsv__dict_8c_source.html#l00442">xmmsv_dict_remove()</a>, and <a class="el" href="xmmsv__dict_8c_source.html#l00409">xmmsv_dict_set()</a>.</p>
 
 </div>
 </div>
@@ -253,10 +259,10 @@ Functions</h2></td></tr>
 <div class="line">        return xmmsv_get_##<span class="keyword">typename</span> (v, r); \</div>
 <div class="line">    }</div>
 <div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__DictType_html_ga6d1a8261a5dee71d9f0dad78616e3bde"><div class="ttname"><a href="group__DictType.html#ga6d1a8261a5dee71d9f0dad78616e3bde">xmmsv_dict_get</a></div><div class="ttdeci">int xmmsv_dict_get(xmmsv_t *dictv, const char *key, xmmsv_t **val)</div><div class="ttdoc">Get the element corresponding to the given key in the dict xmmsv_t (if it exists). </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00311">xmmsv_dict.c:311</a></div></div>
+<div class="ttc" id="group__DictType_html_ga6d1a8261a5dee71d9f0dad78616e3bde"><div class="ttname"><a href="group__DictType.html#ga6d1a8261a5dee71d9f0dad78616e3bde">xmmsv_dict_get</a></div><div class="ttdeci">int xmmsv_dict_get(xmmsv_t *dictv, const char *key, xmmsv_t **val)</div><div class="ttdoc">Get the element corresponding to the given key in the dict xmmsv_t (if it exists). </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00366">xmmsv_dict.c:366</a></div></div>
 <div class="ttc" id="t__transactions_8c_html_a001684f6391353afb79f347f5ab86f87"><div class="ttname"><a href="t__transactions_8c.html#a001684f6391353afb79f347f5ab86f87">val</a></div><div class="ttdeci">s4_val_t * val</div><div class="ttdef"><b>Definition:</b> <a href="t__transactions_8c_source.html#l00023">t_transactions.c:23</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00705">705</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
+<p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00760">760</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
 
 </div>
 </div>
@@ -299,10 +305,10 @@ Functions</h2></td></tr>
 <div class="line">        } \</div>
 <div class="line">    }</div>
 <div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__DictIterType_html_ga5b9ca2e30f1344a88a27ce3384011ea4"><div class="ttname"><a href="group__DictIterType.html#ga5b9ca2e30f1344a88a27ce3384011ea4">xmmsv_dict_iter_pair</a></div><div class="ttdeci">int xmmsv_dict_iter_pair(xmmsv_dict_iter_t *it, const char **key, xmmsv_t **val)</div><div class="ttdoc">Get the key-element pair currently pointed at by the iterator. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00570">xmmsv_dict.c:570</a></div></div>
-<div class="ttc" id="group__DictIterType_html_ga3d8b55bd9d0562cbb168336a276e99c4"><div class="ttname"><a href="group__DictIterType.html#ga3d8b55bd9d0562cbb168336a276e99c4">xmmsv_dict_iter_t</a></div><div class="ttdeci">struct xmmsv_dict_iter_St xmmsv_dict_iter_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8h_source.html#l00062">xmmsv_dict.h:62</a></div></div>
+<div class="ttc" id="group__DictIterType_html_ga5b9ca2e30f1344a88a27ce3384011ea4"><div class="ttname"><a href="group__DictIterType.html#ga5b9ca2e30f1344a88a27ce3384011ea4">xmmsv_dict_iter_pair</a></div><div class="ttdeci">int xmmsv_dict_iter_pair(xmmsv_dict_iter_t *it, const char **key, xmmsv_t **val)</div><div class="ttdoc">Get the key-element pair currently pointed at by the iterator. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00625">xmmsv_dict.c:625</a></div></div>
+<div class="ttc" id="group__DictIterType_html_ga3d8b55bd9d0562cbb168336a276e99c4"><div class="ttname"><a href="group__DictIterType.html#ga3d8b55bd9d0562cbb168336a276e99c4">xmmsv_dict_iter_t</a></div><div class="ttdeci">struct xmmsv_dict_iter_St xmmsv_dict_iter_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8h_source.html#l00065">xmmsv_dict.h:65</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00754">754</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
+<p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00809">809</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
 
 </div>
 </div>
@@ -343,10 +349,10 @@ Functions</h2></td></tr>
 <div class="line">    }</div>
 <div class="ttc" id="group__ValueType_html_ga04ec0c0dbf3b697e43b956409b138108"><div class="ttname"><a href="group__ValueType.html#ga04ec0c0dbf3b697e43b956409b138108">xmmsv_unref</a></div><div class="ttdeci">void xmmsv_unref(xmmsv_t *val)</div><div class="ttdoc">Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00252">xmmsv_general.c:252</a></div></div>
 <div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__DictIterType_html_ga5a07665b13ecdde4fab7dd3df75b993b"><div class="ttname"><a href="group__DictIterType.html#ga5a07665b13ecdde4fab7dd3df75b993b">xmmsv_dict_iter_set</a></div><div class="ttdeci">int xmmsv_dict_iter_set(xmmsv_dict_iter_t *it, xmmsv_t *val)</div><div class="ttdoc">Replace the element of the pair currently pointed to by the iterator. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00674">xmmsv_dict.c:674</a></div></div>
-<div class="ttc" id="group__DictIterType_html_ga3d8b55bd9d0562cbb168336a276e99c4"><div class="ttname"><a href="group__DictIterType.html#ga3d8b55bd9d0562cbb168336a276e99c4">xmmsv_dict_iter_t</a></div><div class="ttdeci">struct xmmsv_dict_iter_St xmmsv_dict_iter_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8h_source.html#l00062">xmmsv_dict.h:62</a></div></div>
+<div class="ttc" id="group__DictIterType_html_ga5a07665b13ecdde4fab7dd3df75b993b"><div class="ttname"><a href="group__DictIterType.html#ga5a07665b13ecdde4fab7dd3df75b993b">xmmsv_dict_iter_set</a></div><div class="ttdeci">int xmmsv_dict_iter_set(xmmsv_dict_iter_t *it, xmmsv_t *val)</div><div class="ttdoc">Replace the element of the pair currently pointed to by the iterator. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00729">xmmsv_dict.c:729</a></div></div>
+<div class="ttc" id="group__DictIterType_html_ga3d8b55bd9d0562cbb168336a276e99c4"><div class="ttname"><a href="group__DictIterType.html#ga3d8b55bd9d0562cbb168336a276e99c4">xmmsv_dict_iter_t</a></div><div class="ttdeci">struct xmmsv_dict_iter_St xmmsv_dict_iter_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8h_source.html#l00065">xmmsv_dict.h:65</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00783">783</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
+<p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00838">838</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
 
 </div>
 </div>
@@ -385,11 +391,11 @@ Functions</h2></td></tr>
 <div class="line">      \</div>
 <div class="line">            return ret; \</div>
 <div class="line">    }</div>
-<div class="ttc" id="group__DictType_html_ga0cc44a1caa07b5a367a6589f908d63c4"><div class="ttname"><a href="group__DictType.html#ga0cc44a1caa07b5a367a6589f908d63c4">xmmsv_dict_set</a></div><div class="ttdeci">int xmmsv_dict_set(xmmsv_t *dictv, const char *key, xmmsv_t *val)</div><div class="ttdoc">Insert an element under the given key in the dict xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00354">xmmsv_dict.c:354</a></div></div>
+<div class="ttc" id="group__DictType_html_ga0cc44a1caa07b5a367a6589f908d63c4"><div class="ttname"><a href="group__DictType.html#ga0cc44a1caa07b5a367a6589f908d63c4">xmmsv_dict_set</a></div><div class="ttdeci">int xmmsv_dict_set(xmmsv_t *dictv, const char *key, xmmsv_t *val)</div><div class="ttdoc">Insert an element under the given key in the dict xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__dict_8c_source.html#l00409">xmmsv_dict.c:409</a></div></div>
 <div class="ttc" id="group__ValueType_html_ga04ec0c0dbf3b697e43b956409b138108"><div class="ttname"><a href="group__ValueType.html#ga04ec0c0dbf3b697e43b956409b138108">xmmsv_unref</a></div><div class="ttdeci">void xmmsv_unref(xmmsv_t *val)</div><div class="ttdoc">Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00252">xmmsv_general.c:252</a></div></div>
 <div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00729">729</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
+<p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00784">784</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
 
 </div>
 </div>
@@ -405,7 +411,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="xmmsv__dict_8c_source.html#l00045">45</a> of file <a class="el" href="xmmsv__dict_8c_source.html">xmmsv_dict.c</a>.</p>
 
-<p>Referenced by <a class="el" href="xmmsv__dict_8c_source.html#l00354">xmmsv_dict_set()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsv__dict_8c_source.html#l00409">xmmsv_dict_set()</a>.</p>
 
 </div>
 </div>

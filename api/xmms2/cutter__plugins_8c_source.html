@@ -158,17 +158,17 @@
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        stopms = (gint) strtol (nptr, &amp;endptr, 10);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">if</span> (*endptr != <span class="charliteral">&#39;\0&#39;</span>) {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <a class="code" href="xmms_2xmms__log_8h.html#a5977ae5d2a6fdfb22dcb475eb6d247f1">xmms_log_info</a> (<span class="stringliteral">&quot;\&quot;stopms\&quot; has garbage, ignoring&quot;</span>);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            stopms = G_MAXINT32;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            stopms = INT_MAX;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        stopms = G_MAXINT32;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        stopms = INT_MAX;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">/* some calculation */</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    intype = <a class="code" href="xform_8c.html#afb4786dcb2dbf78417baa5da6888fbe7">xmms_xform_intype_get</a> (xform);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    startbytes = <a class="code" href="sample_8c.html#aebbb98f0307e09c756ad819e7396cb83">xmms_sample_ms_to_bytes</a> (intype, startms);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (stopms == G_MAXINT32) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (stopms == INT_MAX) {</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        stopbytes = G_MAXINT64;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        stopbytes = <a class="code" href="sample_8c.html#aebbb98f0307e09c756ad819e7396cb83">xmms_sample_ms_to_bytes</a> (intype, stopms);</div>

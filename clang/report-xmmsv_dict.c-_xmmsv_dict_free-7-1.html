@@ -368,530 +368,585 @@
 <tr><td class="num" id="LN278">278</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN279">279</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN280">280</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN281">281</td><td class="line"> <span class='comment'>* Gets the type of a dict entry.</span></td></tr>
+<tr><td class="num" id="LN281">281</td><td class="line"> <span class='comment'>* Get a #XMMSV_TYPE_LIST of all the keys.</span></td></tr>
 <tr><td class="num" id="LN282">282</td><td class="line"> <span class='comment'>*</span></td></tr>
 <tr><td class="num" id="LN283">283</td><td class="line"> <span class='comment'>* @param val A xmmsv_t containing a dict.</span></td></tr>
-<tr><td class="num" id="LN284">284</td><td class="line"> <span class='comment'>* @param key The key in the dict.</span></td></tr>
-<tr><td class="num" id="LN285">285</td><td class="line"> <span class='comment'>* @return The type of the entry or #XMMSV_TYPE_NONE if something goes wrong.</span></td></tr>
-<tr><td class="num" id="LN286">286</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN287">287</td><td class="line">xmmsv_type_t</td></tr>
-<tr><td class="num" id="LN288">288</td><td class="line">xmmsv_dict_entry_get_type (xmmsv_t *val, <span class='keyword'>const</span> <span class='keyword'>char</span> *key)</td></tr>
+<tr><td class="num" id="LN284">284</td><td class="line"> <span class='comment'>* @param keys Pointer that will own the reference</span></td></tr>
+<tr><td class="num" id="LN285">285</td><td class="line"> <span class='comment'>*             to the new list containing the dict keys.</span></td></tr>
+<tr><td class="num" id="LN286">286</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN287">287</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN288">288</td><td class="line"><span class='keyword'>int</span> xmmsv_dict_keys (xmmsv_t *dictv, xmmsv_t **keys)</td></tr>
 <tr><td class="num" id="LN289">289</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN290">290</td><td class="line">	xmmsv_t *v;</td></tr>
-<tr><td class="num" id="LN291">291</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN292">292</td><td class="line">	<span class='keyword'>if</span> (!xmmsv_dict_get (val, key, &amp;v)) {</td></tr>
-<tr><td class="num" id="LN293">293</td><td class="line">		<span class='keyword'>return</span> XMMSV_TYPE_NONE;</td></tr>
-<tr><td class="num" id="LN294">294</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN290">290</td><td class="line">	xmmsv_dict_iter_t *it;</td></tr>
+<tr><td class="num" id="LN291">291</td><td class="line">	<span class='keyword'>const</span> <span class='keyword'>char</span> *key;</td></tr>
+<tr><td class="num" id="LN292">292</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN293">293</td><td class="line">	<span class='macro'>x_return_val_if_fail (keys, 0)<span class='expansion'>if (!(keys)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "keys", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 293); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN294">294</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_get_dict_iter (dictv, &amp;it), 0)<span class='expansion'>if (!(xmmsv_get_dict_iter (dictv, &amp;it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_get_dict_iter (dictv, &amp;it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 294); return<br> (0); }</span></span>;</td></tr>
 <tr><td class="num" id="LN295">295</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN296">296</td><td class="line">	<span class='keyword'>return</span> xmmsv_get_type (v);</td></tr>
-<tr><td class="num" id="LN297">297</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN298">298</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN299">299</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN300">300</td><td class="line"> <span class='comment'>* Get the element corresponding to the given key in the dict #xmmsv_t</span></td></tr>
-<tr><td class="num" id="LN301">301</td><td class="line"> <span class='comment'>* (if it exists).  This function does not increase the refcount of</span></td></tr>
-<tr><td class="num" id="LN302">302</td><td class="line"> <span class='comment'>* the element, the reference is still owned by the dict.</span></td></tr>
-<tr><td class="num" id="LN303">303</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN304">304</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
-<tr><td class="num" id="LN305">305</td><td class="line"> <span class='comment'>* @param key The key in the dict.</span></td></tr>
-<tr><td class="num" id="LN306">306</td><td class="line"> <span class='comment'>* @param val Pointer set to a borrowed reference to the element</span></td></tr>
-<tr><td class="num" id="LN307">307</td><td class="line"> <span class='comment'>*            corresponding to the given key in the dict.</span></td></tr>
-<tr><td class="num" id="LN308">308</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN309">309</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN310">310</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN311">311</td><td class="line">xmmsv_dict_get (xmmsv_t *dictv, <span class='keyword'>const</span> <span class='keyword'>char</span> *key, xmmsv_t **val)</td></tr>
-<tr><td class="num" id="LN312">312</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN313">313</td><td class="line">	xmmsv_dict_internal_t *dict;</td></tr>
-<tr><td class="num" id="LN314">314</td><td class="line">	<span class='keyword'>int</span> ret = 0;</td></tr>
-<tr><td class="num" id="LN315">315</td><td class="line">	<span class='keyword'>int</span> pos, deleted;</td></tr>
-<tr><td class="num" id="LN316">316</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN317">317</td><td class="line">	<span class='macro'>x_return_val_if_fail (key, 0)<span class='expansion'>if (!(key)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "key", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 317); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN318">318</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 318); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN319">319</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 319); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN296">296</td><td class="line">	*keys = xmmsv_new_list ();</td></tr>
+<tr><td class="num" id="LN297">297</td><td class="line">	xmmsv_list_restrict_type (*keys, XMMSV_TYPE_STRING);</td></tr>
+<tr><td class="num" id="LN298">298</td><td class="line">	<span class='keyword'>while</span> (xmmsv_dict_iter_pair (it, &amp;key, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>)) {</td></tr>
+<tr><td class="num" id="LN299">299</td><td class="line">		xmmsv_list_append_string (*keys, key);</td></tr>
+<tr><td class="num" id="LN300">300</td><td class="line">		xmmsv_dict_iter_next (it);</td></tr>
+<tr><td class="num" id="LN301">301</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN302">302</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN303">303</td><td class="line">	xmmsv_dict_iter_explicit_destroy (it);</td></tr>
+<tr><td class="num" id="LN304">304</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN305">305</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN306">306</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN307">307</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN308">308</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN309">309</td><td class="line"> <span class='comment'>* Get a #XMMSV_TYPE_LIST of all the values.</span></td></tr>
+<tr><td class="num" id="LN310">310</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN311">311</td><td class="line"> <span class='comment'>* @param val A xmmsv_t containing a dict.</span></td></tr>
+<tr><td class="num" id="LN312">312</td><td class="line"> <span class='comment'>* @param keys Pointer that will own the reference</span></td></tr>
+<tr><td class="num" id="LN313">313</td><td class="line"> <span class='comment'>*             to the new list containing the dict values.</span></td></tr>
+<tr><td class="num" id="LN314">314</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN315">315</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN316">316</td><td class="line"><span class='keyword'>int</span> xmmsv_dict_values (xmmsv_t *dictv, xmmsv_t **values)</td></tr>
+<tr><td class="num" id="LN317">317</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN318">318</td><td class="line">	xmmsv_dict_iter_t *it;</td></tr>
+<tr><td class="num" id="LN319">319</td><td class="line">	xmmsv_t *value;</td></tr>
 <tr><td class="num" id="LN320">320</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN321">321</td><td class="line">	xmmsv_dict_data_t data = <span class='macro'>DICT_INIT_DATA (key)<span class='expansion'>{.hash = _xmmsv_dict_hash (key, strlen (key)), .str = (char*)<br>key}</span></span>;</td></tr>
-<tr><td class="num" id="LN322">322</td><td class="line">	dict = dictv-&gt;value.dict;</td></tr>
+<tr><td class="num" id="LN321">321</td><td class="line">	<span class='macro'>x_return_val_if_fail (values, 0)<span class='expansion'>if (!(values)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "values", __FUNCTION__,<br> "../src/lib/xmmstypes/xmmsv_dict.c", 321); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN322">322</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_get_dict_iter (dictv, &amp;it), 0)<span class='expansion'>if (!(xmmsv_get_dict_iter (dictv, &amp;it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_get_dict_iter (dictv, &amp;it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 322); return<br> (0); }</span></span>;</td></tr>
 <tr><td class="num" id="LN323">323</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN324">324</td><td class="line">	<span class='keyword'>if</span> (_xmmsv_dict_search (dict, data, &amp;pos, &amp;deleted)) {</td></tr>
-<tr><td class="num" id="LN325">325</td><td class="line">		<span class='comment'>/* If there was a deleted entry before the one we found</span></td></tr>
-<tr><td class="num" id="LN326">326</td><td class="line">		 <span class='comment'>* we can optimize a little by moving the entry to the</span></td></tr>
-<tr><td class="num" id="LN327">327</td><td class="line">		 <span class='comment'>* deleted slot (and thus closer to the actual bucket it</span></td></tr>
-<tr><td class="num" id="LN328">328</td><td class="line">		 <span class='comment'>* belongs to)</span></td></tr>
-<tr><td class="num" id="LN329">329</td><td class="line">		 <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN330">330</td><td class="line">		<span class='keyword'>if</span> (deleted != -1) {</td></tr>
-<tr><td class="num" id="LN331">331</td><td class="line">			dict-&gt;data[deleted] = dict-&gt;data[pos];</td></tr>
-<tr><td class="num" id="LN332">332</td><td class="line">			dict-&gt;data[pos].str = <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>;</td></tr>
-<tr><td class="num" id="LN333">333</td><td class="line">		}</td></tr>
-<tr><td class="num" id="LN334">334</td><td class="line">		<span class='keyword'>if</span> (val != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
-<tr><td class="num" id="LN335">335</td><td class="line">			*val = dict-&gt;data[pos].value;</td></tr>
-<tr><td class="num" id="LN336">336</td><td class="line">		}</td></tr>
-<tr><td class="num" id="LN337">337</td><td class="line">		ret = 1;</td></tr>
-<tr><td class="num" id="LN338">338</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN339">339</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN340">340</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN341">341</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN342">342</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN343">343</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN344">344</td><td class="line"> <span class='comment'>* Insert an element under the given key in the dict #xmmsv_t. If the</span></td></tr>
-<tr><td class="num" id="LN345">345</td><td class="line"> <span class='comment'>* key already referenced an element, that element is unref'd and</span></td></tr>
-<tr><td class="num" id="LN346">346</td><td class="line"> <span class='comment'>* replaced by the new one.</span></td></tr>
-<tr><td class="num" id="LN347">347</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN348">348</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
-<tr><td class="num" id="LN349">349</td><td class="line"> <span class='comment'>* @param key The key in the dict.</span></td></tr>
-<tr><td class="num" id="LN350">350</td><td class="line"> <span class='comment'>* @param val The new element to insert in the dict.</span></td></tr>
-<tr><td class="num" id="LN351">351</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN352">352</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN353">353</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN354">354</td><td class="line">xmmsv_dict_set (xmmsv_t *dictv, <span class='keyword'>const</span> <span class='keyword'>char</span> *key, xmmsv_t *val)</td></tr>
-<tr><td class="num" id="LN355">355</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN356">356</td><td class="line">	xmmsv_dict_internal_t *dict;</td></tr>
-<tr><td class="num" id="LN357">357</td><td class="line">	<span class='keyword'>int</span> ret = 1;</td></tr>
-<tr><td class="num" id="LN358">358</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN359">359</td><td class="line">	<span class='macro'>x_return_val_if_fail (key, 0)<span class='expansion'>if (!(key)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "key", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 359); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN360">360</td><td class="line">	<span class='macro'>x_return_val_if_fail (val, 0)<span class='expansion'>if (!(val)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "val", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 360); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN361">361</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 361); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN362">362</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 362); return<br> (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN363">363</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN364">364</td><td class="line">	xmmsv_dict_data_t data = <span class='macro'>DICT_INIT_DATA (key)<span class='expansion'>{.hash = _xmmsv_dict_hash (key, strlen (key)), .str = (char*)<br>key}</span></span>;</td></tr>
-<tr><td class="num" id="LN365">365</td><td class="line">	data.value = xmmsv_ref (val);</td></tr>
-<tr><td class="num" id="LN366">366</td><td class="line">	dict = dictv-&gt;value.dict;</td></tr>
-<tr><td class="num" id="LN367">367</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN368">368</td><td class="line">	<span class='comment'>/* Resize if fill is too high */</span></td></tr>
-<tr><td class="num" id="LN369">369</td><td class="line">	<span class='keyword'>if</span> (((dict-&gt;elems * 10) &gt;&gt; dict-&gt;size) &gt; <span class='macro'>HASH_FILL_LIM<span class='expansion'>7</span></span>) {</td></tr>
-<tr><td class="num" id="LN370">370</td><td class="line">		_xmmsv_dict_resize (dict);</td></tr>
-<tr><td class="num" id="LN371">371</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN372">372</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN373">373</td><td class="line">	_xmmsv_dict_insert (dict, data, 1);</td></tr>
-<tr><td class="num" id="LN374">374</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN375">375</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN376">376</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN377">377</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN378">378</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN379">379</td><td class="line"> <span class='comment'>* Remove the element corresponding to a given key in the dict</span></td></tr>
-<tr><td class="num" id="LN380">380</td><td class="line"> <span class='comment'>* #xmmsv_t (if it exists).</span></td></tr>
-<tr><td class="num" id="LN381">381</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN382">382</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
-<tr><td class="num" id="LN383">383</td><td class="line"> <span class='comment'>* @param key The key in the dict.</span></td></tr>
-<tr><td class="num" id="LN384">384</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN385">385</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN386">386</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN387">387</td><td class="line">xmmsv_dict_remove (xmmsv_t *dictv, <span class='keyword'>const</span> <span class='keyword'>char</span> *key)</td></tr>
-<tr><td class="num" id="LN388">388</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN389">389</td><td class="line">	xmmsv_dict_internal_t *dict;</td></tr>
-<tr><td class="num" id="LN390">390</td><td class="line">	<span class='keyword'>int</span> pos, deleted;</td></tr>
-<tr><td class="num" id="LN391">391</td><td class="line">	<span class='keyword'>int</span> ret = 0;</td></tr>
-<tr><td class="num" id="LN392">392</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN393">393</td><td class="line">	<span class='macro'>x_return_val_if_fail (key, 0)<span class='expansion'>if (!(key)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "key", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 393); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN394">394</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 394); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN395">395</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 395); return<br> (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN396">396</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN397">397</td><td class="line">	xmmsv_dict_data_t data = <span class='macro'>DICT_INIT_DATA (key)<span class='expansion'>{.hash = _xmmsv_dict_hash (key, strlen (key)), .str = (char*)<br>key}</span></span>;</td></tr>
-<tr><td class="num" id="LN398">398</td><td class="line">	dict = dictv-&gt;value.dict;</td></tr>
-<tr><td class="num" id="LN399">399</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN400">400</td><td class="line">	<span class='comment'>/* If we find the entry we free the string and mark it as deleted */</span></td></tr>
-<tr><td class="num" id="LN401">401</td><td class="line">	<span class='keyword'>if</span> (_xmmsv_dict_search (dict, data, &amp;pos, &amp;deleted)) {</td></tr>
-<tr><td class="num" id="LN402">402</td><td class="line">		_xmmsv_dict_remove (dict, pos);</td></tr>
-<tr><td class="num" id="LN403">403</td><td class="line">		ret = 1;</td></tr>
-<tr><td class="num" id="LN404">404</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN405">405</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN406">406</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN407">407</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN408">408</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN409">409</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN410">410</td><td class="line"> <span class='comment'>* Empty the dict of all its elements.</span></td></tr>
-<tr><td class="num" id="LN411">411</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN412">412</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
-<tr><td class="num" id="LN413">413</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN414">414</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN415">415</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN416">416</td><td class="line">xmmsv_dict_clear (xmmsv_t *dictv)</td></tr>
-<tr><td class="num" id="LN417">417</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN418">418</td><td class="line">	<span class='keyword'>int</span> i;</td></tr>
-<tr><td class="num" id="LN419">419</td><td class="line">	xmmsv_dict_internal_t *dict;</td></tr>
-<tr><td class="num" id="LN420">420</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN421">421</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 421); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN422">422</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 422); return<br> (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN423">423</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN424">424</td><td class="line">	dict = dictv-&gt;value.dict;</td></tr>
-<tr><td class="num" id="LN425">425</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN426">426</td><td class="line">	<span class='keyword'>for</span> (i = (1 &lt;&lt; dict-&gt;size) - 1; i &gt;= 0; i--) {</td></tr>
-<tr><td class="num" id="LN427">427</td><td class="line">		<span class='keyword'>if</span> (dict-&gt;data[i].str != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
-<tr><td class="num" id="LN428">428</td><td class="line">			<span class='keyword'>if</span> (dict-&gt;data[i].str != <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>) {</td></tr>
-<tr><td class="num" id="LN429">429</td><td class="line">				free (dict-&gt;data[i].str);</td></tr>
-<tr><td class="num" id="LN430">430</td><td class="line">				xmmsv_unref (dict-&gt;data[i].value);</td></tr>
-<tr><td class="num" id="LN431">431</td><td class="line">			}</td></tr>
-<tr><td class="num" id="LN432">432</td><td class="line">			dict-&gt;data[i].str = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
-<tr><td class="num" id="LN433">433</td><td class="line">		}</td></tr>
-<tr><td class="num" id="LN434">434</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN435">435</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN436">436</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
-<tr><td class="num" id="LN437">437</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN438">438</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN439">439</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN440">440</td><td class="line"> <span class='comment'>* Apply a function to each key-element pair in the list. No</span></td></tr>
-<tr><td class="num" id="LN441">441</td><td class="line"> <span class='comment'>* particular order is assumed.</span></td></tr>
-<tr><td class="num" id="LN442">442</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN443">443</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
-<tr><td class="num" id="LN444">444</td><td class="line"> <span class='comment'>* @param function The function to apply to each key-element pair.</span></td></tr>
-<tr><td class="num" id="LN445">445</td><td class="line"> <span class='comment'>* @param user_data User data passed to the foreach function.</span></td></tr>
-<tr><td class="num" id="LN446">446</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN447">447</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN448">448</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN449">449</td><td class="line">xmmsv_dict_foreach (xmmsv_t *dictv, xmmsv_dict_foreach_func func,</td></tr>
-<tr><td class="num" id="LN450">450</td><td class="line">                    <span class='keyword'>void</span> *user_data)</td></tr>
-<tr><td class="num" id="LN451">451</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN452">452</td><td class="line">	xmmsv_dict_iter_t *it;</td></tr>
-<tr><td class="num" id="LN453">453</td><td class="line">	<span class='keyword'>const</span> <span class='keyword'>char</span> *key;</td></tr>
-<tr><td class="num" id="LN454">454</td><td class="line">	xmmsv_t *v;</td></tr>
-<tr><td class="num" id="LN455">455</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN456">456</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 456); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN457">457</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 457); return<br> (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN458">458</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_get_dict_iter (dictv, &amp;it), 0)<span class='expansion'>if (!(xmmsv_get_dict_iter (dictv, &amp;it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_get_dict_iter (dictv, &amp;it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 458); return<br> (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN459">459</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN460">460</td><td class="line">	<span class='keyword'>while</span> (xmmsv_dict_iter_pair (it, &amp;key, &amp;v)) {</td></tr>
-<tr><td class="num" id="LN461">461</td><td class="line">		func (key, v, user_data);</td></tr>
-<tr><td class="num" id="LN462">462</td><td class="line">		xmmsv_dict_iter_next (it);</td></tr>
-<tr><td class="num" id="LN463">463</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN464">464</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN465">465</td><td class="line">	_xmmsv_dict_iter_free (it);</td></tr>
-<tr><td class="num" id="LN466">466</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN467">467</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
-<tr><td class="num" id="LN468">468</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN469">469</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN470">470</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN471">471</td><td class="line"> <span class='comment'>* Return the size of the dict.</span></td></tr>
-<tr><td class="num" id="LN472">472</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN473">473</td><td class="line"> <span class='comment'>* @param dictv The #xmmsv_t containing the dict.</span></td></tr>
-<tr><td class="num" id="LN474">474</td><td class="line"> <span class='comment'>* @return The size of the dict, or -1 if dict is invalid.</span></td></tr>
-<tr><td class="num" id="LN475">475</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN476">476</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN477">477</td><td class="line">xmmsv_dict_get_size (xmmsv_t *dictv)</td></tr>
-<tr><td class="num" id="LN478">478</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN479">479</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, -1)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 479); return (-1); }</span></span>;</td></tr>
-<tr><td class="num" id="LN480">480</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), -1)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 480); return<br> (-1); }</span></span>;</td></tr>
-<tr><td class="num" id="LN481">481</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN482">482</td><td class="line">	<span class='keyword'>return</span> dictv-&gt;value.dict-&gt;elems;</td></tr>
-<tr><td class="num" id="LN483">483</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN484">484</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN485">485</td><td class="line"><span class='keyword'>static</span> xmmsv_dict_iter_t *</td></tr>
-<tr><td class="num" id="LN486">486</td><td class="line">_xmmsv_dict_iter_new (xmmsv_dict_internal_t *d)</td></tr>
-<tr><td class="num" id="LN487">487</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN488">488</td><td class="line">	xmmsv_dict_iter_t *it;</td></tr>
-<tr><td class="num" id="LN489">489</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN490">490</td><td class="line">	it = <span class='macro'>x_new0 (xmmsv_dict_iter_t, 1)<span class='expansion'>calloc (1, sizeof (xmmsv_dict_iter_t) * (1))</span></span>;</td></tr>
-<tr><td class="num" id="LN491">491</td><td class="line">	<span class='keyword'>if</span> (!it) {</td></tr>
-<tr><td class="num" id="LN492">492</td><td class="line">		<span class='macro'>x_oom ()<span class='expansion'>xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL, "Out of memory in %s at %s:%d"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 492)</span></span>;</td></tr>
-<tr><td class="num" id="LN493">493</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
-<tr><td class="num" id="LN494">494</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN495">495</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN496">496</td><td class="line">	it-&gt;parent = d;</td></tr>
-<tr><td class="num" id="LN497">497</td><td class="line">	xmmsv_dict_iter_first (it);</td></tr>
-<tr><td class="num" id="LN498">498</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN499">499</td><td class="line">	<span class='comment'>/* register iterator into parent */</span></td></tr>
-<tr><td class="num" id="LN500">500</td><td class="line">	d-&gt;iterators = x_list_prepend (d-&gt;iterators, it);</td></tr>
-<tr><td class="num" id="LN501">501</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN502">502</td><td class="line">	<span class='keyword'>return</span> it;</td></tr>
-<tr><td class="num" id="LN503">503</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN504">504</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN505">505</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>void</span></td></tr>
-<tr><td class="num" id="LN506">506</td><td class="line">_xmmsv_dict_iter_free (xmmsv_dict_iter_t *it)</td></tr>
-<tr><td class="num" id="LN507">507</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN508">508</td><td class="line">	<span class='comment'>/* unref iterator from dict and free it */</span></td></tr>
-<tr><td class="num" id="LN509">509</td><td class="line">	it-&gt;parent-&gt;iterators = x_list_remove (it-&gt;parent-&gt;iterators, it);</td></tr>
-<tr><td class="num" id="LN510">510</td><td class="line">	<span class="mrange">free (it)</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Memory is released</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num" id="LN511">511</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN512">512</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN513">513</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN514">514</td><td class="line"> <span class='comment'>* Retrieves a dict iterator from a dict #xmmsv_t.</span></td></tr>
-<tr><td class="num" id="LN515">515</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN516">516</td><td class="line"> <span class='comment'>* @param val a #xmmsv_t containing a dict.</span></td></tr>
-<tr><td class="num" id="LN517">517</td><td class="line"> <span class='comment'>* @param it An #xmmsv_dict_iter_t that can be used to access the dict</span></td></tr>
-<tr><td class="num" id="LN518">518</td><td class="line"> <span class='comment'>*           data. The iterator will be freed when the value is freed.</span></td></tr>
-<tr><td class="num" id="LN519">519</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN520">520</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN521">521</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN522">522</td><td class="line">xmmsv_get_dict_iter (<span class='keyword'>const</span> xmmsv_t *val, xmmsv_dict_iter_t **it)</td></tr>
-<tr><td class="num" id="LN523">523</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN524">524</td><td class="line">	xmmsv_dict_iter_t *new_it;</td></tr>
-<tr><td class="num" id="LN525">525</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN526">526</td><td class="line">	<span class='keyword'>if</span> (!val || val-&gt;type != XMMSV_TYPE_DICT) {</td></tr>
-<tr><td class="num" id="LN527">527</td><td class="line">		*it = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
-<tr><td class="num" id="LN528">528</td><td class="line">		<span class='keyword'>return</span> 0;</td></tr>
-<tr><td class="num" id="LN529">529</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN530">530</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN531">531</td><td class="line">	new_it = _xmmsv_dict_iter_new (val-&gt;value.dict);</td></tr>
-<tr><td class="num" id="LN532">532</td><td class="line">	<span class='keyword'>if</span> (!new_it) {</td></tr>
-<tr><td class="num" id="LN533">533</td><td class="line">		*it = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
-<tr><td class="num" id="LN534">534</td><td class="line">		<span class='keyword'>return</span> 0;</td></tr>
-<tr><td class="num" id="LN535">535</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN324">324</td><td class="line">	*values = xmmsv_new_list ();</td></tr>
+<tr><td class="num" id="LN325">325</td><td class="line">	<span class='keyword'>while</span> (xmmsv_dict_iter_pair (it, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, &amp;value)) {</td></tr>
+<tr><td class="num" id="LN326">326</td><td class="line">		xmmsv_list_append (*values, value);</td></tr>
+<tr><td class="num" id="LN327">327</td><td class="line">		xmmsv_dict_iter_next (it);</td></tr>
+<tr><td class="num" id="LN328">328</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN329">329</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN330">330</td><td class="line">	xmmsv_dict_iter_explicit_destroy (it);</td></tr>
+<tr><td class="num" id="LN331">331</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN332">332</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN333">333</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN334">334</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN335">335</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN336">336</td><td class="line"> <span class='comment'>* Gets the type of a dict entry.</span></td></tr>
+<tr><td class="num" id="LN337">337</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN338">338</td><td class="line"> <span class='comment'>* @param val A xmmsv_t containing a dict.</span></td></tr>
+<tr><td class="num" id="LN339">339</td><td class="line"> <span class='comment'>* @param key The key in the dict.</span></td></tr>
+<tr><td class="num" id="LN340">340</td><td class="line"> <span class='comment'>* @return The type of the entry or #XMMSV_TYPE_NONE if something goes wrong.</span></td></tr>
+<tr><td class="num" id="LN341">341</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN342">342</td><td class="line">xmmsv_type_t</td></tr>
+<tr><td class="num" id="LN343">343</td><td class="line">xmmsv_dict_entry_get_type (xmmsv_t *val, <span class='keyword'>const</span> <span class='keyword'>char</span> *key)</td></tr>
+<tr><td class="num" id="LN344">344</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN345">345</td><td class="line">	xmmsv_t *v;</td></tr>
+<tr><td class="num" id="LN346">346</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN347">347</td><td class="line">	<span class='keyword'>if</span> (!xmmsv_dict_get (val, key, &amp;v)) {</td></tr>
+<tr><td class="num" id="LN348">348</td><td class="line">		<span class='keyword'>return</span> XMMSV_TYPE_NONE;</td></tr>
+<tr><td class="num" id="LN349">349</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN350">350</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN351">351</td><td class="line">	<span class='keyword'>return</span> xmmsv_get_type (v);</td></tr>
+<tr><td class="num" id="LN352">352</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN353">353</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN354">354</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN355">355</td><td class="line"> <span class='comment'>* Get the element corresponding to the given key in the dict #xmmsv_t</span></td></tr>
+<tr><td class="num" id="LN356">356</td><td class="line"> <span class='comment'>* (if it exists).  This function does not increase the refcount of</span></td></tr>
+<tr><td class="num" id="LN357">357</td><td class="line"> <span class='comment'>* the element, the reference is still owned by the dict.</span></td></tr>
+<tr><td class="num" id="LN358">358</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN359">359</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
+<tr><td class="num" id="LN360">360</td><td class="line"> <span class='comment'>* @param key The key in the dict.</span></td></tr>
+<tr><td class="num" id="LN361">361</td><td class="line"> <span class='comment'>* @param val Pointer set to a borrowed reference to the element</span></td></tr>
+<tr><td class="num" id="LN362">362</td><td class="line"> <span class='comment'>*            corresponding to the given key in the dict.</span></td></tr>
+<tr><td class="num" id="LN363">363</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN364">364</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN365">365</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN366">366</td><td class="line">xmmsv_dict_get (xmmsv_t *dictv, <span class='keyword'>const</span> <span class='keyword'>char</span> *key, xmmsv_t **val)</td></tr>
+<tr><td class="num" id="LN367">367</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN368">368</td><td class="line">	xmmsv_dict_internal_t *dict;</td></tr>
+<tr><td class="num" id="LN369">369</td><td class="line">	<span class='keyword'>int</span> ret = 0;</td></tr>
+<tr><td class="num" id="LN370">370</td><td class="line">	<span class='keyword'>int</span> pos, deleted;</td></tr>
+<tr><td class="num" id="LN371">371</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN372">372</td><td class="line">	<span class='macro'>x_return_val_if_fail (key, 0)<span class='expansion'>if (!(key)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "key", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 372); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN373">373</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 373); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN374">374</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 374); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN375">375</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN376">376</td><td class="line">	xmmsv_dict_data_t data = <span class='macro'>DICT_INIT_DATA (key)<span class='expansion'>{.hash = _xmmsv_dict_hash (key, strlen (key)), .str = (char*)<br>key}</span></span>;</td></tr>
+<tr><td class="num" id="LN377">377</td><td class="line">	dict = dictv-&gt;value.dict;</td></tr>
+<tr><td class="num" id="LN378">378</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN379">379</td><td class="line">	<span class='keyword'>if</span> (_xmmsv_dict_search (dict, data, &amp;pos, &amp;deleted)) {</td></tr>
+<tr><td class="num" id="LN380">380</td><td class="line">		<span class='comment'>/* If there was a deleted entry before the one we found</span></td></tr>
+<tr><td class="num" id="LN381">381</td><td class="line">		 <span class='comment'>* we can optimize a little by moving the entry to the</span></td></tr>
+<tr><td class="num" id="LN382">382</td><td class="line">		 <span class='comment'>* deleted slot (and thus closer to the actual bucket it</span></td></tr>
+<tr><td class="num" id="LN383">383</td><td class="line">		 <span class='comment'>* belongs to)</span></td></tr>
+<tr><td class="num" id="LN384">384</td><td class="line">		 <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN385">385</td><td class="line">		<span class='keyword'>if</span> (deleted != -1) {</td></tr>
+<tr><td class="num" id="LN386">386</td><td class="line">			dict-&gt;data[deleted] = dict-&gt;data[pos];</td></tr>
+<tr><td class="num" id="LN387">387</td><td class="line">			dict-&gt;data[pos].str = <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN388">388</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN389">389</td><td class="line">		<span class='keyword'>if</span> (val != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN390">390</td><td class="line">			*val = dict-&gt;data[pos].value;</td></tr>
+<tr><td class="num" id="LN391">391</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN392">392</td><td class="line">		ret = 1;</td></tr>
+<tr><td class="num" id="LN393">393</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN394">394</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN395">395</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN396">396</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN397">397</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN398">398</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN399">399</td><td class="line"> <span class='comment'>* Insert an element under the given key in the dict #xmmsv_t. If the</span></td></tr>
+<tr><td class="num" id="LN400">400</td><td class="line"> <span class='comment'>* key already referenced an element, that element is unref'd and</span></td></tr>
+<tr><td class="num" id="LN401">401</td><td class="line"> <span class='comment'>* replaced by the new one.</span></td></tr>
+<tr><td class="num" id="LN402">402</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN403">403</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
+<tr><td class="num" id="LN404">404</td><td class="line"> <span class='comment'>* @param key The key in the dict.</span></td></tr>
+<tr><td class="num" id="LN405">405</td><td class="line"> <span class='comment'>* @param val The new element to insert in the dict.</span></td></tr>
+<tr><td class="num" id="LN406">406</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN407">407</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN408">408</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN409">409</td><td class="line">xmmsv_dict_set (xmmsv_t *dictv, <span class='keyword'>const</span> <span class='keyword'>char</span> *key, xmmsv_t *val)</td></tr>
+<tr><td class="num" id="LN410">410</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN411">411</td><td class="line">	xmmsv_dict_internal_t *dict;</td></tr>
+<tr><td class="num" id="LN412">412</td><td class="line">	<span class='keyword'>int</span> ret = 1;</td></tr>
+<tr><td class="num" id="LN413">413</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN414">414</td><td class="line">	<span class='macro'>x_return_val_if_fail (key, 0)<span class='expansion'>if (!(key)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "key", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 414); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN415">415</td><td class="line">	<span class='macro'>x_return_val_if_fail (val, 0)<span class='expansion'>if (!(val)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "val", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 415); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN416">416</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 416); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN417">417</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 417); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN418">418</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN419">419</td><td class="line">	xmmsv_dict_data_t data = <span class='macro'>DICT_INIT_DATA (key)<span class='expansion'>{.hash = _xmmsv_dict_hash (key, strlen (key)), .str = (char*)<br>key}</span></span>;</td></tr>
+<tr><td class="num" id="LN420">420</td><td class="line">	data.value = xmmsv_ref (val);</td></tr>
+<tr><td class="num" id="LN421">421</td><td class="line">	dict = dictv-&gt;value.dict;</td></tr>
+<tr><td class="num" id="LN422">422</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN423">423</td><td class="line">	<span class='comment'>/* Resize if fill is too high */</span></td></tr>
+<tr><td class="num" id="LN424">424</td><td class="line">	<span class='keyword'>if</span> (((dict-&gt;elems * 10) &gt;&gt; dict-&gt;size) &gt; <span class='macro'>HASH_FILL_LIM<span class='expansion'>7</span></span>) {</td></tr>
+<tr><td class="num" id="LN425">425</td><td class="line">		_xmmsv_dict_resize (dict);</td></tr>
+<tr><td class="num" id="LN426">426</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN427">427</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN428">428</td><td class="line">	_xmmsv_dict_insert (dict, data, 1);</td></tr>
+<tr><td class="num" id="LN429">429</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN430">430</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN431">431</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN432">432</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN433">433</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN434">434</td><td class="line"> <span class='comment'>* Remove the element corresponding to a given key in the dict</span></td></tr>
+<tr><td class="num" id="LN435">435</td><td class="line"> <span class='comment'>* #xmmsv_t (if it exists).</span></td></tr>
+<tr><td class="num" id="LN436">436</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN437">437</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
+<tr><td class="num" id="LN438">438</td><td class="line"> <span class='comment'>* @param key The key in the dict.</span></td></tr>
+<tr><td class="num" id="LN439">439</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN440">440</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN441">441</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN442">442</td><td class="line">xmmsv_dict_remove (xmmsv_t *dictv, <span class='keyword'>const</span> <span class='keyword'>char</span> *key)</td></tr>
+<tr><td class="num" id="LN443">443</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN444">444</td><td class="line">	xmmsv_dict_internal_t *dict;</td></tr>
+<tr><td class="num" id="LN445">445</td><td class="line">	<span class='keyword'>int</span> pos, deleted;</td></tr>
+<tr><td class="num" id="LN446">446</td><td class="line">	<span class='keyword'>int</span> ret = 0;</td></tr>
+<tr><td class="num" id="LN447">447</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN448">448</td><td class="line">	<span class='macro'>x_return_val_if_fail (key, 0)<span class='expansion'>if (!(key)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "key", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 448); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN449">449</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 449); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN450">450</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 450); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN451">451</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN452">452</td><td class="line">	xmmsv_dict_data_t data = <span class='macro'>DICT_INIT_DATA (key)<span class='expansion'>{.hash = _xmmsv_dict_hash (key, strlen (key)), .str = (char*)<br>key}</span></span>;</td></tr>
+<tr><td class="num" id="LN453">453</td><td class="line">	dict = dictv-&gt;value.dict;</td></tr>
+<tr><td class="num" id="LN454">454</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN455">455</td><td class="line">	<span class='comment'>/* If we find the entry we free the string and mark it as deleted */</span></td></tr>
+<tr><td class="num" id="LN456">456</td><td class="line">	<span class='keyword'>if</span> (_xmmsv_dict_search (dict, data, &amp;pos, &amp;deleted)) {</td></tr>
+<tr><td class="num" id="LN457">457</td><td class="line">		_xmmsv_dict_remove (dict, pos);</td></tr>
+<tr><td class="num" id="LN458">458</td><td class="line">		ret = 1;</td></tr>
+<tr><td class="num" id="LN459">459</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN460">460</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN461">461</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN462">462</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN463">463</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN464">464</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN465">465</td><td class="line"> <span class='comment'>* Empty the dict of all its elements.</span></td></tr>
+<tr><td class="num" id="LN466">466</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN467">467</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
+<tr><td class="num" id="LN468">468</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN469">469</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN470">470</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN471">471</td><td class="line">xmmsv_dict_clear (xmmsv_t *dictv)</td></tr>
+<tr><td class="num" id="LN472">472</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN473">473</td><td class="line">	<span class='keyword'>int</span> i;</td></tr>
+<tr><td class="num" id="LN474">474</td><td class="line">	xmmsv_dict_internal_t *dict;</td></tr>
+<tr><td class="num" id="LN475">475</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN476">476</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 476); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN477">477</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 477); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN478">478</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN479">479</td><td class="line">	dict = dictv-&gt;value.dict;</td></tr>
+<tr><td class="num" id="LN480">480</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN481">481</td><td class="line">	<span class='keyword'>for</span> (i = (1 &lt;&lt; dict-&gt;size) - 1; i &gt;= 0; i--) {</td></tr>
+<tr><td class="num" id="LN482">482</td><td class="line">		<span class='keyword'>if</span> (dict-&gt;data[i].str != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN483">483</td><td class="line">			<span class='keyword'>if</span> (dict-&gt;data[i].str != <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>) {</td></tr>
+<tr><td class="num" id="LN484">484</td><td class="line">				free (dict-&gt;data[i].str);</td></tr>
+<tr><td class="num" id="LN485">485</td><td class="line">				xmmsv_unref (dict-&gt;data[i].value);</td></tr>
+<tr><td class="num" id="LN486">486</td><td class="line">			}</td></tr>
+<tr><td class="num" id="LN487">487</td><td class="line">			dict-&gt;data[i].str = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN488">488</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN489">489</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN490">490</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN491">491</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN492">492</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN493">493</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN494">494</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN495">495</td><td class="line"> <span class='comment'>* Apply a function to each key-element pair in the list. No</span></td></tr>
+<tr><td class="num" id="LN496">496</td><td class="line"> <span class='comment'>* particular order is assumed.</span></td></tr>
+<tr><td class="num" id="LN497">497</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN498">498</td><td class="line"> <span class='comment'>* @param dictv A #xmmsv_t containing a dict.</span></td></tr>
+<tr><td class="num" id="LN499">499</td><td class="line"> <span class='comment'>* @param function The function to apply to each key-element pair.</span></td></tr>
+<tr><td class="num" id="LN500">500</td><td class="line"> <span class='comment'>* @param user_data User data passed to the foreach function.</span></td></tr>
+<tr><td class="num" id="LN501">501</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN502">502</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN503">503</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN504">504</td><td class="line">xmmsv_dict_foreach (xmmsv_t *dictv, xmmsv_dict_foreach_func func,</td></tr>
+<tr><td class="num" id="LN505">505</td><td class="line">                    <span class='keyword'>void</span> *user_data)</td></tr>
+<tr><td class="num" id="LN506">506</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN507">507</td><td class="line">	xmmsv_dict_iter_t *it;</td></tr>
+<tr><td class="num" id="LN508">508</td><td class="line">	<span class='keyword'>const</span> <span class='keyword'>char</span> *key;</td></tr>
+<tr><td class="num" id="LN509">509</td><td class="line">	xmmsv_t *v;</td></tr>
+<tr><td class="num" id="LN510">510</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN511">511</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, 0)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 511); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN512">512</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), 0)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 512); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN513">513</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_get_dict_iter (dictv, &amp;it), 0)<span class='expansion'>if (!(xmmsv_get_dict_iter (dictv, &amp;it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_get_dict_iter (dictv, &amp;it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 513); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN514">514</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN515">515</td><td class="line">	<span class='keyword'>while</span> (xmmsv_dict_iter_pair (it, &amp;key, &amp;v)) {</td></tr>
+<tr><td class="num" id="LN516">516</td><td class="line">		func (key, v, user_data);</td></tr>
+<tr><td class="num" id="LN517">517</td><td class="line">		xmmsv_dict_iter_next (it);</td></tr>
+<tr><td class="num" id="LN518">518</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN519">519</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN520">520</td><td class="line">	_xmmsv_dict_iter_free (it);</td></tr>
+<tr><td class="num" id="LN521">521</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN522">522</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN523">523</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN524">524</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN525">525</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN526">526</td><td class="line"> <span class='comment'>* Return the size of the dict.</span></td></tr>
+<tr><td class="num" id="LN527">527</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN528">528</td><td class="line"> <span class='comment'>* @param dictv The #xmmsv_t containing the dict.</span></td></tr>
+<tr><td class="num" id="LN529">529</td><td class="line"> <span class='comment'>* @return The size of the dict, or -1 if dict is invalid.</span></td></tr>
+<tr><td class="num" id="LN530">530</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN531">531</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN532">532</td><td class="line">xmmsv_dict_get_size (xmmsv_t *dictv)</td></tr>
+<tr><td class="num" id="LN533">533</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN534">534</td><td class="line">	<span class='macro'>x_return_val_if_fail (dictv, -1)<span class='expansion'>if (!(dictv)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "dictv", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 534); return (-1); }</span></span>;</td></tr>
+<tr><td class="num" id="LN535">535</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_is_type (dictv, XMMSV_TYPE_DICT), -1)<span class='expansion'>if (!(xmmsv_is_type (dictv, XMMSV_TYPE_DICT))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_is_type (dictv, XMMSV_TYPE_DICT)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 535); return<br> (-1); }</span></span>;</td></tr>
 <tr><td class="num" id="LN536">536</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN537">537</td><td class="line">	*it = new_it;</td></tr>
-<tr><td class="num" id="LN538">538</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN539">539</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
-<tr><td class="num" id="LN540">540</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN541">541</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN542">542</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN543">543</td><td class="line"> <span class='comment'>* Explicitly free dict iterator.</span></td></tr>
-<tr><td class="num" id="LN544">544</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN545">545</td><td class="line"> <span class='comment'>* Immediately frees any resources used by this iterator. The iterator</span></td></tr>
-<tr><td class="num" id="LN546">546</td><td class="line"> <span class='comment'>* is freed automatically when the dict is freed, but this function is</span></td></tr>
-<tr><td class="num" id="LN547">547</td><td class="line"> <span class='comment'>* useful when the dict can be long lived.</span></td></tr>
-<tr><td class="num" id="LN548">548</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN549">549</td><td class="line"> <span class='comment'>* @param it iterator to free</span></td></tr>
-<tr><td class="num" id="LN550">550</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN551">551</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN552">552</td><td class="line"><span class='keyword'>void</span></td></tr>
-<tr><td class="num" id="LN553">553</td><td class="line">xmmsv_dict_iter_explicit_destroy (xmmsv_dict_iter_t *it)</td></tr>
-<tr><td class="num" id="LN554">554</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN555">555</td><td class="line">	_xmmsv_dict_iter_free (it);</td></tr>
-<tr><td class="num" id="LN556">556</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN557">557</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN558">558</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN559">559</td><td class="line"> <span class='comment'>* Get the key-element pair currently pointed at by the iterator. This</span></td></tr>
-<tr><td class="num" id="LN560">560</td><td class="line"> <span class='comment'>* function does not increase the refcount of the element, the</span></td></tr>
-<tr><td class="num" id="LN561">561</td><td class="line"> <span class='comment'>* reference is still owned by the dict.</span></td></tr>
-<tr><td class="num" id="LN562">562</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN563">563</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
-<tr><td class="num" id="LN564">564</td><td class="line"> <span class='comment'>* @param key Pointer set to the key pointed at by the iterator.</span></td></tr>
-<tr><td class="num" id="LN565">565</td><td class="line"> <span class='comment'>* @param val Pointer set to a borrowed reference to the element</span></td></tr>
-<tr><td class="num" id="LN566">566</td><td class="line"> <span class='comment'>*            pointed at by the iterator.</span></td></tr>
-<tr><td class="num" id="LN567">567</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN568">568</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN569">569</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN570">570</td><td class="line">xmmsv_dict_iter_pair (xmmsv_dict_iter_t *it, <span class='keyword'>const</span> <span class='keyword'>char</span> **key,</td></tr>
-<tr><td class="num" id="LN571">571</td><td class="line">                      xmmsv_t **val)</td></tr>
-<tr><td class="num" id="LN572">572</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN573">573</td><td class="line">	<span class='keyword'>if</span> (!xmmsv_dict_iter_valid (it)) {</td></tr>
-<tr><td class="num" id="LN574">574</td><td class="line">		<span class='keyword'>return</span> 0;</td></tr>
-<tr><td class="num" id="LN575">575</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN576">576</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN577">577</td><td class="line">	<span class='keyword'>if</span> (key) {</td></tr>
-<tr><td class="num" id="LN578">578</td><td class="line">		*key = it-&gt;parent-&gt;data[it-&gt;pos].str;</td></tr>
-<tr><td class="num" id="LN579">579</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN537">537</td><td class="line">	<span class='keyword'>return</span> dictv-&gt;value.dict-&gt;elems;</td></tr>
+<tr><td class="num" id="LN538">538</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN539">539</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN540">540</td><td class="line"><span class='keyword'>static</span> xmmsv_dict_iter_t *</td></tr>
+<tr><td class="num" id="LN541">541</td><td class="line">_xmmsv_dict_iter_new (xmmsv_dict_internal_t *d)</td></tr>
+<tr><td class="num" id="LN542">542</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN543">543</td><td class="line">	xmmsv_dict_iter_t *it;</td></tr>
+<tr><td class="num" id="LN544">544</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN545">545</td><td class="line">	it = <span class='macro'>x_new0 (xmmsv_dict_iter_t, 1)<span class='expansion'>calloc (1, sizeof (xmmsv_dict_iter_t) * (1))</span></span>;</td></tr>
+<tr><td class="num" id="LN546">546</td><td class="line">	<span class='keyword'>if</span> (!it) {</td></tr>
+<tr><td class="num" id="LN547">547</td><td class="line">		<span class='macro'>x_oom ()<span class='expansion'>xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL, "Out of memory in %s at %s:%d"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 547)</span></span>;</td></tr>
+<tr><td class="num" id="LN548">548</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN549">549</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN550">550</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN551">551</td><td class="line">	it-&gt;parent = d;</td></tr>
+<tr><td class="num" id="LN552">552</td><td class="line">	xmmsv_dict_iter_first (it);</td></tr>
+<tr><td class="num" id="LN553">553</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN554">554</td><td class="line">	<span class='comment'>/* register iterator into parent */</span></td></tr>
+<tr><td class="num" id="LN555">555</td><td class="line">	d-&gt;iterators = x_list_prepend (d-&gt;iterators, it);</td></tr>
+<tr><td class="num" id="LN556">556</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN557">557</td><td class="line">	<span class='keyword'>return</span> it;</td></tr>
+<tr><td class="num" id="LN558">558</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN559">559</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN560">560</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>void</span></td></tr>
+<tr><td class="num" id="LN561">561</td><td class="line">_xmmsv_dict_iter_free (xmmsv_dict_iter_t *it)</td></tr>
+<tr><td class="num" id="LN562">562</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN563">563</td><td class="line">	<span class='comment'>/* unref iterator from dict and free it */</span></td></tr>
+<tr><td class="num" id="LN564">564</td><td class="line">	it-&gt;parent-&gt;iterators = x_list_remove (it-&gt;parent-&gt;iterators, it);</td></tr>
+<tr><td class="num" id="LN565">565</td><td class="line">	<span class="mrange">free (it)</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Memory is released</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN566">566</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN567">567</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN568">568</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN569">569</td><td class="line"> <span class='comment'>* Retrieves a dict iterator from a dict #xmmsv_t.</span></td></tr>
+<tr><td class="num" id="LN570">570</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN571">571</td><td class="line"> <span class='comment'>* @param val a #xmmsv_t containing a dict.</span></td></tr>
+<tr><td class="num" id="LN572">572</td><td class="line"> <span class='comment'>* @param it An #xmmsv_dict_iter_t that can be used to access the dict</span></td></tr>
+<tr><td class="num" id="LN573">573</td><td class="line"> <span class='comment'>*           data. The iterator will be freed when the value is freed.</span></td></tr>
+<tr><td class="num" id="LN574">574</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN575">575</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN576">576</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN577">577</td><td class="line">xmmsv_get_dict_iter (<span class='keyword'>const</span> xmmsv_t *val, xmmsv_dict_iter_t **it)</td></tr>
+<tr><td class="num" id="LN578">578</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN579">579</td><td class="line">	xmmsv_dict_iter_t *new_it;</td></tr>
 <tr><td class="num" id="LN580">580</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN581">581</td><td class="line">	<span class='keyword'>if</span> (val) {</td></tr>
-<tr><td class="num" id="LN582">582</td><td class="line">		*val = it-&gt;parent-&gt;data[it-&gt;pos].value;</td></tr>
-<tr><td class="num" id="LN583">583</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN584">584</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN585">585</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
-<tr><td class="num" id="LN586">586</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN587">587</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN588">588</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN589">589</td><td class="line"> <span class='comment'>* Check whether the iterator is valid and points to a valid pair.</span></td></tr>
-<tr><td class="num" id="LN590">590</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN591">591</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
-<tr><td class="num" id="LN592">592</td><td class="line"> <span class='comment'>* @return 1 if the iterator is valid, 0 otherwise</span></td></tr>
-<tr><td class="num" id="LN593">593</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN594">594</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN595">595</td><td class="line">xmmsv_dict_iter_valid (xmmsv_dict_iter_t *it)</td></tr>
-<tr><td class="num" id="LN596">596</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN597">597</td><td class="line">	<span class='keyword'>return</span> it &amp;&amp; (it-&gt;pos &lt; (1 &lt;&lt; it-&gt;parent-&gt;size))</td></tr>
-<tr><td class="num" id="LN598">598</td><td class="line">		&amp;&amp; it-&gt;parent-&gt;data[it-&gt;pos].str != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></td></tr>
-<tr><td class="num" id="LN599">599</td><td class="line">		&amp;&amp; it-&gt;parent-&gt;data[it-&gt;pos].str != <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>;</td></tr>
-<tr><td class="num" id="LN600">600</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN601">601</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN602">602</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN603">603</td><td class="line"> <span class='comment'>* Rewind the iterator to the start of the dict.</span></td></tr>
-<tr><td class="num" id="LN604">604</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN605">605</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
-<tr><td class="num" id="LN606">606</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN607">607</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN608">608</td><td class="line"><span class='keyword'>void</span></td></tr>
-<tr><td class="num" id="LN609">609</td><td class="line">xmmsv_dict_iter_first (xmmsv_dict_iter_t *it)</td></tr>
-<tr><td class="num" id="LN610">610</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN611">611</td><td class="line">	<span class='macro'>x_return_if_fail (it)<span class='expansion'>if (!(it)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "it", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 611); return; }</span></span>;</td></tr>
-<tr><td class="num" id="LN612">612</td><td class="line">	xmmsv_dict_internal_t *d = it-&gt;parent;</td></tr>
-<tr><td class="num" id="LN613">613</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN614">614</td><td class="line">	<span class='keyword'>for</span> (it-&gt;pos = 0</td></tr>
-<tr><td class="num" id="LN615">615</td><td class="line">		     ; it-&gt;pos &lt; (1 &lt;&lt; d-&gt;size) &amp;&amp; (d-&gt;data[it-&gt;pos].str == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span> || d-&gt;data[it-&gt;pos].str == <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>)</td></tr>
-<tr><td class="num" id="LN616">616</td><td class="line">		     ; it-&gt;pos++);</td></tr>
-<tr><td class="num" id="LN617">617</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN618">618</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN619">619</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN620">620</td><td class="line"> <span class='comment'>* Advance the iterator to the next pair in the dict.</span></td></tr>
-<tr><td class="num" id="LN621">621</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN622">622</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
-<tr><td class="num" id="LN623">623</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN624">624</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN625">625</td><td class="line"><span class='keyword'>void</span></td></tr>
-<tr><td class="num" id="LN626">626</td><td class="line">xmmsv_dict_iter_next (xmmsv_dict_iter_t *it)</td></tr>
+<tr><td class="num" id="LN581">581</td><td class="line">	<span class='keyword'>if</span> (!val || val-&gt;type != XMMSV_TYPE_DICT) {</td></tr>
+<tr><td class="num" id="LN582">582</td><td class="line">		*it = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN583">583</td><td class="line">		<span class='keyword'>return</span> 0;</td></tr>
+<tr><td class="num" id="LN584">584</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN585">585</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN586">586</td><td class="line">	new_it = _xmmsv_dict_iter_new (val-&gt;value.dict);</td></tr>
+<tr><td class="num" id="LN587">587</td><td class="line">	<span class='keyword'>if</span> (!new_it) {</td></tr>
+<tr><td class="num" id="LN588">588</td><td class="line">		*it = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN589">589</td><td class="line">		<span class='keyword'>return</span> 0;</td></tr>
+<tr><td class="num" id="LN590">590</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN591">591</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN592">592</td><td class="line">	*it = new_it;</td></tr>
+<tr><td class="num" id="LN593">593</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN594">594</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN595">595</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN596">596</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN597">597</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN598">598</td><td class="line"> <span class='comment'>* Explicitly free dict iterator.</span></td></tr>
+<tr><td class="num" id="LN599">599</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN600">600</td><td class="line"> <span class='comment'>* Immediately frees any resources used by this iterator. The iterator</span></td></tr>
+<tr><td class="num" id="LN601">601</td><td class="line"> <span class='comment'>* is freed automatically when the dict is freed, but this function is</span></td></tr>
+<tr><td class="num" id="LN602">602</td><td class="line"> <span class='comment'>* useful when the dict can be long lived.</span></td></tr>
+<tr><td class="num" id="LN603">603</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN604">604</td><td class="line"> <span class='comment'>* @param it iterator to free</span></td></tr>
+<tr><td class="num" id="LN605">605</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN606">606</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN607">607</td><td class="line"><span class='keyword'>void</span></td></tr>
+<tr><td class="num" id="LN608">608</td><td class="line">xmmsv_dict_iter_explicit_destroy (xmmsv_dict_iter_t *it)</td></tr>
+<tr><td class="num" id="LN609">609</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN610">610</td><td class="line">	_xmmsv_dict_iter_free (it);</td></tr>
+<tr><td class="num" id="LN611">611</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN612">612</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN613">613</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN614">614</td><td class="line"> <span class='comment'>* Get the key-element pair currently pointed at by the iterator. This</span></td></tr>
+<tr><td class="num" id="LN615">615</td><td class="line"> <span class='comment'>* function does not increase the refcount of the element, the</span></td></tr>
+<tr><td class="num" id="LN616">616</td><td class="line"> <span class='comment'>* reference is still owned by the dict.</span></td></tr>
+<tr><td class="num" id="LN617">617</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN618">618</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
+<tr><td class="num" id="LN619">619</td><td class="line"> <span class='comment'>* @param key Pointer set to the key pointed at by the iterator.</span></td></tr>
+<tr><td class="num" id="LN620">620</td><td class="line"> <span class='comment'>* @param val Pointer set to a borrowed reference to the element</span></td></tr>
+<tr><td class="num" id="LN621">621</td><td class="line"> <span class='comment'>*            pointed at by the iterator.</span></td></tr>
+<tr><td class="num" id="LN622">622</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN623">623</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN624">624</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN625">625</td><td class="line">xmmsv_dict_iter_pair (xmmsv_dict_iter_t *it, <span class='keyword'>const</span> <span class='keyword'>char</span> **key,</td></tr>
+<tr><td class="num" id="LN626">626</td><td class="line">                      xmmsv_t **val)</td></tr>
 <tr><td class="num" id="LN627">627</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN628">628</td><td class="line">	<span class='macro'>x_return_if_fail (it)<span class='expansion'>if (!(it)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "it", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 628); return; }</span></span>;</td></tr>
-<tr><td class="num" id="LN629">629</td><td class="line">	xmmsv_dict_internal_t *d = it-&gt;parent;</td></tr>
-<tr><td class="num" id="LN630">630</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN631">631</td><td class="line">	<span class='keyword'>for</span> (it-&gt;pos++</td></tr>
-<tr><td class="num" id="LN632">632</td><td class="line">		     ; it-&gt;pos &lt; (1 &lt;&lt; d-&gt;size) &amp;&amp; (d-&gt;data[it-&gt;pos].str == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span> || d-&gt;data[it-&gt;pos].str == <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>)</td></tr>
-<tr><td class="num" id="LN633">633</td><td class="line">		     ; it-&gt;pos++);</td></tr>
-<tr><td class="num" id="LN634">634</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN628">628</td><td class="line">	<span class='keyword'>if</span> (!xmmsv_dict_iter_valid (it)) {</td></tr>
+<tr><td class="num" id="LN629">629</td><td class="line">		<span class='keyword'>return</span> 0;</td></tr>
+<tr><td class="num" id="LN630">630</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN631">631</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN632">632</td><td class="line">	<span class='keyword'>if</span> (key) {</td></tr>
+<tr><td class="num" id="LN633">633</td><td class="line">		*key = it-&gt;parent-&gt;data[it-&gt;pos].str;</td></tr>
+<tr><td class="num" id="LN634">634</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN635">635</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN636">636</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN637">637</td><td class="line"> <span class='comment'>* Move the iterator to the pair with the given key (if it exists)</span></td></tr>
-<tr><td class="num" id="LN638">638</td><td class="line"> <span class='comment'>* or move it to the position where the key would have to be</span></td></tr>
-<tr><td class="num" id="LN639">639</td><td class="line"> <span class='comment'>* put (if it doesn't exist yet).</span></td></tr>
-<tr><td class="num" id="LN640">640</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN641">641</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
-<tr><td class="num" id="LN642">642</td><td class="line"> <span class='comment'>* @param key The key to seek for.</span></td></tr>
-<tr><td class="num" id="LN643">643</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN644">644</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN645">645</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN646">646</td><td class="line">xmmsv_dict_iter_find (xmmsv_dict_iter_t *it, <span class='keyword'>const</span> <span class='keyword'>char</span> *key)</td></tr>
-<tr><td class="num" id="LN647">647</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN648">648</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_dict_iter_valid (it), 0)<span class='expansion'>if (!(xmmsv_dict_iter_valid (it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_dict_iter_valid (it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 648); return<br> (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN649">649</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN650">650</td><td class="line">	xmmsv_dict_iter_first (it);</td></tr>
-<tr><td class="num" id="LN651">651</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN652">652</td><td class="line">	<span class='keyword'>for</span> (xmmsv_dict_iter_first (it)</td></tr>
-<tr><td class="num" id="LN653">653</td><td class="line">		     ; xmmsv_dict_iter_valid (it)</td></tr>
-<tr><td class="num" id="LN654">654</td><td class="line">		     ; xmmsv_dict_iter_next (it)) {</td></tr>
-<tr><td class="num" id="LN655">655</td><td class="line">		<span class='keyword'>const</span> <span class='keyword'>char</span> *s;</td></tr>
+<tr><td class="num" id="LN636">636</td><td class="line">	<span class='keyword'>if</span> (val) {</td></tr>
+<tr><td class="num" id="LN637">637</td><td class="line">		*val = it-&gt;parent-&gt;data[it-&gt;pos].value;</td></tr>
+<tr><td class="num" id="LN638">638</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN639">639</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN640">640</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN641">641</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN642">642</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN643">643</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN644">644</td><td class="line"> <span class='comment'>* Check whether the iterator is valid and points to a valid pair.</span></td></tr>
+<tr><td class="num" id="LN645">645</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN646">646</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
+<tr><td class="num" id="LN647">647</td><td class="line"> <span class='comment'>* @return 1 if the iterator is valid, 0 otherwise</span></td></tr>
+<tr><td class="num" id="LN648">648</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN649">649</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN650">650</td><td class="line">xmmsv_dict_iter_valid (xmmsv_dict_iter_t *it)</td></tr>
+<tr><td class="num" id="LN651">651</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN652">652</td><td class="line">	<span class='keyword'>return</span> it &amp;&amp; (it-&gt;pos &lt; (1 &lt;&lt; it-&gt;parent-&gt;size))</td></tr>
+<tr><td class="num" id="LN653">653</td><td class="line">		&amp;&amp; it-&gt;parent-&gt;data[it-&gt;pos].str != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></td></tr>
+<tr><td class="num" id="LN654">654</td><td class="line">		&amp;&amp; it-&gt;parent-&gt;data[it-&gt;pos].str != <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN655">655</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN656">656</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN657">657</td><td class="line">		xmmsv_dict_iter_pair (it, &amp;s, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>);</td></tr>
-<tr><td class="num" id="LN658">658</td><td class="line">		<span class='keyword'>if</span> (strcmp (s, key) == 0)</td></tr>
-<tr><td class="num" id="LN659">659</td><td class="line">			<span class='keyword'>return</span> 1;</td></tr>
-<tr><td class="num" id="LN660">660</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN661">661</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN662">662</td><td class="line">	<span class='keyword'>return</span> 0;</td></tr>
-<tr><td class="num" id="LN663">663</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN664">664</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN665">665</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN666">666</td><td class="line"> <span class='comment'>* Replace the element of the pair currently pointed to by the</span></td></tr>
-<tr><td class="num" id="LN667">667</td><td class="line"> <span class='comment'>* iterator.</span></td></tr>
-<tr><td class="num" id="LN668">668</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN669">669</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
-<tr><td class="num" id="LN670">670</td><td class="line"> <span class='comment'>* @param val The element to set in the pair.</span></td></tr>
-<tr><td class="num" id="LN671">671</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN672">672</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN673">673</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN674">674</td><td class="line">xmmsv_dict_iter_set (xmmsv_dict_iter_t *it, xmmsv_t *val)</td></tr>
-<tr><td class="num" id="LN675">675</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN676">676</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_dict_iter_valid (it), 0)<span class='expansion'>if (!(xmmsv_dict_iter_valid (it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_dict_iter_valid (it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 676); return<br> (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN677">677</td><td class="line">	<span class='macro'>x_return_val_if_fail (val, 0)<span class='expansion'>if (!(val)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "val", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 677); return (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN678">678</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN679">679</td><td class="line">	<span class='comment'>/* In case old value is new value, ref first. */</span></td></tr>
-<tr><td class="num" id="LN680">680</td><td class="line">	xmmsv_ref (val);</td></tr>
-<tr><td class="num" id="LN681">681</td><td class="line">	xmmsv_unref (it-&gt;parent-&gt;data[it-&gt;pos].value);</td></tr>
-<tr><td class="num" id="LN682">682</td><td class="line">	it-&gt;parent-&gt;data[it-&gt;pos].value = val;</td></tr>
-<tr><td class="num" id="LN683">683</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN684">684</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
-<tr><td class="num" id="LN685">685</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN686">686</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN687">687</td><td class="line"><span class='comment'>/**</span></td></tr>
-<tr><td class="num" id="LN688">688</td><td class="line"> <span class='comment'>* Remove the pair in the dict pointed at by the iterator.</span></td></tr>
-<tr><td class="num" id="LN689">689</td><td class="line"> <span class='comment'>*</span></td></tr>
-<tr><td class="num" id="LN690">690</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
-<tr><td class="num" id="LN691">691</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
-<tr><td class="num" id="LN692">692</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN693">693</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN694">694</td><td class="line">xmmsv_dict_iter_remove (xmmsv_dict_iter_t *it)</td></tr>
-<tr><td class="num" id="LN695">695</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN696">696</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_dict_iter_valid (it), 0)<span class='expansion'>if (!(xmmsv_dict_iter_valid (it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_dict_iter_valid (it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 696); return<br> (0); }</span></span>;</td></tr>
-<tr><td class="num" id="LN697">697</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN698">698</td><td class="line">	_xmmsv_dict_remove (it-&gt;parent, it-&gt;pos);</td></tr>
-<tr><td class="num" id="LN699">699</td><td class="line">	xmmsv_dict_iter_next (it);</td></tr>
-<tr><td class="num" id="LN700">700</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN701">701</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
-<tr><td class="num" id="LN702">702</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN703">703</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN704">704</td><td class="line"><span class='comment'>/* macro-magically define dict extractors */</span></td></tr>
-<tr><td class="num" id="LN705">705</td><td class="line"><span class='directive'>#define <span class='macro'>GEN_DICT_EXTRACTOR_FUNC(typename, type)<span class='expansion'>int xmmsv_dict_entry_get_typename (xmmsv_t *val, const char *<br>key, type *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key, &amp;<br>v)) { return 0; } return xmmsv_get_typename (v, r); }</span></span>	  \</span></td></tr>
-<tr><td class="num" id="LN706">706</td><td class="line">	<span class='directive'>int \</span></td></tr>
-<tr><td class="num" id="LN707">707</td><td class="line">	<span class='directive'>xmmsv_dict_entry_get_##typename (xmmsv_t *val, const char *key, \</span></td></tr>
-<tr><td class="num" id="LN708">708</td><td class="line">	                                 <span class='directive'>type *r) \</span></td></tr>
-<tr><td class="num" id="LN709">709</td><td class="line">	<span class='directive'>{ \</span></td></tr>
-<tr><td class="num" id="LN710">710</td><td class="line">		<span class='directive'>xmmsv_t *v; \</span></td></tr>
-<tr><td class="num" id="LN711">711</td><td class="line">		<span class='directive'>if (!xmmsv_dict_get (val, key, &amp;v)) { \</span></td></tr>
-<tr><td class="num" id="LN712">712</td><td class="line">			<span class='directive'>return 0; \</span></td></tr>
-<tr><td class="num" id="LN713">713</td><td class="line">		<span class='directive'>} \</span></td></tr>
-<tr><td class="num" id="LN714">714</td><td class="line">		<span class='directive'>return xmmsv_get_##typename (v, r); \</span></td></tr>
-<tr><td class="num" id="LN715">715</td><td class="line">	<span class='directive'>}</span></td></tr>
+<tr><td class="num" id="LN657">657</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN658">658</td><td class="line"> <span class='comment'>* Rewind the iterator to the start of the dict.</span></td></tr>
+<tr><td class="num" id="LN659">659</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN660">660</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
+<tr><td class="num" id="LN661">661</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN662">662</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN663">663</td><td class="line"><span class='keyword'>void</span></td></tr>
+<tr><td class="num" id="LN664">664</td><td class="line">xmmsv_dict_iter_first (xmmsv_dict_iter_t *it)</td></tr>
+<tr><td class="num" id="LN665">665</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN666">666</td><td class="line">	<span class='macro'>x_return_if_fail (it)<span class='expansion'>if (!(it)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "it", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 666); return; }</span></span>;</td></tr>
+<tr><td class="num" id="LN667">667</td><td class="line">	xmmsv_dict_internal_t *d = it-&gt;parent;</td></tr>
+<tr><td class="num" id="LN668">668</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN669">669</td><td class="line">	<span class='keyword'>for</span> (it-&gt;pos = 0</td></tr>
+<tr><td class="num" id="LN670">670</td><td class="line">		     ; it-&gt;pos &lt; (1 &lt;&lt; d-&gt;size) &amp;&amp; (d-&gt;data[it-&gt;pos].str == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span> || d-&gt;data[it-&gt;pos].str == <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>)</td></tr>
+<tr><td class="num" id="LN671">671</td><td class="line">		     ; it-&gt;pos++);</td></tr>
+<tr><td class="num" id="LN672">672</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN673">673</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN674">674</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN675">675</td><td class="line"> <span class='comment'>* Advance the iterator to the next pair in the dict.</span></td></tr>
+<tr><td class="num" id="LN676">676</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN677">677</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
+<tr><td class="num" id="LN678">678</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN679">679</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN680">680</td><td class="line"><span class='keyword'>void</span></td></tr>
+<tr><td class="num" id="LN681">681</td><td class="line">xmmsv_dict_iter_next (xmmsv_dict_iter_t *it)</td></tr>
+<tr><td class="num" id="LN682">682</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN683">683</td><td class="line">	<span class='macro'>x_return_if_fail (it)<span class='expansion'>if (!(it)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "it", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 683); return; }</span></span>;</td></tr>
+<tr><td class="num" id="LN684">684</td><td class="line">	xmmsv_dict_internal_t *d = it-&gt;parent;</td></tr>
+<tr><td class="num" id="LN685">685</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN686">686</td><td class="line">	<span class='keyword'>for</span> (it-&gt;pos++</td></tr>
+<tr><td class="num" id="LN687">687</td><td class="line">		     ; it-&gt;pos &lt; (1 &lt;&lt; d-&gt;size) &amp;&amp; (d-&gt;data[it-&gt;pos].str == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span> || d-&gt;data[it-&gt;pos].str == <span class='macro'>DELETED_STR<span class='expansion'>((char*)-1)</span></span>)</td></tr>
+<tr><td class="num" id="LN688">688</td><td class="line">		     ; it-&gt;pos++);</td></tr>
+<tr><td class="num" id="LN689">689</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN690">690</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN691">691</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN692">692</td><td class="line"> <span class='comment'>* Move the iterator to the pair with the given key (if it exists)</span></td></tr>
+<tr><td class="num" id="LN693">693</td><td class="line"> <span class='comment'>* or move it to the position where the key would have to be</span></td></tr>
+<tr><td class="num" id="LN694">694</td><td class="line"> <span class='comment'>* put (if it doesn't exist yet).</span></td></tr>
+<tr><td class="num" id="LN695">695</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN696">696</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
+<tr><td class="num" id="LN697">697</td><td class="line"> <span class='comment'>* @param key The key to seek for.</span></td></tr>
+<tr><td class="num" id="LN698">698</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN699">699</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN700">700</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN701">701</td><td class="line">xmmsv_dict_iter_find (xmmsv_dict_iter_t *it, <span class='keyword'>const</span> <span class='keyword'>char</span> *key)</td></tr>
+<tr><td class="num" id="LN702">702</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN703">703</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_dict_iter_valid (it), 0)<span class='expansion'>if (!(xmmsv_dict_iter_valid (it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_dict_iter_valid (it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 703); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN704">704</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN705">705</td><td class="line">	xmmsv_dict_iter_first (it);</td></tr>
+<tr><td class="num" id="LN706">706</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN707">707</td><td class="line">	<span class='keyword'>for</span> (xmmsv_dict_iter_first (it)</td></tr>
+<tr><td class="num" id="LN708">708</td><td class="line">		     ; xmmsv_dict_iter_valid (it)</td></tr>
+<tr><td class="num" id="LN709">709</td><td class="line">		     ; xmmsv_dict_iter_next (it)) {</td></tr>
+<tr><td class="num" id="LN710">710</td><td class="line">		<span class='keyword'>const</span> <span class='keyword'>char</span> *s;</td></tr>
+<tr><td class="num" id="LN711">711</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN712">712</td><td class="line">		xmmsv_dict_iter_pair (it, &amp;s, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>);</td></tr>
+<tr><td class="num" id="LN713">713</td><td class="line">		<span class='keyword'>if</span> (strcmp (s, key) == 0)</td></tr>
+<tr><td class="num" id="LN714">714</td><td class="line">			<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN715">715</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN716">716</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN717">717</td><td class="line"><span class='macro'>GEN_DICT_EXTRACTOR_FUNC (string, <span class='keyword'>const</span> <span class='keyword'>char</span> *)<span class='expansion'>int xmmsv_dict_entry_get_string (xmmsv_t *val, const char *key<br>, const char * *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key<br>, &amp;v)) { return 0; } return xmmsv_get_string (v, r); }</span></span></td></tr>
-<tr><td class="num" id="LN718">718</td><td class="line"><span class='macro'>GEN_DICT_EXTRACTOR_FUNC (int32, int32_t)<span class='expansion'>int xmmsv_dict_entry_get_int32 (xmmsv_t *val, const char *key<br>, int32_t *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key, &amp;<br>v)) { return 0; } return xmmsv_get_int32 (v, r); }</span></span></td></tr>
-<tr><td class="num" id="LN719">719</td><td class="line"><span class='macro'>GEN_DICT_EXTRACTOR_FUNC (int64, int64_t)<span class='expansion'>int xmmsv_dict_entry_get_int64 (xmmsv_t *val, const char *key<br>, int64_t *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key, &amp;<br>v)) { return 0; } return xmmsv_get_int64 (v, r); }</span></span></td></tr>
-<tr><td class="num" id="LN720">720</td><td class="line"><span class='macro'>GEN_DICT_EXTRACTOR_FUNC (<span class='keyword'>float</span>, <span class='keyword'>float</span>)<span class='expansion'>int xmmsv_dict_entry_get_float (xmmsv_t *val, const char *key<br>, float *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key, &amp;<br>v)) { return 0; } return xmmsv_get_float (v, r); }</span></span></td></tr>
-<tr><td class="num" id="LN721">721</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN722">722</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN723">723</td><td class="line">xmmsv_dict_entry_get_coll (xmmsv_t *val, <span class='keyword'>const</span> <span class='keyword'>char</span> *key, xmmsv_t **r)</td></tr>
-<tr><td class="num" id="LN724">724</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN725">725</td><td class="line">	<span class='keyword'>return</span> xmmsv_dict_get (val, key, r);</td></tr>
-<tr><td class="num" id="LN726">726</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN727">727</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN728">728</td><td class="line"><span class='comment'>/* macro-magically define dict set functions */</span></td></tr>
-<tr><td class="num" id="LN729">729</td><td class="line"><span class='directive'>#define <span class='macro'>GEN_DICT_SET_FUNC(typename, type)<span class='expansion'>int xmmsv_dict_set_typename (xmmsv_t *dict, const char *key, type<br> elem) { int ret; xmmsv_t *v; v = xmmsv_new_typename (elem); ret<br> = xmmsv_dict_set (dict, key, v); xmmsv_unref (v); return ret<br>; }</span></span>	  \</span></td></tr>
-<tr><td class="num" id="LN730">730</td><td class="line">	<span class='directive'>int \</span></td></tr>
-<tr><td class="num" id="LN731">731</td><td class="line">	<span class='directive'>xmmsv_dict_set_##typename (xmmsv_t *dict, const char *key, type elem) \</span></td></tr>
-<tr><td class="num" id="LN732">732</td><td class="line">	<span class='directive'>{ \</span></td></tr>
-<tr><td class="num" id="LN733">733</td><td class="line">		<span class='directive'>int ret; \</span></td></tr>
-<tr><td class="num" id="LN734">734</td><td class="line">		<span class='directive'>xmmsv_t *v; \</span></td></tr>
-<tr><td class="num" id="LN735">735</td><td class="line">	  <span class='directive'>\</span></td></tr>
-<tr><td class="num" id="LN736">736</td><td class="line">		<span class='directive'>v = xmmsv_new_##typename (elem); \</span></td></tr>
-<tr><td class="num" id="LN737">737</td><td class="line">			<span class='directive'>ret = xmmsv_dict_set (dict, key, v); \</span></td></tr>
-<tr><td class="num" id="LN738">738</td><td class="line">			<span class='directive'>xmmsv_unref (v); \</span></td></tr>
-<tr><td class="num" id="LN739">739</td><td class="line">	  <span class='directive'>\</span></td></tr>
-<tr><td class="num" id="LN740">740</td><td class="line">			<span class='directive'>return ret; \</span></td></tr>
-<tr><td class="num" id="LN741">741</td><td class="line">	<span class='directive'>}</span></td></tr>
-<tr><td class="num" id="LN742">742</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN743">743</td><td class="line"><span class='macro'>GEN_DICT_SET_FUNC (string, <span class='keyword'>const</span> <span class='keyword'>char</span> *)<span class='expansion'>int xmmsv_dict_set_string (xmmsv_t *dict, const char *key, const<br> char * elem) { int ret; xmmsv_t *v; v = xmmsv_new_string (elem<br>); ret = xmmsv_dict_set (dict, key, v); xmmsv_unref (v); return<br> ret; }</span></span></td></tr>
-<tr><td class="num" id="LN744">744</td><td class="line"><span class='macro'>GEN_DICT_SET_FUNC (<span class='keyword'>int</span>, int64_t)<span class='expansion'>int xmmsv_dict_set_int (xmmsv_t *dict, const char *key, int64_t<br> elem) { int ret; xmmsv_t *v; v = xmmsv_new_int (elem); ret =<br> xmmsv_dict_set (dict, key, v); xmmsv_unref (v); return ret; }</span></span></td></tr>
-<tr><td class="num" id="LN745">745</td><td class="line"><span class='macro'>GEN_DICT_SET_FUNC (<span class='keyword'>float</span>, <span class='keyword'>float</span>)<span class='expansion'>int xmmsv_dict_set_float (xmmsv_t *dict, const char *key, float<br> elem) { int ret; xmmsv_t *v; v = xmmsv_new_float (elem); ret<br> = xmmsv_dict_set (dict, key, v); xmmsv_unref (v); return ret<br>; }</span></span></td></tr>
-<tr><td class="num" id="LN746">746</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN747">747</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN748">748</td><td class="line">xmmsv_dict_set_coll (xmmsv_t *dict, <span class='keyword'>const</span> <span class='keyword'>char</span> *key, xmmsv_t *elem)</td></tr>
-<tr><td class="num" id="LN749">749</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN750">750</td><td class="line">	<span class='keyword'>return</span> xmmsv_dict_set (dict, key, elem);</td></tr>
-<tr><td class="num" id="LN751">751</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN717">717</td><td class="line">	<span class='keyword'>return</span> 0;</td></tr>
+<tr><td class="num" id="LN718">718</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN719">719</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN720">720</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN721">721</td><td class="line"> <span class='comment'>* Replace the element of the pair currently pointed to by the</span></td></tr>
+<tr><td class="num" id="LN722">722</td><td class="line"> <span class='comment'>* iterator.</span></td></tr>
+<tr><td class="num" id="LN723">723</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN724">724</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
+<tr><td class="num" id="LN725">725</td><td class="line"> <span class='comment'>* @param val The element to set in the pair.</span></td></tr>
+<tr><td class="num" id="LN726">726</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN727">727</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN728">728</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN729">729</td><td class="line">xmmsv_dict_iter_set (xmmsv_dict_iter_t *it, xmmsv_t *val)</td></tr>
+<tr><td class="num" id="LN730">730</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN731">731</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_dict_iter_valid (it), 0)<span class='expansion'>if (!(xmmsv_dict_iter_valid (it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_dict_iter_valid (it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 731); return<br> (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN732">732</td><td class="line">	<span class='macro'>x_return_val_if_fail (val, 0)<span class='expansion'>if (!(val)) { xmmsc_log ("xmmsc/xmmstypes", XMMS_LOG_LEVEL_FAIL<br>, "Check '%s' failed in %s at %s:%d", "val", __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c"<br>, 732); return (0); }</span></span>;</td></tr>
+<tr><td class="num" id="LN733">733</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN734">734</td><td class="line">	<span class='comment'>/* In case old value is new value, ref first. */</span></td></tr>
+<tr><td class="num" id="LN735">735</td><td class="line">	xmmsv_ref (val);</td></tr>
+<tr><td class="num" id="LN736">736</td><td class="line">	xmmsv_unref (it-&gt;parent-&gt;data[it-&gt;pos].value);</td></tr>
+<tr><td class="num" id="LN737">737</td><td class="line">	it-&gt;parent-&gt;data[it-&gt;pos].value = val;</td></tr>
+<tr><td class="num" id="LN738">738</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN739">739</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN740">740</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN741">741</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN742">742</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN743">743</td><td class="line"> <span class='comment'>* Remove the pair in the dict pointed at by the iterator.</span></td></tr>
+<tr><td class="num" id="LN744">744</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN745">745</td><td class="line"> <span class='comment'>* @param it A #xmmsv_dict_iter_t.</span></td></tr>
+<tr><td class="num" id="LN746">746</td><td class="line"> <span class='comment'>* @return 1 upon success otherwise 0</span></td></tr>
+<tr><td class="num" id="LN747">747</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN748">748</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN749">749</td><td class="line">xmmsv_dict_iter_remove (xmmsv_dict_iter_t *it)</td></tr>
+<tr><td class="num" id="LN750">750</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN751">751</td><td class="line">	<span class='macro'>x_return_val_if_fail (xmmsv_dict_iter_valid (it), 0)<span class='expansion'>if (!(xmmsv_dict_iter_valid (it))) { xmmsc_log ("xmmsc/xmmstypes"<br>, XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d", "xmmsv_dict_iter_valid (it)"<br>, __FUNCTION__, "../src/lib/xmmstypes/xmmsv_dict.c", 751); return<br> (0); }</span></span>;</td></tr>
 <tr><td class="num" id="LN752">752</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN753">753</td><td class="line"><span class='comment'>/* macro-magically define dict_iter extractors */</span></td></tr>
-<tr><td class="num" id="LN754">754</td><td class="line"><span class='directive'>#define <span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC(typename, type)<span class='expansion'>int xmmsv_dict_iter_pair_typename (xmmsv_dict_iter_t *it, const<br> char **key, type *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair<br> (it, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_typename<br> (v, r); } else { return 1; } }</span></span>	  \</span></td></tr>
-<tr><td class="num" id="LN755">755</td><td class="line">	<span class='directive'>int \</span></td></tr>
-<tr><td class="num" id="LN756">756</td><td class="line">	<span class='directive'>xmmsv_dict_iter_pair_##typename (xmmsv_dict_iter_t *it, \</span></td></tr>
-<tr><td class="num" id="LN757">757</td><td class="line">	                                 <span class='directive'>const char **key, \</span></td></tr>
-<tr><td class="num" id="LN758">758</td><td class="line">	                                 <span class='directive'>type *r) \</span></td></tr>
-<tr><td class="num" id="LN759">759</td><td class="line">	<span class='directive'>{ \</span></td></tr>
-<tr><td class="num" id="LN760">760</td><td class="line">		<span class='directive'>xmmsv_t *v; \</span></td></tr>
-<tr><td class="num" id="LN761">761</td><td class="line">		<span class='directive'>if (!xmmsv_dict_iter_pair (it, key, &amp;v)) { \</span></td></tr>
-<tr><td class="num" id="LN762">762</td><td class="line">			<span class='directive'>return 0; \</span></td></tr>
-<tr><td class="num" id="LN763">763</td><td class="line">		<span class='directive'>} \</span></td></tr>
-<tr><td class="num" id="LN764">764</td><td class="line">		<span class='directive'>if (r) { \</span></td></tr>
-<tr><td class="num" id="LN765">765</td><td class="line">			<span class='directive'>return xmmsv_get_##typename (v, r); \</span></td></tr>
-<tr><td class="num" id="LN766">766</td><td class="line">		<span class='directive'>} else { \</span></td></tr>
-<tr><td class="num" id="LN767">767</td><td class="line">			<span class='directive'>return 1; \</span></td></tr>
+<tr><td class="num" id="LN753">753</td><td class="line">	_xmmsv_dict_remove (it-&gt;parent, it-&gt;pos);</td></tr>
+<tr><td class="num" id="LN754">754</td><td class="line">	xmmsv_dict_iter_next (it);</td></tr>
+<tr><td class="num" id="LN755">755</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN756">756</td><td class="line">	<span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN757">757</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN758">758</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN759">759</td><td class="line"><span class='comment'>/* macro-magically define dict extractors */</span></td></tr>
+<tr><td class="num" id="LN760">760</td><td class="line"><span class='directive'>#define <span class='macro'>GEN_DICT_EXTRACTOR_FUNC(typename, type)<span class='expansion'>int xmmsv_dict_entry_get_typename (xmmsv_t *val, const char *<br>key, type *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key, &amp;<br>v)) { return 0; } return xmmsv_get_typename (v, r); }</span></span>	  \</span></td></tr>
+<tr><td class="num" id="LN761">761</td><td class="line">	<span class='directive'>int \</span></td></tr>
+<tr><td class="num" id="LN762">762</td><td class="line">	<span class='directive'>xmmsv_dict_entry_get_##typename (xmmsv_t *val, const char *key, \</span></td></tr>
+<tr><td class="num" id="LN763">763</td><td class="line">	                                 <span class='directive'>type *r) \</span></td></tr>
+<tr><td class="num" id="LN764">764</td><td class="line">	<span class='directive'>{ \</span></td></tr>
+<tr><td class="num" id="LN765">765</td><td class="line">		<span class='directive'>xmmsv_t *v; \</span></td></tr>
+<tr><td class="num" id="LN766">766</td><td class="line">		<span class='directive'>if (!xmmsv_dict_get (val, key, &amp;v)) { \</span></td></tr>
+<tr><td class="num" id="LN767">767</td><td class="line">			<span class='directive'>return 0; \</span></td></tr>
 <tr><td class="num" id="LN768">768</td><td class="line">		<span class='directive'>} \</span></td></tr>
-<tr><td class="num" id="LN769">769</td><td class="line">	<span class='directive'>}</span></td></tr>
-<tr><td class="num" id="LN770">770</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN771">771</td><td class="line"><span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC (string, <span class='keyword'>const</span> <span class='keyword'>char</span> *)<span class='expansion'>int xmmsv_dict_iter_pair_string (xmmsv_dict_iter_t *it, const<br> char **key, const char * *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair<br> (it, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_string<br> (v, r); } else { return 1; } }</span></span></td></tr>
-<tr><td class="num" id="LN772">772</td><td class="line"><span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC (int32, int32_t)<span class='expansion'>int xmmsv_dict_iter_pair_int32 (xmmsv_dict_iter_t *it, const char<br> **key, int32_t *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair (<br>it, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_int32<br> (v, r); } else { return 1; } }</span></span></td></tr>
-<tr><td class="num" id="LN773">773</td><td class="line"><span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC (int64, int64_t)<span class='expansion'>int xmmsv_dict_iter_pair_int64 (xmmsv_dict_iter_t *it, const char<br> **key, int64_t *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair (<br>it, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_int64<br> (v, r); } else { return 1; } }</span></span></td></tr>
-<tr><td class="num" id="LN774">774</td><td class="line"><span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC (<span class='keyword'>float</span>, <span class='keyword'>float</span>)<span class='expansion'>int xmmsv_dict_iter_pair_float (xmmsv_dict_iter_t *it, const char<br> **key, float *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair (it<br>, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_float<br> (v, r); } else { return 1; } }</span></span></td></tr>
-<tr><td class="num" id="LN775">775</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN776">776</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN777">777</td><td class="line">xmmsv_dict_iter_pair_coll (xmmsv_dict_iter_t *it, <span class='keyword'>const</span> <span class='keyword'>char</span> **key, xmmsv_t **r)</td></tr>
-<tr><td class="num" id="LN778">778</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN779">779</td><td class="line">	<span class='keyword'>return</span> xmmsv_dict_iter_pair (it, key, r);</td></tr>
-<tr><td class="num" id="LN780">780</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN781">781</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN782">782</td><td class="line"><span class='comment'>/* macro-magically define dict_iter set functions */</span></td></tr>
-<tr><td class="num" id="LN783">783</td><td class="line"><span class='directive'>#define <span class='macro'>GEN_DICT_ITER_SET_FUNC(typename, type)<span class='expansion'>int xmmsv_dict_iter_set_typename (xmmsv_dict_iter_t *it, type<br> elem) { int ret; xmmsv_t *v; v = xmmsv_new_typename (elem); ret<br> = xmmsv_dict_iter_set (it, v); xmmsv_unref (v); return ret; }</span></span>	  \</span></td></tr>
-<tr><td class="num" id="LN784">784</td><td class="line">	<span class='directive'>int \</span></td></tr>
-<tr><td class="num" id="LN785">785</td><td class="line">	<span class='directive'>xmmsv_dict_iter_set_##typename (xmmsv_dict_iter_t *it, type elem) \</span></td></tr>
-<tr><td class="num" id="LN786">786</td><td class="line">	<span class='directive'>{ \</span></td></tr>
-<tr><td class="num" id="LN787">787</td><td class="line">		<span class='directive'>int ret; \</span></td></tr>
-<tr><td class="num" id="LN788">788</td><td class="line">		<span class='directive'>xmmsv_t *v; \</span></td></tr>
-<tr><td class="num" id="LN789">789</td><td class="line">	  <span class='directive'>\</span></td></tr>
-<tr><td class="num" id="LN790">790</td><td class="line">		<span class='directive'>v = xmmsv_new_##typename (elem); \</span></td></tr>
-<tr><td class="num" id="LN791">791</td><td class="line">			<span class='directive'>ret = xmmsv_dict_iter_set (it, v); \</span></td></tr>
-<tr><td class="num" id="LN792">792</td><td class="line">			<span class='directive'>xmmsv_unref (v); \</span></td></tr>
-<tr><td class="num" id="LN793">793</td><td class="line">	  <span class='directive'>\</span></td></tr>
-<tr><td class="num" id="LN794">794</td><td class="line">			<span class='directive'>return ret; \</span></td></tr>
-<tr><td class="num" id="LN795">795</td><td class="line">	<span class='directive'>}</span></td></tr>
-<tr><td class="num" id="LN796">796</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN797">797</td><td class="line"><span class='macro'>GEN_DICT_ITER_SET_FUNC (string, <span class='keyword'>const</span> <span class='keyword'>char</span> *)<span class='expansion'>int xmmsv_dict_iter_set_string (xmmsv_dict_iter_t *it, const char<br> * elem) { int ret; xmmsv_t *v; v = xmmsv_new_string (elem); ret<br> = xmmsv_dict_iter_set (it, v); xmmsv_unref (v); return ret; }</span></span></td></tr>
-<tr><td class="num" id="LN798">798</td><td class="line"><span class='macro'>GEN_DICT_ITER_SET_FUNC (<span class='keyword'>int</span>, int64_t)<span class='expansion'>int xmmsv_dict_iter_set_int (xmmsv_dict_iter_t *it, int64_t elem<br>) { int ret; xmmsv_t *v; v = xmmsv_new_int (elem); ret = xmmsv_dict_iter_set<br> (it, v); xmmsv_unref (v); return ret; }</span></span></td></tr>
-<tr><td class="num" id="LN799">799</td><td class="line"><span class='macro'>GEN_DICT_ITER_SET_FUNC (<span class='keyword'>float</span>, <span class='keyword'>float</span>)<span class='expansion'>int xmmsv_dict_iter_set_float (xmmsv_dict_iter_t *it, float elem<br>) { int ret; xmmsv_t *v; v = xmmsv_new_float (elem); ret = xmmsv_dict_iter_set<br> (it, v); xmmsv_unref (v); return ret; }</span></span></td></tr>
-<tr><td class="num" id="LN800">800</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN801">801</td><td class="line"><span class='keyword'>int</span></td></tr>
-<tr><td class="num" id="LN802">802</td><td class="line">xmmsv_dict_iter_set_coll (xmmsv_dict_iter_t *it, xmmsv_t *elem)</td></tr>
-<tr><td class="num" id="LN803">803</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN804">804</td><td class="line">	<span class='keyword'>return</span> xmmsv_dict_iter_set (it, elem);</td></tr>
-<tr><td class="num" id="LN805">805</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN769">769</td><td class="line">		<span class='directive'>return xmmsv_get_##typename (v, r); \</span></td></tr>
+<tr><td class="num" id="LN770">770</td><td class="line">	<span class='directive'>}</span></td></tr>
+<tr><td class="num" id="LN771">771</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN772">772</td><td class="line"><span class='macro'>GEN_DICT_EXTRACTOR_FUNC (string, <span class='keyword'>const</span> <span class='keyword'>char</span> *)<span class='expansion'>int xmmsv_dict_entry_get_string (xmmsv_t *val, const char *key<br>, const char * *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key<br>, &amp;v)) { return 0; } return xmmsv_get_string (v, r); }</span></span></td></tr>
+<tr><td class="num" id="LN773">773</td><td class="line"><span class='macro'>GEN_DICT_EXTRACTOR_FUNC (int32, int32_t)<span class='expansion'>int xmmsv_dict_entry_get_int32 (xmmsv_t *val, const char *key<br>, int32_t *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key, &amp;<br>v)) { return 0; } return xmmsv_get_int32 (v, r); }</span></span></td></tr>
+<tr><td class="num" id="LN774">774</td><td class="line"><span class='macro'>GEN_DICT_EXTRACTOR_FUNC (int64, int64_t)<span class='expansion'>int xmmsv_dict_entry_get_int64 (xmmsv_t *val, const char *key<br>, int64_t *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key, &amp;<br>v)) { return 0; } return xmmsv_get_int64 (v, r); }</span></span></td></tr>
+<tr><td class="num" id="LN775">775</td><td class="line"><span class='macro'>GEN_DICT_EXTRACTOR_FUNC (<span class='keyword'>float</span>, <span class='keyword'>float</span>)<span class='expansion'>int xmmsv_dict_entry_get_float (xmmsv_t *val, const char *key<br>, float *r) { xmmsv_t *v; if (!xmmsv_dict_get (val, key, &amp;<br>v)) { return 0; } return xmmsv_get_float (v, r); }</span></span></td></tr>
+<tr><td class="num" id="LN776">776</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN777">777</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN778">778</td><td class="line">xmmsv_dict_entry_get_coll (xmmsv_t *val, <span class='keyword'>const</span> <span class='keyword'>char</span> *key, xmmsv_t **r)</td></tr>
+<tr><td class="num" id="LN779">779</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN780">780</td><td class="line">	<span class='keyword'>return</span> xmmsv_dict_get (val, key, r);</td></tr>
+<tr><td class="num" id="LN781">781</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN782">782</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN783">783</td><td class="line"><span class='comment'>/* macro-magically define dict set functions */</span></td></tr>
+<tr><td class="num" id="LN784">784</td><td class="line"><span class='directive'>#define <span class='macro'>GEN_DICT_SET_FUNC(typename, type)<span class='expansion'>int xmmsv_dict_set_typename (xmmsv_t *dict, const char *key, type<br> elem) { int ret; xmmsv_t *v; v = xmmsv_new_typename (elem); ret<br> = xmmsv_dict_set (dict, key, v); xmmsv_unref (v); return ret<br>; }</span></span>	  \</span></td></tr>
+<tr><td class="num" id="LN785">785</td><td class="line">	<span class='directive'>int \</span></td></tr>
+<tr><td class="num" id="LN786">786</td><td class="line">	<span class='directive'>xmmsv_dict_set_##typename (xmmsv_t *dict, const char *key, type elem) \</span></td></tr>
+<tr><td class="num" id="LN787">787</td><td class="line">	<span class='directive'>{ \</span></td></tr>
+<tr><td class="num" id="LN788">788</td><td class="line">		<span class='directive'>int ret; \</span></td></tr>
+<tr><td class="num" id="LN789">789</td><td class="line">		<span class='directive'>xmmsv_t *v; \</span></td></tr>
+<tr><td class="num" id="LN790">790</td><td class="line">	  <span class='directive'>\</span></td></tr>
+<tr><td class="num" id="LN791">791</td><td class="line">		<span class='directive'>v = xmmsv_new_##typename (elem); \</span></td></tr>
+<tr><td class="num" id="LN792">792</td><td class="line">			<span class='directive'>ret = xmmsv_dict_set (dict, key, v); \</span></td></tr>
+<tr><td class="num" id="LN793">793</td><td class="line">			<span class='directive'>xmmsv_unref (v); \</span></td></tr>
+<tr><td class="num" id="LN794">794</td><td class="line">	  <span class='directive'>\</span></td></tr>
+<tr><td class="num" id="LN795">795</td><td class="line">			<span class='directive'>return ret; \</span></td></tr>
+<tr><td class="num" id="LN796">796</td><td class="line">	<span class='directive'>}</span></td></tr>
+<tr><td class="num" id="LN797">797</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN798">798</td><td class="line"><span class='macro'>GEN_DICT_SET_FUNC (string, <span class='keyword'>const</span> <span class='keyword'>char</span> *)<span class='expansion'>int xmmsv_dict_set_string (xmmsv_t *dict, const char *key, const<br> char * elem) { int ret; xmmsv_t *v; v = xmmsv_new_string (elem<br>); ret = xmmsv_dict_set (dict, key, v); xmmsv_unref (v); return<br> ret; }</span></span></td></tr>
+<tr><td class="num" id="LN799">799</td><td class="line"><span class='macro'>GEN_DICT_SET_FUNC (<span class='keyword'>int</span>, int64_t)<span class='expansion'>int xmmsv_dict_set_int (xmmsv_t *dict, const char *key, int64_t<br> elem) { int ret; xmmsv_t *v; v = xmmsv_new_int (elem); ret =<br> xmmsv_dict_set (dict, key, v); xmmsv_unref (v); return ret; }</span></span></td></tr>
+<tr><td class="num" id="LN800">800</td><td class="line"><span class='macro'>GEN_DICT_SET_FUNC (<span class='keyword'>float</span>, <span class='keyword'>float</span>)<span class='expansion'>int xmmsv_dict_set_float (xmmsv_t *dict, const char *key, float<br> elem) { int ret; xmmsv_t *v; v = xmmsv_new_float (elem); ret<br> = xmmsv_dict_set (dict, key, v); xmmsv_unref (v); return ret<br>; }</span></span></td></tr>
+<tr><td class="num" id="LN801">801</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN802">802</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN803">803</td><td class="line">xmmsv_dict_set_coll (xmmsv_t *dict, <span class='keyword'>const</span> <span class='keyword'>char</span> *key, xmmsv_t *elem)</td></tr>
+<tr><td class="num" id="LN804">804</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN805">805</td><td class="line">	<span class='keyword'>return</span> xmmsv_dict_set (dict, key, elem);</td></tr>
+<tr><td class="num" id="LN806">806</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN807">807</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN808">808</td><td class="line"><span class='comment'>/* macro-magically define dict_iter extractors */</span></td></tr>
+<tr><td class="num" id="LN809">809</td><td class="line"><span class='directive'>#define <span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC(typename, type)<span class='expansion'>int xmmsv_dict_iter_pair_typename (xmmsv_dict_iter_t *it, const<br> char **key, type *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair<br> (it, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_typename<br> (v, r); } else { return 1; } }</span></span>	  \</span></td></tr>
+<tr><td class="num" id="LN810">810</td><td class="line">	<span class='directive'>int \</span></td></tr>
+<tr><td class="num" id="LN811">811</td><td class="line">	<span class='directive'>xmmsv_dict_iter_pair_##typename (xmmsv_dict_iter_t *it, \</span></td></tr>
+<tr><td class="num" id="LN812">812</td><td class="line">	                                 <span class='directive'>const char **key, \</span></td></tr>
+<tr><td class="num" id="LN813">813</td><td class="line">	                                 <span class='directive'>type *r) \</span></td></tr>
+<tr><td class="num" id="LN814">814</td><td class="line">	<span class='directive'>{ \</span></td></tr>
+<tr><td class="num" id="LN815">815</td><td class="line">		<span class='directive'>xmmsv_t *v; \</span></td></tr>
+<tr><td class="num" id="LN816">816</td><td class="line">		<span class='directive'>if (!xmmsv_dict_iter_pair (it, key, &amp;v)) { \</span></td></tr>
+<tr><td class="num" id="LN817">817</td><td class="line">			<span class='directive'>return 0; \</span></td></tr>
+<tr><td class="num" id="LN818">818</td><td class="line">		<span class='directive'>} \</span></td></tr>
+<tr><td class="num" id="LN819">819</td><td class="line">		<span class='directive'>if (r) { \</span></td></tr>
+<tr><td class="num" id="LN820">820</td><td class="line">			<span class='directive'>return xmmsv_get_##typename (v, r); \</span></td></tr>
+<tr><td class="num" id="LN821">821</td><td class="line">		<span class='directive'>} else { \</span></td></tr>
+<tr><td class="num" id="LN822">822</td><td class="line">			<span class='directive'>return 1; \</span></td></tr>
+<tr><td class="num" id="LN823">823</td><td class="line">		<span class='directive'>} \</span></td></tr>
+<tr><td class="num" id="LN824">824</td><td class="line">	<span class='directive'>}</span></td></tr>
+<tr><td class="num" id="LN825">825</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN826">826</td><td class="line"><span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC (string, <span class='keyword'>const</span> <span class='keyword'>char</span> *)<span class='expansion'>int xmmsv_dict_iter_pair_string (xmmsv_dict_iter_t *it, const<br> char **key, const char * *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair<br> (it, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_string<br> (v, r); } else { return 1; } }</span></span></td></tr>
+<tr><td class="num" id="LN827">827</td><td class="line"><span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC (int32, int32_t)<span class='expansion'>int xmmsv_dict_iter_pair_int32 (xmmsv_dict_iter_t *it, const char<br> **key, int32_t *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair (<br>it, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_int32<br> (v, r); } else { return 1; } }</span></span></td></tr>
+<tr><td class="num" id="LN828">828</td><td class="line"><span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC (int64, int64_t)<span class='expansion'>int xmmsv_dict_iter_pair_int64 (xmmsv_dict_iter_t *it, const char<br> **key, int64_t *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair (<br>it, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_int64<br> (v, r); } else { return 1; } }</span></span></td></tr>
+<tr><td class="num" id="LN829">829</td><td class="line"><span class='macro'>GEN_DICT_ITER_EXTRACTOR_FUNC (<span class='keyword'>float</span>, <span class='keyword'>float</span>)<span class='expansion'>int xmmsv_dict_iter_pair_float (xmmsv_dict_iter_t *it, const char<br> **key, float *r) { xmmsv_t *v; if (!xmmsv_dict_iter_pair (it<br>, key, &amp;v)) { return 0; } if (r) { return xmmsv_get_float<br> (v, r); } else { return 1; } }</span></span></td></tr>
+<tr><td class="num" id="LN830">830</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN831">831</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN832">832</td><td class="line">xmmsv_dict_iter_pair_coll (xmmsv_dict_iter_t *it, <span class='keyword'>const</span> <span class='keyword'>char</span> **key, xmmsv_t **r)</td></tr>
+<tr><td class="num" id="LN833">833</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN834">834</td><td class="line">	<span class='keyword'>return</span> xmmsv_dict_iter_pair (it, key, r);</td></tr>
+<tr><td class="num" id="LN835">835</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN836">836</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN837">837</td><td class="line"><span class='comment'>/* macro-magically define dict_iter set functions */</span></td></tr>
+<tr><td class="num" id="LN838">838</td><td class="line"><span class='directive'>#define <span class='macro'>GEN_DICT_ITER_SET_FUNC(typename, type)<span class='expansion'>int xmmsv_dict_iter_set_typename (xmmsv_dict_iter_t *it, type<br> elem) { int ret; xmmsv_t *v; v = xmmsv_new_typename (elem); ret<br> = xmmsv_dict_iter_set (it, v); xmmsv_unref (v); return ret; }</span></span>	  \</span></td></tr>
+<tr><td class="num" id="LN839">839</td><td class="line">	<span class='directive'>int \</span></td></tr>
+<tr><td class="num" id="LN840">840</td><td class="line">	<span class='directive'>xmmsv_dict_iter_set_##typename (xmmsv_dict_iter_t *it, type elem) \</span></td></tr>
+<tr><td class="num" id="LN841">841</td><td class="line">	<span class='directive'>{ \</span></td></tr>
+<tr><td class="num" id="LN842">842</td><td class="line">		<span class='directive'>int ret; \</span></td></tr>
+<tr><td class="num" id="LN843">843</td><td class="line">		<span class='directive'>xmmsv_t *v; \</span></td></tr>
+<tr><td class="num" id="LN844">844</td><td class="line">	  <span class='directive'>\</span></td></tr>
+<tr><td class="num" id="LN845">845</td><td class="line">		<span class='directive'>v = xmmsv_new_##typename (elem); \</span></td></tr>
+<tr><td class="num" id="LN846">846</td><td class="line">			<span class='directive'>ret = xmmsv_dict_iter_set (it, v); \</span></td></tr>
+<tr><td class="num" id="LN847">847</td><td class="line">			<span class='directive'>xmmsv_unref (v); \</span></td></tr>
+<tr><td class="num" id="LN848">848</td><td class="line">	  <span class='directive'>\</span></td></tr>
+<tr><td class="num" id="LN849">849</td><td class="line">			<span class='directive'>return ret; \</span></td></tr>
+<tr><td class="num" id="LN850">850</td><td class="line">	<span class='directive'>}</span></td></tr>
+<tr><td class="num" id="LN851">851</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN852">852</td><td class="line"><span class='macro'>GEN_DICT_ITER_SET_FUNC (string, <span class='keyword'>const</span> <span class='keyword'>char</span> *)<span class='expansion'>int xmmsv_dict_iter_set_string (xmmsv_dict_iter_t *it, const char<br> * elem) { int ret; xmmsv_t *v; v = xmmsv_new_string (elem); ret<br> = xmmsv_dict_iter_set (it, v); xmmsv_unref (v); return ret; }</span></span></td></tr>
+<tr><td class="num" id="LN853">853</td><td class="line"><span class='macro'>GEN_DICT_ITER_SET_FUNC (<span class='keyword'>int</span>, int64_t)<span class='expansion'>int xmmsv_dict_iter_set_int (xmmsv_dict_iter_t *it, int64_t elem<br>) { int ret; xmmsv_t *v; v = xmmsv_new_int (elem); ret = xmmsv_dict_iter_set<br> (it, v); xmmsv_unref (v); return ret; }</span></span></td></tr>
+<tr><td class="num" id="LN854">854</td><td class="line"><span class='macro'>GEN_DICT_ITER_SET_FUNC (<span class='keyword'>float</span>, <span class='keyword'>float</span>)<span class='expansion'>int xmmsv_dict_iter_set_float (xmmsv_dict_iter_t *it, float elem<br>) { int ret; xmmsv_t *v; v = xmmsv_new_float (elem); ret = xmmsv_dict_iter_set<br> (it, v); xmmsv_unref (v); return ret; }</span></span></td></tr>
+<tr><td class="num" id="LN855">855</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN856">856</td><td class="line"><span class='keyword'>int</span></td></tr>
+<tr><td class="num" id="LN857">857</td><td class="line">xmmsv_dict_iter_set_coll (xmmsv_dict_iter_t *it, xmmsv_t *elem)</td></tr>
+<tr><td class="num" id="LN858">858</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN859">859</td><td class="line">	<span class='keyword'>return</span> xmmsv_dict_iter_set (it, elem);</td></tr>
+<tr><td class="num" id="LN860">860</td><td class="line">}</td></tr>
 </table></body></html>
