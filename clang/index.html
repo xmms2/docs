@@ -58,29 +58,29 @@ function ToggleDisplay(CheckButton, ClassName) {
 <h1>xmms2-devel - scan-build results</h1>
 
 <table>
-<tr><th>User:</th><td>travis@testing-gce-605268af-50d2-43b6-a063-9ad9ad02681b</td></tr>
+<tr><th>User:</th><td>travis@testing-gce-0650ee74-2645-46b1-b852-f183569ed3cf</td></tr>
 <tr><th>Working Directory:</th><td>/home/travis/build/dsvensson/xmms2-devel</td></tr>
 <tr><th>Command Line:</th><td>./waf build --notests</td></tr>
-<tr><th>Clang Version:</th><td>Ubuntu clang version 3.7.1-svn253742-1~exp1 (branches/release_37) (based on LLVM 3.7.1)
+<tr><th>Clang Version:</th><td>clang version 3.9.1-svn281634-1~exp1 (branches/release_39)
 </td></tr>
-<tr><th>Date:</th><td>Mon Nov 21 15:52:44 2016</td></tr>
+<tr><th>Date:</th><td>Mon Nov 21 16:05:52 2016</td></tr>
 </table>
 <h2>Bug Summary</h2><table>
 <thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
-<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">66</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">63</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
 <tr><th>Dead store</th><th colspan=2></th></tr>
 <tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">19</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_assignment');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Dead increment</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_increment');" checked/></center></td></tr>
 <tr><th>Logic error</th><th colspan=2></th></tr>
 <tr><td class="SUMM_DESC">Array subscript is undefined</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_array_subscript_is_undefined');" checked/></center></td></tr>
-<tr><td class="SUMM_DESC">Assigned value is garbage or undefined</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_assigned_value_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Assigned value is garbage or undefined</td><td class="Q">5</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_assigned_value_is_garbage_or_undefined');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Dereference of undefined pointer value</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_undefined_pointer_value');" checked/></center></td></tr>
-<tr><td class="SUMM_DESC">Result of operation is garbage or undefined</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_result_of_operation_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Result of operation is garbage or undefined</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_result_of_operation_is_garbage_or_undefined');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">13</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
 <tr><th>Memory Error</th><th colspan=2></th></tr>
-<tr><td class="SUMM_DESC">Memory leak</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
-<tr><td class="SUMM_DESC">Use-after-free</td><td class="Q">8</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use-after-free');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Memory leak</td><td class="Q">4</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Use-after-free</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use-after-free');" checked/></center></td></tr>
 <tr><th>Unix API</th><th colspan=2></th></tr>
 <tr><td class="SUMM_DESC">Allocator sizeof operand mismatch</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unix_api_allocator_sizeof_operand_mismatch');" checked/></center></td></tr>
 <tr><td class="SUMM_DESC">Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131)</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unix_api_undefined_allocation_of_0_bytes_cert_mem04-c;_cwe-131_');" checked/></center></td></tr>
@@ -108,13 +108,10 @@ function ToggleDisplay(CheckButton, ClassName) {
 <tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/mp4/mp4ff/mp4util.c</td><td class="DESC">mp4ff_write_int32</td><td class="Q">76</td><td class="Q">1</td><td><a href="report-mp4util.c-mp4ff_write_int32-7-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-mp4util.c-mp4ff_write_int32-7-1.html" -->
 </tr>
-<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/faad/faad.c</td><td class="DESC">xmms_faad_init</td><td class="Q">236</td><td class="Q">17</td><td><a href="report-faad.c-xmms_faad_init-116-1.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-faad.c-xmms_faad_init-116-1.html" -->
-</tr>
 <tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/lib/s4/src/tools/s4/print.c</td><td class="DESC">print_row</td><td class="Q">93</td><td class="Q">16</td><td><a href="report-print.c-print_row-10-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-print.c-print_row-10-1.html" -->
 </tr>
-<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/clients/nycli/cli_context.c</td><td class="DESC">cli_context_event_loop_select</td><td class="Q">558</td><td class="Q">4</td><td><a href="report-cli_context.c-cli_context_event_loop_select-32-1.html#EndPath">View Report</a></td>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/clients/nycli/cli_context.c</td><td class="DESC">cli_context_event_loop_select</td><td class="Q">558</td><td class="Q">22</td><td><a href="report-cli_context.c-cli_context_event_loop_select-32-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-cli_context.c-cli_context_event_loop_select-32-1.html" -->
 </tr>
 <tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>src/plugins/jack/jack.c</td><td class="DESC">xmms_jack_process</td><td class="Q">421</td><td class="Q">19</td><td><a href="report-jack.c-xmms_jack_process-87-1.html#EndPath">View Report</a></td>
@@ -195,7 +192,7 @@ function ToggleDisplay(CheckButton, ClassName) {
 <tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_auto_unique_complete</td><td class="Q">132</td><td class="Q">4</td><td><a href="report-t_command_trie.c-__testcase_test_match_auto_unique_complete-19-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-t_command_trie.c-__testcase_test_match_auto_unique_complete-19-1.html" -->
 </tr>
-<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/plugins/mp4/mp4ff/mp4atom.c</td><td class="DESC">mp4ff_read_alac</td><td class="Q">405</td><td class="Q">11</td><td><a href="report-mp4atom.c-mp4ff_read_alac-24-1.html#EndPath">View Report</a></td>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>src/plugins/mp4/mp4ff/mp4atom.c</td><td class="DESC">mp4ff_read_alac</td><td class="Q">405</td><td class="Q">24</td><td><a href="report-mp4atom.c-mp4ff_read_alac-24-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-mp4atom.c-mp4ff_read_alac-24-1.html" -->
 </tr>
 <tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>tests/client/t_command_trie.c</td><td class="DESC">__testcase_test_match_exact_action</td><td class="Q">157</td><td class="Q">4</td><td><a href="report-t_command_trie.c-__testcase_test_match_exact_action-18-1.html#EndPath">View Report</a></td>
@@ -213,14 +210,14 @@ function ToggleDisplay(CheckButton, ClassName) {
 <tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/lib/s4/src/lib/relation.c</td><td class="DESC">_s4_add</td><td class="Q">241</td><td class="Q">9</td><td><a href="report-relation.c-_s4_add-35-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-relation.c-_s4_add-35-1.html" -->
 </tr>
-<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/lib/s4/src/lib/s4.c</td><td class="DESC">_read_string</td><td class="Q">71</td><td class="Q">4</td><td><a href="report-s4.c-_read_string-13-1.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-s4.c-_read_string-13-1.html" -->
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_headerext</td><td class="Q">122</td><td class="Q">52</td><td><a href="report-parse.c-asf_parse_headerext-59-1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-parse.c-asf_parse_headerext-59-1.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_header</td><td class="Q">264</td><td class="Q">17</td><td><a href="report-parse.c-asf_parse_header-123-1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-parse.c-asf_parse_header-123-1.html" -->
 </tr>
 <tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>src/plugins/asf/libasf/parse.c</td><td class="DESC">asf_parse_header</td><td class="Q">238</td><td class="Q">43</td><td><a href="report-parse.c-asf_parse_header-97-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-parse.c-asf_parse_header-97-1.html" -->
-</tr>
-<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/plugins/faad/faad.c</td><td class="DESC">xmms_faad_init</td><td class="Q">225</td><td class="Q">11</td><td><a href="report-faad.c-xmms_faad_init-105-1.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-faad.c-xmms_faad_init-105-1.html" -->
 </tr>
 <tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>src/plugins/wavpack/wavpack.c</td><td class="DESC">xmms_wavpack_read</td><td class="Q">325</td><td class="Q">3</td><td><a href="report-wavpack.c-xmms_wavpack_read-33-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-wavpack.c-xmms_wavpack_read-33-1.html" -->
@@ -279,17 +276,11 @@ function ToggleDisplay(CheckButton, ClassName) {
 <tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_run</td><td class="Q">565</td><td class="Q">22</td><td><a href="report-result.c-xmmsc_result_run-24-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-result.c-xmmsc_result_run-24-1.html" -->
 </tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_notifier_delete_all</td><td class="Q">710</td><td class="Q">16</td><td><a href="report-result.c-xmmsc_result_notifier_delete_all-5-1.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-result.c-xmmsc_result_notifier_delete_all-5-1.html" -->
-</tr>
 <tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_run</td><td class="Q">576</td><td class="Q">22</td><td><a href="report-result.c-xmmsc_result_run-35-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-result.c-xmmsc_result_run-35-1.html" -->
 </tr>
 <tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xlist.c</td><td class="DESC">x_list_remove</td><td class="Q">219</td><td class="Q">12</td><td><a href="report-xlist.c-x_list_remove-21-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-xlist.c-x_list_remove-21-1.html" -->
-</tr>
-<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/clients/lib/xmmsclient/result.c</td><td class="DESC">xmmsc_result_notifier_delete_all</td><td class="Q">714</td><td class="Q">16</td><td><a href="report-result.c-xmmsc_result_notifier_delete_all-9-1.html#EndPath">View Report</a></td>
-<!-- REPORTBUG id="report-result.c-xmmsc_result_notifier_delete_all-9-1.html" -->
 </tr>
 <tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>src/lib/xmmstypes/xmmsv_list.c</td><td class="DESC">_xmmsv_list_free</td><td class="Q">87</td><td class="Q">6</td><td><a href="report-xmmsv_list.c-_xmmsv_list_free-7-1.html#EndPath">View Report</a></td>
 <!-- REPORTBUG id="report-xmmsv_list.c-_xmmsv_list_free-7-1.html" -->
