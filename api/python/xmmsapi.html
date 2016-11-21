@@ -67,6 +67,75 @@ platform to platform so should always be retrieved at runtime.</p>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
+<dt id="xmmsclient.XmmsSync">
+<em class="property">class </em><code class="descclassname">xmmsclient.</code><code class="descname">XmmsSync</code><span class="sig-paren">(</span><em>clientname=None</em>, <em>xmms=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsSync" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for the <a class="reference internal" href="#xmmsclient.Xmms" title="xmmsclient.Xmms"><code class="xref any py py-class docutils literal"><span class="pre">xmmsclient.Xmms</span></code></a> class which simplifies synchronous
+communication with the XMMS2 daemon.</p>
+<p>Instances of this class may be used just like regular <a class="reference internal" href="#xmmsclient.Xmms" title="xmmsclient.Xmms"><code class="xref any py py-class docutils literal"><span class="pre">xmmsclient.Xmms</span></code></a>
+objects, except that instead of returning an <a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult"><code class="xref any py py-class docutils literal"><span class="pre">XmmsResult</span></code></a> instance, the
+value associated with the result is returned.  If the <a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult"><code class="xref any py py-class docutils literal"><span class="pre">XmmsResult</span></code></a>
+indicates an error, an <a class="reference internal" href="#xmmsclient.xmmsvalue.XmmsError" title="xmmsclient.xmmsvalue.XmmsError"><code class="xref any py py-exc docutils literal"><span class="pre">XmmsError</span></code></a> is raised instead of returning the
+value.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xmmsclient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span> <span class="o">=</span> <span class="n">xmmsclient</span><span class="o">.</span><span class="n">XmmsSync</span><span class="p">(</span><span class="s1">&#39;clientname&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">playback_start</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="xmmsclient.XmmsLoop">
+<em class="property">class </em><code class="descclassname">xmmsclient.</code><code class="descname">XmmsLoop</code><a class="headerlink" href="#xmmsclient.XmmsLoop" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple main loop to drive async communication.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xmmsclient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">handle_stats</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span> <span class="o">=</span> <span class="n">xmmsclient</span><span class="o">.</span><span class="n">XmmsLoop</span><span class="p">(</span><span class="s1">&#39;clientname&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">stats</span><span class="p">(</span><span class="n">cb</span><span class="o">=</span><span class="n">handle_stats</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="xmmsclient.XmmsLoop.exit_loop">
+<code class="descname">exit_loop</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsLoop.exit_loop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exits from the <a class="reference internal" href="#xmmsclient.XmmsLoop.loop" title="xmmsclient.XmmsLoop.loop"><code class="xref any py py-meth docutils literal"><span class="pre">loop</span></code></a> call</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsLoop.loop">
+<code class="descname">loop</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsLoop.loop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main client loop for most python clients. Call this to run the
+client once everything has been set up. This function blocks
+until <a class="reference internal" href="#xmmsclient.XmmsLoop.exit_loop" title="xmmsclient.XmmsLoop.exit_loop"><code class="xref any py py-meth docutils literal"><span class="pre">exit_loop</span></code></a> is called. One can override <a class="reference internal" href="#xmmsclient.XmmsLoop.loop_iter" title="xmmsclient.XmmsLoop.loop_iter"><code class="xref any py py-meth docutils literal"><span class="pre">loop_iter</span></code></a> to
+perform extra processing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsLoop.loop_iter">
+<code class="descname">loop_iter</code><span class="sig-paren">(</span><em>self</em>, <em>infd=None</em>, <em>outfd=None</em>, <em>errfd=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsLoop.loop_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run one iteration of the main loop. Should be overridden to add
+custom operations in the main loop.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The tuple returned by <code class="xref any docutils literal"><span class="pre">select.select</span></code> to be used by overridding
+methods in subclasses.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsLoop.loop_tickle">
+<code class="descname">loop_tickle</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsLoop.loop_tickle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="xmmsclient.Xmms">
 <em class="property">class </em><code class="descclassname">xmmsclient.</code><code class="descname">Xmms</code><span class="sig-paren">(</span><em>clientname=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
@@ -97,7 +166,7 @@ this class may be used to control and interact with XMMS2.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -113,7 +182,7 @@ this class may be used to control and interact with XMMS2.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -129,7 +198,7 @@ this class may be used to control and interact with XMMS2.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -145,7 +214,7 @@ this class may be used to control and interact with XMMS2.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -161,7 +230,7 @@ this class may be used to control and interact with XMMS2.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -177,7 +246,7 @@ this class may be used to control and interact with XMMS2.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -193,7 +262,7 @@ this class may be used to control and interact with XMMS2.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -208,7 +277,7 @@ from the XMMS2 daemon.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -227,7 +296,7 @@ value is modified.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The modified config key and its value.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -243,7 +312,7 @@ value is modified.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -258,7 +327,7 @@ from the XMMS2 daemon. (i.e. a new entry has been added)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -286,7 +355,7 @@ from the XMMS2 daemon. (i.e. an entry has been removed)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -303,7 +372,7 @@ in the medialib.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -318,7 +387,7 @@ XMMS2 daemon.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -333,7 +402,7 @@ XMMS2 daemon.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -347,7 +416,7 @@ XMMS2 daemon.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -363,7 +432,7 @@ playlist changes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -380,7 +449,7 @@ a playlist item from one position to another)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -394,7 +463,7 @@ a playlist item from one position to another)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -410,7 +479,7 @@ a playlist item from one position to another)</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -439,7 +508,7 @@ a playlist item from one position to another)</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -457,7 +526,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -473,7 +542,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -489,7 +558,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -505,7 +574,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -521,7 +590,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -537,7 +606,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -553,7 +622,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -569,7 +638,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -585,7 +654,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -601,7 +670,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -617,7 +686,7 @@ be called explicitly.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -635,7 +704,7 @@ configuration keys.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -653,7 +722,7 @@ set/get on values that haven&#8217;t been registered.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -669,7 +738,7 @@ set/get on values that haven&#8217;t been registered.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -689,8 +758,8 @@ not specified. Call this once you have instantiated the object:</p>
 <p>You can provide a disconnect callback function to be activated
 when the daemon disconnects.(e.g. daemon quit) This function
 typically has to exit the main loop used by your application.
-For example, if using <code class="xref any docutils literal"><span class="pre">loop</span></code>, your callback should call
-<code class="xref any docutils literal"><span class="pre">exit_loop</span></code> at some point.</p>
+For example, if using <a class="reference internal" href="#xmmsclient.XmmsLoop.loop" title="xmmsclient.XmmsLoop.loop"><code class="xref any py py-meth docutils literal"><span class="pre">loop</span></code></a>, your callback should call
+<a class="reference internal" href="#xmmsclient.XmmsLoop.exit_loop" title="xmmsclient.XmmsLoop.exit_loop"><code class="xref any py py-meth docutils literal"><span class="pre">exit_loop</span></code></a> at some point.</p>
 </dd></dl>
 
 <dl class="method">
@@ -753,7 +822,7 @@ circumstances. e.g. a custom event loop</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -782,7 +851,7 @@ circumstances. e.g. a custom event loop</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -797,7 +866,7 @@ circumstances. e.g. a custom event loop</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about the medialib entry position specified.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -814,7 +883,7 @@ passed as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -830,7 +899,7 @@ passed as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -872,7 +941,7 @@ passed as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -888,7 +957,7 @@ passed as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -904,7 +973,7 @@ passed as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -920,7 +989,7 @@ passed as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -935,7 +1004,7 @@ passed as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The medialib id of the item currently selected.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -951,7 +1020,7 @@ passed as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -968,7 +1037,7 @@ more direct version of <a class="reference internal" href="#xmmsclient.Xmms.sign
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation (playtime in milliseconds).</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -984,7 +1053,7 @@ more direct version of <a class="reference internal" href="#xmmsclient.Xmms.sign
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1000,7 +1069,7 @@ more direct version of <a class="reference internal" href="#xmmsclient.Xmms.sign
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1017,7 +1086,7 @@ selected file from the playlist.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1037,7 +1106,7 @@ essentially the more direct version of
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current playback status</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1054,7 +1123,7 @@ currently being played.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1070,7 +1139,7 @@ currently being played.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1084,7 +1153,7 @@ currently being played.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1098,7 +1167,7 @@ currently being played.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1114,7 +1183,7 @@ currently being played.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1143,7 +1212,7 @@ currently being played.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1161,7 +1230,7 @@ Requires a string &#8216;url&#8217; as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1177,7 +1246,7 @@ Requires a string &#8216;url&#8217; as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1193,7 +1262,7 @@ Requires a string &#8216;url&#8217; as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1207,7 +1276,7 @@ Requires a string &#8216;url&#8217; as argument.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1223,7 +1292,7 @@ list is 0.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1240,7 +1309,7 @@ Requires an int &#8216;pos&#8217; and an int &#8216;id&#8217; as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1263,14 +1332,14 @@ Requires an int &#8216;pos&#8217; and an int &#8216;id&#8217; as argument.</p>
 <dt id="xmmsclient.Xmms.playlist_insert_id">
 <code class="descname">playlist_insert_id</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>int id</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_insert_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert a medialib to the playlist.
-Requires an int <code class="xref any docutils literal"><span class="pre">pos</span></code> and an int <code class="xref any docutils literal"><span class="pre">id</span></code> as argument.</p>
+Requires an int <code class="xref any docutils literal"><span class="pre">pos</span></code> and an int <a class="reference internal" href="#xmmsclient.XmmsValueC2C.id" title="xmmsclient.XmmsValueC2C.id"><code class="xref any py py-attr docutils literal"><span class="pre">id</span></code></a> as argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1288,7 +1357,7 @@ Requires an int &#8216;pos&#8217; and a string &#8216;url&#8217; as argument.</p
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1304,7 +1373,7 @@ Requires an int &#8216;pos&#8217; and a string &#8216;url&#8217; as argument.</p
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1322,7 +1391,7 @@ of the files/streams currently in the playlist. Use
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The current playlist.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1338,7 +1407,7 @@ of the files/streams currently in the playlist. Use
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1354,7 +1423,7 @@ of the files/streams currently in the playlist. Use
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1371,7 +1440,7 @@ Requires a string &#8216;url&#8217; as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1400,7 +1469,7 @@ Requires a string &#8216;url&#8217; as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1417,7 +1486,7 @@ Requires a number &#8216;id&#8217; as argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1434,7 +1503,7 @@ Requires an int &#8216;pos&#8217; and a string &#8216;url&#8217; as argument.</p
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1462,7 +1531,7 @@ Requires an int &#8216;pos&#8217; and a string &#8216;url&#8217; as argument.</p
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1478,7 +1547,7 @@ You can do set_next_rel(-1) to move backwards for example.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1494,7 +1563,7 @@ You can do set_next_rel(-1) to move backwards for example.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1510,7 +1579,7 @@ You can do set_next_rel(-1) to move backwards for example.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1526,7 +1595,7 @@ You can do set_next_rel(-1) to move backwards for example.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1542,7 +1611,7 @@ You can do set_next_rel(-1) to move backwards for example.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1574,7 +1643,7 @@ You can do set_next_rel(-1) to move backwards for example.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1590,7 +1659,7 @@ You can do set_next_rel(-1) to move backwards for example.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1623,7 +1692,7 @@ Client-to-client features won&#8217;t work with the synchronous client wrapper</
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1639,7 +1708,7 @@ Client-to-client features won&#8217;t work with the synchronous client wrapper</
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1655,7 +1724,7 @@ Client-to-client features won&#8217;t work with the synchronous client wrapper</
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1671,7 +1740,7 @@ Client-to-client features won&#8217;t work with the synchronous client wrapper</
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1687,7 +1756,7 @@ Client-to-client features won&#8217;t work with the synchronous client wrapper</
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1715,7 +1784,7 @@ sent to the server.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1730,7 +1799,7 @@ XMMS2 daemon.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1746,7 +1815,7 @@ XMMS2 daemon.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1762,7 +1831,7 @@ XMMS2 daemon.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Visualization chunk.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsVisChunk</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsVisChunk" title="xmmsclient.xmmsapi.XmmsVisChunk">XmmsVisChunk</a></td>
 </tr>
 </tbody>
 </table>
@@ -1794,7 +1863,7 @@ XMMS2 daemon.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1810,7 +1879,7 @@ XMMS2 daemon.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1826,7 +1895,7 @@ XMMS2 daemon.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1848,7 +1917,7 @@ XMMS2 daemon.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1880,7 +1949,7 @@ XMMS2 daemon.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1902,7 +1971,7 @@ XMMS2 daemon.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult" title="xmmsclient.xmmsapi.XmmsResult">XmmsResult</a></td>
 </tr>
 </tbody>
 </table>
@@ -1923,9 +1992,431 @@ XMMS2 daemon.</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="xmmsclient.XmmsValue">
+<em class="property">class </em><code class="descclassname">xmmsclient.</code><code class="descname">XmmsValue</code><span class="sig-paren">(</span><em>sourcepref=None</em>, <em>pyval=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="xmmsclient.XmmsValue.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>cls=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_bin">
+<code class="descname">get_bin</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data from the result structure as binary data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The binary data as bytes.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bytes</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_coll">
+<code class="descname">get_coll</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_coll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data from the result structure as a Collection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Collection</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_dict">
+<code class="descname">get_dict</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_dict" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dictionary containing media info.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_dict_iter">
+<code class="descname">get_dict_iter</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_dict_iter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An iterator on dict items ((key, value) pairs).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_error">
+<code class="descname">get_error</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Error string from the result.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">String</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_float">
+<code class="descname">get_float</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data from the result structure as an float.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A float from the result.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_int">
+<code class="descname">get_int</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data from the result structure as an int.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An integer from the result.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_list">
+<code class="descname">get_list</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_list" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of dicts from the result structure.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_list_iter">
+<code class="descname">get_list_iter</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_list_iter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An iterator on a list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_propdict">
+<code class="descname">get_propdict</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_propdict" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A source dict.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_string">
+<code class="descname">get_string</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data from the result structure as a string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A string from the result.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the type of the value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The return value is one of the VALUE_TYPE_* constants.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.is_error">
+<code class="descname">is_error</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.is_error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Whether the value represents an error or not.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.iserror">
+<code class="descname">iserror</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.iserror" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.XmmsValue.is_error" title="xmmsclient.XmmsValue.is_error"><code class="xref any py py-meth docutils literal"><span class="pre">XmmsValue.is_error</span></code></a> instead.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Whether the value represents an error or not.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.set_pyval">
+<code class="descname">set_pyval</code><span class="sig-paren">(</span><em>self</em>, <em>pyval</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.set_pyval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.XmmsValue.value">
+<code class="descname">value</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.XmmsValue.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>This can be used instead of most get_* functions in this class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return value of appropriate data type contained in this result.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xmmsclient.XmmsValueC2C">
+<em class="property">class </em><code class="descclassname">xmmsclient.</code><code class="descname">XmmsValueC2C</code><a class="headerlink" href="#xmmsclient.XmmsValueC2C" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="xmmsclient.XmmsValueC2C.destination">
+<code class="descname">destination</code><a class="headerlink" href="#xmmsclient.XmmsValueC2C.destination" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xmmsclient.XmmsValueC2C.id">
+<code class="descname">id</code><a class="headerlink" href="#xmmsclient.XmmsValueC2C.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xmmsclient.XmmsValueC2C.payload">
+<code class="descname">payload</code><a class="headerlink" href="#xmmsclient.XmmsValueC2C.payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xmmsclient.XmmsValueC2C.sender">
+<code class="descname">sender</code><a class="headerlink" href="#xmmsclient.XmmsValueC2C.sender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descclassname">xmmsclient.</code><code class="descname">XmmsLoop</code></dt>
+<dd><p>A simple main loop to drive async communication.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xmmsclient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">handle_stats</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span> <span class="o">=</span> <span class="n">xmmsclient</span><span class="o">.</span><span class="n">XmmsLoop</span><span class="p">(</span><span class="s1">&#39;clientname&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">stats</span><span class="p">(</span><span class="n">cb</span><span class="o">=</span><span class="n">handle_stats</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt>
+<code class="descname">exit_loop</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span></dt>
+<dd><p>Exits from the <a class="reference internal" href="#xmmsclient.XmmsLoop.loop" title="xmmsclient.XmmsLoop.loop"><code class="xref any py py-meth docutils literal"><span class="pre">loop</span></code></a> call</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">loop</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span></dt>
+<dd><p>Main client loop for most python clients. Call this to run the
+client once everything has been set up. This function blocks
+until <a class="reference internal" href="#xmmsclient.XmmsLoop.exit_loop" title="xmmsclient.XmmsLoop.exit_loop"><code class="xref any py py-meth docutils literal"><span class="pre">exit_loop</span></code></a> is called. One can override <a class="reference internal" href="#xmmsclient.XmmsLoop.loop_iter" title="xmmsclient.XmmsLoop.loop_iter"><code class="xref any py py-meth docutils literal"><span class="pre">loop_iter</span></code></a> to
+perform extra processing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">loop_iter</code><span class="sig-paren">(</span><em>self</em>, <em>infd=None</em>, <em>outfd=None</em>, <em>errfd=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span></dt>
+<dd><p>Run one iteration of the main loop. Should be overridden to add
+custom operations in the main loop.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The tuple returned by <code class="xref any docutils literal"><span class="pre">select.select</span></code> to be used by overridding
+methods in subclasses.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">loop_tickle</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xmmsclient.xmmsapi.XmmsResult">
+<em class="property">class </em><code class="descclassname">xmmsclient.xmmsapi.</code><code class="descname">XmmsResult</code><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class containing the results of some operation</p>
+<dl class="attribute">
+<dt id="xmmsclient.xmmsapi.XmmsResult.callback">
+<code class="descname">callback</code><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult.callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.xmmsapi.XmmsResult.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.xmmsapi.XmmsResult.is_error">
+<code class="descname">is_error</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult.is_error" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Whether the result represents an error or not.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.xmmsapi.XmmsResult.iserror">
+<code class="descname">iserror</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult.iserror" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.xmmsapi.XmmsResult.is_error" title="xmmsclient.xmmsapi.XmmsResult.is_error"><code class="xref any py py-meth docutils literal"><span class="pre">XmmsResult.is_error</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.xmmsapi.XmmsResult.value">
+<code class="descname">value</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.xmmsapi.XmmsResult.wait">
+<code class="descname">wait</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for the result from the daemon.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.xmmsapi.XmmsResult.xmmsvalue">
+<code class="descname">xmmsvalue</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult.xmmsvalue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xmmsclient.xmmsapi.XmmsResult.xvalue">
+<code class="descname">xvalue</code><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsResult.xvalue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="xmmsclient.xmmsapi.XmmsVisChunk">
+<em class="property">class </em><code class="descclassname">xmmsclient.xmmsapi.</code><code class="descname">XmmsVisChunk</code><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsVisChunk" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="xmmsclient.xmmsapi.XmmsVisChunk.get_buffer">
+<code class="descname">get_buffer</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsVisChunk.get_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the chunk buffer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">chunk data as a string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.xmmsapi.XmmsVisChunk.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsVisChunk.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get chunk data as a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="xmmsclient.xmmsvalue.XmmsError">
+<em class="property">exception </em><code class="descclassname">xmmsclient.xmmsvalue.</code><code class="descname">XmmsError</code><a class="headerlink" href="#xmmsclient.xmmsvalue.XmmsError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="xmmsclient.xmmsapi.VisualizationError">
+<em class="property">exception </em><code class="descclassname">xmmsclient.xmmsapi.</code><code class="descname">VisualizationError</code><a class="headerlink" href="#xmmsclient.xmmsapi.VisualizationError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="xmmsclient.xmmsapi.XmmsDisconnectException">
+<em class="property">exception </em><code class="descclassname">xmmsclient.xmmsapi.</code><code class="descname">XmmsDisconnectException</code><a class="headerlink" href="#xmmsclient.xmmsapi.XmmsDisconnectException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 </div>
 
