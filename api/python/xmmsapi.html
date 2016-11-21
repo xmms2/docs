@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xmmsclient &#8212; XMMS2  documentation</title>
+    
+    <link rel="stylesheet" href="_static/pydoctheme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="XMMS2  documentation" href="index.html" />
+    <link rel="next" title="xmmsclient.collections" href="collections.html" />
+    <link rel="prev" title="Welcome to XMMS2’s documentation!" href="index.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="index.html">XMMS2  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-xmmsclient">
+<span id="xmmsclient"></span><h1>xmmsclient<a class="headerlink" href="#module-xmmsclient" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="xmmsclient.userconfdir_get">
+<code class="descclassname">xmmsclient.</code><code class="descname">userconfdir_get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.userconfdir_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the user configuration directory, where XMMS2 stores its
+user-specific configuration files. Clients may store their
+configuration under the &#8216;clients&#8217; subdirectory. This varies from
+platform to platform so should always be retrieved at runtime.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xmmsclient.Xmms">
+<em class="property">class </em><code class="descclassname">xmmsclient.</code><code class="descname">Xmms</code><span class="sig-paren">(</span><em>clientname=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the class representing the XMMS2 client itself. The methods in
+this class may be used to control and interact with XMMS2.</div></blockquote>
+<dl class="attribute">
+<dt id="xmmsclient.Xmms.client_id">
+<code class="descname">client_id</code><a class="headerlink" href="#xmmsclient.Xmms.client_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xmmsclient.Xmms.clientname">
+<code class="descname">clientname</code><a class="headerlink" href="#xmmsclient.Xmms.clientname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="xmmsclient.Xmms.source_preference">
+<code class="descname">source_preference</code><a class="headerlink" href="#xmmsclient.Xmms.source_preference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.bindata_add">
+<code class="descname">bindata_add</code><span class="sig-paren">(</span><em>self</em>, <em>data</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.bindata_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a datafile to the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.bindata_list">
+<code class="descname">bindata_list</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.bindata_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all bindata hashes stored on the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.bindata_remove">
+<code class="descname">bindata_remove</code><span class="sig-paren">(</span><em>self</em>, <em>hash</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.bindata_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a datafile from the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.bindata_retrieve">
+<code class="descname">bindata_retrieve</code><span class="sig-paren">(</span><em>self</em>, <em>hash</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.bindata_retrieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a datafile from the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_c2c_client_connected">
+<code class="descname">broadcast_c2c_client_connected</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_c2c_client_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcast received whenever a new client connects to the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_c2c_client_disconnected">
+<code class="descname">broadcast_c2c_client_disconnected</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_c2c_client_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcast received whenever a client disconnects from the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_c2c_ready">
+<code class="descname">broadcast_c2c_ready</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_c2c_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcast reveiced whenever a client&#8217;s service api is ready</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_collection_changed">
+<code class="descname">broadcast_collection_changed</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_collection_changed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the collection changed broadcast
+from the XMMS2 daemon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_config_value_changed">
+<code class="descname">broadcast_config_value_changed</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_config_value_changed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the config value changed broadcast
+from the XMMS2 daemon.(i.e. some configuration value has
+been modified) Updated data is sent whenever a config
+value is modified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The modified config key and its value.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_mediainfo_reader_status">
+<code class="descname">broadcast_mediainfo_reader_status</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_mediainfo_reader_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell daemon to send you the status of the mediainfo reader</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_medialib_entry_added">
+<code class="descname">broadcast_medialib_entry_added</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_medialib_entry_added" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the medialib entry added broadcast
+from the XMMS2 daemon. (i.e. a new entry has been added)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_medialib_entry_changed">
+<code class="descname">broadcast_medialib_entry_changed</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_medialib_entry_changed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.broadcast_medialib_entry_updated" title="xmmsclient.Xmms.broadcast_medialib_entry_updated"><code class="xref any py py-meth docutils literal"><span class="pre">broadcast_medialib_entry_updated</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_medialib_entry_removed">
+<code class="descname">broadcast_medialib_entry_removed</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_medialib_entry_removed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the medialib entry removed broadcast
+from the XMMS2 daemon. (i.e. an entry has been removed)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_medialib_entry_updated">
+<code class="descname">broadcast_medialib_entry_updated</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_medialib_entry_updated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the medialib entry updated broadcast
+from the XMMS2 daemon.
+Updated data is sent when the metadata for a song is updated
+in the medialib.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_playback_current_id">
+<code class="descname">broadcast_playback_current_id</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_playback_current_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the playback id broadcast from the
+XMMS2 daemon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_playback_status">
+<code class="descname">broadcast_playback_status</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_playback_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the playback status broadcast from the
+XMMS2 daemon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_playback_volume_changed">
+<code class="descname">broadcast_playback_volume_changed</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_playback_volume_changed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a broadcast callback for volume updates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_playlist_changed">
+<code class="descname">broadcast_playlist_changed</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_playlist_changed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the playlist changed broadcast from the
+XMMS2 daemon. Updated data is sent whenever the daemon&#8217;s
+playlist changes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_playlist_current_pos">
+<code class="descname">broadcast_playlist_current_pos</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_playlist_current_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the playlist current position updates
+from the XMMS2 daemon. This is triggered whenever the daemon
+jumps from one playlist position to another. (not when moving
+a playlist item from one position to another)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.broadcast_playlist_loaded">
+<code class="descname">broadcast_playlist_loaded</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_playlist_loaded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a broadcast callback for loaded playlist event</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.c2c_get_connected_clients">
+<code class="descname">c2c_get_connected_clients</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.c2c_get_connected_clients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of clients connected to the xmms2 server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.c2c_get_own_id">
+<code class="descname">c2c_get_own_id</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.c2c_get_own_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.c2c_get_ready_clients">
+<code class="descname">c2c_get_ready_clients</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.c2c_get_ready_clients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of clients connected to the xmms2 server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.c2c_ready">
+<code class="descname">c2c_ready</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.c2c_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notify the server that client services are ready for query.
+This method is called <code class="xref any docutils literal"><span class="pre">XmmsServiceNamespace.register()</span></code> and don&#8217;t need to
+be called explicitly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_get">
+<code class="descname">coll_get</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a Collection</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_idlist_from_playlist_file">
+<code class="descname">coll_idlist_from_playlist_file</code><span class="sig-paren">(</span><em>self</em>, <em>path</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_idlist_from_playlist_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an idlist from a playlist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_list">
+<code class="descname">coll_list</code><span class="sig-paren">(</span><em>self</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List collections</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_query">
+<code class="descname">coll_query</code><span class="sig-paren">(</span><em>self</em>, <em>Collection coll</em>, <em>fetch</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrive a list of ids of the media matching the collection</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_query_ids">
+<code class="descname">coll_query_ids</code><span class="sig-paren">(</span><em>self</em>, <em>Collection coll</em>, <em>start=0</em>, <em>leng=0</em>, <em>order=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_query_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrive a list of ids of the media matching the collection</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_query_infos">
+<code class="descname">coll_query_infos</code><span class="sig-paren">(</span><em>self</em>, <em>Collection coll</em>, <em>fields</em>, <em>start=0</em>, <em>leng=0</em>, <em>order=None</em>, <em>groupby=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_query_infos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrive a list of mediainfo of the media matching the collection</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_remove">
+<code class="descname">coll_remove</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a collection on server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_rename">
+<code class="descname">coll_rename</code><span class="sig-paren">(</span><em>self</em>, <em>oldname</em>, <em>newname</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_rename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename a collection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.coll_save">
+<code class="descname">coll_save</code><span class="sig-paren">(</span><em>self</em>, <em>Collection coll</em>, <em>name</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a collection on server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.config_get_value">
+<code class="descname">config_get_value</code><span class="sig-paren">(</span><em>self</em>, <em>key</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.config_get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the configuration value of a given key, from the daemon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.config_list_values">
+<code class="descname">config_list_values</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.config_list_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of configuration keys on the daemon. Use
+<a class="reference internal" href="#xmmsclient.Xmms.config_get_value" title="xmmsclient.Xmms.config_get_value"><code class="xref any py py-meth docutils literal"><span class="pre">config_get_value</span></code></a> to retrieve the values corresponding to the
+configuration keys.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.config_register_value">
+<code class="descname">config_register_value</code><span class="sig-paren">(</span><em>self</em>, <em>valuename</em>, <em>defaultvalue</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.config_register_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a new configvalue.
+This should be called in the initcode as XMMS2 won&#8217;t allow
+set/get on values that haven&#8217;t been registered.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.config_set_value">
+<code class="descname">config_set_value</code><span class="sig-paren">(</span><em>self</em>, <em>key</em>, <em>val</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.config_set_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a configuration value on the daemon, given a key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><em>self</em>, <em>path=None</em>, <em>disconnect_func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the appropriate IPC path, for communication with the
+XMMS2 daemon. This path defaults to /tmp/xmms-ipc-&lt;username&gt; if
+not specified. Call this once you have instantiated the object:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">xmmsclient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span> <span class="o">=</span> <span class="n">xmmsclient</span><span class="o">.</span><span class="n">Xmms</span><span class="p">(</span><span class="s1">&#39;clientname&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can provide a disconnect callback function to be activated
+when the daemon disconnects.(e.g. daemon quit) This function
+typically has to exit the main loop used by your application.
+For example, if using <code class="xref any docutils literal"><span class="pre">loop</span></code>, your callback should call
+<code class="xref any docutils literal"><span class="pre">exit_loop</span></code> at some point.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.get_fd">
+<code class="descname">get_fd</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.get_fd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the underlying file descriptor used for communication with
+the XMMS2 daemon. You can use this in a client to ensure that
+the IPC link is still active and safe to use.(e.g by calling
+select() or poll())</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">IPC file descriptor</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.get_source_preference">
+<code class="descname">get_source_preference</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.get_source_preference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.ioin">
+<code class="descname">ioin</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.ioin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from the daemon, when available.
+Note: This is a low level function that should only be used in
+certain circumstances. e.g. a custom event loop</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.ioout">
+<code class="descname">ioout</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.ioout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data out to the daemon, when available. Note: This is a
+low level function that should only be used in certain
+circumstances. e.g. a custom event loop</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_add_entry">
+<code class="descname">medialib_add_entry</code><span class="sig-paren">(</span><em>self</em>, <em>path</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an entry to the MediaLib.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_add_entry_encoded">
+<code class="descname">medialib_add_entry_encoded</code><span class="sig-paren">(</span><em>self</em>, <em>path</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_add_entry_encoded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.medialib_add_entry" title="xmmsclient.Xmms.medialib_add_entry"><code class="xref any py py-meth docutils literal"><span class="pre">medialib_add_entry</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_get_id">
+<code class="descname">medialib_get_id</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_get_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for an entry (URL) in the medialib and return its ID number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_get_info">
+<code class="descname">medialib_get_info</code><span class="sig-paren">(</span><em>self</em>, <em>int id</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_get_info" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about the medialib entry position specified.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_import_path">
+<code class="descname">medialib_import_path</code><span class="sig-paren">(</span><em>self</em>, <em>path</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_import_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import metadata from all files recursively from the directory
+passed as argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_move_entry">
+<code class="descname">medialib_move_entry</code><span class="sig-paren">(</span><em>self</em>, <em>int id</em>, <em>url</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_move_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a new url for an entry in the medialib.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_path_import">
+<code class="descname">medialib_path_import</code><span class="sig-paren">(</span><em>self</em>, <em>path</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_path_import" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.medialib_import_path" title="xmmsclient.Xmms.medialib_import_path"><code class="xref any py py-meth docutils literal"><span class="pre">medialib_import_path</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_path_import_encoded">
+<code class="descname">medialib_path_import_encoded</code><span class="sig-paren">(</span><em>self</em>, <em>path</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_path_import_encoded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.medialib_import_path" title="xmmsclient.Xmms.medialib_import_path"><code class="xref any py py-meth docutils literal"><span class="pre">medialib_import_path</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_property_remove">
+<code class="descname">medialib_property_remove</code><span class="sig-paren">(</span><em>self</em>, <em>int id</em>, <em>key</em>, <em>source=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_property_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a value from a medialib entry. Source is optional.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_property_set">
+<code class="descname">medialib_property_set</code><span class="sig-paren">(</span><em>self</em>, <em>int id</em>, <em>key</em>, <em>value</em>, <em>source=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_property_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associate a value with a medialib entry. Source is optional.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_rehash">
+<code class="descname">medialib_rehash</code><span class="sig-paren">(</span><em>self</em>, <em>int id=0</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_rehash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force the medialib to check that metadata stored is up to date.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.medialib_remove_entry">
+<code class="descname">medialib_remove_entry</code><span class="sig-paren">(</span><em>self</em>, <em>int id</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.medialib_remove_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an entry from the medialib.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_current_id">
+<code class="descname">playback_current_id</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_current_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The medialib id of the item currently selected.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_pause">
+<code class="descname">playback_pause</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_pause" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the XMMS2 daemon to pause playback.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_playtime">
+<code class="descname">playback_playtime</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_playtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return playtime on current file/stream. This is essentially a
+more direct version of <a class="reference internal" href="#xmmsclient.Xmms.signal_playback_playtime" title="xmmsclient.Xmms.signal_playback_playtime"><code class="xref any py py-meth docutils literal"><span class="pre">signal_playback_playtime</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation (playtime in milliseconds).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_seek_ms">
+<code class="descname">playback_seek_ms</code><span class="sig-paren">(</span><em>self</em>, <em>int ms</em>, <em>xmms_playback_seek_mode_t whence=PLAYBACK_SEEK_SET</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_seek_ms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Seek to a time position in the current file or stream in playback.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_seek_samples">
+<code class="descname">playback_seek_samples</code><span class="sig-paren">(</span><em>self</em>, <em>int samples</em>, <em>xmms_playback_seek_mode_t whence=PLAYBACK_SEEK_SET</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_seek_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Seek to a number of samples in the current file or stream in playback.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_start">
+<code class="descname">playback_start</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the XMMS2 daemon to start playing the currently
+selected file from the playlist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_status">
+<code class="descname">playback_status</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get current playback status from XMMS2 daemon. This is
+essentially the more direct version of
+<a class="reference internal" href="#xmmsclient.Xmms.broadcast_playback_status" title="xmmsclient.Xmms.broadcast_playback_status"><code class="xref any py py-meth docutils literal"><span class="pre">broadcast_playback_status</span></code></a>. Possible return values are:
+<a class="reference internal" href="constants.html#xmmsclient.PLAYBACK_STATUS_STOP" title="xmmsclient.PLAYBACK_STATUS_STOP"><code class="xref any py py-data docutils literal"><span class="pre">PLAYBACK_STATUS_STOP</span></code></a>, <a class="reference internal" href="constants.html#xmmsclient.PLAYBACK_STATUS_PLAY" title="xmmsclient.PLAYBACK_STATUS_PLAY"><code class="xref any py py-data docutils literal"><span class="pre">PLAYBACK_STATUS_PLAY</span></code></a>,
+<a class="reference internal" href="constants.html#xmmsclient.PLAYBACK_STATUS_PAUSE" title="xmmsclient.PLAYBACK_STATUS_PAUSE"><code class="xref any py py-data docutils literal"><span class="pre">PLAYBACK_STATUS_PAUSE</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current playback status</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_stop">
+<code class="descname">playback_stop</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the XMMS2 daemon to stop playing the file
+currently being played.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_tickle">
+<code class="descname">playback_tickle</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_tickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the XMMS2 daemon to move on to the next playlist item.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_volume_get">
+<code class="descname">playback_volume_get</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_volume_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the playback for all channels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playback_volume_set">
+<code class="descname">playback_volume_set</code><span class="sig-paren">(</span><em>self</em>, <em>channel</em>, <em>int volume</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playback_volume_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the playback volume for specified channel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_add_collection">
+<code class="descname">playlist_add_collection</code><span class="sig-paren">(</span><em>self</em>, <em>Collection coll</em>, <em>order=None</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_add_collection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the content of a collection to the playlist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_add_encoded">
+<code class="descname">playlist_add_encoded</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_add_encoded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.playlist_add_url" title="xmmsclient.Xmms.playlist_add_url"><code class="xref any py py-meth docutils literal"><span class="pre">playlist_add_url</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_add_id">
+<code class="descname">playlist_add_id</code><span class="sig-paren">(</span><em>self</em>, <em>int id</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_add_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a medialib id to the playlist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_add_url">
+<code class="descname">playlist_add_url</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_add_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a path or URL to a playable media item to the playlist.
+Playable media items may be files or streams.
+Requires a string &#8216;url&#8217; as argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_clear">
+<code class="descname">playlist_clear</code><span class="sig-paren">(</span><em>self</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the playlist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_create">
+<code class="descname">playlist_create</code><span class="sig-paren">(</span><em>self</em>, <em>playlist</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new playlist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_current_active">
+<code class="descname">playlist_current_active</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_current_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the current active playlist</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_current_pos">
+<code class="descname">playlist_current_pos</code><span class="sig-paren">(</span><em>self</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_current_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current position in the playlist. This value will
+always be equal to, or larger than 0. The first entry in the
+list is 0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_insert_collection">
+<code class="descname">playlist_insert_collection</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>Collection coll</em>, <em>order=None</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_insert_collection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the content of a collection to the playlist.
+Requires an int &#8216;pos&#8217; and an int &#8216;id&#8217; as argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_insert_encoded">
+<code class="descname">playlist_insert_encoded</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_insert_encoded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.playlist_insert_url" title="xmmsclient.Xmms.playlist_insert_url"><code class="xref any py py-meth docutils literal"><span class="pre">playlist_insert_url</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_insert_id">
+<code class="descname">playlist_insert_id</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>int id</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_insert_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a medialib to the playlist.
+Requires an int <code class="xref any docutils literal"><span class="pre">pos</span></code> and an int <code class="xref any docutils literal"><span class="pre">id</span></code> as argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_insert_url">
+<code class="descname">playlist_insert_url</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_insert_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a path or URL to a playable media item to the playlist.
+Playable media items may be files or streams.
+Requires an int &#8216;pos&#8217; and a string &#8216;url&#8217; as argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_list">
+<code class="descname">playlist_list</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the playlists</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_list_entries">
+<code class="descname">playlist_list_entries</code><span class="sig-paren">(</span><em>self</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_list_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current playlist. This function returns a list of IDs
+of the files/streams currently in the playlist. Use
+<a class="reference internal" href="#xmmsclient.Xmms.medialib_get_info" title="xmmsclient.Xmms.medialib_get_info"><code class="xref any py py-meth docutils literal"><span class="pre">medialib_get_info</span></code></a> to retrieve more specific information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The current playlist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_load">
+<code class="descname">playlist_load</code><span class="sig-paren">(</span><em>self</em>, <em>playlist</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the playlist as current playlist</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_move">
+<code class="descname">playlist_move</code><span class="sig-paren">(</span><em>self</em>, <em>int cur_pos</em>, <em>int new_pos</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves a playlist entry to a new position.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_radd">
+<code class="descname">playlist_radd</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_radd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a directory to the playlist.
+Requires a string &#8216;url&#8217; as argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_radd_encoded">
+<code class="descname">playlist_radd_encoded</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_radd_encoded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.playlist_radd" title="xmmsclient.Xmms.playlist_radd"><code class="xref any py py-meth docutils literal"><span class="pre">playlist_radd</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_remove">
+<code class="descname">playlist_remove</code><span class="sig-paren">(</span><em>self</em>, <em>playlist</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the playlist from the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_remove_entry">
+<code class="descname">playlist_remove_entry</code><span class="sig-paren">(</span><em>self</em>, <em>int id</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_remove_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a certain media item from the playlist.
+Requires a number &#8216;id&#8217; as argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_rinsert">
+<code class="descname">playlist_rinsert</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_rinsert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a directory in the playlist.
+Requires an int &#8216;pos&#8217; and a string &#8216;url&#8217; as argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_rinsert_encoded">
+<code class="descname">playlist_rinsert_encoded</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_rinsert_encoded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.playlist_rinsert" title="xmmsclient.Xmms.playlist_rinsert"><code class="xref any py py-meth docutils literal"><span class="pre">playlist_rinsert</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_set_next">
+<code class="descname">playlist_set_next</code><span class="sig-paren">(</span><em>self</em>, <em>int position</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_set_next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the position to move to, next, in the playlist. Calling
+<a class="reference internal" href="#xmmsclient.Xmms.playback_tickle" title="xmmsclient.Xmms.playback_tickle"><code class="xref any py py-meth docutils literal"><span class="pre">playback_tickle</span></code></a> will perform the jump to that position.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_set_next_rel">
+<code class="descname">playlist_set_next_rel</code><span class="sig-paren">(</span><em>self</em>, <em>int position</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_set_next_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the position in the playlist. Same as <a class="reference internal" href="#xmmsclient.Xmms.playlist_set_next" title="xmmsclient.Xmms.playlist_set_next"><code class="xref any py py-meth docutils literal"><span class="pre">playlist_set_next</span></code></a>
+but sets the next position relative to the current position.
+You can do set_next_rel(-1) to move backwards for example.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_shuffle">
+<code class="descname">playlist_shuffle</code><span class="sig-paren">(</span><em>self</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_shuffle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the XMMS2 daemon to shuffle the playlist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.playlist_sort">
+<code class="descname">playlist_sort</code><span class="sig-paren">(</span><em>self</em>, <em>props</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sorts the playlist according to the properties specified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.plugin_list">
+<code class="descname">plugin_list</code><span class="sig-paren">(</span><em>self</em>, <em>typ</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.plugin_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of loaded plugins from the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.quit">
+<code class="descname">quit</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.quit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell the XMMS2 daemon to quit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_broadcast_emit">
+<code class="descname">sc_broadcast_emit</code><span class="sig-paren">(</span><em>self</em>, <em>broadcast</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_broadcast_emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emit a broadcast message to subscribed clients</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">whether notifications were successfully queued</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_broadcast_subscribe">
+<code class="descname">sc_broadcast_subscribe</code><span class="sig-paren">(</span><em>self</em>, <em>int dest</em>, <em>broadcast</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_broadcast_subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to a broadcast from another client</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_call">
+<code class="descname">sc_call</code><span class="sig-paren">(</span><em>self</em>, <em>int dest</em>, <em>method</em>, <em>args=()</em>, <em>kargs=&lt;???&gt;</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call a remote method</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_init">
+<code class="descname">sc_init</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize client-to-client features.
+Client-to-client features won&#8217;t work with the synchronous client wrapper</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">whether client-to-client is initialized.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_introspect_broadcast">
+<code class="descname">sc_introspect_broadcast</code><span class="sig-paren">(</span><em>self</em>, <em>int dest</em>, <em>path</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_introspect_broadcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get informations about a broadcast on a remote client</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_introspect_constant">
+<code class="descname">sc_introspect_constant</code><span class="sig-paren">(</span><em>self</em>, <em>int dest</em>, <em>path</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_introspect_constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get informations about a constant on a remote client</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_introspect_docstring">
+<code class="descname">sc_introspect_docstring</code><span class="sig-paren">(</span><em>self</em>, <em>int dest</em>, <em>path</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_introspect_docstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the docstring for a given path on a remote client</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_introspect_method">
+<code class="descname">sc_introspect_method</code><span class="sig-paren">(</span><em>self</em>, <em>int dest</em>, <em>path</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_introspect_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get informations about a method on a remote client</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.sc_introspect_namespace">
+<code class="descname">sc_introspect_namespace</code><span class="sig-paren">(</span><em>self</em>, <em>int dest</em>, <em>path=()</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_introspect_namespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get informations about a namespace on a remote client</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.set_need_out_fun">
+<code class="descname">set_need_out_fun</code><span class="sig-paren">(</span><em>self</em>, <em>fun</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.set_need_out_fun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a function to be called when there&#8217;s data to be
+sent to the server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.set_source_preference">
+<code class="descname">set_source_preference</code><span class="sig-paren">(</span><em>self</em>, <em>sources</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.set_source_preference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.signal_mediainfo_reader_unindexed">
+<code class="descname">signal_mediainfo_reader_unindexed</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.signal_mediainfo_reader_unindexed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell daemon to send you the number of unindexed files in the mlib</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.signal_playback_playtime">
+<code class="descname">signal_playback_playtime</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.signal_playback_playtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a method to handle the playback playtime signal from the
+XMMS2 daemon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.stats">
+<code class="descname">stats</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get statistics information from the server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_chunk_get">
+<code class="descname">visualization_chunk_get</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em>, <em>int drawtime=0</em>, <em>bool blocking=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_chunk_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches the next available data chunk</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Visualization chunk.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsVisChunk</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_errored">
+<code class="descname">visualization_errored</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_errored" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the visualization got an error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the visualization got an error, False otherwise.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_init">
+<code class="descname">visualization_init</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a new visualization handle.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_properties_set">
+<code class="descname">visualization_properties_set</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em>, <em>props={}</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_properties_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set visualization&#8217;s properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_property_set">
+<code class="descname">visualization_property_set</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em>, <em>key</em>, <em>value</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_property_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a visualization&#8217;s property.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_shutdown">
+<code class="descname">visualization_shutdown</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shutdown and destroy a visualization. After this, handle is no longer valid.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_start">
+<code class="descname">visualization_start</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the visualization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_started">
+<code class="descname">visualization_started</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_started" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the visualization is started or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the visualization is started, False otherwise.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.visualization_version">
+<code class="descname">visualization_version</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the version of the visualization plugin installed on the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.want_ioout">
+<code class="descname">want_ioout</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.want_ioout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if there&#8217;s data to send to the server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.xform_media_browse">
+<code class="descname">xform_media_browse</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.xform_media_browse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Browse files from xform plugins.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The result of the operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">XmmsResult</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="xmmsclient.Xmms.xform_media_browse_encoded">
+<code class="descname">xform_media_browse_encoded</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.xform_media_browse_encoded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">Use <a class="reference internal" href="#xmmsclient.Xmms.xform_media_browse" title="xmmsclient.Xmms.xform_media_browse"><code class="xref any py py-meth docutils literal"><span class="pre">xform_media_browse</span></code></a> instead.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">xmmsclient</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to XMMS2&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="collections.html"
+                        title="next chapter">xmmsclient.collections</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/xmmsapi.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="collections.html" title="xmmsclient.collections"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to XMMS2’s documentation!"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, XMMS2 Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

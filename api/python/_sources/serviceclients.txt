@@ -1,0 +1,20 @@
+xmmsclient.service
+------------------
+
+See `samples` on how to register and/or consume service clients.
+
+
+Classes
+^^^^^^^
+.. autoclass:: xmmsclient.service.XmmsServiceClient
+.. py:class:: xmmsclient.service.XmmsServiceNamespace
+   .. py:method: register()
+
+.. py:class:: xmmsclient.service.method_arg(name, type='', doc='', **kw)
+.. py:class:: xmmsclient.service.method_varg(doc='', **kw)
+.. py:class:: xmmsclient.service.service_constant(value)
+.. py:class:: xmmsclient.service.service_broadcast(name=None, doc=None)
+
+Decorators
+^^^^^^^^^^
+.. py:decorator:: xmmsclient.service.service_method(self, positional=None, named=None, name=None, doc=None)

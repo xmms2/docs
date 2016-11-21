@@ -1,0 +1,1046 @@
+xmmsclient
+----------
+.. py:module:: xmmsclient
+
+Functions
+^^^^^^^^^
+.. py:function:: userconfdir_get()
+
+	Get the user configuration directory, where XMMS2 stores its
+	user-specific configuration files. Clients may store their
+	configuration under the 'clients' subdirectory. This varies from
+	platform to platform so should always be retrieved at runtime.
+	
+
+Classes
+^^^^^^^
+.. autoclass:: xmmsclient.XmmsSync
+.. autoclass:: xmmsclient.XmmsLoop
+.. py:class:: Xmms(clientname=None)
+
+	This is the class representing the XMMS2 client itself. The methods in
+	this class may be used to control and interact with XMMS2.
+	
+
+   .. py:attribute:: client_id
+   .. py:attribute:: clientname
+   .. py:attribute:: source_preference
+   .. py:method:: bindata_add(self, data, cb=None)
+
+		Add a datafile to the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: bindata_list(self, cb=None)
+
+		List all bindata hashes stored on the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: bindata_remove(self, hash, cb=None)
+
+		Remove a datafile from the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: bindata_retrieve(self, hash, cb=None)
+
+		Retrieve a datafile from the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_c2c_client_connected(self, cb=None)
+
+		Broadcast received whenever a new client connects to the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_c2c_client_disconnected(self, cb=None)
+
+		Broadcast received whenever a client disconnects from the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_c2c_ready(self, cb=None)
+
+		Broadcast reveiced whenever a client's service api is ready
+
+		:return: the result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_collection_changed(self, cb=None)
+
+		Set a method to handle the collection changed broadcast
+		from the XMMS2 daemon.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_config_value_changed(self, cb=None)
+
+		Set a method to handle the config value changed broadcast
+		from the XMMS2 daemon.(i.e. some configuration value has
+		been modified) Updated data is sent whenever a config
+		value is modified.
+
+		:return: The modified config key and its value.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_mediainfo_reader_status(self, cb=None)
+
+		Tell daemon to send you the status of the mediainfo reader
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_medialib_entry_added(self, cb=None)
+
+		Set a method to handle the medialib entry added broadcast
+		from the XMMS2 daemon. (i.e. a new entry has been added)
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_medialib_entry_changed(self, cb=None)
+
+		:deprecated: Use `broadcast_medialib_entry_updated` instead.
+		
+   .. py:method:: broadcast_medialib_entry_removed(self, cb=None)
+
+		Set a method to handle the medialib entry removed broadcast
+		from the XMMS2 daemon. (i.e. an entry has been removed)
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_medialib_entry_updated(self, cb=None)
+
+		Set a method to handle the medialib entry updated broadcast
+		from the XMMS2 daemon.
+		Updated data is sent when the metadata for a song is updated
+		in the medialib.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_playback_current_id(self, cb=None)
+
+		Set a method to handle the playback id broadcast from the
+		XMMS2 daemon.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_playback_status(self, cb=None)
+
+		Set a method to handle the playback status broadcast from the
+		XMMS2 daemon.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_playback_volume_changed(self, cb=None)
+
+		Set a broadcast callback for volume updates
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_playlist_changed(self, cb=None)
+
+		Set a method to handle the playlist changed broadcast from the
+		XMMS2 daemon. Updated data is sent whenever the daemon's
+		playlist changes.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_playlist_current_pos(self, cb=None)
+
+		Set a method to handle the playlist current position updates
+		from the XMMS2 daemon. This is triggered whenever the daemon
+		jumps from one playlist position to another. (not when moving
+		a playlist item from one position to another)
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: broadcast_playlist_loaded(self, cb=None)
+
+		Set a broadcast callback for loaded playlist event
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: c2c_get_connected_clients(self, cb=None)
+
+		Get a list of clients connected to the xmms2 server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: c2c_get_own_id(self)
+
+		:rtype: int
+
+   .. py:method:: c2c_get_ready_clients(self, cb=None)
+
+		Get a list of clients connected to the xmms2 server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: c2c_ready(self, cb=None)
+
+		Notify the server that client services are ready for query.
+		This method is called `XmmsServiceNamespace.register()` and don't need to
+		be called explicitly.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_get(self, name, ns='Collections', cb=None)
+
+		Retrieve a Collection
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_idlist_from_playlist_file(self, path, cb=None)
+
+		Create an idlist from a playlist.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_list(self, ns='Collections', cb=None)
+
+		List collections
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_query(self, Collection coll, fetch, cb=None)
+
+		Retrive a list of ids of the media matching the collection
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_query_ids(self, Collection coll, start=0, leng=0, order=None, cb=None)
+
+		Retrive a list of ids of the media matching the collection
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_query_infos(self, Collection coll, fields, start=0, leng=0, order=None, groupby=None, cb=None)
+
+		Retrive a list of mediainfo of the media matching the collection
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_remove(self, name, ns='Collections', cb=None)
+
+		Remove a collection on server.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_rename(self, oldname, newname, ns='Collections', cb=None)
+
+		Rename a collection.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: coll_save(self, Collection coll, name, ns='Collections', cb=None)
+
+		Save a collection on server.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: config_get_value(self, key, cb=None)
+
+		Get the configuration value of a given key, from the daemon.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: config_list_values(self, cb=None)
+
+		Get list of configuration keys on the daemon. Use
+		`config_get_value` to retrieve the values corresponding to the
+		configuration keys.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: config_register_value(self, valuename, defaultvalue, cb=None)
+
+		Register a new configvalue.
+		This should be called in the initcode as XMMS2 won't allow
+		set/get on values that haven't been registered.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: config_set_value(self, key, val, cb=None)
+
+		Set a configuration value on the daemon, given a key.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: connect(self, path=None, disconnect_func=None)
+
+		Connect to the appropriate IPC path, for communication with the
+		XMMS2 daemon. This path defaults to /tmp/xmms-ipc-<username> if
+		not specified. Call this once you have instantiated the object:
+
+		>>> import xmmsclient
+		>>> xc = xmmsclient.Xmms('clientname')
+		>>> xc.connect()
+
+		You can provide a disconnect callback function to be activated
+		when the daemon disconnects.(e.g. daemon quit) This function
+		typically has to exit the main loop used by your application.
+		For example, if using `loop`, your callback should call
+		`exit_loop` at some point.
+		
+   .. py:method:: disconnect(self)
+   .. py:method:: get_fd(self)
+
+		Get the underlying file descriptor used for communication with
+		the XMMS2 daemon. You can use this in a client to ensure that
+		the IPC link is still active and safe to use.(e.g by calling
+		select() or poll())
+
+		:return: IPC file descriptor
+		:rtype: int
+		
+   .. py:method:: get_source_preference(self)
+   .. py:method:: ioin(self)
+
+		Read data from the daemon, when available.
+		Note: This is a low level function that should only be used in
+		certain circumstances. e.g. a custom event loop
+		
+   .. py:method:: ioout(self)
+
+		Write data out to the daemon, when available. Note: This is a
+		low level function that should only be used in certain
+		circumstances. e.g. a custom event loop
+		
+   .. py:method:: is_connected(self)
+   .. py:method:: medialib_add_entry(self, path, cb=None, encoded=False)
+
+		Add an entry to the MediaLib.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: medialib_add_entry_encoded(self, path, cb=None)
+
+		:deprecated: Use `medialib_add_entry` instead.
+		
+   .. py:method:: medialib_get_id(self, url, cb=None, encoded=False)
+
+		Search for an entry (URL) in the medialib and return its ID number.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: medialib_get_info(self, int id, cb=None)
+
+
+		:return: Information about the medialib entry position specified.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: medialib_import_path(self, path, cb=None, encoded=False)
+
+		Import metadata from all files recursively from the directory
+		passed as argument.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: medialib_move_entry(self, int id, url, cb=None, encoded=False)
+
+		Set a new url for an entry in the medialib.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: medialib_path_import(self, path, cb=None, encoded=False)
+
+		:deprecated: Use `medialib_import_path` instead.
+		
+   .. py:method:: medialib_path_import_encoded(self, path, cb=None)
+
+		:deprecated: Use `medialib_import_path` instead.
+		
+   .. py:method:: medialib_property_remove(self, int id, key, source=None, cb=None)
+
+		Remove a value from a medialib entry. Source is optional.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: medialib_property_set(self, int id, key, value, source=None, cb=None)
+
+		Associate a value with a medialib entry. Source is optional.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: medialib_rehash(self, int id=0, cb=None)
+
+		Force the medialib to check that metadata stored is up to date.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: medialib_remove_entry(self, int id, cb=None)
+
+		Remove an entry from the medialib.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_current_id(self, cb=None)
+
+
+		:return: The medialib id of the item currently selected.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_pause(self, cb=None)
+
+		Instruct the XMMS2 daemon to pause playback.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_playtime(self, cb=None)
+
+		Return playtime on current file/stream. This is essentially a
+		more direct version of `signal_playback_playtime`
+
+		:return: The result of the operation (playtime in milliseconds).
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_seek_ms(self, int ms, xmms_playback_seek_mode_t whence=PLAYBACK_SEEK_SET, cb=None)
+
+		Seek to a time position in the current file or stream in playback.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_seek_samples(self, int samples, xmms_playback_seek_mode_t whence=PLAYBACK_SEEK_SET, cb=None)
+
+		Seek to a number of samples in the current file or stream in playback.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_start(self, cb=None)
+
+		Instruct the XMMS2 daemon to start playing the currently
+		selected file from the playlist.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_status(self, cb=None)
+
+		Get current playback status from XMMS2 daemon. This is
+		essentially the more direct version of
+		`broadcast_playback_status`. Possible return values are:
+		`PLAYBACK_STATUS_STOP`, `PLAYBACK_STATUS_PLAY`,
+		`PLAYBACK_STATUS_PAUSE`
+
+		:return: Current playback status
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_stop(self, cb=None)
+
+		Instruct the XMMS2 daemon to stop playing the file
+		currently being played.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_tickle(self, cb=None)
+
+		Instruct the XMMS2 daemon to move on to the next playlist item.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_volume_get(self, cb=None)
+
+		Get the playback for all channels
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playback_volume_set(self, channel, int volume, cb=None)
+
+		Set the playback volume for specified channel
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_add_collection(self, Collection coll, order=None, playlist=None, cb=None)
+
+		Add the content of a collection to the playlist.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_add_encoded(self, url, playlist=None, cb=None)
+
+		:deprecated: Use `playlist_add_url` instead.
+		
+   .. py:method:: playlist_add_id(self, int id, playlist=None, cb=None)
+
+		Add a medialib id to the playlist.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_add_url(self, url, playlist=None, cb=None, encoded=False)
+
+		Add a path or URL to a playable media item to the playlist.
+		Playable media items may be files or streams.
+		Requires a string 'url' as argument.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_clear(self, playlist=None, cb=None)
+
+		Clear the playlist.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_create(self, playlist, cb=None)
+
+		Create a new playlist.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_current_active(self, cb=None)
+
+		Returns the name of the current active playlist
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_current_pos(self, playlist=None, cb=None)
+
+		Returns the current position in the playlist. This value will
+		always be equal to, or larger than 0. The first entry in the
+		list is 0.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_insert_collection(self, int pos, Collection coll, order=None, playlist=None, cb=None)
+
+		Insert the content of a collection to the playlist.
+		Requires an int 'pos' and an int 'id' as argument.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_insert_encoded(self, int pos, url, playlist=None, cb=None)
+
+		:deprecated: Use `playlist_insert_url` instead.
+		
+   .. py:method:: playlist_insert_id(self, int pos, int id, playlist=None, cb=None)
+
+		Insert a medialib to the playlist.
+		Requires an int `pos` and an int `id` as argument.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_insert_url(self, int pos, url, playlist=None, cb=None, encoded=False)
+
+		Insert a path or URL to a playable media item to the playlist.
+		Playable media items may be files or streams.
+		Requires an int 'pos' and a string 'url' as argument.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_list(self, cb=None)
+
+		Lists the playlists
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_list_entries(self, playlist=None, cb=None)
+
+		Get the current playlist. This function returns a list of IDs
+		of the files/streams currently in the playlist. Use
+		`medialib_get_info` to retrieve more specific information.
+
+		:return: The current playlist.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_load(self, playlist, cb=None)
+
+		Load the playlist as current playlist
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_move(self, int cur_pos, int new_pos, playlist=None, cb=None)
+
+		Moves a playlist entry to a new position.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_radd(self, url, playlist=None, cb=None, encoded=False)
+
+		Add a directory to the playlist.
+		Requires a string 'url' as argument.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_radd_encoded(self, url, playlist=None, cb=None)
+
+		:deprecated: Use `playlist_radd` instead.
+		
+   .. py:method:: playlist_remove(self, playlist, cb=None)
+
+		Remove the playlist from the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_remove_entry(self, int id, playlist=None, cb=None)
+
+		Remove a certain media item from the playlist.
+		Requires a number 'id' as argument.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_rinsert(self, int pos, url, playlist=None, cb=None, encoded=False)
+
+		Insert a directory in the playlist.
+		Requires an int 'pos' and a string 'url' as argument.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_rinsert_encoded(self, int pos, url, playlist=None, cb=None)
+
+		:deprecated: Use `playlist_rinsert` instead.
+		
+   .. py:method:: playlist_set_next(self, int position, cb=None)
+
+		Sets the position to move to, next, in the playlist. Calling
+		`playback_tickle` will perform the jump to that position.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_set_next_rel(self, int position, cb=None)
+
+		Sets the position in the playlist. Same as `playlist_set_next`
+		but sets the next position relative to the current position.
+		You can do set_next_rel(-1) to move backwards for example.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_shuffle(self, playlist=None, cb=None)
+
+		Instruct the XMMS2 daemon to shuffle the playlist.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: playlist_sort(self, props, playlist=None, cb=None)
+
+		Sorts the playlist according to the properties specified.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: plugin_list(self, typ, cb=None)
+
+		Get a list of loaded plugins from the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: quit(self, cb=None)
+
+		Tell the XMMS2 daemon to quit.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: sc_broadcast_emit(self, broadcast, value=None)
+
+		Emit a broadcast message to subscribed clients
+
+		:return: whether notifications were successfully queued
+		
+
+		:rtype: bool
+
+   .. py:method:: sc_broadcast_subscribe(self, int dest, broadcast, cb=None)
+
+		Subscribe to a broadcast from another client
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: sc_call(self, int dest, method, args=(), kargs=<???>, cb=None)
+
+		Call a remote method
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: sc_init(self)
+
+		Initialize client-to-client features.
+		Client-to-client features won't work with the synchronous client wrapper
+
+		:return: whether client-to-client is initialized.
+		
+
+		:rtype: bool
+
+   .. py:method:: sc_introspect_broadcast(self, int dest, path, cb=None)
+
+		Get informations about a broadcast on a remote client
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: sc_introspect_constant(self, int dest, path, cb=None)
+
+		Get informations about a constant on a remote client
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: sc_introspect_docstring(self, int dest, path, cb=None)
+
+		Get the docstring for a given path on a remote client
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: sc_introspect_method(self, int dest, path, cb=None)
+
+		Get informations about a method on a remote client
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: sc_introspect_namespace(self, int dest, path=(), cb=None)
+
+		Get informations about a namespace on a remote client
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: set_need_out_fun(self, fun)
+
+        Set a function to be called when there's data to be
+        sent to the server.
+		
+   .. py:method:: set_source_preference(self, sources)
+   .. py:method:: signal_mediainfo_reader_unindexed(self, cb=None)
+
+		Tell daemon to send you the number of unindexed files in the mlib
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: signal_playback_playtime(self, cb=None)
+
+		Set a method to handle the playback playtime signal from the
+		XMMS2 daemon.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: stats(self, cb=None)
+
+		Get statistics information from the server
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: visualization_chunk_get(self, int handle, int drawtime=0, bool blocking=False)
+
+		Fetches the next available data chunk
+
+
+		:return: Visualization chunk.
+		
+
+		:rtype: XmmsVisChunk
+
+   .. py:method:: visualization_errored(self, int handle)
+
+		Whether the visualization got an error.
+
+		:return: True if the visualization got an error, False otherwise.
+		
+
+		:rtype: bool
+
+   .. py:method:: visualization_init(self, cb=None)
+
+		Get a new visualization handle.
+
+		:return: The result of the operation
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: visualization_properties_set(self, int handle, props={}, cb=None)
+
+		Set visualization's properties.
+
+		:return: The result of the operation
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: visualization_property_set(self, int handle, key, value, cb=None)
+
+		Set a visualization's property.
+
+		:return: The result of the operation
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: visualization_shutdown(self, int handle)
+
+		Shutdown and destroy a visualization. After this, handle is no longer valid.
+		
+   .. py:method:: visualization_start(self, int handle, cb=None)
+
+		Starts the visualization.
+
+		:return: The result of the operation
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: visualization_started(self, int handle)
+
+		Whether the visualization is started or not.
+
+		:return: True if the visualization is started, False otherwise.
+		
+
+		:rtype: bool
+
+   .. py:method:: visualization_version(self, cb=None)
+
+		Get the version of the visualization plugin installed on the server.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: want_ioout(self)
+
+        Check if there's data to send to the server.
+		
+   .. py:method:: xform_media_browse(self, url, cb=None, encoded=False)
+
+		Browse files from xform plugins.
+
+		:return: The result of the operation.
+		
+
+		:rtype: XmmsResult
+
+   .. py:method:: xform_media_browse_encoded(self, url, cb=None)
+
+		:deprecated: Use `xform_media_browse` instead.
+		
+.. autoclass:: xmmsclient.XmmsValue
+.. autoclass:: xmmsclient.XmmsValueC2C
+.. autoclass:: xmmsclient.XmmsLoop
+.. autoclass:: xmmsclient.xmmsapi.XmmsResult
+.. autoclass:: xmmsclient.xmmsapi.XmmsVisChunk
+
+Exceptions
+^^^^^^^^^^
+.. autoexception:: xmmsclient.xmmsvalue.XmmsError
+.. autoexception:: xmmsclient.xmmsapi.VisualizationError
+.. autoexception:: xmmsclient.xmmsapi.XmmsDisconnectException

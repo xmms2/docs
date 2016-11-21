@@ -1,0 +1,16 @@
+
+Examples
+--------
+
+Browse and track available service clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. literalinclude:: ../../src/clients/lib/python/xmmsclient/samples/scwatch.py
+   :language: python
+   :tab-width: 2
+
+
+Register a service client
+^^^^^^^^^^^^^^^^^^^^^^^^^
+.. literalinclude:: ../../src/clients/lib/python/xmmsclient/samples/service.py
+   :language: python
+   :tab-width: 2
