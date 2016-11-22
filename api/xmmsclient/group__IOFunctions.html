@@ -92,8 +92,6 @@ Functions</h2></td></tr>
 <p>Flag connection as disconnected. </p>
 <p>To be called when the mainloop signals disconnection of the connection. This is optional, any call to <a class="el" href="group__IOFunctions.html#ga0ea882ce274be8bbd45c336207910b51" title="Write pending data. ">xmmsc_io_out_handle</a> or <a class="el" href="group__IOFunctions.html#gafd569c0b694f4021303e6384a05dd23d" title="Read available data. ">xmmsc_io_in_handle</a> will notice the disconnection and handle it accordingly. </p>
 
-<p>Definition at line <a class="el" href="xmmsclient_8c_source.html#l00594">594</a> of file <a class="el" href="xmmsclient_8c_source.html">xmmsclient.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ga0009aa648bc7d6c5d608ea30dacb2d16"></a>
@@ -114,8 +112,6 @@ Functions</h2></td></tr>
 <p>Gets the underlaying filedescriptor for this connection, or -1 upon error. To be used in a mainloop to do poll/select on. Reading writing should <em>NOT</em> be done on this fd, <a class="el" href="group__IOFunctions.html#gafd569c0b694f4021303e6384a05dd23d" title="Read available data. ">xmmsc_io_in_handle</a> and <a class="el" href="group__IOFunctions.html#ga0ea882ce274be8bbd45c336207910b51" title="Write pending data. ">xmmsc_io_out_handle</a> MUST be used to handle reading and writing.</p>
 <dl class="section return"><dt>Returns</dt><dd>underlaying filedescriptor, or -1 on error </dd></dl>
 
-<p>Definition at line <a class="el" href="xmmsclient_8c_source.html#l00555">555</a> of file <a class="el" href="xmmsclient_8c_source.html">xmmsclient.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="gafd569c0b694f4021303e6384a05dd23d"></a>
@@ -135,8 +131,6 @@ Functions</h2></td></tr>
 <p>Read available data. </p>
 <p>Should be called when the mainloop flags that reading is available on the socket.</p>
 <dl class="section return"><dt>Returns</dt><dd>1 if everything is well, 0 if the connection is broken. </dd></dl>
-
-<p>Definition at line <a class="el" href="xmmsclient_8c_source.html#l00536">536</a> of file <a class="el" href="xmmsclient_8c_source.html">xmmsclient.c</a>.</p>
 
 </div>
 </div>
@@ -172,8 +166,6 @@ Functions</h2></td></tr>
 
 <p>Set callback for enabling/disabling writing. </p>
 <p>If the mainloop doesn't provide a mechanism to run code before each iteration this function allows registration of a callback to be called when output is needed or not needed any more. The arguments to the callback are flag and userdata; flag is 1 if output is wanted, 0 if not. </p>
-
-<p>Definition at line <a class="el" href="xmmsclient_8c_source.html#l00572">572</a> of file <a class="el" href="xmmsclient_8c_source.html">xmmsclient.c</a>.</p>
 
 </div>
 </div>
@@ -213,9 +205,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8c_source.html#l00578">578</a> of file <a class="el" href="xmmsclient_8c_source.html">xmmsclient.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xmmsclient_8c_source.html#l00572">xmmsc_io_need_out_callback_set()</a>.</p>
+<p>Referenced by <a class="el" href="group__IOFunctions.html#ga6f62a60f8288eafd82096d8985dd65cb">xmmsc_io_need_out_callback_set()</a>.</p>
 
 </div>
 </div>
@@ -236,8 +226,6 @@ Functions</h2></td></tr>
 <p>Write pending data. </p>
 <p>Should be called when the mainloop flags that writing is available on the socket.</p>
 <dl class="section return"><dt>Returns</dt><dd>1 if everything is well, 0 if the connection is broken. </dd></dl>
-
-<p>Definition at line <a class="el" href="xmmsclient_8c_source.html#l00519">519</a> of file <a class="el" href="xmmsclient_8c_source.html">xmmsclient.c</a>.</p>
 
 </div>
 </div>
@@ -265,8 +253,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 output is requested, 0 otherwise</dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__IOFunctions.html#ga6f62a60f8288eafd82096d8985dd65cb" title="Set callback for enabling/disabling writing. ">xmmsc_io_need_out_callback_set</a> </dd></dl>
-
-<p>Definition at line <a class="el" href="xmmsclient_8c_source.html#l00503">503</a> of file <a class="el" href="xmmsclient_8c_source.html">xmmsclient.c</a>.</p>
 
 </div>
 </div>

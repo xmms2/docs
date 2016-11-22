@@ -59,10 +59,8 @@
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;xmmscpriv/xmmsv.h&gt;</code><br/>
 <code>#include &lt;xmmscpriv/xmms_list.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsv_8h_source.html">xmmsc/xmmsv.h</a>&gt;</code><br/>
-</div>
-<p><a href="xmmsv__list_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &lt;<a class="el" href="xmmsv_8h.html">xmmsc/xmmsv.h</a>&gt;</code><br/>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:acd96b0a1612bb86451d9af23878dc47c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xmmsv__list_8c.html#acd96b0a1612bb86451d9af23878dc47c">GEN_LIST_EXTRACTOR_FUNC</a>(typename, type)</td></tr>
@@ -215,17 +213,12 @@ Functions</h2></td></tr>
 <div class="line"><a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">		xmmsv_t</a> *v; \</div>
 <div class="line">      \</div>
 <div class="line">        v = xmmsv_new_##<span class="keyword">typename</span> (elem); \</div>
-<div class="line">            ret = <a class="code" href="group__ListType.html#ga12baf77632657dd4e377491e81d60e9b">xmmsv_list_append</a> (list, v); <a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">\</a></div>
-<div class="line"><a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">			xmmsv_unref</a> (v); \</div>
+<div class="line">            ret = <a class="code" href="group__ListType.html#ga12baf77632657dd4e377491e81d60e9b" title="Append an element to the end of the list xmmsv_t. ">xmmsv_list_append</a> (list, v); <a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229" title="Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...">\</a></div>
+<div class="line"><a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229" title="Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...">			xmmsv_unref</a> (v); \</div>
 <div class="line">      \</div>
 <div class="line">            return ret; \</div>
 <div class="line">    }</div>
-<div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__ValueType_html_ga6e84005e2de57dd756718836eea91229"><div class="ttname"><a href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">xmmsv_unref</a></div><div class="ttdeci">void xmmsv_unref(xmmsv_t *val)</div><div class="ttdoc">Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00252">xmmsv_general.c:252</a></div></div>
-<div class="ttc" id="group__ListType_html_ga12baf77632657dd4e377491e81d60e9b"><div class="ttname"><a href="group__ListType.html#ga12baf77632657dd4e377491e81d60e9b">xmmsv_list_append</a></div><div class="ttdeci">int xmmsv_list_append(xmmsv_t *listv, xmmsv_t *val)</div><div class="ttdoc">Append an element to the end of the list xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8c_source.html#l00449">xmmsv_list.c:449</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__list_8c_source.html#l01021">1021</a> of file <a class="el" href="xmmsv__list_8c_source.html">xmmsv_list.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="acd96b0a1612bb86451d9af23878dc47c"></a>
@@ -255,16 +248,12 @@ Functions</h2></td></tr>
 <div class="line">    xmmsv_list_get_##<span class="keyword">typename</span> (<a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> *val, <span class="keywordtype">int</span> pos, type *r) \</div>
 <div class="line">    { <a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">\</a></div>
 <div class="line"><a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">		xmmsv_t</a> *v; \</div>
-<div class="line">        if (!<a class="code" href="group__ListType.html#ga69c3445d1b4be022fdf45e2388f0b78c">xmmsv_list_get</a> (val, pos, &amp;v)) { \</div>
+<div class="line">        if (!<a class="code" href="group__ListType.html#ga69c3445d1b4be022fdf45e2388f0b78c" title="Get the element at the given position in the list xmmsv_t. ">xmmsv_list_get</a> (val, pos, &amp;v)) { \</div>
 <div class="line">            return 0; \</div>
 <div class="line">        } \</div>
 <div class="line">        return xmmsv_get_##<span class="keyword">typename</span> (v, r); \</div>
 <div class="line">    }</div>
-<div class="ttc" id="group__ListType_html_ga69c3445d1b4be022fdf45e2388f0b78c"><div class="ttname"><a href="group__ListType.html#ga69c3445d1b4be022fdf45e2388f0b78c">xmmsv_list_get</a></div><div class="ttdeci">int xmmsv_list_get(xmmsv_t *listv, int pos, xmmsv_t **val)</div><div class="ttdoc">Get the element at the given position in the list xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8c_source.html#l00327">xmmsv_list.c:327</a></div></div>
-<div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__list_8c_source.html#l00948">948</a> of file <a class="el" href="xmmsv__list_8c_source.html">xmmsv_list.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ae931b4609a69227f98b9165cb0492755"></a>
@@ -297,17 +286,12 @@ Functions</h2></td></tr>
 <div class="line"><a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">		xmmsv_t</a> *v; \</div>
 <div class="line">      \</div>
 <div class="line">        v = xmmsv_new_##<span class="keyword">typename</span> (elem); \</div>
-<div class="line">            ret = <a class="code" href="group__ListType.html#ga05add8219d46e738f96ab2729dca9b36">xmmsv_list_insert</a> (list, pos, v); <a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">\</a></div>
-<div class="line"><a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">			xmmsv_unref</a> (v); \</div>
+<div class="line">            ret = <a class="code" href="group__ListType.html#ga05add8219d46e738f96ab2729dca9b36" title="Insert an element at the given position in the list xmmsv_t. ">xmmsv_list_insert</a> (list, pos, v); <a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229" title="Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...">\</a></div>
+<div class="line"><a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229" title="Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...">			xmmsv_unref</a> (v); \</div>
 <div class="line">      \</div>
 <div class="line">            return ret; \</div>
 <div class="line">    }</div>
-<div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__ValueType_html_ga6e84005e2de57dd756718836eea91229"><div class="ttname"><a href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">xmmsv_unref</a></div><div class="ttdeci">void xmmsv_unref(xmmsv_t *val)</div><div class="ttdoc">Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00252">xmmsv_general.c:252</a></div></div>
-<div class="ttc" id="group__ListType_html_ga05add8219d46e738f96ab2729dca9b36"><div class="ttname"><a href="group__ListType.html#ga05add8219d46e738f96ab2729dca9b36">xmmsv_list_insert</a></div><div class="ttdeci">int xmmsv_list_insert(xmmsv_t *listv, int pos, xmmsv_t *val)</div><div class="ttdoc">Insert an element at the given position in the list xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8c_source.html#l00391">xmmsv_list.c:391</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__list_8c_source.html#l00996">996</a> of file <a class="el" href="xmmsv__list_8c_source.html">xmmsv_list.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a7e245b61e78cb47e022d84c9a74fb105"></a>
@@ -337,17 +321,12 @@ Functions</h2></td></tr>
 <div class="line">    xmmsv_list_iter_entry_##<span class="keyword">typename</span> (<a class="code" href="group__ListIterType.html#ga5fc497aa174547c423d474345f8bc189">xmmsv_list_iter_t</a> *it, type *r) \</div>
 <div class="line">    { <a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">\</a></div>
 <div class="line"><a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">		xmmsv_t</a> *v; \</div>
-<div class="line">        if (!<a class="code" href="group__ListIterType.html#ga0341d4c51a0c3b8a3a100b9ab7fb4d7f">xmmsv_list_iter_entry</a> (it, &amp;v)) { \</div>
+<div class="line">        if (!<a class="code" href="group__ListIterType.html#ga0341d4c51a0c3b8a3a100b9ab7fb4d7f" title="Get the element currently pointed at by the iterator. ">xmmsv_list_iter_entry</a> (it, &amp;v)) { \</div>
 <div class="line">            return 0; \</div>
 <div class="line">        } \</div>
 <div class="line">        return xmmsv_get_##<span class="keyword">typename</span> (v, r); \</div>
 <div class="line">    }</div>
-<div class="ttc" id="group__ListIterType_html_ga5fc497aa174547c423d474345f8bc189"><div class="ttname"><a href="group__ListIterType.html#ga5fc497aa174547c423d474345f8bc189">xmmsv_list_iter_t</a></div><div class="ttdeci">struct xmmsv_list_iter_St xmmsv_list_iter_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8h_source.html#l00082">xmmsv_list.h:82</a></div></div>
-<div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__ListIterType_html_ga0341d4c51a0c3b8a3a100b9ab7fb4d7f"><div class="ttname"><a href="group__ListIterType.html#ga0341d4c51a0c3b8a3a100b9ab7fb4d7f">xmmsv_list_iter_entry</a></div><div class="ttdeci">int xmmsv_list_iter_entry(xmmsv_list_iter_t *it, xmmsv_t **val)</div><div class="ttdoc">Get the element currently pointed at by the iterator. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8c_source.html#l00723">xmmsv_list.c:723</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__list_8c_source.html#l01046">1046</a> of file <a class="el" href="xmmsv__list_8c_source.html">xmmsv_list.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="abd02b2620242de9b300405805dd4c3d0"></a>
@@ -380,18 +359,12 @@ Functions</h2></td></tr>
 <div class="line"><a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">		xmmsv_t</a> *v; \</div>
 <div class="line">      \</div>
 <div class="line">        v = xmmsv_new_##<span class="keyword">typename</span> (elem); \</div>
-<div class="line">            ret = <a class="code" href="group__ListIterType.html#gacd0994fbd9cb11fb7f3b3370f2bb4366">xmmsv_list_iter_insert</a> (it, v); <a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">\</a></div>
-<div class="line"><a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">			xmmsv_unref</a> (v); \</div>
+<div class="line">            ret = <a class="code" href="group__ListIterType.html#gacd0994fbd9cb11fb7f3b3370f2bb4366" title="Insert an element in the list at the position pointed at by the iterator. ">xmmsv_list_iter_insert</a> (it, v); <a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229" title="Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...">\</a></div>
+<div class="line"><a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229" title="Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...">			xmmsv_unref</a> (v); \</div>
 <div class="line">      \</div>
 <div class="line">            return ret; \</div>
 <div class="line">    }</div>
-<div class="ttc" id="group__ListIterType_html_ga5fc497aa174547c423d474345f8bc189"><div class="ttname"><a href="group__ListIterType.html#ga5fc497aa174547c423d474345f8bc189">xmmsv_list_iter_t</a></div><div class="ttdeci">struct xmmsv_list_iter_St xmmsv_list_iter_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8h_source.html#l00082">xmmsv_list.h:82</a></div></div>
-<div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__ListIterType_html_gacd0994fbd9cb11fb7f3b3370f2bb4366"><div class="ttname"><a href="group__ListIterType.html#gacd0994fbd9cb11fb7f3b3370f2bb4366">xmmsv_list_iter_insert</a></div><div class="ttdeci">int xmmsv_list_iter_insert(xmmsv_list_iter_t *it, xmmsv_t *val)</div><div class="ttdoc">Insert an element in the list at the position pointed at by the iterator. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8c_source.html#l00881">xmmsv_list.c:881</a></div></div>
-<div class="ttc" id="group__ValueType_html_ga6e84005e2de57dd756718836eea91229"><div class="ttname"><a href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">xmmsv_unref</a></div><div class="ttdeci">void xmmsv_unref(xmmsv_t *val)</div><div class="ttdoc">Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00252">xmmsv_general.c:252</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__list_8c_source.html#l01069">1069</a> of file <a class="el" href="xmmsv__list_8c_source.html">xmmsv_list.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a271991275cd78ce9817abb6d9d5e689a"></a>
@@ -424,17 +397,12 @@ Functions</h2></td></tr>
 <div class="line"><a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">		xmmsv_t</a> *v; \</div>
 <div class="line">      \</div>
 <div class="line">        v = xmmsv_new_##<span class="keyword">typename</span> (elem); \</div>
-<div class="line">            ret = <a class="code" href="group__ListType.html#gae0f6a34dbf3573b5ef8bdbd218969035">xmmsv_list_set</a> (list, pos, v); <a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">\</a></div>
-<div class="line"><a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">			xmmsv_unref</a> (v); \</div>
+<div class="line">            ret = <a class="code" href="group__ListType.html#gae0f6a34dbf3573b5ef8bdbd218969035" title="Set the element at the given position in the list xmmsv_t. ">xmmsv_list_set</a> (list, pos, v); <a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229" title="Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...">\</a></div>
+<div class="line"><a class="code" href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229" title="Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...">			xmmsv_unref</a> (v); \</div>
 <div class="line">      \</div>
 <div class="line">            return ret; \</div>
 <div class="line">    }</div>
-<div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__ListType_html_gae0f6a34dbf3573b5ef8bdbd218969035"><div class="ttname"><a href="group__ListType.html#gae0f6a34dbf3573b5ef8bdbd218969035">xmmsv_list_set</a></div><div class="ttdeci">int xmmsv_list_set(xmmsv_t *listv, int pos, xmmsv_t *val)</div><div class="ttdoc">Set the element at the given position in the list xmmsv_t. </div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__list_8c_source.html#l00358">xmmsv_list.c:358</a></div></div>
-<div class="ttc" id="group__ValueType_html_ga6e84005e2de57dd756718836eea91229"><div class="ttname"><a href="group__ValueType.html#ga6e84005e2de57dd756718836eea91229">xmmsv_unref</a></div><div class="ttdeci">void xmmsv_unref(xmmsv_t *val)</div><div class="ttdoc">Decreases the references for the xmmsv_t When the number of references reaches 0 it will be freed...</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8c_source.html#l00252">xmmsv_general.c:252</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsv__list_8c_source.html#l00971">971</a> of file <a class="el" href="xmmsv__list_8c_source.html">xmmsv_list.c</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -451,8 +419,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsv__list_8c_source.html#l00079">79</a> of file <a class="el" href="xmmsv__list_8c_source.html">xmmsv_list.c</a>.</p>
 
 </div>
 </div>

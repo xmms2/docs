@@ -102,21 +102,21 @@ Functions</h2></td></tr>
 <div class="line"><a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> *val;</div>
 <div class="line">uint32_t id;</div>
 <div class="line">res = xmmsc_playback_get_current_id (connection);</div>
-<div class="line"><a class="code" href="group__Result.html#ga88db57e678a5f4d8b7174b5ee95eb5f4">xmmsc_result_wait</a> (res);</div>
-<div class="line"><span class="keywordflow">if</span> (!val = <a class="code" href="group__ResultValueRetrieval.html#gaafc571f8e3e85adf2ac7c3e3a5b2ae80">xmmsc_result_get_value</a> (res)) {</div>
+<div class="line"><a class="code" href="group__Result.html#ga88db57e678a5f4d8b7174b5ee95eb5f4" title="Set up a default callback for the result retrieval. ">xmmsc_result_wait</a> (res);</div>
+<div class="line"><span class="keywordflow">if</span> (!val = <a class="code" href="group__ResultValueRetrieval.html#gaafc571f8e3e85adf2ac7c3e3a5b2ae80" title="Get the value from a result. ">xmmsc_result_get_value</a> (res)) {</div>
 <div class="line">  printf (<span class="stringliteral">&quot;error: failed to retrieve value!&quot;</span>);</div>
 <div class="line">}</div>
-<div class="line"><span class="keywordflow">if</span> (<a class="code" href="group__ValueType.html#ga5112df7cd27e85151c6b974254b4abbb">xmmsv_is_error</a> (val)) {</div>
-<div class="line">  printf (<span class="stringliteral">&quot;error: %s&quot;</span>, <a class="code" href="group__ValueType.html#gae63304dab32559ad0a694cbe5b3e17d4">xmmsv_get_error</a> (val));</div>
+<div class="line"><span class="keywordflow">if</span> (<a class="code" href="group__ValueType.html#ga5112df7cd27e85151c6b974254b4abbb" title="Check if the value stores an error. ">xmmsv_is_error</a> (val)) {</div>
+<div class="line">  printf (<span class="stringliteral">&quot;error: %s&quot;</span>, <a class="code" href="group__ValueType.html#gae63304dab32559ad0a694cbe5b3e17d4" title="Retrieves an error string describing the server error from the value. ">xmmsv_get_error</a> (val));</div>
 <div class="line">}</div>
 <div class="line">xmmsv_get_uint (val, &amp;<span class="keywordtype">id</span>);</div>
-<div class="line"><a class="code" href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce">xmmsc_result_unref</a> (res);</div>
+<div class="line"><a class="code" href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce" title="Decreases the references for the xmmsc_result_t When the number of references reaches 0 it will be fr...">xmmsc_result_unref</a> (res);</div>
 <div class="line">printf (<span class="stringliteral">&quot;current id is: %d&quot;</span>, <span class="keywordtype">id</span>);</div>
 </div><p>an async example is a bit more complex... </p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> handler (<a class="code" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> *val, <span class="keywordtype">void</span> *userdata) {</div>
 <div class="line">  uint32_t id;</div>
-<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="group__ValueType.html#ga5112df7cd27e85151c6b974254b4abbb">xmmsv_is_error</a> (val)) {</div>
-<div class="line">     printf (<span class="stringliteral">&quot;error: %s&quot;</span>, <a class="code" href="group__ValueType.html#gae63304dab32559ad0a694cbe5b3e17d4">xmmsv_get_error</a> (val));</div>
+<div class="line">  <span class="keywordflow">if</span> (<a class="code" href="group__ValueType.html#ga5112df7cd27e85151c6b974254b4abbb" title="Check if the value stores an error. ">xmmsv_is_error</a> (val)) {</div>
+<div class="line">     printf (<span class="stringliteral">&quot;error: %s&quot;</span>, <a class="code" href="group__ValueType.html#gae63304dab32559ad0a694cbe5b3e17d4" title="Retrieves an error string describing the server error from the value. ">xmmsv_get_error</a> (val));</div>
 <div class="line">  }</div>
 <div class="line">  xmmsv_get_uint (val, &amp;<span class="keywordtype">id</span>);</div>
 <div class="line">  printf (<span class="stringliteral">&quot;current id is: %d&quot;</span>, <span class="keywordtype">id</span>);</div>
@@ -127,7 +127,7 @@ Functions</h2></td></tr>
 <div class="line">  <a class="code" href="xmmsclient_8h.html#a9f9b607f7bddf05c6a10444885b56aaa">xmmsc_result_t</a> *res;</div>
 <div class="line">  res = xmmsc_playback_get_current_id (connection);</div>
 <div class="line">  <a class="code" href="xmmsclient_8h.html#a0f20666991422d2839fae6b1086d4011">xmmsc_result_notifier_set</a> (res, handler);</div>
-<div class="line">  <a class="code" href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce">xmmsc_result_unref</a> (res);</div>
+<div class="line">  <a class="code" href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce" title="Decreases the references for the xmmsc_result_t When the number of references reaches 0 it will be fr...">xmmsc_result_unref</a> (res);</div>
 <div class="line">}</div>
 </div><p> When the answer arrives handler will be called. with the resulting <a class="el" href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a> </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -158,13 +158,7 @@ Functions</h2></td></tr>
 <div class="line">    cb = xmmsc_result_callback_new_##type (func, user_data, free_func); \</div>
 <div class="line">    xmmsc_result_notifier_add (res, cb); \</div>
 <div class="line">}</div>
-<div class="ttc" id="xmmsclient_8h_html_aff49a59b897bf1d1fab5c4eea500a575"><div class="ttname"><a href="xmmsclient_8h.html#aff49a59b897bf1d1fab5c4eea500a575">xmmsc_result_notifier_t</a></div><div class="ttdeci">int(* xmmsc_result_notifier_t)(xmmsv_t *val, void *user_data)</div><div class="ttdef"><b>Definition:</b> <a href="xmmsclient_8h_source.html#l00416">xmmsclient.h:416</a></div></div>
-<div class="ttc" id="xmmsclient_8h_html_a9f9b607f7bddf05c6a10444885b56aaa"><div class="ttname"><a href="xmmsclient_8h.html#a9f9b607f7bddf05c6a10444885b56aaa">xmmsc_result_t</a></div><div class="ttdeci">struct xmmsc_result_St xmmsc_result_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsclient_8h_source.html#l00034">xmmsclient.h:34</a></div></div>
-<div class="ttc" id="result_8c_html_a7add2dd47a27371aa427742ba8127dd3"><div class="ttname"><a href="result_8c.html#a7add2dd47a27371aa427742ba8127dd3">xmmsc_result_callback_t</a></div><div class="ttdeci">struct xmmsc_result_callback_St xmmsc_result_callback_t</div></div>
-<div class="ttc" id="xmmsclient_8h_html_aa5e896f01252e971472b5cc4be22aada"><div class="ttname"><a href="xmmsclient_8h.html#aa5e896f01252e971472b5cc4be22aada">xmmsc_user_data_free_func_t</a></div><div class="ttdeci">void(* xmmsc_user_data_free_func_t)(void *user_data)</div><div class="ttdef"><b>Definition:</b> <a href="xmmsclient_8h_source.html#l00043">xmmsclient.h:43</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="result_8c_source.html#l00325">325</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="gab326d011695d4234d0e6f9dc13f4b4c9"></a>
@@ -187,11 +181,7 @@ Functions</h2></td></tr>
 <div class="line">{ \</div>
 <div class="line">    xmmsc_result_notifier_set_##type##_full (res, func, user_data, NULL); \</div>
 <div class="line">}</div>
-<div class="ttc" id="xmmsclient_8h_html_aff49a59b897bf1d1fab5c4eea500a575"><div class="ttname"><a href="xmmsclient_8h.html#aff49a59b897bf1d1fab5c4eea500a575">xmmsc_result_notifier_t</a></div><div class="ttdeci">int(* xmmsc_result_notifier_t)(xmmsv_t *val, void *user_data)</div><div class="ttdef"><b>Definition:</b> <a href="xmmsclient_8h_source.html#l00416">xmmsclient.h:416</a></div></div>
-<div class="ttc" id="xmmsclient_8h_html_a9f9b607f7bddf05c6a10444885b56aaa"><div class="ttname"><a href="xmmsclient_8h.html#a9f9b607f7bddf05c6a10444885b56aaa">xmmsc_result_t</a></div><div class="ttdeci">struct xmmsc_result_St xmmsc_result_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsclient_8h_source.html#l00034">xmmsclient.h:34</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="result_8c_source.html#l00315">315</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -211,9 +201,7 @@ Functions</h2></td></tr>
 
 <p>Set a result to be a client-to-client result. </p>
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00264">264</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
-<p>Referenced by <a class="el" href="c2c_8c_source.html#l00160">xmmsc_broadcast_c2c_message()</a>, <a class="el" href="c2c_8c_source.html#l00074">xmmsc_c2c_reply()</a>, and <a class="el" href="c2c_8c_source.html#l00030">xmmsc_c2c_send()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a4b4db651426a79c1511f57646873b2e8">xmmsc_broadcast_c2c_message()</a>, <a class="el" href="xmmsclient_8h.html#a3b6494d7ce3312ff812da2e1d5b137de">xmmsc_c2c_reply()</a>, and <a class="el" href="xmmsclient_8h.html#a06ecd27c327ecd6f167acd3fb713585c">xmmsc_c2c_send()</a>.</p>
 
 </div>
 </div>
@@ -233,9 +221,7 @@ Functions</h2></td></tr>
 
 <p>return the cookie of a resultset. </p>
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00253">253</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
-<p>Referenced by <a class="el" href="ipc_8c_source.html#l00217">xmmsc_ipc_result_lookup()</a>, and <a class="el" href="ipc_8c_source.html#l00241">xmmsc_ipc_result_unregister()</a>.</p>
+<p>Referenced by <a class="el" href="ipc_8c.html#a08be06defeb283559051b7bcfae67033">xmmsc_ipc_result_lookup()</a>, and <a class="el" href="ipc_8c.html#a0f0f63496d21884418e0a0d79d21d96a">xmmsc_ipc_result_unregister()</a>.</p>
 
 </div>
 </div>
@@ -261,8 +247,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00187">187</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="gadd92224aaeb2b4e487fa521bc8dc657c"></a>
@@ -282,8 +266,6 @@ Functions</h2></td></tr>
 <p>Get the class of the result (default, signal, broadcast). </p>
 <dl class="section return"><dt>Returns</dt><dd>The class of the result of type <a class="el" href="xmmsclient_8h.html#a2e8012cd3546776237e89b18ed613182">xmmsc_result_type_t</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00175">175</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ga01264249a01bca1e10bab9be586f25d2"></a>
@@ -300,9 +282,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00288">288</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
-<p>Referenced by <a class="el" href="udp_8c_source.html#l00136">setup_udp_handle()</a>.</p>
+<p>Referenced by <a class="el" href="udp_8c.html#a1337a1210ff8dd1cc5b79498cc6dea33">setup_udp_handle()</a>.</p>
 
 </div>
 </div>
@@ -329,9 +309,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>result </dd></dl>
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00140">140</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
-<p>Referenced by <a class="el" href="result_8c_source.html#l00603">xmmsc_result_new()</a>, and <a class="el" href="result_8c_source.html#l00540">xmmsc_result_run()</a>.</p>
+<p>Referenced by <a class="el" href="result_8c.html#a7c89949e2ceb304a64a1ae934d872d6d">xmmsc_result_new()</a>, and <a class="el" href="result_8c.html#acce97396c1e39797d152df9276c6a748">xmmsc_result_run()</a>.</p>
 
 </div>
 </div>
@@ -352,9 +330,7 @@ Functions</h2></td></tr>
 <p>Decreases the references for the <a class="el" href="xmmsclient_8h.html#a9f9b607f7bddf05c6a10444885b56aaa">xmmsc_result_t</a> When the number of references reaches 0 it will be freed. </p>
 <p>And thus all data you extracted from it will be deallocated. </p>
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00303">303</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xmmsclient_8c_source.html#l00155">xmmsc_connect()</a>, <a class="el" href="result_8c_source.html#l00540">xmmsc_result_run()</a>, <a class="el" href="service_2client_8c_source.html#l00125">xmmsc_sc_broadcast_emit()</a>, and <a class="el" href="service_8c_source.html#l00034">xmmsc_sc_init()</a>.</p>
+<p>Referenced by <a class="el" href="group__XMMSClient.html#ga30c6b5d384fe162f113cd7a5e1b7fb0a">xmmsc_connect()</a>, <a class="el" href="result_8c.html#acce97396c1e39797d152df9276c6a748">xmmsc_result_run()</a>, <a class="el" href="xmmsclient_8h.html#a4dca55db8ce5028b25f825fecae5b3a0">xmmsc_sc_broadcast_emit()</a>, and <a class="el" href="xmmsclient_8h.html#a2a7586e5d1cb05d6e2ea890b9e8068d0">xmmsc_sc_init()</a>.</p>
 
 </div>
 </div>
@@ -372,9 +348,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00280">280</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
-<p>Referenced by <a class="el" href="unixshm_8c_source.html#l00056">setup_shm_handle()</a>, <a class="el" href="udp_8c_source.html#l00136">setup_udp_handle()</a>, <a class="el" href="visualization_2client_8c_source.html#l00095">xmmsc_visualization_init_handle()</a>, and <a class="el" href="visualization_2client_8c_source.html#l00164">xmmsc_visualization_start_handle()</a>.</p>
+<p>Referenced by <a class="el" href="unixshm_8c.html#aefb25f1bf6f805bcd667adbf5bcfd639">setup_shm_handle()</a>, <a class="el" href="udp_8c.html#a1337a1210ff8dd1cc5b79498cc6dea33">setup_udp_handle()</a>, <a class="el" href="group__Visualization.html#ga567ef9dd98a6b880ba2479e98dd3e72f">xmmsc_visualization_init_handle()</a>, and <a class="el" href="group__Visualization.html#gac400b29e17ed6cb65f86134b7edccbb6">xmmsc_visualization_start_handle()</a>.</p>
 
 </div>
 </div>
@@ -402,9 +376,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00272">272</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
-<p>Referenced by <a class="el" href="unixshm_8c_source.html#l00013">setup_shm_prepare()</a>, <a class="el" href="udp_8c_source.html#l00116">setup_udp_prepare()</a>, and <a class="el" href="visualization_2client_8c_source.html#l00065">xmmsc_visualization_init()</a>.</p>
+<p>Referenced by <a class="el" href="unixshm_8c.html#afc6cd1a2c1916acab8a353afee1fd3bb">setup_shm_prepare()</a>, <a class="el" href="udp_8c.html#a14f1f46f49ae061756cd370bc199e4e0">setup_udp_prepare()</a>, and <a class="el" href="group__Visualization.html#ga309c6ee78e64bff6c65f74c9fedd3c76">xmmsc_visualization_init()</a>.</p>
 
 </div>
 </div>
@@ -463,9 +435,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="result_8c_source.html#l00434">434</a> of file <a class="el" href="result_8c_source.html">result.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xmmsclient_8c_source.html#l00155">xmmsc_connect()</a>.</p>
+<p>Referenced by <a class="el" href="group__XMMSClient.html#ga30c6b5d384fe162f113cd7a5e1b7fb0a">xmmsc_connect()</a>.</p>
 
 </div>
 </div>

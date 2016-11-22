@@ -63,20 +63,18 @@
 <code>#include &lt;sys/time.h&gt;</code><br/>
 <code>#include &lt;errno.h&gt;</code><br/>
 <code>#include &lt;xmmsc/xmmsc_idnumbers.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsc__ipc__transport_8h_source.html">xmmsc/xmmsc_ipc_transport.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsc__ipc__msg_8h_source.html">xmmsc/xmmsc_ipc_msg.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms_2xmms__log_8h_source.html">xmms/xmms_log.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms_2xmms__bindata_8h_source.html">xmms/xmms_bindata.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__ringbuf_8h_source.html">xmmspriv/xmms_ringbuf.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__ipc_8h_source.html">xmmspriv/xmms_ipc.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__playlist_8h_source.html">xmmspriv/xmms_playlist.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__config_8h_source.html">xmmspriv/xmms_config.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__bindata_8h_source.html">xmmspriv/xmms_bindata.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__utils_8h_source.html">xmmspriv/xmms_utils.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmmsc__ipc__transport_8h.html">xmmsc/xmmsc_ipc_transport.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmmsc__ipc__msg_8h.html">xmmsc/xmmsc_ipc_msg.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms_2xmms__log_8h.html">xmms/xmms_log.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms_2xmms__bindata_8h.html">xmms/xmms_bindata.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms__ringbuf_8h.html">xmmspriv/xmms_ringbuf.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__ipc_8h.html">xmmspriv/xmms_ipc.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms__playlist_8h.html">xmmspriv/xmms_playlist.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__config_8h.html">xmmspriv/xmms_config.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__bindata_8h.html">xmmspriv/xmms_bindata.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms__utils_8h.html">xmmspriv/xmms_utils.h</a>&gt;</code><br/>
 <code>#include &quot;bindata_ipc.c&quot;</code><br/>
-</div>
-<p><a href="bindata_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a1771b7fb65ee640524d0052f229768c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bindata_8c.html#a1771b7fb65ee640524d0052f229768c3">BYTE_ORDER</a>&#160;&#160;&#160;0</td></tr>
@@ -259,8 +257,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00367">367</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -473,8 +469,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">t = a + <a class="code" href="bindata_8c.html#a96d73bbd7af15cb1fc38c3f4a3bd82e9">F</a> (b,c,d) + X[k] + Ti;\</div>
 <div class="line">  a = <a class="code" href="bindata_8c.html#a7417fd4e875360c0533fa5b412cdab49">ROTATE_LEFT</a> (t, s) + b</div>
-<div class="ttc" id="bindata_8c_html_a7417fd4e875360c0533fa5b412cdab49"><div class="ttname"><a href="bindata_8c.html#a7417fd4e875360c0533fa5b412cdab49">ROTATE_LEFT</a></div><div class="ttdeci">#define ROTATE_LEFT(x, n)</div></div>
-<div class="ttc" id="bindata_8c_html_a96d73bbd7af15cb1fc38c3f4a3bd82e9"><div class="ttname"><a href="bindata_8c.html#a96d73bbd7af15cb1fc38c3f4a3bd82e9">F</a></div><div class="ttdeci">#define F(x, y, z)</div></div>
 </div>
 </div>
 </div>
@@ -533,8 +527,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">t = a + <a class="code" href="bindata_8c.html#ad96b7cf3182ce2ba85e5a7a93b12c441">G</a> (b,c,d) + X[k] + Ti;\</div>
 <div class="line">  a = <a class="code" href="bindata_8c.html#a7417fd4e875360c0533fa5b412cdab49">ROTATE_LEFT</a> (t, s) + b</div>
-<div class="ttc" id="bindata_8c_html_ad96b7cf3182ce2ba85e5a7a93b12c441"><div class="ttname"><a href="bindata_8c.html#ad96b7cf3182ce2ba85e5a7a93b12c441">G</a></div><div class="ttdeci">#define G(x, y, z)</div></div>
-<div class="ttc" id="bindata_8c_html_a7417fd4e875360c0533fa5b412cdab49"><div class="ttname"><a href="bindata_8c.html#a7417fd4e875360c0533fa5b412cdab49">ROTATE_LEFT</a></div><div class="ttdeci">#define ROTATE_LEFT(x, n)</div></div>
 </div>
 </div>
 </div>
@@ -593,8 +585,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">t = a + <a class="code" href="bindata_8c.html#ae42219072d798876e6b08e6b78614ff6">H</a> (b,c,d) + X[k] + Ti;\</div>
 <div class="line">  a = <a class="code" href="bindata_8c.html#a7417fd4e875360c0533fa5b412cdab49">ROTATE_LEFT</a> (t, s) + b</div>
-<div class="ttc" id="bindata_8c_html_a7417fd4e875360c0533fa5b412cdab49"><div class="ttname"><a href="bindata_8c.html#a7417fd4e875360c0533fa5b412cdab49">ROTATE_LEFT</a></div><div class="ttdeci">#define ROTATE_LEFT(x, n)</div></div>
-<div class="ttc" id="bindata_8c_html_ae42219072d798876e6b08e6b78614ff6"><div class="ttname"><a href="bindata_8c.html#ae42219072d798876e6b08e6b78614ff6">H</a></div><div class="ttdeci">#define H(x, y, z)</div></div>
 </div>
 </div>
 </div>
@@ -653,8 +643,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">t = a + <a class="code" href="bindata_8c.html#ac0eafdc9ee161b71e7af98af736952fd">I</a> (b,c,d) + X[k] + Ti;\</div>
 <div class="line">  a = <a class="code" href="bindata_8c.html#a7417fd4e875360c0533fa5b412cdab49">ROTATE_LEFT</a> (t, s) + b</div>
-<div class="ttc" id="bindata_8c_html_a7417fd4e875360c0533fa5b412cdab49"><div class="ttname"><a href="bindata_8c.html#a7417fd4e875360c0533fa5b412cdab49">ROTATE_LEFT</a></div><div class="ttdeci">#define ROTATE_LEFT(x, n)</div></div>
-<div class="ttc" id="bindata_8c_html_ac0eafdc9ee161b71e7af98af736952fd"><div class="ttname"><a href="bindata_8c.html#ac0eafdc9ee161b71e7af98af736952fd">I</a></div><div class="ttdeci">#define I(x, y, z)</div></div>
 </div>
 </div>
 </div>
@@ -668,8 +656,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00371">371</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a3536974783988d0c205029ed0812f30d"></a>
@@ -681,8 +667,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00380">380</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -696,8 +680,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00381">381</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="afd5bf0370ca515c9464244666f9641c7"></a>
@@ -709,8 +691,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00382">382</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -724,8 +704,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00383">383</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a21df9a0739084ddd6287286ce92e7478"></a>
@@ -737,8 +715,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00384">384</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -752,8 +728,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00385">385</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a7e3fcb261c24ae020b9aff7be20b86ca"></a>
@@ -765,8 +739,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00386">386</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -780,8 +752,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00387">387</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a59fe2f345c8bc8c139e3ac50840d79d2"></a>
@@ -793,8 +763,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00388">388</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -808,8 +776,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00389">389</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a259c2993ee45e06a4ea8150451a7a70e"></a>
@@ -821,8 +787,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00372">372</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -836,8 +800,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00390">390</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a5b214b9ca03699c9b8d037af1509ff11"></a>
@@ -849,8 +811,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00391">391</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -864,8 +824,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00392">392</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="acf792dcc5f0d1bc2b8d1287b17d72ac1"></a>
@@ -877,8 +835,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00393">393</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -892,8 +848,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00394">394</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a53aa2f768c6a022a17d3fc015cf3d012"></a>
@@ -905,8 +859,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00395">395</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -920,8 +872,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00396">396</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="af88a549baf074feaea357cf86944fe5c"></a>
@@ -933,8 +883,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00397">397</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -948,8 +896,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00398">398</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a65314705cc7e1b16abda26f959156a85"></a>
@@ -961,8 +907,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00399">399</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -976,8 +920,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00373">373</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aa8ca9cfde8695b46070bfd0a7bff2c3b"></a>
@@ -989,8 +931,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00400">400</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1004,8 +944,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00401">401</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="afbb65d5d87ebcb862a1e9623a9f9cfac"></a>
@@ -1017,8 +955,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00402">402</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1032,8 +968,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00403">403</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aea009020568c856d458f5aaf10205131"></a>
@@ -1045,8 +979,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00404">404</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1060,8 +992,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00405">405</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a552c6bf2a2dbf1f374fbc920043cf985"></a>
@@ -1073,8 +1003,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00406">406</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1088,8 +1016,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00407">407</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a7116c4f5d98bf98dc1ea46089142ee75"></a>
@@ -1101,8 +1027,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00408">408</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1116,8 +1040,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00409">409</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a935a699e9bf1bffc5dad8738d3cd24c0"></a>
@@ -1129,8 +1051,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00374">374</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1144,8 +1064,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00410">410</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a8516100c31eaf6e8a0c3ca7e1d68d5a5"></a>
@@ -1157,8 +1075,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00411">411</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1172,8 +1088,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00412">412</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a20054c1434c668ca4722e97aa54f2bf0"></a>
@@ -1185,8 +1099,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00413">413</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1200,8 +1112,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00414">414</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a178fab52ae52ca723050819c504009a4"></a>
@@ -1213,8 +1123,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00415">415</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1228,8 +1136,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00416">416</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a99cebbf76190a6be9d93f89068801925"></a>
@@ -1241,8 +1147,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00417">417</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1256,8 +1160,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00418">418</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a7b9a3f7a4f898ae604220d292eaa65e1"></a>
@@ -1269,8 +1171,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00419">419</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1284,8 +1184,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00375">375</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a0f646ac0e60ce4c1cc2470b57115a2aa"></a>
@@ -1297,8 +1195,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00420">420</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1312,8 +1208,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00421">421</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="afb730bef77364a50029257176cc73873"></a>
@@ -1325,8 +1219,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00422">422</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1340,8 +1232,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00423">423</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a1c68286a0508fc986f39cced276b2e28"></a>
@@ -1353,8 +1243,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00424">424</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1368,8 +1256,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00425">425</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a1930a7cb3add95822ff429dabd127369"></a>
@@ -1381,8 +1267,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00426">426</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1396,8 +1280,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00427">427</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a61ec0679a9210c8f1733221ded0fd85a"></a>
@@ -1409,8 +1291,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00428">428</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1424,8 +1304,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00429">429</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a5b569de807982d649a39b92356168b77"></a>
@@ -1437,8 +1315,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00376">376</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1452,8 +1328,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00430">430</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a2f2fde9f87b13b922513e5f8cb838fab"></a>
@@ -1465,8 +1339,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00431">431</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1480,8 +1352,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00432">432</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ac106a00c97fbf324d222e4f1ed07f912"></a>
@@ -1493,8 +1363,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00433">433</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1508,8 +1376,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00434">434</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a2ecc28a0523643551285b16c189518a0"></a>
@@ -1521,8 +1387,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00377">377</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1536,8 +1400,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00378">378</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a21163de9ed7de4dd54e63de71be39ffe"></a>
@@ -1549,8 +1411,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00379">379</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1564,8 +1424,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00370">370</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -1578,8 +1436,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00049">49</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1604,8 +1460,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00050">50</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1640,8 +1494,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00111">111</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="abf716dd2846098a9de5e3156acc09cdb"></a>
@@ -1658,9 +1510,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00075">75</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xmms_2main_8c_source.html#l00521">main()</a>.</p>
+<p>Referenced by <a class="el" href="group__Main.html#ga3c04138a5bfe5d72780bb7e82a18e627">main()</a>.</p>
 
 </div>
 </div>
@@ -1695,8 +1545,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add binary data from a plugin. </p>
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00141">141</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>

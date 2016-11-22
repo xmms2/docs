@@ -61,11 +61,9 @@
 <code>#include &lt;glib/gprintf.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;stdlib.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms_2xmms__log_8h_source.html">xmms/xmms_log.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__xform_8h_source.html">xmmspriv/xmms_xform.h</a>&gt;</code><br/>
-</div>
-<p><a href="magic_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &lt;<a class="el" href="xmms_2xmms__log_8h.html">xmms/xmms_log.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms__xform_8h.html">xmmspriv/xmms_xform.h</a>&gt;</code><br/>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a4e365d06dd49e9c98f92c2db28491585"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="magic_8c.html#a4e365d06dd49e9c98f92c2db28491585">SWAP16</a>(v, endian)</td></tr>
@@ -174,14 +172,7 @@ Variables</h2></td></tr>
 <div class="line">        case <a class="code" href="magic_8c.html#a64373950a979d45ace02f05cebe248d1aab1b989484bc5e60ffb0b452798a7da6">XMMS_MAGIC_ENTRY_OPERATOR_NAND</a>: \</div>
 <div class="line">            return (v1 &amp; v2) != v2; \</div>
 <div class="line">    } \</div>
-<div class="ttc" id="magic_8c_html_a64373950a979d45ace02f05cebe248d1a7fd8715e64c65c81ed680b0c6b319bcd"><div class="ttname"><a href="magic_8c.html#a64373950a979d45ace02f05cebe248d1a7fd8715e64c65c81ed680b0c6b319bcd">XMMS_MAGIC_ENTRY_OPERATOR_EQUAL</a></div><div class="ttdef"><b>Definition:</b> <a href="magic_8c_source.html#l00070">magic.c:70</a></div></div>
-<div class="ttc" id="magic_8c_html_a64373950a979d45ace02f05cebe248d1a5c22abfc122efa408ed0b5ad80f66e5b"><div class="ttname"><a href="magic_8c.html#a64373950a979d45ace02f05cebe248d1a5c22abfc122efa408ed0b5ad80f66e5b">XMMS_MAGIC_ENTRY_OPERATOR_GREATER_THAN</a></div><div class="ttdef"><b>Definition:</b> <a href="magic_8c_source.html#l00072">magic.c:72</a></div></div>
-<div class="ttc" id="magic_8c_html_a64373950a979d45ace02f05cebe248d1af32a1a874aeaff444b3b65bf121fc836"><div class="ttname"><a href="magic_8c.html#a64373950a979d45ace02f05cebe248d1af32a1a874aeaff444b3b65bf121fc836">XMMS_MAGIC_ENTRY_OPERATOR_LESS_THAN</a></div><div class="ttdef"><b>Definition:</b> <a href="magic_8c_source.html#l00071">magic.c:71</a></div></div>
-<div class="ttc" id="magic_8c_html_a64373950a979d45ace02f05cebe248d1aab1b989484bc5e60ffb0b452798a7da6"><div class="ttname"><a href="magic_8c.html#a64373950a979d45ace02f05cebe248d1aab1b989484bc5e60ffb0b452798a7da6">XMMS_MAGIC_ENTRY_OPERATOR_NAND</a></div><div class="ttdef"><b>Definition:</b> <a href="magic_8c_source.html#l00074">magic.c:74</a></div></div>
-<div class="ttc" id="magic_8c_html_a64373950a979d45ace02f05cebe248d1abbabc9e24cf3ea6949798762ddafe40c"><div class="ttname"><a href="magic_8c.html#a64373950a979d45ace02f05cebe248d1abbabc9e24cf3ea6949798762ddafe40c">XMMS_MAGIC_ENTRY_OPERATOR_AND</a></div><div class="ttdef"><b>Definition:</b> <a href="magic_8c_source.html#l00073">magic.c:73</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="magic_8c_source.html#l00042">42</a> of file <a class="el" href="magic_8c_source.html">magic.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a4e365d06dd49e9c98f92c2db28491585"></a>
@@ -213,8 +204,6 @@ Variables</h2></td></tr>
 <div class="line">        v = GUINT16_TO_BE (v); \</div>
 <div class="line">    }</div>
 </div>
-<p>Definition at line <a class="el" href="magic_8c_source.html#l00028">28</a> of file <a class="el" href="magic_8c_source.html">magic.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a886a213045c698bc65efcf3c84c0bb73"></a>
@@ -246,8 +235,6 @@ Variables</h2></td></tr>
 <div class="line">        v = GUINT32_TO_BE (v); \</div>
 <div class="line">    }</div>
 </div>
-<p>Definition at line <a class="el" href="magic_8c_source.html#l00035">35</a> of file <a class="el" href="magic_8c_source.html">magic.c</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -334,8 +321,6 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="magic_8c_source.html#l00069">69</a> of file <a class="el" href="magic_8c_source.html">magic.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a536cba6fcd027732c27deaffa18d801f"></a>
@@ -362,8 +347,6 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="magic_8c_source.html#l00060">60</a> of file <a class="el" href="magic_8c_source.html">magic.c</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -376,8 +359,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="magic_8c_source.html#l00643">643</a> of file <a class="el" href="magic_8c_source.html">magic.c</a>.</p>
 
 </div>
 </div>

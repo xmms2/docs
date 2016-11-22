@@ -59,18 +59,16 @@
 <p>xforms  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__plugin_8h_source.html">xmmspriv/xmms_plugin.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__xform_8h_source.html">xmmspriv/xmms_xform.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__streamtype_8h_source.html">xmmspriv/xmms_streamtype.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__medialib_8h_source.html">xmmspriv/xmms_medialib.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__utils_8h_source.html">xmmspriv/xmms_utils.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__xform__plugin_8h_source.html">xmmspriv/xmms_xform_plugin.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms_2xmms__ipc_8h_source.html">xmms/xmms_ipc.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms_2xmms__log_8h_source.html">xmms/xmms_log.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__object_8h_source.html">xmms/xmms_object.h</a>&gt;</code><br/>
-</div>
-<p><a href="xform_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__plugin_8h.html">xmmspriv/xmms_plugin.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms__xform_8h.html">xmmspriv/xmms_xform.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__streamtype_8h.html">xmmspriv/xmms_streamtype.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="riv_2xmmspriv_2xmms__medialib_8h.html">xmmspriv/xmms_medialib.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms__utils_8h.html">xmmspriv/xmms_utils.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms__xform__plugin_8h.html">xmmspriv/xmms_xform_plugin.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms_2xmms__ipc_8h.html">xmms/xmms_ipc.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms_2xmms__log_8h.html">xmms/xmms_log.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmms__object_8h.html">xmms/xmms_object.h</a>&gt;</code><br/>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:adb77daf1e50d6f419c247052dda62a9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xform_8c.html#adb77daf1e50d6f419c247052dda62a9e">READ_CHUNK</a>&#160;&#160;&#160;4096</td></tr>
@@ -205,8 +203,6 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>xforms </p>
-
-<p>Definition in file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a03b393ac70edc09bef9aa7044260667c"></a>
 <div class="memitem">
@@ -245,12 +241,7 @@ Functions</h2></td></tr>
 <div class="line">        obj = xmms_xform_auxdata_get_val (xform, key); \</div>
 <div class="line">        return obj &amp;&amp; xmmsv_get_##xmmsvtypename (obj, <a class="code" href="t__transactions_8c.html#a001684f6391353afb79f347f5ab86f87">val</a>); \</div>
 <div class="line">    }</div>
-<div class="ttc" id="group__ValueType_html_ga54448cd0f26760eeb4ba3377d063aa91"><div class="ttname"><a href="group__ValueType.html#ga54448cd0f26760eeb4ba3377d063aa91">xmmsv_t</a></div><div class="ttdeci">struct xmmsv_St xmmsv_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsv__general_8h_source.html#l00054">xmmsv_general.h:54</a></div></div>
-<div class="ttc" id="group__XForm_html_ga0eb18933fa070b50e01cddc912636b15"><div class="ttname"><a href="group__XForm.html#ga0eb18933fa070b50e01cddc912636b15">xmms_xform_t</a></div><div class="ttdeci">struct xmms_xform_St xmms_xform_t</div><div class="ttdef"><b>Definition:</b> <a href="xmms__xformplugin_8h_source.html#l00098">xmms_xformplugin.h:98</a></div></div>
-<div class="ttc" id="t__transactions_8c_html_a001684f6391353afb79f347f5ab86f87"><div class="ttname"><a href="t__transactions_8c.html#a001684f6391353afb79f347f5ab86f87">val</a></div><div class="ttdeci">s4_val_t * val</div><div class="ttdef"><b>Definition:</b> <a href="t__transactions_8c_source.html#l00023">t_transactions.c:23</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00802">802</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="adb77daf1e50d6f419c247052dda62a9e"></a>
@@ -263,9 +254,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00083">83</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00347">xmms_xform_new()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#a4fbeb6c0bccd83162360d534aaef528d">xmms_xform_new()</a>.</p>
 
 </div>
 </div>
@@ -325,8 +314,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00736">736</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="add3760fbc462db897a66bfc068d5b7cb"></a>
@@ -352,8 +339,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00271">271</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
 
 </div>
 </div>
@@ -399,9 +384,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00121">121</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00150">xmms_xform_browse_add_symlink()</a>.</p>
+<p>Referenced by <a class="el" href="group__XForm.html#ga1272c3371ea2cfa1edf7724e932ec88e">xmms_xform_browse_add_symlink()</a>.</p>
 
 </div>
 </div>
@@ -435,9 +418,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00250">250</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00271">xmms_xform_browse()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#add3760fbc462db897a66bfc068d5b7cb">xmms_xform_browse()</a>.</p>
 
 </div>
 </div>
@@ -476,8 +457,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xform_8c_source.html#l01362">1362</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
 
 </div>
 </div>
@@ -523,9 +502,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l01379">1379</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l01362">xmms_xform_chain_setup()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#a64ce30eba892d1eff08f92a3bbd6f47e">xmms_xform_chain_setup()</a>.</p>
 
 </div>
 </div>
@@ -570,8 +547,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xform_8c_source.html#l01449">1449</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
 
 </div>
 </div>
@@ -623,9 +598,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l01399">1399</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l01379">xmms_xform_chain_setup_session()</a>, and <a class="el" href="xform_8c_source.html#l01449">xmms_xform_chain_setup_url()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#a3a744c05e361d103bacc2ac7ef7dceba">xmms_xform_chain_setup_session()</a>, and <a class="el" href="xmms__xform_8h.html#a2269d866ddbfac767fd32668790545a8">xmms_xform_chain_setup_url()</a>.</p>
 
 </div>
 </div>
@@ -659,9 +632,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l01150">1150</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00271">xmms_xform_browse()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#add3760fbc462db897a66bfc068d5b7cb">xmms_xform_browse()</a>.</p>
 
 </div>
 </div>
@@ -678,8 +649,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xform_8c_source.html#l01192">1192</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
 
 </div>
 </div>
@@ -707,9 +676,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00432">432</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00432">xmms_xform_indata_find_str()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#ad110b8332dad711b3773fd409ff8c208">xmms_xform_indata_find_str()</a>.</p>
 
 </div>
 </div>
@@ -726,8 +693,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00462">462</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
 
 </div>
 </div>
@@ -761,8 +726,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00543">543</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a63441f1eb11ae78eb0e01c30c9358266"></a>
@@ -795,9 +758,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00559">559</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00497">xmms_xform_metadata_set_str()</a>.</p>
+<p>Referenced by <a class="el" href="xform_8c.html#a650912dfca5fa1ef1b9659e977a83bb0">xmms_xform_metadata_set_str()</a>.</p>
 
 </div>
 </div>
@@ -831,9 +792,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00488">488</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="metadata_8c_source.html#l00205">xmms_xform_metadata_parse_compilation()</a>, and <a class="el" href="metadata_8c_source.html#l00101">xmms_xform_metadata_parse_number()</a>.</p>
+<p>Referenced by <a class="el" href="group__XForm.html#ga532c1349b3c1184d219fa57a9fbf8d9b">xmms_xform_metadata_parse_compilation()</a>, and <a class="el" href="group__XForm.html#gaa30f2b9c34914a40b9606805d939a3a3">xmms_xform_metadata_parse_number()</a>.</p>
 
 </div>
 </div>
@@ -867,9 +826,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00497">497</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="metadata_8c_source.html#l00186">xmms_xform_metadata_parse_replay_gain()</a>.</p>
+<p>Referenced by <a class="el" href="group__XForm.html#ga1e9363c986a931a744e253e0dfc649bb">xmms_xform_metadata_parse_replay_gain()</a>.</p>
 
 </div>
 </div>
@@ -915,9 +872,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00347">347</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00271">xmms_xform_browse()</a>, and <a class="el" href="xform_8c_source.html#l01150">xmms_xform_find()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#add3760fbc462db897a66bfc068d5b7cb">xmms_xform_browse()</a>, and <a class="el" href="xform_8c.html#a8aada2de905485ab9afc6ebbe4fcd339">xmms_xform_find()</a>.</p>
 
 </div>
 </div>
@@ -945,9 +900,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00418">418</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00425">xmms_xform_outdata_type_copy()</a>.</p>
+<p>Referenced by <a class="el" href="group__XForm.html#gaa30c61aefbda412854b7c24454a8d64c">xmms_xform_outdata_type_copy()</a>.</p>
 
 </div>
 </div>
@@ -965,9 +918,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00456">456</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00462">xmms_xform_intype_get()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#afb4786dcb2dbf78417baa5da6888fbe7">xmms_xform_intype_get()</a>.</p>
 
 </div>
 </div>
@@ -995,9 +946,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00475">475</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00450">xmms_xform_indata_get_int()</a>.</p>
+<p>Referenced by <a class="el" href="group__XForm.html#gab1c7363cb688b1db7076c0bb7463f7fb">xmms_xform_indata_get_int()</a>.</p>
 
 </div>
 </div>
@@ -1025,9 +974,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00468">468</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00444">xmms_xform_indata_get_str()</a>.</p>
+<p>Referenced by <a class="el" href="group__XForm.html#ga6dfcdb241300ee701fb445497634e339">xmms_xform_indata_get_str()</a>.</p>
 
 </div>
 </div>
@@ -1045,9 +992,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00832">832</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00271">xmms_xform_browse()</a>, <a class="el" href="xform_8c_source.html#l00497">xmms_xform_metadata_set_str()</a>, <a class="el" href="xform_8c_source.html#l00910">xmms_xform_this_read()</a>, and <a class="el" href="xform_8c_source.html#l00988">xmms_xform_this_seek()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__xform_8h.html#add3760fbc462db897a66bfc068d5b7cb">xmms_xform_browse()</a>, <a class="el" href="xform_8c.html#a650912dfca5fa1ef1b9659e977a83bb0">xmms_xform_metadata_set_str()</a>, <a class="el" href="xform_8c.html#a21ac00681db2d3bb20cd16a31fa34528">xmms_xform_this_read()</a>, and <a class="el" href="xmms__xform_8h.html#ae823c8ef90ab3dc8579875defcd04817">xmms_xform_this_seek()</a>.</p>
 
 </div>
 </div>
@@ -1087,9 +1032,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00910">910</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l01080">xmms_xform_read()</a>.</p>
+<p>Referenced by <a class="el" href="group__XForm.html#ga75f34e73fcb1dc5f09558bbc3cefd6ee">xmms_xform_read()</a>.</p>
 
 </div>
 </div>
@@ -1129,9 +1072,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00988">988</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l01087">xmms_xform_seek()</a>.</p>
+<p>Referenced by <a class="el" href="group__XForm.html#ga62b1b93567eaffae4dba7a18d7937ecf">xmms_xform_seek()</a>.</p>
 
 </div>
 </div>

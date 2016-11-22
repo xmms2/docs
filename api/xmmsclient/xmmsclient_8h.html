@@ -58,17 +58,15 @@
 <div class="title">xmmsclient.h File Reference</div>  </div>
 </div>
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="xmmsc__compiler_8h_source.html">xmmsc/xmmsc_compiler.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsc__stdint_8h_source.html">xmmsc/xmmsc_stdint.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsc__ipc__msg_8h_source.html">xmmsc/xmmsc_ipc_msg.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="xmmsc__compiler_8h.html">xmmsc/xmmsc_compiler.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmmsc__stdint_8h.html">xmmsc/xmmsc_stdint.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmmsc__ipc__msg_8h.html">xmmsc/xmmsc_ipc_msg.h</a>&gt;</code><br/>
 <code>#include &lt;xmmsc/xmmsc_idnumbers.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsv_8h_source.html">xmmsc/xmmsv.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsv__coll_8h_source.html">xmmsc/xmmsv_coll.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsv__c2c_8h_source.html">xmmsc/xmmsv_c2c.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmmsv__service_8h_source.html">xmmsc/xmmsv_service.h</a>&gt;</code><br/>
-</div>
-<p><a href="xmmsclient_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &lt;<a class="el" href="xmmsv_8h.html">xmmsc/xmmsv.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmmsv__coll_8h.html">xmmsc/xmmsv_coll.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmmsv__c2c_8h.html">xmmsc/xmmsv_c2c.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="xmmsv__service_8h.html">xmmsc/xmmsv_service.h</a>&gt;</code><br/>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structxmmsv__coll__token__St.html">xmmsv_coll_token_St</a></td></tr>
@@ -740,8 +738,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00403">403</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a27eb686c2e4493e4847dd792b7c89ca5"></a>
@@ -787,15 +783,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">{<a class="code" href="xmmsclient_8h.html#a9f9b607f7bddf05c6a10444885b56aaa">\</a></div>
 <div class="line"><a class="code" href="xmmsclient_8h.html#a9f9b607f7bddf05c6a10444885b56aaa">	xmmsc_result_t</a> *res = meth (conn); <a class="code" href="xmmsclient_8h.html#abf72f8897355506cb721d78a343be1fe">\</a></div>
-<div class="line"><a class="code" href="xmmsclient_8h.html#abf72f8897355506cb721d78a343be1fe">	xmmsc_result_notifier_set_full</a> (res, callback, udata, free_func);<a class="code" href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce">\</a></div>
-<div class="line"><a class="code" href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce">	xmmsc_result_unref</a> (res);\</div>
+<div class="line"><a class="code" href="xmmsclient_8h.html#abf72f8897355506cb721d78a343be1fe">	xmmsc_result_notifier_set_full</a> (res, callback, udata, free_func);<a class="code" href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce" title="Decreases the references for the xmmsc_result_t When the number of references reaches 0 it will be fr...">\</a></div>
+<div class="line"><a class="code" href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce" title="Decreases the references for the xmmsc_result_t When the number of references reaches 0 it will be fr...">	xmmsc_result_unref</a> (res);\</div>
 <div class="line">}</div>
-<div class="ttc" id="xmmsclient_8h_html_abf72f8897355506cb721d78a343be1fe"><div class="ttname"><a href="xmmsclient_8h.html#abf72f8897355506cb721d78a343be1fe">xmmsc_result_notifier_set_full</a></div><div class="ttdeci">#define xmmsc_result_notifier_set_full</div><div class="ttdef"><b>Definition:</b> <a href="xmmsclient_8h_source.html#l00439">xmmsclient.h:439</a></div></div>
-<div class="ttc" id="xmmsclient_8h_html_a9f9b607f7bddf05c6a10444885b56aaa"><div class="ttname"><a href="xmmsclient_8h.html#a9f9b607f7bddf05c6a10444885b56aaa">xmmsc_result_t</a></div><div class="ttdeci">struct xmmsc_result_St xmmsc_result_t</div><div class="ttdef"><b>Definition:</b> <a href="xmmsclient_8h_source.html#l00034">xmmsclient.h:34</a></div></div>
-<div class="ttc" id="group__Result_html_gade7b823947f2867d0cce0de55a30b3ce"><div class="ttname"><a href="group__Result.html#gade7b823947f2867d0cce0de55a30b3ce">xmmsc_result_unref</a></div><div class="ttdeci">void xmmsc_result_unref(xmmsc_result_t *res) XMMS_PUBLIC</div><div class="ttdoc">Decreases the references for the xmmsc_result_t When the number of references reaches 0 it will be fr...</div><div class="ttdef"><b>Definition:</b> <a href="result_8c_source.html#l00303">result.c:303</a></div></div>
 </div>
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00406">406</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a078729cf61665e826a7a24bbfa9c44c2"></a>
@@ -807,8 +798,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00296">296</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -822,8 +811,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00448">448</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a7b87a8830ba33f147c1faf3a3bfc706d"></a>
@@ -835,8 +822,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00449">449</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -850,8 +835,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00446">446</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="abe40158f52af0dfdc0a0e21fe2d7265e"></a>
@@ -863,8 +846,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00447">447</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -882,9 +863,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00435">435</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
-<p>Referenced by <a class="el" href="unixshm_8c_source.html#l00056">setup_shm_handle()</a>, <a class="el" href="udp_8c_source.html#l00136">setup_udp_handle()</a>, and <a class="el" href="visualization_2client_8c_source.html#l00095">xmmsc_visualization_init_handle()</a>.</p>
+<p>Referenced by <a class="el" href="unixshm_8c.html#aefb25f1bf6f805bcd667adbf5bcfd639">setup_shm_handle()</a>, <a class="el" href="udp_8c.html#a1337a1210ff8dd1cc5b79498cc6dea33">setup_udp_handle()</a>, and <a class="el" href="group__Visualization.html#ga567ef9dd98a6b880ba2479e98dd3e72f">xmmsc_visualization_init_handle()</a>.</p>
 
 </div>
 </div>
@@ -898,8 +877,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00438">438</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="abf72f8897355506cb721d78a343be1fe"></a>
@@ -911,8 +888,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00439">439</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -926,9 +901,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00349">349</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
-<p>Referenced by <a class="el" href="service_2client_8c_source.html#l00091">xmmsc_sc_broadcast_subscribe()</a>, and <a class="el" href="service_2client_8c_source.html#l00035">xmmsc_sc_call()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a0fe11c6733406c83e0cebcc0f6de3402">xmmsc_sc_broadcast_subscribe()</a>, and <a class="el" href="xmmsclient_8h.html#a91887fc2fe319fd562d0019808cd9b1f">xmmsc_sc_call()</a>.</p>
 
 </div>
 </div>
@@ -942,9 +915,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00352">352</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
-<p>Referenced by <a class="el" href="service_2client_8c_source.html#l00035">xmmsc_sc_call()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a91887fc2fe319fd562d0019808cd9b1f">xmmsc_sc_call()</a>.</p>
 
 </div>
 </div>
@@ -958,9 +929,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00354">354</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
-<p>Referenced by <a class="el" href="service_2client_8c_source.html#l00035">xmmsc_sc_call()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a91887fc2fe319fd562d0019808cd9b1f">xmmsc_sc_call()</a>.</p>
 
 </div>
 </div>
@@ -974,9 +943,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00353">353</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
-<p>Referenced by <a class="el" href="service_2client_8c_source.html#l00035">xmmsc_sc_call()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a91887fc2fe319fd562d0019808cd9b1f">xmmsc_sc_call()</a>.</p>
 
 </div>
 </div>
@@ -990,9 +957,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00348">348</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
-<p>Referenced by <a class="el" href="service_2client_8c_source.html#l00091">xmmsc_sc_broadcast_subscribe()</a>, and <a class="el" href="service_2client_8c_source.html#l00035">xmmsc_sc_call()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a0fe11c6733406c83e0cebcc0f6de3402">xmmsc_sc_broadcast_subscribe()</a>, and <a class="el" href="xmmsclient_8h.html#a91887fc2fe319fd562d0019808cd9b1f">xmmsc_sc_call()</a>.</p>
 
 </div>
 </div>
@@ -1006,8 +971,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00358">358</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="af1f115f0a9c6abaecf9dccea28fe03c7"></a>
@@ -1020,8 +983,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00356">356</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ae789863e35174d5489a48b3ded1714bc"></a>
@@ -1033,8 +994,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00357">357</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1049,8 +1008,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00444">444</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a72038c27c262b824a23974fedbdf7915"></a>
@@ -1062,8 +1019,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00443">443</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1077,8 +1032,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00442">442</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a23aac1cae972ac7f58fac00eb3406e2e"></a>
@@ -1090,8 +1043,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00441">441</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1105,8 +1056,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00033">33</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a67119bd5daddf9be9ab3894565b2f02d"></a>
@@ -1118,8 +1067,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00042">42</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1133,8 +1080,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00044">44</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aff49a59b897bf1d1fab5c4eea500a575"></a>
@@ -1146,8 +1091,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00416">416</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1161,8 +1104,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00034">34</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aaae516502b41070c0d8c8b086b8154e0"></a>
@@ -1174,8 +1115,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00361">361</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1189,8 +1128,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00360">360</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aa5e896f01252e971472b5cc4be22aada"></a>
@@ -1202,8 +1139,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00043">43</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1217,8 +1152,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00307">307</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a724f0e970227c3a6725e712939f2b152"></a>
@@ -1231,8 +1164,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00306">306</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="af6afa97d6972d0c6d748fb037930c514"></a>
@@ -1244,8 +1175,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00298">298</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1268,8 +1197,6 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00036">36</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a4a200f38d0626d0beed81008424a867e"></a>
@@ -1289,8 +1216,6 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a4a200f38d0626d0beed81008424a867ea441d0e0e30f409544449532b8c519429"></a>XMMSC_SC_INTROSPECT</em>&#160;</td><td class="fielddoc">
 </td></tr>
 </table>
-
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00341">341</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
 
 </div>
 </div>
@@ -1348,8 +1273,6 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="xmmsclient_8h_source.html#l00272">272</a> of file <a class="el" href="xmmsclient_8h_source.html">xmmsclient.h</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -1385,8 +1308,6 @@ Functions</h2></td></tr>
 
 <p>Add binary data to the servers bindata directory. </p>
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00032">32</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aa4045c33aca9a050483ee6d591acf37b"></a>
@@ -1404,8 +1325,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>List all bindata hashes stored on the server. </p>
-
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00075">75</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
 
 </div>
 </div>
@@ -1435,8 +1354,6 @@ Functions</h2></td></tr>
 
 <p>Remove a file with associated with the hash from the server. </p>
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00063">63</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="afbbd43ef5c1a8e2836945c00159fe712"></a>
@@ -1465,8 +1382,6 @@ Functions</h2></td></tr>
 
 <p>Retrieve a file from the servers bindata directory, based on the hash. </p>
 
-<p>Definition at line <a class="el" href="bindata_8c_source.html#l00051">51</a> of file <a class="el" href="bindata_8c_source.html">bindata.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ad8743554e6f4c697809fd9a514bbe05d"></a>
@@ -1491,8 +1406,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00200">200</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
 
 </div>
 </div>
@@ -1519,8 +1432,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00218">218</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a4b4db651426a79c1511f57646873b2e8"></a>
@@ -1546,9 +1457,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00160">160</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
-
-<p>Referenced by <a class="el" href="service_8c_source.html#l00034">xmmsc_sc_init()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a2a7586e5d1cb05d6e2ea890b9e8068d0">xmmsc_sc_init()</a>.</p>
 
 </div>
 </div>
@@ -1575,8 +1484,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00182">182</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aff89addee8cab43f4485b620ed9b4bb4"></a>
@@ -1600,8 +1507,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00121">121</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
 
 </div>
 </div>
@@ -1627,8 +1532,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00109">109</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a9b938f0829c5b118fd4573878649ee67"></a>
@@ -1653,8 +1556,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00146">146</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ad87d423c86fd2b1e4016cf13bb7b98c5"></a>
@@ -1672,8 +1573,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Notify the client's api is ready for query. </p>
-
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00133">133</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
 
 </div>
 </div>
@@ -1724,9 +1623,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00074">74</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
-
-<p>Referenced by <a class="el" href="service_2client_8c_source.html#l00125">xmmsc_sc_broadcast_emit()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a4dca55db8ce5028b25f825fecae5b3a0">xmmsc_sc_broadcast_emit()</a>.</p>
 
 </div>
 </div>
@@ -1776,9 +1673,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="c2c_8c_source.html#l00030">30</a> of file <a class="el" href="c2c_8c_source.html">c2c.c</a>.</p>
-
-<p>Referenced by <a class="el" href="service_2client_8c_source.html#l00091">xmmsc_sc_broadcast_subscribe()</a>, and <a class="el" href="service_2client_8c_source.html#l00035">xmmsc_sc_call()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a0fe11c6733406c83e0cebcc0f6de3402">xmmsc_sc_broadcast_subscribe()</a>, and <a class="el" href="xmmsclient_8h.html#a91887fc2fe319fd562d0019808cd9b1f">xmmsc_sc_call()</a>.</p>
 
 </div>
 </div>
@@ -1805,8 +1700,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The encoded url </dd></dl>
-
-<p>Definition at line <a class="el" href="medialib_8c_source.html#l00585">585</a> of file <a class="el" href="medialib_8c_source.html">medialib.c</a>.</p>
 
 </div>
 </div>
@@ -1844,8 +1737,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The encoded url </dd></dl>
-
-<p>Definition at line <a class="el" href="medialib_8c_source.html#l00571">571</a> of file <a class="el" href="medialib_8c_source.html">medialib.c</a>.</p>
 
 </div>
 </div>
@@ -1969,7 +1860,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="service_8c_source.html#l00034">xmmsc_sc_init()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a2a7586e5d1cb05d6e2ea890b9e8068d0">xmmsc_sc_init()</a>.</p>
 
 </div>
 </div>
@@ -2191,8 +2082,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00125">125</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a0fe11c6733406c83e0cebcc0f6de3402"></a>
@@ -2236,8 +2125,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="xmmsclient_8h.html#a02928d769eabd8e5c5bbbf07e5a5e6e8">xmmsc_result_notifier_set_default</a> and others. </dd></dl>
-
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00091">91</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
 
 </div>
 </div>
@@ -2295,8 +2182,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00035">35</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a2a7586e5d1cb05d6e2ea890b9e8068d0"></a>
@@ -2321,8 +2206,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The root namespace. </dd></dl>
-
-<p>Definition at line <a class="el" href="service_8c_source.html#l00034">34</a> of file <a class="el" href="service_8c_source.html">service.c</a>.</p>
 
 </div>
 </div>
@@ -2405,8 +2288,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00241">241</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a0be83e2f9da76412506c721dcdf04993"></a>
@@ -2448,8 +2329,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00275">275</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
 
 </div>
 </div>
@@ -2558,8 +2437,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="service_2client_8c.html#a151c3f220da367bb908ea6e5452beea6" title="Emit a broadcast. ">xmmsc_sc_broadcast_emit</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00478">478</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a32ef4e4f723a25b596b25ed674ad023f"></a>
@@ -2602,9 +2479,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interface__entity_8c_source.html#l00749">749</a> of file <a class="el" href="interface__entity_8c_source.html">interface_entity.c</a>.</p>
-
-<p>Referenced by <a class="el" href="common_8c_source.html#l00037">xmmsc_sc_create_root_namespace()</a>.</p>
+<p>Referenced by <a class="el" href="common_8h.html#a610164ddcd760fbd4d923bb6e65bac52">xmmsc_sc_create_root_namespace()</a>.</p>
 
 </div>
 </div>
@@ -2691,9 +2566,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="xmmsv__service_8h.html#ac1cb4cd409f9a64ed0fde2cd5ca77434" title="Create a new argument for a method. ">xmmsv_sc_argument_new</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00412">412</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
-
-<p>Referenced by <a class="el" href="service_2client_8c_source.html#l00458">xmmsc_sc_namespace_add_method_noarg()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#ab7a6c67498b2a6489028e74c884850d5">xmmsc_sc_namespace_add_method_noarg()</a>.</p>
 
 </div>
 </div>
@@ -2742,8 +2615,6 @@ Functions</h2></td></tr>
 <p>Convenience wrapper around xmmsc_sc_method_new to declare a method that accepts no arguments. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="service_2client_8c.html#a12b5443677779119581be081d20ebddd" title="Create a new method. ">xmmsc_sc_namespace_add_method</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00458">458</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ab63a182fc70482d199b3c156842ef686"></a>
@@ -2780,8 +2651,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A namespace. </dd></dl>
 
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00374">374</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a08584d304cdf597ac0c7cc78b06308e6"></a>
@@ -2817,8 +2686,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A namespace. </dd></dl>
-
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00316">316</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
 
 </div>
 </div>
@@ -2863,8 +2730,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The new namespace. </dd></dl>
 
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00345">345</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ae2c6f7878798628e3293652103c4cd2d"></a>
@@ -2900,8 +2765,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Definition at line <a class="el" href="interface__entity_8c_source.html#l00241">241</a> of file <a class="el" href="interface__entity_8c_source.html">interface_entity.c</a>.</p>
 
 </div>
 </div>
@@ -2939,8 +2802,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="interface__entity_8c_source.html#l00764">764</a> of file <a class="el" href="interface__entity_8c_source.html">interface_entity.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a83dc11de214e1d2de467931d0342f993"></a>
@@ -2965,8 +2826,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The root namespace. </dd></dl>
-
-<p>Definition at line <a class="el" href="service_2client_8c_source.html#l00303">303</a> of file <a class="el" href="service_2client_8c_source.html">client.c</a>.</p>
 
 </div>
 </div>
@@ -2997,8 +2856,6 @@ Functions</h2></td></tr>
 <p>Browse available media in a path. </p>
 <p>Retrieves a list of paths available (directly) under the specified path. </p>
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00034">34</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ad60cbaa70eb12133176719f40cdf63aa"></a>
@@ -3028,9 +2885,7 @@ Functions</h2></td></tr>
 <p>Browse available media in a (already encoded) path. </p>
 <p>Retrieves a list of paths available (directly) under the specified path. </p>
 
-<p>Definition at line <a class="el" href="xform_8c_source.html#l00061">61</a> of file <a class="el" href="xform_8c_source.html">xform.c</a>.</p>
-
-<p>Referenced by <a class="el" href="xform_8c_source.html#l00034">xmmsc_xform_media_browse()</a>.</p>
+<p>Referenced by <a class="el" href="xmmsclient_8h.html#a4efe8065a50110339bddb3d85dcc83db">xmmsc_xform_media_browse()</a>.</p>
 
 </div>
 </div>

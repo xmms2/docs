@@ -54,10 +54,8 @@
 </div>
 <div class="contents">
 <div class="textblock"><code>#include &lt;glib.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="xmms__sample_8h_source.html">xmms/xmms_sample.h</a>&gt;</code><br/>
-</div>
-<p><a href="sample_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &lt;<a class="el" href="xmms__sample_8h.html">xmms/xmms_sample.h</a>&gt;</code><br/>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a21c8d89406c67e81e5764500a8d5930a"><td class="memItemLeft" align="right" valign="top">gint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sample_8c.html#a21c8d89406c67e81e5764500a8d5930a">xmms_sample_frame_size_get</a> (const <a class="el" href="xmms_2xmms__streamtype_8h.html#ab47f34e878dcec5c45e98c2a478f7058">xmms_stream_type_t</a> *st)</td></tr>
@@ -113,9 +111,7 @@ Functions</h2></td></tr>
 <p>Convert from bytes to milliseconds for this format. </p>
 <p>This is not exact. </p>
 
-<p>Definition at line <a class="el" href="sample_8c_source.html#l00095">95</a> of file <a class="el" href="sample_8c_source.html">sample.c</a>.</p>
-
-<p>Referenced by <a class="el" href="output_8c_source.html#l00791">xmms_output_latency()</a>.</p>
+<p>Referenced by <a class="el" href="group__Output.html#ga28abe6dd896d69f8342dd3113bde6755">xmms_output_latency()</a>.</p>
 
 </div>
 </div>
@@ -152,8 +148,6 @@ Functions</h2></td></tr>
 <p>Convert from bytes to samples for this format. </p>
 <p>This is exact. On error 0 is returned and error is set. </p>
 
-<p>Definition at line <a class="el" href="sample_8c_source.html#l00069">69</a> of file <a class="el" href="sample_8c_source.html">sample.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a743ce5d454f97f86e6534f4ea5fd35bf"></a>
@@ -183,9 +177,7 @@ Functions</h2></td></tr>
 <p>Convert from bytes to samples for this format. </p>
 <p>This is not exact. </p>
 
-<p>Definition at line <a class="el" href="sample_8c_source.html#l00085">85</a> of file <a class="el" href="sample_8c_source.html">sample.c</a>.</p>
-
-<p>Referenced by <a class="el" href="sample_8c_source.html#l00095">xmms_sample_bytes_to_ms()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__sample_8h.html#a827ef8b561a6f3a34c333791d2228e0b">xmms_sample_bytes_to_ms()</a>.</p>
 
 </div>
 </div>
@@ -206,9 +198,7 @@ Functions</h2></td></tr>
 <p>Get number of bytes used for one sample length worth of music. </p>
 <p>That is, (size of one sample) * channels. </p>
 
-<p>Definition at line <a class="el" href="sample_8c_source.html#l00027">27</a> of file <a class="el" href="sample_8c_source.html">sample.c</a>.</p>
-
-<p>Referenced by <a class="el" href="output_8c_source.html#l00524">xmms_output_read()</a>, <a class="el" href="sample_8c_source.html#l00069">xmms_sample_bytes_to_samples()</a>, <a class="el" href="sample_8c_source.html#l00085">xmms_sample_bytes_to_samples_inexact()</a>, <a class="el" href="converter_8head_8c_source.html#l00215">xmms_sample_convert()</a>, <a class="el" href="converter_8head_8c_source.html#l00276">xmms_sample_convert_reset()</a>, and <a class="el" href="sample_8c_source.html#l00059">xmms_sample_samples_to_bytes()</a>.</p>
+<p>Referenced by <a class="el" href="group__OutputPlugin.html#ga9b4ae65c83900ec18283493967a4fb33">xmms_output_read()</a>, <a class="el" href="xmms__sample_8h.html#a1925af184f737628cc1d30abb1d519c3">xmms_sample_bytes_to_samples()</a>, <a class="el" href="xmms__sample_8h.html#a743ce5d454f97f86e6534f4ea5fd35bf">xmms_sample_bytes_to_samples_inexact()</a>, <a class="el" href="group__Sample.html#ga4e25a2887910fcee337d9d12e2347985">xmms_sample_convert()</a>, <a class="el" href="group__Sample.html#ga2fcec64f1f2643603c11f956241ac21a">xmms_sample_convert_reset()</a>, and <a class="el" href="xmms__sample_8h.html#a177a8d11dbab9e64e4a8efdcdba1ff5c">xmms_sample_samples_to_bytes()</a>.</p>
 
 </div>
 </div>
@@ -239,8 +229,6 @@ Functions</h2></td></tr>
 <p>Convert from milliseconds to bytes for this format. </p>
 <p>This is not exact. </p>
 
-<p>Definition at line <a class="el" href="sample_8c_source.html#l00104">104</a> of file <a class="el" href="sample_8c_source.html">sample.c</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ac02b7147b7fced6dc19d475c8ef8913e"></a>
@@ -269,9 +257,7 @@ Functions</h2></td></tr>
 
 <p>convert from milliseconds to samples for this format. </p>
 
-<p>Definition at line <a class="el" href="sample_8c_source.html#l00039">39</a> of file <a class="el" href="sample_8c_source.html">sample.c</a>.</p>
-
-<p>Referenced by <a class="el" href="sample_8c_source.html#l00104">xmms_sample_ms_to_bytes()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__sample_8h.html#aebbb98f0307e09c756ad819e7396cb83">xmms_sample_ms_to_bytes()</a>.</p>
 
 </div>
 </div>
@@ -302,9 +288,7 @@ Functions</h2></td></tr>
 <p>Convert from samples to bytes for this format. </p>
 <p>This is exact. </p>
 
-<p>Definition at line <a class="el" href="sample_8c_source.html#l00059">59</a> of file <a class="el" href="sample_8c_source.html">sample.c</a>.</p>
-
-<p>Referenced by <a class="el" href="sample_8c_source.html#l00104">xmms_sample_ms_to_bytes()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__sample_8h.html#aebbb98f0307e09c756ad819e7396cb83">xmms_sample_ms_to_bytes()</a>.</p>
 
 </div>
 </div>
@@ -334,9 +318,7 @@ Functions</h2></td></tr>
 
 <p>Convert from samples to milliseconds for this format. </p>
 
-<p>Definition at line <a class="el" href="sample_8c_source.html#l00049">49</a> of file <a class="el" href="sample_8c_source.html">sample.c</a>.</p>
-
-<p>Referenced by <a class="el" href="sample_8c_source.html#l00095">xmms_sample_bytes_to_ms()</a>.</p>
+<p>Referenced by <a class="el" href="xmms__sample_8h.html#a827ef8b561a6f3a34c333791d2228e0b">xmms_sample_bytes_to_ms()</a>.</p>
 
 </div>
 </div>
