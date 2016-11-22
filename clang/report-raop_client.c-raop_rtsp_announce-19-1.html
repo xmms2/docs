@@ -54,7 +54,7 @@
 </style>
 </head>
 <body>
-<!-- BUGDESC Value stored to 'res' is never read -->
+<!-- BUGDESC Value stored to 'size' is never read -->
 
 <!-- BUGTYPE Dead assignment -->
 
@@ -64,11 +64,11 @@
 
 <!-- FILENAME raop_client.c -->
 
-<!-- FUNCTIONNAME raop_rtsp_flush -->
+<!-- FUNCTIONNAME raop_rtsp_announce -->
 
-<!-- ISSUEHASHCONTENTOFLINEINCONTEXT c60217d8333eff02cb0434effa05c1b2 -->
+<!-- ISSUEHASHCONTENTOFLINEINCONTEXT 7c7f8e89d98aef945df88d0a8f2e6e1f -->
 
-<!-- BUGLINE 351 -->
+<!-- BUGLINE 279 -->
 
 <!-- BUGCOLUMN 2 -->
 
@@ -79,8 +79,8 @@
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/plugins/airplay/raop_client.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 351, column 2</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Value stored to 'res' is never read</td></tr>
+<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 279, column 2</a></td></tr>
+<tr><td class="rowname">Description:</td><td>Value stored to 'size' is never read</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
@@ -363,7 +363,8 @@
 <tr><td class="num" id="LN276">276</td><td class="line">	g_strdelimit (key, <span class='string_literal'>"="</span>, '\0');</td></tr>
 <tr><td class="num" id="LN277">277</td><td class="line">	size = b64_encode_alloc (rc-&gt;aes_iv, 16, &amp;iv);</td></tr>
 <tr><td class="num" id="LN278">278</td><td class="line">	g_strdelimit (iv, <span class='string_literal'>"="</span>, '\0');</td></tr>
-<tr><td class="num" id="LN279">279</td><td class="line">	size = b64_encode_alloc (rc-&gt;challenge, 16, &amp;ac);</td></tr>
+<tr><td class="num" id="LN279">279</td><td class="line">	size = <span class="mrange">b64_encode_alloc (rc-&gt;challenge, 16, &amp;ac)</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:9ex">Value stored to 'size' is never read</div></td></tr>
 <tr><td class="num" id="LN280">280</td><td class="line">	g_strdelimit (ac, <span class='string_literal'>"="</span>, '\0');</td></tr>
 <tr><td class="num" id="LN281">281</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN282">282</td><td class="line">	res = rtsp_message_init_request (RTSP_ANNOUNCE, rc-&gt;rtsp_url, &amp;request);</td></tr>
@@ -435,8 +436,7 @@
 <tr><td class="num" id="LN348">348</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
 <tr><td class="num" id="LN349">349</td><td class="line">	RTSPResult res;</td></tr>
 <tr><td class="num" id="LN350">350</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN351">351</td><td class="line">	res = <span class="mrange">rtsp_message_init_request (RTSP_FLUSH, rc-&gt;rtsp_url, &amp;request)</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:9ex">Value stored to 'res' is never read</div></td></tr>
+<tr><td class="num" id="LN351">351</td><td class="line">	res = rtsp_message_init_request (RTSP_FLUSH, rc-&gt;rtsp_url, &amp;request);</td></tr>
 <tr><td class="num" id="LN352">352</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
 <tr><td class="num" id="LN353">353</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
 <tr><td class="num" id="LN354">354</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RANGE, <span class='string_literal'>"npt=0-"</span>);</td></tr>

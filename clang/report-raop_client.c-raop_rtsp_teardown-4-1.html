@@ -68,7 +68,7 @@
 
 <!-- ISSUEHASHCONTENTOFLINEINCONTEXT 01a96b8383d666481c07ad6ee0e84dcf -->
 
-<!-- BUGLINE 366 -->
+<!-- BUGLINE 387 -->
 
 <!-- BUGCOLUMN 2 -->
 
@@ -79,7 +79,7 @@
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/plugins/airplay/raop_client.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 366, column 2</a></td></tr>
+<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 387, column 2</a></td></tr>
 <tr><td class="rowname">Description:</td><td>Value stored to 'res' is never read</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
@@ -222,565 +222,586 @@
 <tr><td class="num" id="LN135">135</td><td class="line">		0x5e,0xf,0xc8,0x75,0x34,0x3e,0xc7,0x82,0x11,0x76,0x25,0xcd</td></tr>
 <tr><td class="num" id="LN136">136</td><td class="line">		,0xbf,0x98,0x44,0x7b};</td></tr>
 <tr><td class="num" id="LN137">137</td><td class="line">	<span class='keyword'>static</span> <span class='keyword'>const</span> guchar exp[] = {0x01, 0x00, 0x01};</td></tr>
-<tr><td class="num" id="LN138">138</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN139">139</td><td class="line">	rsa = RSA_new ();</td></tr>
-<tr><td class="num" id="LN140">140</td><td class="line">	rsa-&gt;n = BN_bin2bn (mod, 256, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>);</td></tr>
-<tr><td class="num" id="LN141">141</td><td class="line">	rsa-&gt;e = BN_bin2bn (exp, 3, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>);</td></tr>
-<tr><td class="num" id="LN142">142</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN143">143</td><td class="line">	size = RSA_public_encrypt (len, text, res, rsa, <span class='macro'>RSA_PKCS1_OAEP_PADDING<span class='expansion'>4</span></span>);</td></tr>
-<tr><td class="num" id="LN144">144</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN145">145</td><td class="line">	RSA_free (rsa);</td></tr>
-<tr><td class="num" id="LN146">146</td><td class="line">	<span class='keyword'>return</span> size;</td></tr>
-<tr><td class="num" id="LN147">147</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN148">148</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN149">149</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>void</span></td></tr>
-<tr><td class="num" id="LN150">150</td><td class="line">raop_send_sample (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN151">151</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN152">152</td><td class="line">	gint nwritten;</td></tr>
-<tr><td class="num" id="LN153">153</td><td class="line">	gint nleft = rc-&gt;sbuf_size - rc-&gt;sbuf_offset;</td></tr>
-<tr><td class="num" id="LN154">154</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN155">155</td><td class="line">	<span class='keyword'>if</span> (nleft == 0) {</td></tr>
-<tr><td class="num" id="LN156">156</td><td class="line">		guchar buf[<span class='macro'>RAOP_ALAC_FRAME_SIZE<span class='expansion'>4096</span></span> * 2 * 2];</td></tr>
-<tr><td class="num" id="LN157">157</td><td class="line">		gint ret;</td></tr>
-<tr><td class="num" id="LN158">158</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN159">159</td><td class="line">		ret = rc-&gt;stream_cb.func (rc-&gt;stream_cb.data, buf, <span class='keyword'>sizeof</span> (buf));</td></tr>
-<tr><td class="num" id="LN160">160</td><td class="line">		<span class='keyword'>if</span> (ret &gt; 0)</td></tr>
-<tr><td class="num" id="LN161">161</td><td class="line">			raop_client_stream_sample (rc, (guint16 *)buf, ret);</td></tr>
-<tr><td class="num" id="LN162">162</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN163">163</td><td class="line">		nleft = rc-&gt;sbuf_size - rc-&gt;sbuf_offset;</td></tr>
-<tr><td class="num" id="LN164">164</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN165">165</td><td class="line">	<span class='comment'>/* XXX: check for error */</span></td></tr>
-<tr><td class="num" id="LN166">166</td><td class="line">	nwritten = tcp_write (rc-&gt;stream_fd, (<span class='keyword'>char</span> *) rc-&gt;sbuf + rc-&gt;sbuf_offset,</td></tr>
-<tr><td class="num" id="LN167">167</td><td class="line">	                      nleft);</td></tr>
-<tr><td class="num" id="LN168">168</td><td class="line">	rc-&gt;sbuf_offset += nwritten;</td></tr>
-<tr><td class="num" id="LN169">169</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN170">170</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN171">171</td><td class="line"><span class='comment'>/* RTSP glue */</span></td></tr>
-<tr><td class="num" id="LN172">172</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN173">173</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN174">174</td><td class="line">raop_rtsp_get_reply (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN175">175</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN176">176</td><td class="line">	RTSPMessage response = { 0 };</td></tr>
-<tr><td class="num" id="LN177">177</td><td class="line">	RTSPResult res;</td></tr>
-<tr><td class="num" id="LN178">178</td><td class="line">	gchar *ajstatus;</td></tr>
-<tr><td class="num" id="LN179">179</td><td class="line">	gchar **params;</td></tr>
-<tr><td class="num" id="LN180">180</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN181">181</td><td class="line">	res = rtsp_connection_receive (rc-&gt;rtsp_conn, &amp;response);</td></tr>
-<tr><td class="num" id="LN182">182</td><td class="line">	<span class='keyword'>if</span> (res != RTSP_OK)</td></tr>
-<tr><td class="num" id="LN183">183</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN184">184</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN185">185</td><td class="line">	res = rtsp_message_get_header (&amp;response, RTSP_HDR_AUDIO_JACK_STATUS,</td></tr>
-<tr><td class="num" id="LN186">186</td><td class="line">	                               &amp;ajstatus);</td></tr>
-<tr><td class="num" id="LN187">187</td><td class="line">	<span class='keyword'>if</span> (res == RTSP_OK) {</td></tr>
-<tr><td class="num" id="LN188">188</td><td class="line">		params = g_strsplit (ajstatus, <span class='string_literal'>"; "</span>, -1);</td></tr>
-<tr><td class="num" id="LN189">189</td><td class="line">		<span class='keyword'>if</span> (!g_ascii_strncasecmp (params[0], <span class='string_literal'>"connected"</span>, strlen (<span class='string_literal'>"connected"</span>))) {</td></tr>
-<tr><td class="num" id="LN190">190</td><td class="line">			rc-&gt;jack_status = AUDIO_JACK_CONNECTED;</td></tr>
-<tr><td class="num" id="LN191">191</td><td class="line">		} <span class='keyword'>else</span> {</td></tr>
-<tr><td class="num" id="LN192">192</td><td class="line">			rc-&gt;jack_status = AUDIO_JACK_DISCONNECTED;</td></tr>
-<tr><td class="num" id="LN193">193</td><td class="line">		}</td></tr>
-<tr><td class="num" id="LN194">194</td><td class="line">		<span class='keyword'>if</span> (!g_ascii_strncasecmp (params[1], <span class='string_literal'>"type=analog"</span>, strlen (<span class='string_literal'>"type=analog"</span>))) {</td></tr>
-<tr><td class="num" id="LN195">195</td><td class="line">			rc-&gt;jack_type = AUDIO_JACK_ANALOG;</td></tr>
-<tr><td class="num" id="LN196">196</td><td class="line">		} <span class='keyword'>else</span> {</td></tr>
-<tr><td class="num" id="LN197">197</td><td class="line">			rc-&gt;jack_type = AUDIO_JACK_DIGITAL;</td></tr>
-<tr><td class="num" id="LN198">198</td><td class="line">		}</td></tr>
-<tr><td class="num" id="LN199">199</td><td class="line">		g_strfreev (params);</td></tr>
-<tr><td class="num" id="LN200">200</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN201">201</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN202">202</td><td class="line">	<span class='keyword'>if</span> (rc-&gt;rtsp_state == <span class='macro'>RAOP_RTSP_SETUP<span class='expansion'>0x04</span></span>) {</td></tr>
-<tr><td class="num" id="LN203">203</td><td class="line">		gchar *transport;</td></tr>
-<tr><td class="num" id="LN204">204</td><td class="line">		gchar *port_str;</td></tr>
-<tr><td class="num" id="LN205">205</td><td class="line">		res = rtsp_message_get_header (&amp;response, RTSP_HDR_TRANSPORT,</td></tr>
-<tr><td class="num" id="LN206">206</td><td class="line">		                               &amp;transport);</td></tr>
-<tr><td class="num" id="LN207">207</td><td class="line">		<span class='keyword'>if</span> (res != RTSP_OK)</td></tr>
-<tr><td class="num" id="LN208">208</td><td class="line">			<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN209">209</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN210">210</td><td class="line">		port_str = g_strrstr (transport, <span class='string_literal'>"server_port="</span>);</td></tr>
-<tr><td class="num" id="LN211">211</td><td class="line">		rc-&gt;stream_port = strtol (port_str + strlen (<span class='string_literal'>"server_port="</span>), <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, 10);</td></tr>
-<tr><td class="num" id="LN212">212</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN213">213</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN214">214</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN215">215</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN216">216</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN217">217</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN218">218</td><td class="line">b64_encode_alloc (<span class='keyword'>const</span> guchar *data, <span class='keyword'>int</span> size, <span class='keyword'>char</span> **out)</td></tr>
-<tr><td class="num" id="LN219">219</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN220">220</td><td class="line">	BIO *mb,*b64b,*bio;</td></tr>
-<tr><td class="num" id="LN221">221</td><td class="line">	<span class='keyword'>char</span> *p;</td></tr>
-<tr><td class="num" id="LN222">222</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN223">223</td><td class="line">	mb = BIO_new (BIO_s_mem ());</td></tr>
-<tr><td class="num" id="LN224">224</td><td class="line">	b64b = BIO_new (BIO_f_base64 ());</td></tr>
-<tr><td class="num" id="LN225">225</td><td class="line">	BIO_set_flags (b64b, <span class='macro'>BIO_FLAGS_BASE64_NO_NL<span class='expansion'>0x100</span></span>);</td></tr>
-<tr><td class="num" id="LN226">226</td><td class="line">	bio = BIO_push (b64b, mb);</td></tr>
-<tr><td class="num" id="LN227">227</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN228">228</td><td class="line">	BIO_write (bio,data,size);</td></tr>
-<tr><td class="num" id="LN229">229</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN230">230</td><td class="line">	(<span class='keyword'>void</span>) <span class='macro'>BIO_flush (bio)<span class='expansion'>(int)BIO_ctrl(bio,11,0,((void*)0))</span></span>;</td></tr>
-<tr><td class="num" id="LN231">231</td><td class="line">	size = BIO_ctrl (mb, <span class='macro'>BIO_CTRL_INFO<span class='expansion'>3</span></span>, 0, (<span class='keyword'>char</span> *)&amp;p);</td></tr>
-<tr><td class="num" id="LN232">232</td><td class="line">	*out = g_malloc (size+1);</td></tr>
-<tr><td class="num" id="LN233">233</td><td class="line">	memcpy (*out, p, size);</td></tr>
-<tr><td class="num" id="LN234">234</td><td class="line">	(*out)[size] = 0;</td></tr>
-<tr><td class="num" id="LN235">235</td><td class="line">	BIO_free_all (bio);</td></tr>
-<tr><td class="num" id="LN236">236</td><td class="line">	<span class='keyword'>return</span> size;</td></tr>
-<tr><td class="num" id="LN237">237</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN238">238</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN239">239</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN240">240</td><td class="line">raop_rtsp_announce (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN241">241</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN242">242</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
-<tr><td class="num" id="LN243">243</td><td class="line">	RTSPResult res;</td></tr>
-<tr><td class="num" id="LN244">244</td><td class="line">	guchar enc_aes_key[512];</td></tr>
-<tr><td class="num" id="LN245">245</td><td class="line">	gchar *key;</td></tr>
-<tr><td class="num" id="LN246">246</td><td class="line">	gchar *iv;</td></tr>
-<tr><td class="num" id="LN247">247</td><td class="line">	gint size;</td></tr>
-<tr><td class="num" id="LN248">248</td><td class="line">	gchar *sdp_buf;</td></tr>
-<tr><td class="num" id="LN249">249</td><td class="line">	gchar *ac;</td></tr>
-<tr><td class="num" id="LN250">250</td><td class="line">	gint ret = <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN251">251</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN252">252</td><td class="line">	size = raop_rsa_encrypt (rc-&gt;aes_key_str, 16, enc_aes_key);</td></tr>
-<tr><td class="num" id="LN253">253</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN254">254</td><td class="line">	size = b64_encode_alloc (enc_aes_key, size, &amp;key);</td></tr>
-<tr><td class="num" id="LN255">255</td><td class="line">	g_strdelimit (key, <span class='string_literal'>"="</span>, '\0');</td></tr>
-<tr><td class="num" id="LN256">256</td><td class="line">	size = b64_encode_alloc (rc-&gt;aes_iv, 16, &amp;iv);</td></tr>
-<tr><td class="num" id="LN257">257</td><td class="line">	g_strdelimit (iv, <span class='string_literal'>"="</span>, '\0');</td></tr>
-<tr><td class="num" id="LN258">258</td><td class="line">	size = b64_encode_alloc (rc-&gt;challenge, 16, &amp;ac);</td></tr>
-<tr><td class="num" id="LN259">259</td><td class="line">	g_strdelimit (ac, <span class='string_literal'>"="</span>, '\0');</td></tr>
-<tr><td class="num" id="LN260">260</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN261">261</td><td class="line">	res = rtsp_message_init_request (RTSP_ANNOUNCE, rc-&gt;rtsp_url, &amp;request);</td></tr>
-<tr><td class="num" id="LN262">262</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
-<tr><td class="num" id="LN263">263</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
-<tr><td class="num" id="LN264">264</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_APPLE_CHALLENGE, ac);</td></tr>
-<tr><td class="num" id="LN265">265</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CONTENT_TYPE, <span class='string_literal'>"application/sdp"</span>);</td></tr>
-<tr><td class="num" id="LN266">266</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN267">267</td><td class="line">	sdp_buf = g_strdup_printf (<span class='string_literal'>"v=0\r\n"</span></td></tr>
-<tr><td class="num" id="LN268">268</td><td class="line">	                           <span class='string_literal'>"o=iTunes %s 0 IN IP4 %s\r\n"</span></td></tr>
-<tr><td class="num" id="LN269">269</td><td class="line">	                           <span class='string_literal'>"s=iTunes\r\n"</span></td></tr>
-<tr><td class="num" id="LN270">270</td><td class="line">	                           <span class='string_literal'>"c=IN IP4 %s\r\n"</span></td></tr>
-<tr><td class="num" id="LN271">271</td><td class="line">	                           <span class='string_literal'>"t=0 0\r\n"</span></td></tr>
-<tr><td class="num" id="LN272">272</td><td class="line">	                           <span class='string_literal'>"m=audio 0 RTP/AVP 96\r\n"</span></td></tr>
-<tr><td class="num" id="LN273">273</td><td class="line">	                           <span class='string_literal'>"a=rtpmap:96 AppleLossless\r\n"</span></td></tr>
-<tr><td class="num" id="LN274">274</td><td class="line">	                           <span class='string_literal'>"a=fmtp:96 4096 0 16 40 10 14 2 255 0 0 44100\r\n"</span></td></tr>
-<tr><td class="num" id="LN275">275</td><td class="line">	                           <span class='string_literal'>"a=rsaaeskey:%s\r\n"</span></td></tr>
-<tr><td class="num" id="LN276">276</td><td class="line">	                           <span class='string_literal'>"a=aesiv:%s\r\n"</span>,</td></tr>
-<tr><td class="num" id="LN277">277</td><td class="line">	                           rc-&gt;session_id, rc-&gt;cli_host,</td></tr>
-<tr><td class="num" id="LN278">278</td><td class="line">	                           rc-&gt;apex_host, key, iv);</td></tr>
-<tr><td class="num" id="LN279">279</td><td class="line">	rtsp_message_set_body (&amp;request, (guint8 *) sdp_buf, strlen (sdp_buf));</td></tr>
-<tr><td class="num" id="LN280">280</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
-<tr><td class="num" id="LN281">281</td><td class="line">	<span class='keyword'>if</span> (res != RTSP_OK)</td></tr>
-<tr><td class="num" id="LN282">282</td><td class="line">		ret = <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN283">283</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN284">284</td><td class="line">	g_free (key);</td></tr>
-<tr><td class="num" id="LN285">285</td><td class="line">	g_free (iv);</td></tr>
-<tr><td class="num" id="LN286">286</td><td class="line">	g_free (ac);</td></tr>
-<tr><td class="num" id="LN287">287</td><td class="line">	g_free (sdp_buf);</td></tr>
-<tr><td class="num" id="LN288">288</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN289">289</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN290">290</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN291">291</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN292">292</td><td class="line">raop_rtsp_setup (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN293">293</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN294">294</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
-<tr><td class="num" id="LN295">295</td><td class="line">	RTSPResult res;</td></tr>
-<tr><td class="num" id="LN296">296</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN297">297</td><td class="line">	res = rtsp_message_init_request (RTSP_SETUP, rc-&gt;rtsp_url, &amp;request);</td></tr>
-<tr><td class="num" id="LN298">298</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
-<tr><td class="num" id="LN299">299</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
-<tr><td class="num" id="LN300">300</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_TRANSPORT, <span class='string_literal'>"RTP/AVP/TCP;unicast;interleaved=0-1;mode=record"</span>);<span class='comment'>/* ;control_port=0;timing_port=0"; */</span></td></tr>
-<tr><td class="num" id="LN301">301</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN302">302</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
-<tr><td class="num" id="LN303">303</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN304">304</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN305">305</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN306">306</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN307">307</td><td class="line">raop_rtsp_record (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN308">308</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN309">309</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
-<tr><td class="num" id="LN310">310</td><td class="line">	RTSPResult res;</td></tr>
+<tr><td class="num" id="LN138">138</td><td class="line">	BIGNUM *n, *e;</td></tr>
+<tr><td class="num" id="LN139">139</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN140">140</td><td class="line">	rsa = RSA_new ();</td></tr>
+<tr><td class="num" id="LN141">141</td><td class="line">	n = BN_bin2bn (mod, 256, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>);</td></tr>
+<tr><td class="num" id="LN142">142</td><td class="line">	e = BN_bin2bn (exp, 3, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>);</td></tr>
+<tr><td class="num" id="LN143">143</td><td class="line">	<span class='keyword'>if</span> (!rsa || !n || !e)</td></tr>
+<tr><td class="num" id="LN144">144</td><td class="line">		<span class='keyword'>goto</span> err;</td></tr>
+<tr><td class="num" id="LN145">145</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN146">146</td><td class="line"><span class='directive'>#if <span class='macro'>OPENSSL_VERSION_NUMBER<span class='expansion'>0x1000106fL</span></span> &lt; 0x10100000</span></td></tr>
+<tr><td class="num" id="LN147">147</td><td class="line">	rsa-&gt;n = n;</td></tr>
+<tr><td class="num" id="LN148">148</td><td class="line">	rsa-&gt;e = e;</td></tr>
+<tr><td class="num" id="LN149">149</td><td class="line"><span class='directive'>#else</span></td></tr>
+<tr><td class="num" id="LN150">150</td><td class="line">	<span class='keyword'>if</span> (!RSA_set0_key(rsa, n, e, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>))</td></tr>
+<tr><td class="num" id="LN151">151</td><td class="line">		<span class='keyword'>goto</span> err;</td></tr>
+<tr><td class="num" id="LN152">152</td><td class="line"><span class='directive'>#endif</span></td></tr>
+<tr><td class="num" id="LN153">153</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN154">154</td><td class="line">	size = RSA_public_encrypt (len, text, res, rsa, <span class='macro'>RSA_PKCS1_OAEP_PADDING<span class='expansion'>4</span></span>);</td></tr>
+<tr><td class="num" id="LN155">155</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN156">156</td><td class="line">	RSA_free (rsa);</td></tr>
+<tr><td class="num" id="LN157">157</td><td class="line">	<span class='keyword'>return</span> size;</td></tr>
+<tr><td class="num" id="LN158">158</td><td class="line">err:</td></tr>
+<tr><td class="num" id="LN159">159</td><td class="line">	<span class='keyword'>if</span> (rsa)</td></tr>
+<tr><td class="num" id="LN160">160</td><td class="line">		RSA_free(rsa);</td></tr>
+<tr><td class="num" id="LN161">161</td><td class="line">	<span class='keyword'>if</span> (n)</td></tr>
+<tr><td class="num" id="LN162">162</td><td class="line">		BN_free(n);</td></tr>
+<tr><td class="num" id="LN163">163</td><td class="line">	<span class='keyword'>if</span> (e)</td></tr>
+<tr><td class="num" id="LN164">164</td><td class="line">		BN_free(e);</td></tr>
+<tr><td class="num" id="LN165">165</td><td class="line">	<span class='keyword'>return</span> 0;</td></tr>
+<tr><td class="num" id="LN166">166</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN167">167</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN168">168</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>void</span></td></tr>
+<tr><td class="num" id="LN169">169</td><td class="line">raop_send_sample (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN170">170</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN171">171</td><td class="line">	gint nwritten;</td></tr>
+<tr><td class="num" id="LN172">172</td><td class="line">	gint nleft = rc-&gt;sbuf_size - rc-&gt;sbuf_offset;</td></tr>
+<tr><td class="num" id="LN173">173</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN174">174</td><td class="line">	<span class='keyword'>if</span> (nleft == 0) {</td></tr>
+<tr><td class="num" id="LN175">175</td><td class="line">		guchar buf[<span class='macro'>RAOP_ALAC_FRAME_SIZE<span class='expansion'>4096</span></span> * 2 * 2];</td></tr>
+<tr><td class="num" id="LN176">176</td><td class="line">		gint ret;</td></tr>
+<tr><td class="num" id="LN177">177</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN178">178</td><td class="line">		ret = rc-&gt;stream_cb.func (rc-&gt;stream_cb.data, buf, <span class='keyword'>sizeof</span> (buf));</td></tr>
+<tr><td class="num" id="LN179">179</td><td class="line">		<span class='keyword'>if</span> (ret &gt; 0)</td></tr>
+<tr><td class="num" id="LN180">180</td><td class="line">			raop_client_stream_sample (rc, (guint16 *)buf, ret);</td></tr>
+<tr><td class="num" id="LN181">181</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN182">182</td><td class="line">		nleft = rc-&gt;sbuf_size - rc-&gt;sbuf_offset;</td></tr>
+<tr><td class="num" id="LN183">183</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN184">184</td><td class="line">	<span class='comment'>/* XXX: check for error */</span></td></tr>
+<tr><td class="num" id="LN185">185</td><td class="line">	nwritten = tcp_write (rc-&gt;stream_fd, (<span class='keyword'>char</span> *) rc-&gt;sbuf + rc-&gt;sbuf_offset,</td></tr>
+<tr><td class="num" id="LN186">186</td><td class="line">	                      nleft);</td></tr>
+<tr><td class="num" id="LN187">187</td><td class="line">	rc-&gt;sbuf_offset += nwritten;</td></tr>
+<tr><td class="num" id="LN188">188</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN189">189</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN190">190</td><td class="line"><span class='comment'>/* RTSP glue */</span></td></tr>
+<tr><td class="num" id="LN191">191</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN192">192</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN193">193</td><td class="line">raop_rtsp_get_reply (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN194">194</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN195">195</td><td class="line">	RTSPMessage response = { 0 };</td></tr>
+<tr><td class="num" id="LN196">196</td><td class="line">	RTSPResult res;</td></tr>
+<tr><td class="num" id="LN197">197</td><td class="line">	gchar *ajstatus;</td></tr>
+<tr><td class="num" id="LN198">198</td><td class="line">	gchar **params;</td></tr>
+<tr><td class="num" id="LN199">199</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN200">200</td><td class="line">	res = rtsp_connection_receive (rc-&gt;rtsp_conn, &amp;response);</td></tr>
+<tr><td class="num" id="LN201">201</td><td class="line">	<span class='keyword'>if</span> (res != RTSP_OK)</td></tr>
+<tr><td class="num" id="LN202">202</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN203">203</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN204">204</td><td class="line">	res = rtsp_message_get_header (&amp;response, RTSP_HDR_AUDIO_JACK_STATUS,</td></tr>
+<tr><td class="num" id="LN205">205</td><td class="line">	                               &amp;ajstatus);</td></tr>
+<tr><td class="num" id="LN206">206</td><td class="line">	<span class='keyword'>if</span> (res == RTSP_OK) {</td></tr>
+<tr><td class="num" id="LN207">207</td><td class="line">		params = g_strsplit (ajstatus, <span class='string_literal'>"; "</span>, -1);</td></tr>
+<tr><td class="num" id="LN208">208</td><td class="line">		<span class='keyword'>if</span> (!g_ascii_strncasecmp (params[0], <span class='string_literal'>"connected"</span>, strlen (<span class='string_literal'>"connected"</span>))) {</td></tr>
+<tr><td class="num" id="LN209">209</td><td class="line">			rc-&gt;jack_status = AUDIO_JACK_CONNECTED;</td></tr>
+<tr><td class="num" id="LN210">210</td><td class="line">		} <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN211">211</td><td class="line">			rc-&gt;jack_status = AUDIO_JACK_DISCONNECTED;</td></tr>
+<tr><td class="num" id="LN212">212</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN213">213</td><td class="line">		<span class='keyword'>if</span> (!g_ascii_strncasecmp (params[1], <span class='string_literal'>"type=analog"</span>, strlen (<span class='string_literal'>"type=analog"</span>))) {</td></tr>
+<tr><td class="num" id="LN214">214</td><td class="line">			rc-&gt;jack_type = AUDIO_JACK_ANALOG;</td></tr>
+<tr><td class="num" id="LN215">215</td><td class="line">		} <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN216">216</td><td class="line">			rc-&gt;jack_type = AUDIO_JACK_DIGITAL;</td></tr>
+<tr><td class="num" id="LN217">217</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN218">218</td><td class="line">		g_strfreev (params);</td></tr>
+<tr><td class="num" id="LN219">219</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN220">220</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN221">221</td><td class="line">	<span class='keyword'>if</span> (rc-&gt;rtsp_state == <span class='macro'>RAOP_RTSP_SETUP<span class='expansion'>0x04</span></span>) {</td></tr>
+<tr><td class="num" id="LN222">222</td><td class="line">		gchar *transport;</td></tr>
+<tr><td class="num" id="LN223">223</td><td class="line">		gchar *port_str;</td></tr>
+<tr><td class="num" id="LN224">224</td><td class="line">		res = rtsp_message_get_header (&amp;response, RTSP_HDR_TRANSPORT,</td></tr>
+<tr><td class="num" id="LN225">225</td><td class="line">		                               &amp;transport);</td></tr>
+<tr><td class="num" id="LN226">226</td><td class="line">		<span class='keyword'>if</span> (res != RTSP_OK)</td></tr>
+<tr><td class="num" id="LN227">227</td><td class="line">			<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN228">228</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN229">229</td><td class="line">		port_str = g_strrstr (transport, <span class='string_literal'>"server_port="</span>);</td></tr>
+<tr><td class="num" id="LN230">230</td><td class="line">		rc-&gt;stream_port = strtol (port_str + strlen (<span class='string_literal'>"server_port="</span>), <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, 10);</td></tr>
+<tr><td class="num" id="LN231">231</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN232">232</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN233">233</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN234">234</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN235">235</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN236">236</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN237">237</td><td class="line">b64_encode_alloc (<span class='keyword'>const</span> guchar *data, <span class='keyword'>int</span> size, <span class='keyword'>char</span> **out)</td></tr>
+<tr><td class="num" id="LN238">238</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN239">239</td><td class="line">	BIO *mb,*b64b,*bio;</td></tr>
+<tr><td class="num" id="LN240">240</td><td class="line">	<span class='keyword'>char</span> *p;</td></tr>
+<tr><td class="num" id="LN241">241</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN242">242</td><td class="line">	mb = BIO_new (BIO_s_mem ());</td></tr>
+<tr><td class="num" id="LN243">243</td><td class="line">	b64b = BIO_new (BIO_f_base64 ());</td></tr>
+<tr><td class="num" id="LN244">244</td><td class="line">	BIO_set_flags (b64b, <span class='macro'>BIO_FLAGS_BASE64_NO_NL<span class='expansion'>0x100</span></span>);</td></tr>
+<tr><td class="num" id="LN245">245</td><td class="line">	bio = BIO_push (b64b, mb);</td></tr>
+<tr><td class="num" id="LN246">246</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN247">247</td><td class="line">	BIO_write (bio,data,size);</td></tr>
+<tr><td class="num" id="LN248">248</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN249">249</td><td class="line">	(<span class='keyword'>void</span>) <span class='macro'>BIO_flush (bio)<span class='expansion'>(int)BIO_ctrl(bio,11,0,((void*)0))</span></span>;</td></tr>
+<tr><td class="num" id="LN250">250</td><td class="line">	size = BIO_ctrl (mb, <span class='macro'>BIO_CTRL_INFO<span class='expansion'>3</span></span>, 0, (<span class='keyword'>char</span> *)&amp;p);</td></tr>
+<tr><td class="num" id="LN251">251</td><td class="line">	*out = g_malloc (size+1);</td></tr>
+<tr><td class="num" id="LN252">252</td><td class="line">	memcpy (*out, p, size);</td></tr>
+<tr><td class="num" id="LN253">253</td><td class="line">	(*out)[size] = 0;</td></tr>
+<tr><td class="num" id="LN254">254</td><td class="line">	BIO_free_all (bio);</td></tr>
+<tr><td class="num" id="LN255">255</td><td class="line">	<span class='keyword'>return</span> size;</td></tr>
+<tr><td class="num" id="LN256">256</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN257">257</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN258">258</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN259">259</td><td class="line">raop_rtsp_announce (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN260">260</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN261">261</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
+<tr><td class="num" id="LN262">262</td><td class="line">	RTSPResult res;</td></tr>
+<tr><td class="num" id="LN263">263</td><td class="line">	guchar enc_aes_key[512];</td></tr>
+<tr><td class="num" id="LN264">264</td><td class="line">	gchar *key;</td></tr>
+<tr><td class="num" id="LN265">265</td><td class="line">	gchar *iv;</td></tr>
+<tr><td class="num" id="LN266">266</td><td class="line">	gint size;</td></tr>
+<tr><td class="num" id="LN267">267</td><td class="line">	gchar *sdp_buf;</td></tr>
+<tr><td class="num" id="LN268">268</td><td class="line">	gchar *ac;</td></tr>
+<tr><td class="num" id="LN269">269</td><td class="line">	gint ret = <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN270">270</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN271">271</td><td class="line">	size = raop_rsa_encrypt (rc-&gt;aes_key_str, 16, enc_aes_key);</td></tr>
+<tr><td class="num" id="LN272">272</td><td class="line">	<span class='keyword'>if</span> (size == 0)</td></tr>
+<tr><td class="num" id="LN273">273</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN274">274</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN275">275</td><td class="line">	size = b64_encode_alloc (enc_aes_key, size, &amp;key);</td></tr>
+<tr><td class="num" id="LN276">276</td><td class="line">	g_strdelimit (key, <span class='string_literal'>"="</span>, '\0');</td></tr>
+<tr><td class="num" id="LN277">277</td><td class="line">	size = b64_encode_alloc (rc-&gt;aes_iv, 16, &amp;iv);</td></tr>
+<tr><td class="num" id="LN278">278</td><td class="line">	g_strdelimit (iv, <span class='string_literal'>"="</span>, '\0');</td></tr>
+<tr><td class="num" id="LN279">279</td><td class="line">	size = b64_encode_alloc (rc-&gt;challenge, 16, &amp;ac);</td></tr>
+<tr><td class="num" id="LN280">280</td><td class="line">	g_strdelimit (ac, <span class='string_literal'>"="</span>, '\0');</td></tr>
+<tr><td class="num" id="LN281">281</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN282">282</td><td class="line">	res = rtsp_message_init_request (RTSP_ANNOUNCE, rc-&gt;rtsp_url, &amp;request);</td></tr>
+<tr><td class="num" id="LN283">283</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
+<tr><td class="num" id="LN284">284</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
+<tr><td class="num" id="LN285">285</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_APPLE_CHALLENGE, ac);</td></tr>
+<tr><td class="num" id="LN286">286</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CONTENT_TYPE, <span class='string_literal'>"application/sdp"</span>);</td></tr>
+<tr><td class="num" id="LN287">287</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN288">288</td><td class="line">	sdp_buf = g_strdup_printf (<span class='string_literal'>"v=0\r\n"</span></td></tr>
+<tr><td class="num" id="LN289">289</td><td class="line">	                           <span class='string_literal'>"o=iTunes %s 0 IN IP4 %s\r\n"</span></td></tr>
+<tr><td class="num" id="LN290">290</td><td class="line">	                           <span class='string_literal'>"s=iTunes\r\n"</span></td></tr>
+<tr><td class="num" id="LN291">291</td><td class="line">	                           <span class='string_literal'>"c=IN IP4 %s\r\n"</span></td></tr>
+<tr><td class="num" id="LN292">292</td><td class="line">	                           <span class='string_literal'>"t=0 0\r\n"</span></td></tr>
+<tr><td class="num" id="LN293">293</td><td class="line">	                           <span class='string_literal'>"m=audio 0 RTP/AVP 96\r\n"</span></td></tr>
+<tr><td class="num" id="LN294">294</td><td class="line">	                           <span class='string_literal'>"a=rtpmap:96 AppleLossless\r\n"</span></td></tr>
+<tr><td class="num" id="LN295">295</td><td class="line">	                           <span class='string_literal'>"a=fmtp:96 4096 0 16 40 10 14 2 255 0 0 44100\r\n"</span></td></tr>
+<tr><td class="num" id="LN296">296</td><td class="line">	                           <span class='string_literal'>"a=rsaaeskey:%s\r\n"</span></td></tr>
+<tr><td class="num" id="LN297">297</td><td class="line">	                           <span class='string_literal'>"a=aesiv:%s\r\n"</span>,</td></tr>
+<tr><td class="num" id="LN298">298</td><td class="line">	                           rc-&gt;session_id, rc-&gt;cli_host,</td></tr>
+<tr><td class="num" id="LN299">299</td><td class="line">	                           rc-&gt;apex_host, key, iv);</td></tr>
+<tr><td class="num" id="LN300">300</td><td class="line">	rtsp_message_set_body (&amp;request, (guint8 *) sdp_buf, strlen (sdp_buf));</td></tr>
+<tr><td class="num" id="LN301">301</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
+<tr><td class="num" id="LN302">302</td><td class="line">	<span class='keyword'>if</span> (res != RTSP_OK)</td></tr>
+<tr><td class="num" id="LN303">303</td><td class="line">		ret = <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN304">304</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN305">305</td><td class="line">	g_free (key);</td></tr>
+<tr><td class="num" id="LN306">306</td><td class="line">	g_free (iv);</td></tr>
+<tr><td class="num" id="LN307">307</td><td class="line">	g_free (ac);</td></tr>
+<tr><td class="num" id="LN308">308</td><td class="line">	g_free (sdp_buf);</td></tr>
+<tr><td class="num" id="LN309">309</td><td class="line">	<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN310">310</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN311">311</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN312">312</td><td class="line">	res = rtsp_message_init_request (RTSP_RECORD, rc-&gt;rtsp_url, &amp;request);</td></tr>
-<tr><td class="num" id="LN313">313</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
-<tr><td class="num" id="LN314">314</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
-<tr><td class="num" id="LN315">315</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RANGE, <span class='string_literal'>"npt=0-"</span>);</td></tr>
-<tr><td class="num" id="LN316">316</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RTP_INFO, <span class='string_literal'>"seq=0;rtptime=0"</span>);</td></tr>
-<tr><td class="num" id="LN317">317</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
-<tr><td class="num" id="LN318">318</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN319">319</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN320">320</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN321">321</td><td class="line"><span class='comment'>/*</span></td></tr>
-<tr><td class="num" id="LN322">322</td><td class="line"> <span class='comment'>* XXX: take seq and rtptime as args</span></td></tr>
-<tr><td class="num" id="LN323">323</td><td class="line"> <span class='comment'>*/</span></td></tr>
-<tr><td class="num" id="LN324">324</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN325">325</td><td class="line">raop_rtsp_flush (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN326">326</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN327">327</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
-<tr><td class="num" id="LN328">328</td><td class="line">	RTSPResult res;</td></tr>
-<tr><td class="num" id="LN329">329</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN330">330</td><td class="line">	res = rtsp_message_init_request (RTSP_FLUSH, rc-&gt;rtsp_url, &amp;request);</td></tr>
-<tr><td class="num" id="LN331">331</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
-<tr><td class="num" id="LN332">332</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
-<tr><td class="num" id="LN333">333</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RANGE, <span class='string_literal'>"npt=0-"</span>);</td></tr>
-<tr><td class="num" id="LN334">334</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RTP_INFO, <span class='string_literal'>"seq=0;rtptime=0"</span>);</td></tr>
-<tr><td class="num" id="LN335">335</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
-<tr><td class="num" id="LN336">336</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN337">337</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN338">338</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN339">339</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN340">340</td><td class="line">raop_rtsp_set_params (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN341">341</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN342">342</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
-<tr><td class="num" id="LN343">343</td><td class="line">	RTSPResult res;</td></tr>
-<tr><td class="num" id="LN344">344</td><td class="line">	gchar *volume;</td></tr>
-<tr><td class="num" id="LN345">345</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN346">346</td><td class="line">	res = rtsp_message_init_request (RTSP_SET_PARAMETER, rc-&gt;rtsp_url, &amp;request);</td></tr>
-<tr><td class="num" id="LN347">347</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
-<tr><td class="num" id="LN348">348</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
-<tr><td class="num" id="LN349">349</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN350">350</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CONTENT_TYPE, <span class='string_literal'>"text/parameters"</span>);</td></tr>
-<tr><td class="num" id="LN351">351</td><td class="line">	volume = g_strdup_printf (<span class='string_literal'>"volume: %f\r\n"</span>, rc-&gt;volume);</td></tr>
-<tr><td class="num" id="LN352">352</td><td class="line">	rtsp_message_set_body (&amp;request, (guint8 *) volume, strlen (volume));</td></tr>
-<tr><td class="num" id="LN353">353</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
-<tr><td class="num" id="LN354">354</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN355">355</td><td class="line">	g_free (volume);</td></tr>
-<tr><td class="num" id="LN356">356</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN312">312</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN313">313</td><td class="line">raop_rtsp_setup (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN314">314</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN315">315</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
+<tr><td class="num" id="LN316">316</td><td class="line">	RTSPResult res;</td></tr>
+<tr><td class="num" id="LN317">317</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN318">318</td><td class="line">	res = rtsp_message_init_request (RTSP_SETUP, rc-&gt;rtsp_url, &amp;request);</td></tr>
+<tr><td class="num" id="LN319">319</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
+<tr><td class="num" id="LN320">320</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
+<tr><td class="num" id="LN321">321</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_TRANSPORT, <span class='string_literal'>"RTP/AVP/TCP;unicast;interleaved=0-1;mode=record"</span>);<span class='comment'>/* ;control_port=0;timing_port=0"; */</span></td></tr>
+<tr><td class="num" id="LN322">322</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN323">323</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
+<tr><td class="num" id="LN324">324</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN325">325</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN326">326</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN327">327</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN328">328</td><td class="line">raop_rtsp_record (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN329">329</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN330">330</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
+<tr><td class="num" id="LN331">331</td><td class="line">	RTSPResult res;</td></tr>
+<tr><td class="num" id="LN332">332</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN333">333</td><td class="line">	res = rtsp_message_init_request (RTSP_RECORD, rc-&gt;rtsp_url, &amp;request);</td></tr>
+<tr><td class="num" id="LN334">334</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
+<tr><td class="num" id="LN335">335</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
+<tr><td class="num" id="LN336">336</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RANGE, <span class='string_literal'>"npt=0-"</span>);</td></tr>
+<tr><td class="num" id="LN337">337</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RTP_INFO, <span class='string_literal'>"seq=0;rtptime=0"</span>);</td></tr>
+<tr><td class="num" id="LN338">338</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
+<tr><td class="num" id="LN339">339</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN340">340</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN341">341</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN342">342</td><td class="line"><span class='comment'>/*</span></td></tr>
+<tr><td class="num" id="LN343">343</td><td class="line"> <span class='comment'>* XXX: take seq and rtptime as args</span></td></tr>
+<tr><td class="num" id="LN344">344</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN345">345</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN346">346</td><td class="line">raop_rtsp_flush (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN347">347</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN348">348</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
+<tr><td class="num" id="LN349">349</td><td class="line">	RTSPResult res;</td></tr>
+<tr><td class="num" id="LN350">350</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN351">351</td><td class="line">	res = rtsp_message_init_request (RTSP_FLUSH, rc-&gt;rtsp_url, &amp;request);</td></tr>
+<tr><td class="num" id="LN352">352</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
+<tr><td class="num" id="LN353">353</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
+<tr><td class="num" id="LN354">354</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RANGE, <span class='string_literal'>"npt=0-"</span>);</td></tr>
+<tr><td class="num" id="LN355">355</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_RTP_INFO, <span class='string_literal'>"seq=0;rtptime=0"</span>);</td></tr>
+<tr><td class="num" id="LN356">356</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
 <tr><td class="num" id="LN357">357</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
 <tr><td class="num" id="LN358">358</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN359">359</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN360">360</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN361">361</td><td class="line">raop_rtsp_teardown (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN361">361</td><td class="line">raop_rtsp_set_params (raop_client_t *rc)</td></tr>
 <tr><td class="num" id="LN362">362</td><td class="line">{</td></tr>
 <tr><td class="num" id="LN363">363</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
 <tr><td class="num" id="LN364">364</td><td class="line">	RTSPResult res;</td></tr>
-<tr><td class="num" id="LN365">365</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN366">366</td><td class="line">	res = <span class="mrange">rtsp_message_init_request (RTSP_TEARDOWN, rc-&gt;rtsp_url, &amp;request)</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:9ex">Value stored to 'res' is never read</div></td></tr>
-<tr><td class="num" id="LN367">367</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
-<tr><td class="num" id="LN368">368</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
-<tr><td class="num" id="LN369">369</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
-<tr><td class="num" id="LN370">370</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN371">371</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN372">372</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN373">373</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN374">374</td><td class="line"><span class='comment'>/* Public API */</span></td></tr>
+<tr><td class="num" id="LN365">365</td><td class="line">	gchar *volume;</td></tr>
+<tr><td class="num" id="LN366">366</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN367">367</td><td class="line">	res = rtsp_message_init_request (RTSP_SET_PARAMETER, rc-&gt;rtsp_url, &amp;request);</td></tr>
+<tr><td class="num" id="LN368">368</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
+<tr><td class="num" id="LN369">369</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
+<tr><td class="num" id="LN370">370</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN371">371</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CONTENT_TYPE, <span class='string_literal'>"text/parameters"</span>);</td></tr>
+<tr><td class="num" id="LN372">372</td><td class="line">	volume = g_strdup_printf (<span class='string_literal'>"volume: %f\r\n"</span>, rc-&gt;volume);</td></tr>
+<tr><td class="num" id="LN373">373</td><td class="line">	rtsp_message_set_body (&amp;request, (guint8 *) volume, strlen (volume));</td></tr>
+<tr><td class="num" id="LN374">374</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
 <tr><td class="num" id="LN375">375</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN376">376</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN377">377</td><td class="line">raop_client_init (raop_client_t **client)</td></tr>
-<tr><td class="num" id="LN378">378</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN379">379</td><td class="line">	raop_client_t *rc;</td></tr>
-<tr><td class="num" id="LN380">380</td><td class="line">	guchar rand_buf[8 + 16];</td></tr>
-<tr><td class="num" id="LN381">381</td><td class="line">	<span class='keyword'>int</span> ret;</td></tr>
-<tr><td class="num" id="LN382">382</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN383">383</td><td class="line">	*client = (raop_client_t *) g_malloc (<span class='keyword'>sizeof</span> (raop_client_t));</td></tr>
-<tr><td class="num" id="LN384">384</td><td class="line">	<span class='keyword'>if</span> (!*client)</td></tr>
-<tr><td class="num" id="LN385">385</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_ENOMEM<span class='expansion'>-6</span></span>;</td></tr>
-<tr><td class="num" id="LN386">386</td><td class="line">	rc = *client;</td></tr>
-<tr><td class="num" id="LN387">387</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN388">388</td><td class="line">	<span class='comment'>/* XXX: use a better seed */</span></td></tr>
-<tr><td class="num" id="LN389">389</td><td class="line">	RAND_seed (rc, <span class='keyword'>sizeof</span> (raop_client_t));</td></tr>
-<tr><td class="num" id="LN390">390</td><td class="line">	memset ((<span class='keyword'>void</span> *) rc, 0, <span class='keyword'>sizeof</span> (raop_client_t));</td></tr>
-<tr><td class="num" id="LN391">391</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN392">392</td><td class="line">	rc-&gt;stream_fd = -1;</td></tr>
-<tr><td class="num" id="LN393">393</td><td class="line">	rc-&gt;io_state = <span class='macro'>RAOP_IO_UNDEFINED<span class='expansion'>0x00</span></span>;</td></tr>
-<tr><td class="num" id="LN394">394</td><td class="line">	rc-&gt;jack_status = AUDIO_JACK_DISCONNECTED;</td></tr>
-<tr><td class="num" id="LN395">395</td><td class="line">	rc-&gt;jack_type = AUDIO_JACK_ANALOG;</td></tr>
-<tr><td class="num" id="LN396">396</td><td class="line">	rc-&gt;volume = <span class='macro'>RAOP_DEFAULT_VOLUME<span class='expansion'>-30</span></span>;</td></tr>
-<tr><td class="num" id="LN397">397</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN398">398</td><td class="line">	<span class='comment'>/* setup client_id, aes_key */</span></td></tr>
-<tr><td class="num" id="LN399">399</td><td class="line">	ret = RAND_bytes (rand_buf, <span class='keyword'>sizeof</span> (rand_buf));</td></tr>
-<tr><td class="num" id="LN400">400</td><td class="line">	<span class='keyword'>if</span> (ret &lt;= 0) {</td></tr>
-<tr><td class="num" id="LN401">401</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN402">402</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN403">403</td><td class="line">	g_snprintf (rc-&gt;client_id, 17, <span class='string_literal'>"%08X%08X"</span>, *((guint *) rand_buf),</td></tr>
-<tr><td class="num" id="LN404">404</td><td class="line">	            *((guint *) (rand_buf + 4)));</td></tr>
-<tr><td class="num" id="LN405">405</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN406">406</td><td class="line">	ret = RAND_bytes (rc-&gt;aes_key_str, <span class='keyword'>sizeof</span> (rc-&gt;aes_key_str));</td></tr>
-<tr><td class="num" id="LN407">407</td><td class="line">	<span class='keyword'>if</span> (ret &lt;= 0) {</td></tr>
-<tr><td class="num" id="LN408">408</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
-<tr><td class="num" id="LN409">409</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN410">410</td><td class="line">	rc-&gt;aes_key = (AES_KEY *) g_malloc (<span class='keyword'>sizeof</span> (AES_KEY));</td></tr>
-<tr><td class="num" id="LN411">411</td><td class="line">	AES_set_encrypt_key (rc-&gt;aes_key_str, 128, rc-&gt;aes_key);</td></tr>
+<tr><td class="num" id="LN376">376</td><td class="line">	g_free (volume);</td></tr>
+<tr><td class="num" id="LN377">377</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN378">378</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN379">379</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN380">380</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN381">381</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN382">382</td><td class="line">raop_rtsp_teardown (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN383">383</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN384">384</td><td class="line">	RTSPMessage request = { 0 };</td></tr>
+<tr><td class="num" id="LN385">385</td><td class="line">	RTSPResult res;</td></tr>
+<tr><td class="num" id="LN386">386</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN387">387</td><td class="line">	res = <span class="mrange">rtsp_message_init_request (RTSP_TEARDOWN, rc-&gt;rtsp_url, &amp;request)</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:9ex">Value stored to 'res' is never read</div></td></tr>
+<tr><td class="num" id="LN388">388</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_CLIENT_INSTANCE, rc-&gt;client_id);</td></tr>
+<tr><td class="num" id="LN389">389</td><td class="line">	rtsp_message_add_header (&amp;request, RTSP_HDR_USER_AGENT, <span class='macro'>RAOP_RTSP_USER_AGENT<span class='expansion'>"iTunes/4.6 (Macintosh; U; PPC Mac OS X 10.3)"</span></span>);</td></tr>
+<tr><td class="num" id="LN390">390</td><td class="line">	res = rtsp_connection_send (rc-&gt;rtsp_conn, &amp;request);</td></tr>
+<tr><td class="num" id="LN391">391</td><td class="line">	<span class='keyword'>return</span> (res == RTSP_OK) ? <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span> : <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN392">392</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN393">393</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN394">394</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN395">395</td><td class="line"><span class='comment'>/* Public API */</span></td></tr>
+<tr><td class="num" id="LN396">396</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN397">397</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN398">398</td><td class="line">raop_client_init (raop_client_t **client)</td></tr>
+<tr><td class="num" id="LN399">399</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN400">400</td><td class="line">	raop_client_t *rc;</td></tr>
+<tr><td class="num" id="LN401">401</td><td class="line">	guchar rand_buf[8 + 16];</td></tr>
+<tr><td class="num" id="LN402">402</td><td class="line">	<span class='keyword'>int</span> ret;</td></tr>
+<tr><td class="num" id="LN403">403</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN404">404</td><td class="line">	*client = (raop_client_t *) g_malloc (<span class='keyword'>sizeof</span> (raop_client_t));</td></tr>
+<tr><td class="num" id="LN405">405</td><td class="line">	<span class='keyword'>if</span> (!*client)</td></tr>
+<tr><td class="num" id="LN406">406</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_ENOMEM<span class='expansion'>-6</span></span>;</td></tr>
+<tr><td class="num" id="LN407">407</td><td class="line">	rc = *client;</td></tr>
+<tr><td class="num" id="LN408">408</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN409">409</td><td class="line">	<span class='comment'>/* XXX: use a better seed */</span></td></tr>
+<tr><td class="num" id="LN410">410</td><td class="line">	RAND_seed (rc, <span class='keyword'>sizeof</span> (raop_client_t));</td></tr>
+<tr><td class="num" id="LN411">411</td><td class="line">	memset ((<span class='keyword'>void</span> *) rc, 0, <span class='keyword'>sizeof</span> (raop_client_t));</td></tr>
 <tr><td class="num" id="LN412">412</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN413">413</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN414">414</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN415">415</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN416">416</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN417">417</td><td class="line">raop_client_connect (raop_client_t *rc, <span class='keyword'>const</span> gchar *host, gushort port)</td></tr>
-<tr><td class="num" id="LN418">418</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN419">419</td><td class="line">	guchar rand_buf[4];</td></tr>
-<tr><td class="num" id="LN420">420</td><td class="line">	<span class='keyword'>int</span> ret;</td></tr>
-<tr><td class="num" id="LN421">421</td><td class="line">	<span class='keyword'>int</span> rtsp_fd;</td></tr>
-<tr><td class="num" id="LN422">422</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN423">423</td><td class="line">	rc-&gt;apex_host = g_strdup (host);</td></tr>
-<tr><td class="num" id="LN424">424</td><td class="line">	rc-&gt;rtsp_port = port;</td></tr>
-<tr><td class="num" id="LN425">425</td><td class="line">	rc-&gt;sbuf_size = 0;</td></tr>
-<tr><td class="num" id="LN426">426</td><td class="line">	rc-&gt;sbuf_offset = 0;</td></tr>
-<tr><td class="num" id="LN427">427</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN428">428</td><td class="line">	RAND_bytes (rand_buf, <span class='keyword'>sizeof</span> (rand_buf));</td></tr>
-<tr><td class="num" id="LN429">429</td><td class="line">	g_snprintf (rc-&gt;session_id, 11, <span class='string_literal'>"%u"</span>, *((guint *) rand_buf));</td></tr>
-<tr><td class="num" id="LN430">430</td><td class="line">	RAND_bytes (rc-&gt;aes_iv, <span class='keyword'>sizeof</span> (rc-&gt;aes_iv));</td></tr>
-<tr><td class="num" id="LN431">431</td><td class="line">	RAND_bytes (rc-&gt;challenge, <span class='keyword'>sizeof</span> (rc-&gt;challenge));</td></tr>
-<tr><td class="num" id="LN432">432</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN433">433</td><td class="line">	rtsp_fd = tcp_open ();</td></tr>
-<tr><td class="num" id="LN434">434</td><td class="line">	<span class='keyword'>if</span> (rtsp_fd == -1)</td></tr>
-<tr><td class="num" id="LN435">435</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
-<tr><td class="num" id="LN436">436</td><td class="line">	ret = set_sock_nonblock (rtsp_fd);</td></tr>
-<tr><td class="num" id="LN437">437</td><td class="line">	<span class='keyword'>if</span> (ret == -1)</td></tr>
-<tr><td class="num" id="LN438">438</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
-<tr><td class="num" id="LN439">439</td><td class="line">	ret = tcp_connect (rtsp_fd, rc-&gt;apex_host, rc-&gt;rtsp_port);</td></tr>
-<tr><td class="num" id="LN440">440</td><td class="line">	<span class='keyword'>if</span> (ret == -1 &amp;&amp; <span class='macro'>errno<span class='expansion'>(*__errno_location ())</span></span> != <span class='macro'>EINPROGRESS<span class='expansion'>115</span></span>)</td></tr>
-<tr><td class="num" id="LN441">441</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
-<tr><td class="num" id="LN442">442</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN443">443</td><td class="line">	<span class='comment'>/* XXX: do this after successful connect? */</span></td></tr>
-<tr><td class="num" id="LN444">444</td><td class="line">	rc-&gt;cli_host = g_strdup (get_local_addr (rtsp_fd));</td></tr>
-<tr><td class="num" id="LN445">445</td><td class="line">	rc-&gt;rtsp_url = g_strdup_printf (<span class='string_literal'>"rtsp://%s/%s"</span>, rc-&gt;cli_host,</td></tr>
-<tr><td class="num" id="LN446">446</td><td class="line">	                                rc-&gt;session_id);</td></tr>
-<tr><td class="num" id="LN447">447</td><td class="line">	rtsp_connection_create (rtsp_fd, &amp;rc-&gt;rtsp_conn);</td></tr>
+<tr><td class="num" id="LN413">413</td><td class="line">	rc-&gt;stream_fd = -1;</td></tr>
+<tr><td class="num" id="LN414">414</td><td class="line">	rc-&gt;io_state = <span class='macro'>RAOP_IO_UNDEFINED<span class='expansion'>0x00</span></span>;</td></tr>
+<tr><td class="num" id="LN415">415</td><td class="line">	rc-&gt;jack_status = AUDIO_JACK_DISCONNECTED;</td></tr>
+<tr><td class="num" id="LN416">416</td><td class="line">	rc-&gt;jack_type = AUDIO_JACK_ANALOG;</td></tr>
+<tr><td class="num" id="LN417">417</td><td class="line">	rc-&gt;volume = <span class='macro'>RAOP_DEFAULT_VOLUME<span class='expansion'>-30</span></span>;</td></tr>
+<tr><td class="num" id="LN418">418</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN419">419</td><td class="line">	<span class='comment'>/* setup client_id, aes_key */</span></td></tr>
+<tr><td class="num" id="LN420">420</td><td class="line">	ret = RAND_bytes (rand_buf, <span class='keyword'>sizeof</span> (rand_buf));</td></tr>
+<tr><td class="num" id="LN421">421</td><td class="line">	<span class='keyword'>if</span> (ret &lt;= 0) {</td></tr>
+<tr><td class="num" id="LN422">422</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN423">423</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN424">424</td><td class="line">	g_snprintf (rc-&gt;client_id, 17, <span class='string_literal'>"%08X%08X"</span>, *((guint *) rand_buf),</td></tr>
+<tr><td class="num" id="LN425">425</td><td class="line">	            *((guint *) (rand_buf + 4)));</td></tr>
+<tr><td class="num" id="LN426">426</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN427">427</td><td class="line">	ret = RAND_bytes (rc-&gt;aes_key_str, <span class='keyword'>sizeof</span> (rc-&gt;aes_key_str));</td></tr>
+<tr><td class="num" id="LN428">428</td><td class="line">	<span class='keyword'>if</span> (ret &lt;= 0) {</td></tr>
+<tr><td class="num" id="LN429">429</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EFAIL<span class='expansion'>-1</span></span>;</td></tr>
+<tr><td class="num" id="LN430">430</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN431">431</td><td class="line">	rc-&gt;aes_key = (AES_KEY *) g_malloc (<span class='keyword'>sizeof</span> (AES_KEY));</td></tr>
+<tr><td class="num" id="LN432">432</td><td class="line">	AES_set_encrypt_key (rc-&gt;aes_key_str, 128, rc-&gt;aes_key);</td></tr>
+<tr><td class="num" id="LN433">433</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN434">434</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN435">435</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN436">436</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN437">437</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN438">438</td><td class="line">raop_client_connect (raop_client_t *rc, <span class='keyword'>const</span> gchar *host, gushort port)</td></tr>
+<tr><td class="num" id="LN439">439</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN440">440</td><td class="line">	guchar rand_buf[4];</td></tr>
+<tr><td class="num" id="LN441">441</td><td class="line">	<span class='keyword'>int</span> ret;</td></tr>
+<tr><td class="num" id="LN442">442</td><td class="line">	<span class='keyword'>int</span> rtsp_fd;</td></tr>
+<tr><td class="num" id="LN443">443</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN444">444</td><td class="line">	rc-&gt;apex_host = g_strdup (host);</td></tr>
+<tr><td class="num" id="LN445">445</td><td class="line">	rc-&gt;rtsp_port = port;</td></tr>
+<tr><td class="num" id="LN446">446</td><td class="line">	rc-&gt;sbuf_size = 0;</td></tr>
+<tr><td class="num" id="LN447">447</td><td class="line">	rc-&gt;sbuf_offset = 0;</td></tr>
 <tr><td class="num" id="LN448">448</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN449">449</td><td class="line">	rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_CONNECTING<span class='expansion'>0x01</span></span>;</td></tr>
-<tr><td class="num" id="LN450">450</td><td class="line">	rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
-<tr><td class="num" id="LN451">451</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN452">452</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN449">449</td><td class="line">	RAND_bytes (rand_buf, <span class='keyword'>sizeof</span> (rand_buf));</td></tr>
+<tr><td class="num" id="LN450">450</td><td class="line">	g_snprintf (rc-&gt;session_id, 11, <span class='string_literal'>"%u"</span>, *((guint *) rand_buf));</td></tr>
+<tr><td class="num" id="LN451">451</td><td class="line">	RAND_bytes (rc-&gt;aes_iv, <span class='keyword'>sizeof</span> (rc-&gt;aes_iv));</td></tr>
+<tr><td class="num" id="LN452">452</td><td class="line">	RAND_bytes (rc-&gt;challenge, <span class='keyword'>sizeof</span> (rc-&gt;challenge));</td></tr>
 <tr><td class="num" id="LN453">453</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN454">454</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN455">455</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN456">456</td><td class="line">raop_client_handle_io (raop_client_t *rc, <span class='keyword'>int</span> fd, GIOCondition cond)</td></tr>
-<tr><td class="num" id="LN457">457</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN458">458</td><td class="line">	gint rtsp_fd = rc-&gt;rtsp_conn-&gt;fd;</td></tr>
-<tr><td class="num" id="LN459">459</td><td class="line">	gint ret = <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN460">460</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN461">461</td><td class="line">	<span class='keyword'>if</span> (fd &lt; 0)</td></tr>
-<tr><td class="num" id="LN462">462</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EINVAL<span class='expansion'>-5</span></span>;</td></tr>
+<tr><td class="num" id="LN454">454</td><td class="line">	rtsp_fd = tcp_open ();</td></tr>
+<tr><td class="num" id="LN455">455</td><td class="line">	<span class='keyword'>if</span> (rtsp_fd == -1)</td></tr>
+<tr><td class="num" id="LN456">456</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
+<tr><td class="num" id="LN457">457</td><td class="line">	ret = set_sock_nonblock (rtsp_fd);</td></tr>
+<tr><td class="num" id="LN458">458</td><td class="line">	<span class='keyword'>if</span> (ret == -1)</td></tr>
+<tr><td class="num" id="LN459">459</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
+<tr><td class="num" id="LN460">460</td><td class="line">	ret = tcp_connect (rtsp_fd, rc-&gt;apex_host, rc-&gt;rtsp_port);</td></tr>
+<tr><td class="num" id="LN461">461</td><td class="line">	<span class='keyword'>if</span> (ret == -1 &amp;&amp; <span class='macro'>errno<span class='expansion'>(*__errno_location ())</span></span> != <span class='macro'>EINPROGRESS<span class='expansion'>115</span></span>)</td></tr>
+<tr><td class="num" id="LN462">462</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
 <tr><td class="num" id="LN463">463</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN464">464</td><td class="line">	<span class='keyword'>if</span> (cond == G_IO_OUT ) {</td></tr>
-<tr><td class="num" id="LN465">465</td><td class="line">		<span class='comment'>/* send RTSP requests */</span></td></tr>
-<tr><td class="num" id="LN466">466</td><td class="line">		<span class='keyword'>if</span> (fd == rtsp_fd) {</td></tr>
-<tr><td class="num" id="LN467">467</td><td class="line">			<span class='comment'>/* if pending answers return */</span></td></tr>
-<tr><td class="num" id="LN468">468</td><td class="line">			<span class='keyword'>if</span> (rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_RTSP_READ<span class='expansion'>0x01</span></span>)</td></tr>
-<tr><td class="num" id="LN469">469</td><td class="line">				<span class='keyword'>return</span> <span class='macro'>RAOP_EPROTO<span class='expansion'>-2</span></span>;</td></tr>
-<tr><td class="num" id="LN470">470</td><td class="line">			<span class='comment'>/* XXX: options, challenge/response */</span></td></tr>
-<tr><td class="num" id="LN471">471</td><td class="line">			<span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_CONNECTING<span class='expansion'>0x01</span></span>) {</td></tr>
-<tr><td class="num" id="LN472">472</td><td class="line">				ret = raop_rtsp_announce (rc);</td></tr>
-<tr><td class="num" id="LN473">473</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
-<tr><td class="num" id="LN474">474</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN475">475</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_ANNOUNCE<span class='expansion'>0x02</span></span>;</td></tr>
-<tr><td class="num" id="LN476">476</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_ANNOUNCE<span class='expansion'>0x02</span></span>) {</td></tr>
-<tr><td class="num" id="LN477">477</td><td class="line">				ret = raop_rtsp_setup (rc);</td></tr>
-<tr><td class="num" id="LN478">478</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
-<tr><td class="num" id="LN479">479</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN480">480</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_SETUP<span class='expansion'>0x04</span></span>;</td></tr>
-<tr><td class="num" id="LN481">481</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_SETUP<span class='expansion'>0x04</span></span>) {</td></tr>
-<tr><td class="num" id="LN482">482</td><td class="line">				ret = raop_rtsp_record (rc);</td></tr>
-<tr><td class="num" id="LN483">483</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
-<tr><td class="num" id="LN484">484</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN485">485</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_RECORD<span class='expansion'>0x08</span></span>;</td></tr>
-<tr><td class="num" id="LN486">486</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_RECORD<span class='expansion'>0x08</span></span>) {</td></tr>
-<tr><td class="num" id="LN487">487</td><td class="line">				ret = raop_rtsp_set_params (rc);</td></tr>
-<tr><td class="num" id="LN488">488</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
-<tr><td class="num" id="LN489">489</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN490">490</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_DONE<span class='expansion'>0x80</span></span>;</td></tr>
-<tr><td class="num" id="LN491">491</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_SETPARAMS<span class='expansion'>0x10</span></span>) {</td></tr>
-<tr><td class="num" id="LN492">492</td><td class="line">				ret = raop_rtsp_set_params (rc);</td></tr>
-<tr><td class="num" id="LN493">493</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
-<tr><td class="num" id="LN494">494</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN495">495</td><td class="line">				rc-&gt;rtsp_state ^= <span class='macro'>RAOP_RTSP_SETPARAMS<span class='expansion'>0x10</span></span>;</td></tr>
-<tr><td class="num" id="LN496">496</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_FLUSH<span class='expansion'>0x20</span></span>) {</td></tr>
-<tr><td class="num" id="LN497">497</td><td class="line">				ret = raop_rtsp_flush (rc);</td></tr>
-<tr><td class="num" id="LN498">498</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
-<tr><td class="num" id="LN499">499</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN500">500</td><td class="line">				rc-&gt;rtsp_state ^= <span class='macro'>RAOP_RTSP_FLUSH<span class='expansion'>0x20</span></span>;</td></tr>
-<tr><td class="num" id="LN501">501</td><td class="line">			}</td></tr>
-<tr><td class="num" id="LN502">502</td><td class="line">			rc-&gt;io_state ^= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
-<tr><td class="num" id="LN503">503</td><td class="line">			rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_READ<span class='expansion'>0x01</span></span>;</td></tr>
-<tr><td class="num" id="LN504">504</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (fd == rc-&gt;stream_fd) { <span class='comment'>/* stream data */</span></td></tr>
-<tr><td class="num" id="LN505">505</td><td class="line">			raop_send_sample (rc);</td></tr>
-<tr><td class="num" id="LN506">506</td><td class="line">		}</td></tr>
-<tr><td class="num" id="LN507">507</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (cond == G_IO_IN) {</td></tr>
-<tr><td class="num" id="LN508">508</td><td class="line">		<span class='comment'>/* get RTSP replies */</span></td></tr>
-<tr><td class="num" id="LN509">509</td><td class="line">		<span class='keyword'>if</span> (fd == rtsp_fd) {</td></tr>
-<tr><td class="num" id="LN510">510</td><td class="line">			<span class='comment'>/* shouldn't happen */</span></td></tr>
-<tr><td class="num" id="LN511">511</td><td class="line">			<span class='keyword'>if</span> (rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>)</td></tr>
-<tr><td class="num" id="LN512">512</td><td class="line">				<span class='keyword'>return</span> <span class='macro'>RAOP_EPROTO<span class='expansion'>-2</span></span>;</td></tr>
-<tr><td class="num" id="LN513">513</td><td class="line">			ret = raop_rtsp_get_reply (rc);</td></tr>
-<tr><td class="num" id="LN514">514</td><td class="line">			<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
-<tr><td class="num" id="LN515">515</td><td class="line">				<span class='keyword'>return</span> ret;</td></tr>
-<tr><td class="num" id="LN516">516</td><td class="line">			rc-&gt;io_state ^= <span class='macro'>RAOP_IO_RTSP_READ<span class='expansion'>0x01</span></span>;</td></tr>
-<tr><td class="num" id="LN517">517</td><td class="line">			<span class='keyword'>if</span> (rc-&gt;rtsp_state == <span class='macro'>RAOP_RTSP_DONE<span class='expansion'>0x80</span></span>) {</td></tr>
-<tr><td class="num" id="LN518">518</td><td class="line">				rc-&gt;stream_fd = tcp_open ();</td></tr>
-<tr><td class="num" id="LN519">519</td><td class="line">				<span class='keyword'>if</span> (rc-&gt;stream_fd == -1)</td></tr>
-<tr><td class="num" id="LN520">520</td><td class="line">					<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
-<tr><td class="num" id="LN521">521</td><td class="line">				ret = set_sock_nonblock (rc-&gt;stream_fd);</td></tr>
-<tr><td class="num" id="LN522">522</td><td class="line">				<span class='keyword'>if</span> (ret == -1)</td></tr>
-<tr><td class="num" id="LN523">523</td><td class="line">					<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
-<tr><td class="num" id="LN524">524</td><td class="line">				ret = tcp_connect (rc-&gt;stream_fd, rc-&gt;apex_host,</td></tr>
-<tr><td class="num" id="LN525">525</td><td class="line">				                   rc-&gt;stream_port);</td></tr>
-<tr><td class="num" id="LN526">526</td><td class="line">				<span class='keyword'>if</span> (ret == -1 &amp;&amp; <span class='macro'>errno<span class='expansion'>(*__errno_location ())</span></span> != <span class='macro'>EINPROGRESS<span class='expansion'>115</span></span>)</td></tr>
-<tr><td class="num" id="LN527">527</td><td class="line">					<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
-<tr><td class="num" id="LN528">528</td><td class="line">				rc-&gt;io_state |= <span class='macro'>RAOP_IO_STREAM_WRITE<span class='expansion'>0x08</span></span>;</td></tr>
-<tr><td class="num" id="LN529">529</td><td class="line">				rc-&gt;io_state |= <span class='macro'>RAOP_IO_STREAM_READ<span class='expansion'>0x04</span></span>;</td></tr>
-<tr><td class="num" id="LN530">530</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_CONNECTED<span class='expansion'>0x40</span></span>;</td></tr>
-<tr><td class="num" id="LN531">531</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state != <span class='macro'>RAOP_RTSP_CONNECTED<span class='expansion'>0x40</span></span>) {</td></tr>
-<tr><td class="num" id="LN532">532</td><td class="line">				rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
-<tr><td class="num" id="LN533">533</td><td class="line">			}</td></tr>
-<tr><td class="num" id="LN534">534</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (fd == rc-&gt;stream_fd) {</td></tr>
-<tr><td class="num" id="LN535">535</td><td class="line">			<span class='keyword'>char</span> buf[56];</td></tr>
-<tr><td class="num" id="LN536">536</td><td class="line">			<span class='comment'>/* read data sent by ApEx we don't know what</span></td></tr>
-<tr><td class="num" id="LN537">537</td><td class="line">			 <span class='comment'>* it is, just read it for now, and doesn't</span></td></tr>
-<tr><td class="num" id="LN538">538</td><td class="line">			 <span class='comment'>* even care about returnval */</span></td></tr>
-<tr><td class="num" id="LN539">539</td><td class="line">			read (rc-&gt;stream_fd, buf, 56);</td></tr>
-<tr><td class="num" id="LN540">540</td><td class="line">		}</td></tr>
-<tr><td class="num" id="LN541">541</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (cond == G_IO_ERR) {</td></tr>
-<tr><td class="num" id="LN542">542</td><td class="line">		<span class='comment'>/* XXX */</span></td></tr>
-<tr><td class="num" id="LN543">543</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN544">544</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN545">545</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN546">546</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN547">547</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN548">548</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
-<tr><td class="num" id="LN549">549</td><td class="line">raop_client_stream_sample (raop_client_t *rc, guint16 *buf, guint32 len)</td></tr>
-<tr><td class="num" id="LN550">550</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN551">551</td><td class="line">	guint8 hdr[] = {0x24, 0x00, 0x00, 0x00,</td></tr>
-<tr><td class="num" id="LN552">552</td><td class="line">	                0xF0, 0xFF, 0x00, 0x00,</td></tr>
-<tr><td class="num" id="LN553">553</td><td class="line">	                0x00, 0x00, 0x00, 0x00,</td></tr>
-<tr><td class="num" id="LN554">554</td><td class="line">	                0x00, 0x00, 0x00, 0x00};</td></tr>
-<tr><td class="num" id="LN555">555</td><td class="line">	<span class='keyword'>int</span> i;</td></tr>
-<tr><td class="num" id="LN556">556</td><td class="line">	<span class='keyword'>short</span> cnt;</td></tr>
-<tr><td class="num" id="LN557">557</td><td class="line">	guint8 *pbuf;</td></tr>
-<tr><td class="num" id="LN558">558</td><td class="line">	guint8 iv[16];</td></tr>
-<tr><td class="num" id="LN559">559</td><td class="line">	guint32 offset = 0;</td></tr>
-<tr><td class="num" id="LN560">560</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN561">561</td><td class="line">	cnt = len + 3 + 12;</td></tr>
-<tr><td class="num" id="LN562">562</td><td class="line">	cnt = <span class='macro'>GUINT16_TO_BE (cnt)<span class='expansion'>((((guint16) ( (guint16) ((guint16) (cnt) &gt;&gt; 8) | (guint16<br>) ((guint16) (cnt) &lt;&lt; 8)))))</span></span>;</td></tr>
-<tr><td class="num" id="LN563">563</td><td class="line">	memcpy (hdr + 2, (<span class='keyword'>void</span> *) &amp;cnt, <span class='keyword'>sizeof</span> (cnt));</td></tr>
-<tr><td class="num" id="LN564">564</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN565">565</td><td class="line">	memset (rc-&gt;sbuf, 0, <span class='keyword'>sizeof</span> (rc-&gt;sbuf));</td></tr>
-<tr><td class="num" id="LN566">566</td><td class="line">	memcpy (rc-&gt;sbuf, hdr, <span class='keyword'>sizeof</span> (hdr));</td></tr>
-<tr><td class="num" id="LN567">567</td><td class="line">	pbuf = rc-&gt;sbuf + <span class='keyword'>sizeof</span> (hdr);</td></tr>
+<tr><td class="num" id="LN464">464</td><td class="line">	<span class='comment'>/* XXX: do this after successful connect? */</span></td></tr>
+<tr><td class="num" id="LN465">465</td><td class="line">	rc-&gt;cli_host = g_strdup (get_local_addr (rtsp_fd));</td></tr>
+<tr><td class="num" id="LN466">466</td><td class="line">	rc-&gt;rtsp_url = g_strdup_printf (<span class='string_literal'>"rtsp://%s/%s"</span>, rc-&gt;cli_host,</td></tr>
+<tr><td class="num" id="LN467">467</td><td class="line">	                                rc-&gt;session_id);</td></tr>
+<tr><td class="num" id="LN468">468</td><td class="line">	rtsp_connection_create (rtsp_fd, &amp;rc-&gt;rtsp_conn);</td></tr>
+<tr><td class="num" id="LN469">469</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN470">470</td><td class="line">	rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_CONNECTING<span class='expansion'>0x01</span></span>;</td></tr>
+<tr><td class="num" id="LN471">471</td><td class="line">	rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
+<tr><td class="num" id="LN472">472</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN473">473</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN474">474</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN475">475</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN476">476</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN477">477</td><td class="line">raop_client_handle_io (raop_client_t *rc, <span class='keyword'>int</span> fd, GIOCondition cond)</td></tr>
+<tr><td class="num" id="LN478">478</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN479">479</td><td class="line">	gint rtsp_fd = rc-&gt;rtsp_conn-&gt;fd;</td></tr>
+<tr><td class="num" id="LN480">480</td><td class="line">	gint ret = <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN481">481</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN482">482</td><td class="line">	<span class='keyword'>if</span> (fd &lt; 0)</td></tr>
+<tr><td class="num" id="LN483">483</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EINVAL<span class='expansion'>-5</span></span>;</td></tr>
+<tr><td class="num" id="LN484">484</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN485">485</td><td class="line">	<span class='keyword'>if</span> (cond == G_IO_OUT ) {</td></tr>
+<tr><td class="num" id="LN486">486</td><td class="line">		<span class='comment'>/* send RTSP requests */</span></td></tr>
+<tr><td class="num" id="LN487">487</td><td class="line">		<span class='keyword'>if</span> (fd == rtsp_fd) {</td></tr>
+<tr><td class="num" id="LN488">488</td><td class="line">			<span class='comment'>/* if pending answers return */</span></td></tr>
+<tr><td class="num" id="LN489">489</td><td class="line">			<span class='keyword'>if</span> (rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_RTSP_READ<span class='expansion'>0x01</span></span>)</td></tr>
+<tr><td class="num" id="LN490">490</td><td class="line">				<span class='keyword'>return</span> <span class='macro'>RAOP_EPROTO<span class='expansion'>-2</span></span>;</td></tr>
+<tr><td class="num" id="LN491">491</td><td class="line">			<span class='comment'>/* XXX: options, challenge/response */</span></td></tr>
+<tr><td class="num" id="LN492">492</td><td class="line">			<span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_CONNECTING<span class='expansion'>0x01</span></span>) {</td></tr>
+<tr><td class="num" id="LN493">493</td><td class="line">				ret = raop_rtsp_announce (rc);</td></tr>
+<tr><td class="num" id="LN494">494</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
+<tr><td class="num" id="LN495">495</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN496">496</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_ANNOUNCE<span class='expansion'>0x02</span></span>;</td></tr>
+<tr><td class="num" id="LN497">497</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_ANNOUNCE<span class='expansion'>0x02</span></span>) {</td></tr>
+<tr><td class="num" id="LN498">498</td><td class="line">				ret = raop_rtsp_setup (rc);</td></tr>
+<tr><td class="num" id="LN499">499</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
+<tr><td class="num" id="LN500">500</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN501">501</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_SETUP<span class='expansion'>0x04</span></span>;</td></tr>
+<tr><td class="num" id="LN502">502</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_SETUP<span class='expansion'>0x04</span></span>) {</td></tr>
+<tr><td class="num" id="LN503">503</td><td class="line">				ret = raop_rtsp_record (rc);</td></tr>
+<tr><td class="num" id="LN504">504</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
+<tr><td class="num" id="LN505">505</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN506">506</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_RECORD<span class='expansion'>0x08</span></span>;</td></tr>
+<tr><td class="num" id="LN507">507</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_RECORD<span class='expansion'>0x08</span></span>) {</td></tr>
+<tr><td class="num" id="LN508">508</td><td class="line">				ret = raop_rtsp_set_params (rc);</td></tr>
+<tr><td class="num" id="LN509">509</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
+<tr><td class="num" id="LN510">510</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN511">511</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_DONE<span class='expansion'>0x80</span></span>;</td></tr>
+<tr><td class="num" id="LN512">512</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_SETPARAMS<span class='expansion'>0x10</span></span>) {</td></tr>
+<tr><td class="num" id="LN513">513</td><td class="line">				ret = raop_rtsp_set_params (rc);</td></tr>
+<tr><td class="num" id="LN514">514</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
+<tr><td class="num" id="LN515">515</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN516">516</td><td class="line">				rc-&gt;rtsp_state ^= <span class='macro'>RAOP_RTSP_SETPARAMS<span class='expansion'>0x10</span></span>;</td></tr>
+<tr><td class="num" id="LN517">517</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_FLUSH<span class='expansion'>0x20</span></span>) {</td></tr>
+<tr><td class="num" id="LN518">518</td><td class="line">				ret = raop_rtsp_flush (rc);</td></tr>
+<tr><td class="num" id="LN519">519</td><td class="line">				<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
+<tr><td class="num" id="LN520">520</td><td class="line">					<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN521">521</td><td class="line">				rc-&gt;rtsp_state ^= <span class='macro'>RAOP_RTSP_FLUSH<span class='expansion'>0x20</span></span>;</td></tr>
+<tr><td class="num" id="LN522">522</td><td class="line">			}</td></tr>
+<tr><td class="num" id="LN523">523</td><td class="line">			rc-&gt;io_state ^= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
+<tr><td class="num" id="LN524">524</td><td class="line">			rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_READ<span class='expansion'>0x01</span></span>;</td></tr>
+<tr><td class="num" id="LN525">525</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (fd == rc-&gt;stream_fd) { <span class='comment'>/* stream data */</span></td></tr>
+<tr><td class="num" id="LN526">526</td><td class="line">			raop_send_sample (rc);</td></tr>
+<tr><td class="num" id="LN527">527</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN528">528</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (cond == G_IO_IN) {</td></tr>
+<tr><td class="num" id="LN529">529</td><td class="line">		<span class='comment'>/* get RTSP replies */</span></td></tr>
+<tr><td class="num" id="LN530">530</td><td class="line">		<span class='keyword'>if</span> (fd == rtsp_fd) {</td></tr>
+<tr><td class="num" id="LN531">531</td><td class="line">			<span class='comment'>/* shouldn't happen */</span></td></tr>
+<tr><td class="num" id="LN532">532</td><td class="line">			<span class='keyword'>if</span> (rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>)</td></tr>
+<tr><td class="num" id="LN533">533</td><td class="line">				<span class='keyword'>return</span> <span class='macro'>RAOP_EPROTO<span class='expansion'>-2</span></span>;</td></tr>
+<tr><td class="num" id="LN534">534</td><td class="line">			ret = raop_rtsp_get_reply (rc);</td></tr>
+<tr><td class="num" id="LN535">535</td><td class="line">			<span class='keyword'>if</span> (ret != <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>)</td></tr>
+<tr><td class="num" id="LN536">536</td><td class="line">				<span class='keyword'>return</span> ret;</td></tr>
+<tr><td class="num" id="LN537">537</td><td class="line">			rc-&gt;io_state ^= <span class='macro'>RAOP_IO_RTSP_READ<span class='expansion'>0x01</span></span>;</td></tr>
+<tr><td class="num" id="LN538">538</td><td class="line">			<span class='keyword'>if</span> (rc-&gt;rtsp_state == <span class='macro'>RAOP_RTSP_DONE<span class='expansion'>0x80</span></span>) {</td></tr>
+<tr><td class="num" id="LN539">539</td><td class="line">				rc-&gt;stream_fd = tcp_open ();</td></tr>
+<tr><td class="num" id="LN540">540</td><td class="line">				<span class='keyword'>if</span> (rc-&gt;stream_fd == -1)</td></tr>
+<tr><td class="num" id="LN541">541</td><td class="line">					<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
+<tr><td class="num" id="LN542">542</td><td class="line">				ret = set_sock_nonblock (rc-&gt;stream_fd);</td></tr>
+<tr><td class="num" id="LN543">543</td><td class="line">				<span class='keyword'>if</span> (ret == -1)</td></tr>
+<tr><td class="num" id="LN544">544</td><td class="line">					<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
+<tr><td class="num" id="LN545">545</td><td class="line">				ret = tcp_connect (rc-&gt;stream_fd, rc-&gt;apex_host,</td></tr>
+<tr><td class="num" id="LN546">546</td><td class="line">				                   rc-&gt;stream_port);</td></tr>
+<tr><td class="num" id="LN547">547</td><td class="line">				<span class='keyword'>if</span> (ret == -1 &amp;&amp; <span class='macro'>errno<span class='expansion'>(*__errno_location ())</span></span> != <span class='macro'>EINPROGRESS<span class='expansion'>115</span></span>)</td></tr>
+<tr><td class="num" id="LN548">548</td><td class="line">					<span class='keyword'>return</span> <span class='macro'>RAOP_ESYS<span class='expansion'>-4</span></span>;</td></tr>
+<tr><td class="num" id="LN549">549</td><td class="line">				rc-&gt;io_state |= <span class='macro'>RAOP_IO_STREAM_WRITE<span class='expansion'>0x08</span></span>;</td></tr>
+<tr><td class="num" id="LN550">550</td><td class="line">				rc-&gt;io_state |= <span class='macro'>RAOP_IO_STREAM_READ<span class='expansion'>0x04</span></span>;</td></tr>
+<tr><td class="num" id="LN551">551</td><td class="line">				rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_CONNECTED<span class='expansion'>0x40</span></span>;</td></tr>
+<tr><td class="num" id="LN552">552</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (rc-&gt;rtsp_state != <span class='macro'>RAOP_RTSP_CONNECTED<span class='expansion'>0x40</span></span>) {</td></tr>
+<tr><td class="num" id="LN553">553</td><td class="line">				rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
+<tr><td class="num" id="LN554">554</td><td class="line">			}</td></tr>
+<tr><td class="num" id="LN555">555</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (fd == rc-&gt;stream_fd) {</td></tr>
+<tr><td class="num" id="LN556">556</td><td class="line">			<span class='keyword'>char</span> buf[56];</td></tr>
+<tr><td class="num" id="LN557">557</td><td class="line">			<span class='comment'>/* read data sent by ApEx we don't know what</span></td></tr>
+<tr><td class="num" id="LN558">558</td><td class="line">			 <span class='comment'>* it is, just read it for now, and doesn't</span></td></tr>
+<tr><td class="num" id="LN559">559</td><td class="line">			 <span class='comment'>* even care about returnval */</span></td></tr>
+<tr><td class="num" id="LN560">560</td><td class="line">			read (rc-&gt;stream_fd, buf, 56);</td></tr>
+<tr><td class="num" id="LN561">561</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN562">562</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (cond == G_IO_ERR) {</td></tr>
+<tr><td class="num" id="LN563">563</td><td class="line">		<span class='comment'>/* XXX */</span></td></tr>
+<tr><td class="num" id="LN564">564</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN565">565</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN566">566</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN567">567</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN568">568</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN569">569</td><td class="line">	<span class='comment'>/* ALAC frame header */</span></td></tr>
-<tr><td class="num" id="LN570">570</td><td class="line">	write_bits (pbuf, 1, 3, &amp;offset); <span class='comment'>/* # of channels */</span></td></tr>
-<tr><td class="num" id="LN571">571</td><td class="line">	write_bits (pbuf, 0, 4, &amp;offset); <span class='comment'>/* output waiting? */</span></td></tr>
-<tr><td class="num" id="LN572">572</td><td class="line">	write_bits (pbuf, 0, 4, &amp;offset); <span class='comment'>/* unknown */</span></td></tr>
-<tr><td class="num" id="LN573">573</td><td class="line">	write_bits (pbuf, 0, 8, &amp;offset); <span class='comment'>/* unknown */</span></td></tr>
-<tr><td class="num" id="LN574">574</td><td class="line">	write_bits (pbuf, 0, 1, &amp;offset); <span class='comment'>/* sample size follows the header */</span></td></tr>
-<tr><td class="num" id="LN575">575</td><td class="line">	write_bits (pbuf, 0, 2, &amp;offset); <span class='comment'>/* unknown */</span></td></tr>
-<tr><td class="num" id="LN576">576</td><td class="line">	write_bits (pbuf, 1, 1, &amp;offset); <span class='comment'>/* uncompressed */</span></td></tr>
-<tr><td class="num" id="LN577">577</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN578">578</td><td class="line">	<span class='keyword'>for</span> (i = 0; i &lt; len/2; i++) {</td></tr>
-<tr><td class="num" id="LN579">579</td><td class="line">		write_bits (pbuf, (buf[i]) &gt;&gt; 8, 8, &amp;offset);</td></tr>
-<tr><td class="num" id="LN580">580</td><td class="line">		write_bits (pbuf, (buf[i]) &amp; 0xff, 8, &amp;offset);</td></tr>
-<tr><td class="num" id="LN581">581</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN582">582</td><td class="line">	memcpy (iv, rc-&gt;aes_iv, <span class='keyword'>sizeof</span> (iv));</td></tr>
-<tr><td class="num" id="LN583">583</td><td class="line">	AES_cbc_encrypt (pbuf, pbuf,</td></tr>
-<tr><td class="num" id="LN584">584</td><td class="line">	                 (len + 3) / 16 * 16,</td></tr>
-<tr><td class="num" id="LN585">585</td><td class="line">	                 rc-&gt;aes_key, iv, <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>);</td></tr>
-<tr><td class="num" id="LN586">586</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN587">587</td><td class="line">	rc-&gt;sbuf_size = len + 3 + <span class='keyword'>sizeof</span> (hdr);</td></tr>
-<tr><td class="num" id="LN588">588</td><td class="line">	rc-&gt;sbuf_offset = 0;</td></tr>
+<tr><td class="num" id="LN569">569</td><td class="line"><span class='keyword'>static</span> gint</td></tr>
+<tr><td class="num" id="LN570">570</td><td class="line">raop_client_stream_sample (raop_client_t *rc, guint16 *buf, guint32 len)</td></tr>
+<tr><td class="num" id="LN571">571</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN572">572</td><td class="line">	guint8 hdr[] = {0x24, 0x00, 0x00, 0x00,</td></tr>
+<tr><td class="num" id="LN573">573</td><td class="line">	                0xF0, 0xFF, 0x00, 0x00,</td></tr>
+<tr><td class="num" id="LN574">574</td><td class="line">	                0x00, 0x00, 0x00, 0x00,</td></tr>
+<tr><td class="num" id="LN575">575</td><td class="line">	                0x00, 0x00, 0x00, 0x00};</td></tr>
+<tr><td class="num" id="LN576">576</td><td class="line">	<span class='keyword'>int</span> i;</td></tr>
+<tr><td class="num" id="LN577">577</td><td class="line">	<span class='keyword'>short</span> cnt;</td></tr>
+<tr><td class="num" id="LN578">578</td><td class="line">	guint8 *pbuf;</td></tr>
+<tr><td class="num" id="LN579">579</td><td class="line">	guint8 iv[16];</td></tr>
+<tr><td class="num" id="LN580">580</td><td class="line">	guint32 offset = 0;</td></tr>
+<tr><td class="num" id="LN581">581</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN582">582</td><td class="line">	cnt = len + 3 + 12;</td></tr>
+<tr><td class="num" id="LN583">583</td><td class="line">	cnt = <span class='macro'>GUINT16_TO_BE (cnt)<span class='expansion'>((((guint16) ( (guint16) ((guint16) (cnt) &gt;&gt; 8) | (guint16<br>) ((guint16) (cnt) &lt;&lt; 8)))))</span></span>;</td></tr>
+<tr><td class="num" id="LN584">584</td><td class="line">	memcpy (hdr + 2, (<span class='keyword'>void</span> *) &amp;cnt, <span class='keyword'>sizeof</span> (cnt));</td></tr>
+<tr><td class="num" id="LN585">585</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN586">586</td><td class="line">	memset (rc-&gt;sbuf, 0, <span class='keyword'>sizeof</span> (rc-&gt;sbuf));</td></tr>
+<tr><td class="num" id="LN587">587</td><td class="line">	memcpy (rc-&gt;sbuf, hdr, <span class='keyword'>sizeof</span> (hdr));</td></tr>
+<tr><td class="num" id="LN588">588</td><td class="line">	pbuf = rc-&gt;sbuf + <span class='keyword'>sizeof</span> (hdr);</td></tr>
 <tr><td class="num" id="LN589">589</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN590">590</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN591">591</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN592">592</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN593">593</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN594">594</td><td class="line">raop_client_flush (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN595">595</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN596">596</td><td class="line">	<span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_CONNECTED<span class='expansion'>0x40</span></span>) {</td></tr>
-<tr><td class="num" id="LN597">597</td><td class="line">		memset (rc-&gt;sbuf, 0, <span class='keyword'>sizeof</span> (rc-&gt;sbuf));</td></tr>
-<tr><td class="num" id="LN598">598</td><td class="line">		rc-&gt;rtsp_state |= <span class='macro'>RAOP_RTSP_FLUSH<span class='expansion'>0x20</span></span>;</td></tr>
-<tr><td class="num" id="LN599">599</td><td class="line">		rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
-<tr><td class="num" id="LN600">600</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN601">601</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN602">602</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN603">603</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN604">604</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN605">605</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN606">606</td><td class="line">raop_client_set_stream_cb (raop_client_t *rc, raop_client_stream_cb_func_t func, <span class='keyword'>void</span> *data)</td></tr>
-<tr><td class="num" id="LN607">607</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN608">608</td><td class="line">	rc-&gt;stream_cb.func = func;</td></tr>
-<tr><td class="num" id="LN609">609</td><td class="line">	rc-&gt;stream_cb.data = data;</td></tr>
-<tr><td class="num" id="LN610">610</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN611">611</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN612">612</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN613">613</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN614">614</td><td class="line">raop_client_set_volume (raop_client_t *rc, gdouble volume)</td></tr>
-<tr><td class="num" id="LN615">615</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN616">616</td><td class="line">	rc-&gt;volume = volume;</td></tr>
+<tr><td class="num" id="LN590">590</td><td class="line">	<span class='comment'>/* ALAC frame header */</span></td></tr>
+<tr><td class="num" id="LN591">591</td><td class="line">	write_bits (pbuf, 1, 3, &amp;offset); <span class='comment'>/* # of channels */</span></td></tr>
+<tr><td class="num" id="LN592">592</td><td class="line">	write_bits (pbuf, 0, 4, &amp;offset); <span class='comment'>/* output waiting? */</span></td></tr>
+<tr><td class="num" id="LN593">593</td><td class="line">	write_bits (pbuf, 0, 4, &amp;offset); <span class='comment'>/* unknown */</span></td></tr>
+<tr><td class="num" id="LN594">594</td><td class="line">	write_bits (pbuf, 0, 8, &amp;offset); <span class='comment'>/* unknown */</span></td></tr>
+<tr><td class="num" id="LN595">595</td><td class="line">	write_bits (pbuf, 0, 1, &amp;offset); <span class='comment'>/* sample size follows the header */</span></td></tr>
+<tr><td class="num" id="LN596">596</td><td class="line">	write_bits (pbuf, 0, 2, &amp;offset); <span class='comment'>/* unknown */</span></td></tr>
+<tr><td class="num" id="LN597">597</td><td class="line">	write_bits (pbuf, 1, 1, &amp;offset); <span class='comment'>/* uncompressed */</span></td></tr>
+<tr><td class="num" id="LN598">598</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN599">599</td><td class="line">	<span class='keyword'>for</span> (i = 0; i &lt; len/2; i++) {</td></tr>
+<tr><td class="num" id="LN600">600</td><td class="line">		write_bits (pbuf, (buf[i]) &gt;&gt; 8, 8, &amp;offset);</td></tr>
+<tr><td class="num" id="LN601">601</td><td class="line">		write_bits (pbuf, (buf[i]) &amp; 0xff, 8, &amp;offset);</td></tr>
+<tr><td class="num" id="LN602">602</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN603">603</td><td class="line">	memcpy (iv, rc-&gt;aes_iv, <span class='keyword'>sizeof</span> (iv));</td></tr>
+<tr><td class="num" id="LN604">604</td><td class="line">	AES_cbc_encrypt (pbuf, pbuf,</td></tr>
+<tr><td class="num" id="LN605">605</td><td class="line">	                 (len + 3) / 16 * 16,</td></tr>
+<tr><td class="num" id="LN606">606</td><td class="line">	                 rc-&gt;aes_key, iv, <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>);</td></tr>
+<tr><td class="num" id="LN607">607</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN608">608</td><td class="line">	rc-&gt;sbuf_size = len + 3 + <span class='keyword'>sizeof</span> (hdr);</td></tr>
+<tr><td class="num" id="LN609">609</td><td class="line">	rc-&gt;sbuf_offset = 0;</td></tr>
+<tr><td class="num" id="LN610">610</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN611">611</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN612">612</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN613">613</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN614">614</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN615">615</td><td class="line">raop_client_flush (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN616">616</td><td class="line">{</td></tr>
 <tr><td class="num" id="LN617">617</td><td class="line">	<span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_CONNECTED<span class='expansion'>0x40</span></span>) {</td></tr>
-<tr><td class="num" id="LN618">618</td><td class="line">		rc-&gt;rtsp_state |= <span class='macro'>RAOP_RTSP_SETPARAMS<span class='expansion'>0x10</span></span>;</td></tr>
-<tr><td class="num" id="LN619">619</td><td class="line">		rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
-<tr><td class="num" id="LN620">620</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN621">621</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN622">622</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN623">623</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN624">624</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN625">625</td><td class="line">raop_client_get_volume (raop_client_t *rc, gdouble *volume)</td></tr>
-<tr><td class="num" id="LN626">626</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN627">627</td><td class="line">	*volume = rc-&gt;volume;</td></tr>
-<tr><td class="num" id="LN628">628</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN629">629</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN630">630</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN631">631</td><td class="line">gboolean</td></tr>
-<tr><td class="num" id="LN632">632</td><td class="line">raop_client_can_read (raop_client_t *rc, gint fd)</td></tr>
-<tr><td class="num" id="LN633">633</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN634">634</td><td class="line">	gint rtsp_fd = rc-&gt;rtsp_conn-&gt;fd;</td></tr>
-<tr><td class="num" id="LN635">635</td><td class="line">	<span class='keyword'>if</span> (fd == rtsp_fd) {</td></tr>
-<tr><td class="num" id="LN636">636</td><td class="line">		<span class='keyword'>return</span> rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_RTSP_READ<span class='expansion'>0x01</span></span>;</td></tr>
-<tr><td class="num" id="LN637">637</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (fd == rc-&gt;stream_fd) {</td></tr>
-<tr><td class="num" id="LN638">638</td><td class="line">		<span class='keyword'>return</span> rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_STREAM_READ<span class='expansion'>0x04</span></span>;</td></tr>
-<tr><td class="num" id="LN639">639</td><td class="line">	} <span class='keyword'>else</span> {</td></tr>
-<tr><td class="num" id="LN640">640</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>FALSE<span class='expansion'>(0)</span></span>;</td></tr>
+<tr><td class="num" id="LN618">618</td><td class="line">		memset (rc-&gt;sbuf, 0, <span class='keyword'>sizeof</span> (rc-&gt;sbuf));</td></tr>
+<tr><td class="num" id="LN619">619</td><td class="line">		rc-&gt;rtsp_state |= <span class='macro'>RAOP_RTSP_FLUSH<span class='expansion'>0x20</span></span>;</td></tr>
+<tr><td class="num" id="LN620">620</td><td class="line">		rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
+<tr><td class="num" id="LN621">621</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN622">622</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN623">623</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN624">624</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN625">625</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN626">626</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN627">627</td><td class="line">raop_client_set_stream_cb (raop_client_t *rc, raop_client_stream_cb_func_t func, <span class='keyword'>void</span> *data)</td></tr>
+<tr><td class="num" id="LN628">628</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN629">629</td><td class="line">	rc-&gt;stream_cb.func = func;</td></tr>
+<tr><td class="num" id="LN630">630</td><td class="line">	rc-&gt;stream_cb.data = data;</td></tr>
+<tr><td class="num" id="LN631">631</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN632">632</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN633">633</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN634">634</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN635">635</td><td class="line">raop_client_set_volume (raop_client_t *rc, gdouble volume)</td></tr>
+<tr><td class="num" id="LN636">636</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN637">637</td><td class="line">	rc-&gt;volume = volume;</td></tr>
+<tr><td class="num" id="LN638">638</td><td class="line">	<span class='keyword'>if</span> (rc-&gt;rtsp_state &amp; <span class='macro'>RAOP_RTSP_CONNECTED<span class='expansion'>0x40</span></span>) {</td></tr>
+<tr><td class="num" id="LN639">639</td><td class="line">		rc-&gt;rtsp_state |= <span class='macro'>RAOP_RTSP_SETPARAMS<span class='expansion'>0x10</span></span>;</td></tr>
+<tr><td class="num" id="LN640">640</td><td class="line">		rc-&gt;io_state |= <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
 <tr><td class="num" id="LN641">641</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN642">642</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN643">643</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN644">644</td><td class="line">gboolean</td></tr>
-<tr><td class="num" id="LN645">645</td><td class="line">raop_client_can_write (raop_client_t *rc, gint fd)</td></tr>
-<tr><td class="num" id="LN646">646</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN647">647</td><td class="line">	gint rtsp_fd = rc-&gt;rtsp_conn-&gt;fd;</td></tr>
-<tr><td class="num" id="LN648">648</td><td class="line">	<span class='keyword'>if</span> (fd == rtsp_fd) {</td></tr>
-<tr><td class="num" id="LN649">649</td><td class="line">		<span class='keyword'>return</span> rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
-<tr><td class="num" id="LN650">650</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (fd == rc-&gt;stream_fd) {</td></tr>
-<tr><td class="num" id="LN651">651</td><td class="line">		<span class='keyword'>return</span> rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_STREAM_WRITE<span class='expansion'>0x08</span></span>;</td></tr>
-<tr><td class="num" id="LN652">652</td><td class="line">	} <span class='keyword'>else</span> {</td></tr>
-<tr><td class="num" id="LN653">653</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>FALSE<span class='expansion'>(0)</span></span>;</td></tr>
-<tr><td class="num" id="LN654">654</td><td class="line">	}</td></tr>
-<tr><td class="num" id="LN655">655</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN656">656</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN657">657</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN658">658</td><td class="line">raop_client_rtsp_sock (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN659">659</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN660">660</td><td class="line">	<span class='keyword'>return</span> rc-&gt;rtsp_conn-&gt;fd;</td></tr>
-<tr><td class="num" id="LN661">661</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN662">662</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN663">663</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN664">664</td><td class="line">raop_client_stream_sock (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN665">665</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN666">666</td><td class="line">	<span class='keyword'>return</span> rc-&gt;stream_fd;</td></tr>
-<tr><td class="num" id="LN667">667</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN668">668</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN669">669</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN670">670</td><td class="line">raop_client_disconnect (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN671">671</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN672">672</td><td class="line">	<span class='keyword'>if</span> (!rc)</td></tr>
-<tr><td class="num" id="LN673">673</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EINVAL<span class='expansion'>-5</span></span>;</td></tr>
-<tr><td class="num" id="LN674">674</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN675">675</td><td class="line">	raop_rtsp_teardown (rc);</td></tr>
-<tr><td class="num" id="LN676">676</td><td class="line">	close (rc-&gt;rtsp_conn-&gt;fd);</td></tr>
-<tr><td class="num" id="LN677">677</td><td class="line">	close (rc-&gt;stream_fd);</td></tr>
-<tr><td class="num" id="LN678">678</td><td class="line">	rc-&gt;rtsp_conn-&gt;fd = rc-&gt;stream_fd = -1;</td></tr>
-<tr><td class="num" id="LN679">679</td><td class="line">	rtsp_connection_free (rc-&gt;rtsp_conn);</td></tr>
-<tr><td class="num" id="LN680">680</td><td class="line">	rc-&gt;io_state = <span class='macro'>RAOP_IO_UNDEFINED<span class='expansion'>0x00</span></span>;</td></tr>
-<tr><td class="num" id="LN681">681</td><td class="line">	rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_DISCONNECTED<span class='expansion'>0x00</span></span>;</td></tr>
-<tr><td class="num" id="LN682">682</td><td class="line">	g_free (rc-&gt;rtsp_url);</td></tr>
-<tr><td class="num" id="LN683">683</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN684">684</td><td class="line">}</td></tr>
-<tr><td class="num" id="LN685">685</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN686">686</td><td class="line">gint</td></tr>
-<tr><td class="num" id="LN687">687</td><td class="line">raop_client_destroy (raop_client_t *rc)</td></tr>
-<tr><td class="num" id="LN688">688</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN689">689</td><td class="line">	<span class='keyword'>if</span> (!rc)</td></tr>
-<tr><td class="num" id="LN690">690</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EINVAL<span class='expansion'>-5</span></span>;</td></tr>
-<tr><td class="num" id="LN691">691</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN692">692</td><td class="line">	g_free (rc-&gt;aes_key);</td></tr>
-<tr><td class="num" id="LN693">693</td><td class="line">	g_free (rc-&gt;apex_host);</td></tr>
-<tr><td class="num" id="LN694">694</td><td class="line">	g_free (rc-&gt;cli_host);</td></tr>
-<tr><td class="num" id="LN695">695</td><td class="line">	g_free (rc);</td></tr>
-<tr><td class="num" id="LN696">696</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
-<tr><td class="num" id="LN697">697</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN642">642</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN643">643</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN644">644</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN645">645</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN646">646</td><td class="line">raop_client_get_volume (raop_client_t *rc, gdouble *volume)</td></tr>
+<tr><td class="num" id="LN647">647</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN648">648</td><td class="line">	*volume = rc-&gt;volume;</td></tr>
+<tr><td class="num" id="LN649">649</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN650">650</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN651">651</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN652">652</td><td class="line">gboolean</td></tr>
+<tr><td class="num" id="LN653">653</td><td class="line">raop_client_can_read (raop_client_t *rc, gint fd)</td></tr>
+<tr><td class="num" id="LN654">654</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN655">655</td><td class="line">	gint rtsp_fd = rc-&gt;rtsp_conn-&gt;fd;</td></tr>
+<tr><td class="num" id="LN656">656</td><td class="line">	<span class='keyword'>if</span> (fd == rtsp_fd) {</td></tr>
+<tr><td class="num" id="LN657">657</td><td class="line">		<span class='keyword'>return</span> rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_RTSP_READ<span class='expansion'>0x01</span></span>;</td></tr>
+<tr><td class="num" id="LN658">658</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (fd == rc-&gt;stream_fd) {</td></tr>
+<tr><td class="num" id="LN659">659</td><td class="line">		<span class='keyword'>return</span> rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_STREAM_READ<span class='expansion'>0x04</span></span>;</td></tr>
+<tr><td class="num" id="LN660">660</td><td class="line">	} <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN661">661</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>FALSE<span class='expansion'>(0)</span></span>;</td></tr>
+<tr><td class="num" id="LN662">662</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN663">663</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN664">664</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN665">665</td><td class="line">gboolean</td></tr>
+<tr><td class="num" id="LN666">666</td><td class="line">raop_client_can_write (raop_client_t *rc, gint fd)</td></tr>
+<tr><td class="num" id="LN667">667</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN668">668</td><td class="line">	gint rtsp_fd = rc-&gt;rtsp_conn-&gt;fd;</td></tr>
+<tr><td class="num" id="LN669">669</td><td class="line">	<span class='keyword'>if</span> (fd == rtsp_fd) {</td></tr>
+<tr><td class="num" id="LN670">670</td><td class="line">		<span class='keyword'>return</span> rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_RTSP_WRITE<span class='expansion'>0x02</span></span>;</td></tr>
+<tr><td class="num" id="LN671">671</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (fd == rc-&gt;stream_fd) {</td></tr>
+<tr><td class="num" id="LN672">672</td><td class="line">		<span class='keyword'>return</span> rc-&gt;io_state &amp; <span class='macro'>RAOP_IO_STREAM_WRITE<span class='expansion'>0x08</span></span>;</td></tr>
+<tr><td class="num" id="LN673">673</td><td class="line">	} <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN674">674</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>FALSE<span class='expansion'>(0)</span></span>;</td></tr>
+<tr><td class="num" id="LN675">675</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN676">676</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN677">677</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN678">678</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN679">679</td><td class="line">raop_client_rtsp_sock (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN680">680</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN681">681</td><td class="line">	<span class='keyword'>return</span> rc-&gt;rtsp_conn-&gt;fd;</td></tr>
+<tr><td class="num" id="LN682">682</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN683">683</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN684">684</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN685">685</td><td class="line">raop_client_stream_sock (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN686">686</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN687">687</td><td class="line">	<span class='keyword'>return</span> rc-&gt;stream_fd;</td></tr>
+<tr><td class="num" id="LN688">688</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN689">689</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN690">690</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN691">691</td><td class="line">raop_client_disconnect (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN692">692</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN693">693</td><td class="line">	<span class='keyword'>if</span> (!rc)</td></tr>
+<tr><td class="num" id="LN694">694</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EINVAL<span class='expansion'>-5</span></span>;</td></tr>
+<tr><td class="num" id="LN695">695</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN696">696</td><td class="line">	raop_rtsp_teardown (rc);</td></tr>
+<tr><td class="num" id="LN697">697</td><td class="line">	close (rc-&gt;rtsp_conn-&gt;fd);</td></tr>
+<tr><td class="num" id="LN698">698</td><td class="line">	close (rc-&gt;stream_fd);</td></tr>
+<tr><td class="num" id="LN699">699</td><td class="line">	rc-&gt;rtsp_conn-&gt;fd = rc-&gt;stream_fd = -1;</td></tr>
+<tr><td class="num" id="LN700">700</td><td class="line">	rtsp_connection_free (rc-&gt;rtsp_conn);</td></tr>
+<tr><td class="num" id="LN701">701</td><td class="line">	rc-&gt;io_state = <span class='macro'>RAOP_IO_UNDEFINED<span class='expansion'>0x00</span></span>;</td></tr>
+<tr><td class="num" id="LN702">702</td><td class="line">	rc-&gt;rtsp_state = <span class='macro'>RAOP_RTSP_DISCONNECTED<span class='expansion'>0x00</span></span>;</td></tr>
+<tr><td class="num" id="LN703">703</td><td class="line">	g_free (rc-&gt;rtsp_url);</td></tr>
+<tr><td class="num" id="LN704">704</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN705">705</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN706">706</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN707">707</td><td class="line">gint</td></tr>
+<tr><td class="num" id="LN708">708</td><td class="line">raop_client_destroy (raop_client_t *rc)</td></tr>
+<tr><td class="num" id="LN709">709</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN710">710</td><td class="line">	<span class='keyword'>if</span> (!rc)</td></tr>
+<tr><td class="num" id="LN711">711</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>RAOP_EINVAL<span class='expansion'>-5</span></span>;</td></tr>
+<tr><td class="num" id="LN712">712</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN713">713</td><td class="line">	g_free (rc-&gt;aes_key);</td></tr>
+<tr><td class="num" id="LN714">714</td><td class="line">	g_free (rc-&gt;apex_host);</td></tr>
+<tr><td class="num" id="LN715">715</td><td class="line">	g_free (rc-&gt;cli_host);</td></tr>
+<tr><td class="num" id="LN716">716</td><td class="line">	g_free (rc);</td></tr>
+<tr><td class="num" id="LN717">717</td><td class="line">	<span class='keyword'>return</span> <span class='macro'>RAOP_EOK<span class='expansion'>0</span></span>;</td></tr>
+<tr><td class="num" id="LN718">718</td><td class="line">}</td></tr>
 </table></body></html>
