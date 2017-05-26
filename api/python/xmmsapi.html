@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,7 +15,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -25,16 +25,16 @@
     <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="XMMS2  documentation" href="index.html" />
     <link rel="next" title="xmmsclient.collections" href="collections.html" />
     <link rel="prev" title="Welcome to XMMS2’s documentation!" href="index.html" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <link rel="shortcut icon" type="image/png" href="_static/favicon.png" />
     <meta name="viewport" content="width=device-width,initial-scale=0.8">
     
+    
 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -59,7 +59,7 @@
 <code class="descclassname">xmmsclient.</code><code class="descname">userconfdir_get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.userconfdir_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the user configuration directory, where XMMS2 stores its
 user-specific configuration files. Clients may store their
-configuration under the &#8216;clients&#8217; subdirectory. This varies from
+configuration under the ‘clients’ subdirectory. This varies from
 platform to platform so should always be retrieved at runtime.</p>
 </dd></dl>
 
@@ -255,7 +255,7 @@ this class may be used to control and interact with XMMS2.</div></blockquote>
 <dl class="method">
 <dt id="xmmsclient.Xmms.broadcast_c2c_ready">
 <code class="descname">broadcast_c2c_ready</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_c2c_ready" title="Permalink to this definition">¶</a></dt>
-<dd><p>Broadcast reveiced whenever a client&#8217;s service api is ready</p>
+<dd><p>Broadcast reveiced whenever a client’s service api is ready</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -426,7 +426,7 @@ XMMS2 daemon.</p>
 <dt id="xmmsclient.Xmms.broadcast_playlist_changed">
 <code class="descname">broadcast_playlist_changed</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.broadcast_playlist_changed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a method to handle the playlist changed broadcast from the
-XMMS2 daemon. Updated data is sent whenever the daemon&#8217;s
+XMMS2 daemon. Updated data is sent whenever the daemon’s
 playlist changes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -518,7 +518,7 @@ a playlist item from one position to another)</p>
 <dt id="xmmsclient.Xmms.c2c_ready">
 <code class="descname">c2c_ready</code><span class="sig-paren">(</span><em>self</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.c2c_ready" title="Permalink to this definition">¶</a></dt>
 <dd><p>Notify the server that client services are ready for query.
-This method is called <a class="reference internal" href="serviceclients.html#xmmsclient.service.XmmsServiceNamespace.register" title="xmmsclient.service.XmmsServiceNamespace.register"><code class="xref any py py-meth docutils literal"><span class="pre">XmmsServiceNamespace.register()</span></code></a> and don&#8217;t need to
+This method is called <a class="reference internal" href="serviceclients.html#xmmsclient.service.XmmsServiceNamespace.register" title="xmmsclient.service.XmmsServiceNamespace.register"><code class="xref any py py-meth docutils literal"><span class="pre">XmmsServiceNamespace.register()</span></code></a> and don’t need to
 be called explicitly.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -534,7 +534,7 @@ be called explicitly.</p>
 
 <dl class="method">
 <dt id="xmmsclient.Xmms.coll_get">
-<code class="descname">coll_get</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_get" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coll_get</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>ns=’Collections’</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve a Collection</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -566,7 +566,7 @@ be called explicitly.</p>
 
 <dl class="method">
 <dt id="xmmsclient.Xmms.coll_list">
-<code class="descname">coll_list</code><span class="sig-paren">(</span><em>self</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_list" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coll_list</code><span class="sig-paren">(</span><em>self</em>, <em>ns=’Collections’</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>List collections</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -630,7 +630,7 @@ be called explicitly.</p>
 
 <dl class="method">
 <dt id="xmmsclient.Xmms.coll_remove">
-<code class="descname">coll_remove</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_remove" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coll_remove</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>ns=’Collections’</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a collection on server.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -646,7 +646,7 @@ be called explicitly.</p>
 
 <dl class="method">
 <dt id="xmmsclient.Xmms.coll_rename">
-<code class="descname">coll_rename</code><span class="sig-paren">(</span><em>self</em>, <em>oldname</em>, <em>newname</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_rename" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coll_rename</code><span class="sig-paren">(</span><em>self</em>, <em>oldname</em>, <em>newname</em>, <em>ns=’Collections’</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_rename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rename a collection.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -662,7 +662,7 @@ be called explicitly.</p>
 
 <dl class="method">
 <dt id="xmmsclient.Xmms.coll_save">
-<code class="descname">coll_save</code><span class="sig-paren">(</span><em>self</em>, <em>Collection coll</em>, <em>name</em>, <em>ns='Collections'</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coll_save</code><span class="sig-paren">(</span><em>self</em>, <em>Collection coll</em>, <em>name</em>, <em>ns=’Collections’</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.coll_save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save a collection on server.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -714,8 +714,8 @@ configuration keys.</p>
 <dt id="xmmsclient.Xmms.config_register_value">
 <code class="descname">config_register_value</code><span class="sig-paren">(</span><em>self</em>, <em>valuename</em>, <em>defaultvalue</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.config_register_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Register a new configvalue.
-This should be called in the initcode as XMMS2 won&#8217;t allow
-set/get on values that haven&#8217;t been registered.</p>
+This should be called in the initcode as XMMS2 won’t allow
+set/get on values that haven’t been registered.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1223,7 +1223,7 @@ currently being played.</p>
 <code class="descname">playlist_add_url</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_add_url" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a path or URL to a playable media item to the playlist.
 Playable media items may be files or streams.
-Requires a string &#8216;url&#8217; as argument.</p>
+Requires a string ‘url’ as argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1302,7 +1302,7 @@ list is 0.</p>
 <dt id="xmmsclient.Xmms.playlist_insert_collection">
 <code class="descname">playlist_insert_collection</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>Collection coll</em>, <em>order=None</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_insert_collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert the content of a collection to the playlist.
-Requires an int &#8216;pos&#8217; and an int &#8216;id&#8217; as argument.</p>
+Requires an int ‘pos’ and an int ‘id’ as argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1350,7 +1350,7 @@ Requires an int <code class="xref any docutils literal"><span class="pre">pos</s
 <code class="descname">playlist_insert_url</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_insert_url" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert a path or URL to a playable media item to the playlist.
 Playable media items may be files or streams.
-Requires an int &#8216;pos&#8217; and a string &#8216;url&#8217; as argument.</p>
+Requires an int ‘pos’ and a string ‘url’ as argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1433,7 +1433,7 @@ of the files/streams currently in the playlist. Use
 <dt id="xmmsclient.Xmms.playlist_radd">
 <code class="descname">playlist_radd</code><span class="sig-paren">(</span><em>self</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_radd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a directory to the playlist.
-Requires a string &#8216;url&#8217; as argument.</p>
+Requires a string ‘url’ as argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1479,7 +1479,7 @@ Requires a string &#8216;url&#8217; as argument.</p>
 <dt id="xmmsclient.Xmms.playlist_remove_entry">
 <code class="descname">playlist_remove_entry</code><span class="sig-paren">(</span><em>self</em>, <em>int id</em>, <em>playlist=None</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_remove_entry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a certain media item from the playlist.
-Requires a number &#8216;id&#8217; as argument.</p>
+Requires a number ‘id’ as argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1496,7 +1496,7 @@ Requires a number &#8216;id&#8217; as argument.</p>
 <dt id="xmmsclient.Xmms.playlist_rinsert">
 <code class="descname">playlist_rinsert</code><span class="sig-paren">(</span><em>self</em>, <em>int pos</em>, <em>url</em>, <em>playlist=None</em>, <em>cb=None</em>, <em>encoded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.playlist_rinsert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert a directory in the playlist.
-Requires an int &#8216;pos&#8217; and a string &#8216;url&#8217; as argument.</p>
+Requires an int ‘pos’ and a string ‘url’ as argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1669,7 +1669,7 @@ You can do set_next_rel(-1) to move backwards for example.</p>
 <dt id="xmmsclient.Xmms.sc_init">
 <code class="descname">sc_init</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.sc_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize client-to-client features.
-Client-to-client features won&#8217;t work with the synchronous client wrapper</p>
+Client-to-client features won’t work with the synchronous client wrapper</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1765,7 +1765,7 @@ Client-to-client features won&#8217;t work with the synchronous client wrapper</
 <dl class="method">
 <dt id="xmmsclient.Xmms.set_need_out_fun">
 <code class="descname">set_need_out_fun</code><span class="sig-paren">(</span><em>self</em>, <em>fun</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.set_need_out_fun" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set a function to be called when there&#8217;s data to be
+<dd><p>Set a function to be called when there’s data to be
 sent to the server.</p>
 </dd></dl>
 
@@ -1872,7 +1872,7 @@ XMMS2 daemon.</p>
 <dl class="method">
 <dt id="xmmsclient.Xmms.visualization_properties_set">
 <code class="descname">visualization_properties_set</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em>, <em>props={}</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_properties_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set visualization&#8217;s properties.</p>
+<dd><p>Set visualization’s properties.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1888,7 +1888,7 @@ XMMS2 daemon.</p>
 <dl class="method">
 <dt id="xmmsclient.Xmms.visualization_property_set">
 <code class="descname">visualization_property_set</code><span class="sig-paren">(</span><em>self</em>, <em>int handle</em>, <em>key</em>, <em>value</em>, <em>cb=None</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.visualization_property_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set a visualization&#8217;s property.</p>
+<dd><p>Set a visualization’s property.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1958,7 +1958,7 @@ XMMS2 daemon.</p>
 <dl class="method">
 <dt id="xmmsclient.Xmms.want_ioout">
 <code class="descname">want_ioout</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#xmmsclient.Xmms.want_ioout" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if there&#8217;s data to send to the server.</p>
+<dd><p>Check if there’s data to send to the server.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2441,14 +2441,14 @@ methods in subclasses.</td>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to XMMS2&#8217;s documentation!</a></p>
+                        title="previous chapter">Welcome to XMMS2’s documentation!</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="collections.html"
                         title="next chapter">xmmsclient.collections</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/xmmsapi.txt"
+      <li><a href="_sources/xmmsapi.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -2486,7 +2486,7 @@ methods in subclasses.</td>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, XMMS2 Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.1.
     </div>
   </body>
 </html>

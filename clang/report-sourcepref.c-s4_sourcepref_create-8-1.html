@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -72,15 +80,14 @@
 
 <!-- BUGCOLUMN 14 -->
 
-<!-- BUGPATHLENGTH 2 -->
+<!-- BUGPATHLENGTH 3 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/lib/s4/src/lib/sourcepref.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 65, column 14</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Call to 'malloc' has an allocation size of 0 bytes</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 65, column 14</a><br />Call to 'malloc' has an allocation size of 0 bytes</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
@@ -147,11 +154,12 @@
 <tr><td class="num" id="LN60">60</td><td class="line">	sp-&gt;table = g_hash_table_new_full (g_direct_hash, g_direct_equal, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, free);</td></tr>
 <tr><td class="num" id="LN61">61</td><td class="line">	g_mutex_init (&amp;sp-&gt;lock);</td></tr>
 <tr><td class="num" id="LN62">62</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN63">63</td><td class="line">	<span class='keyword'>for</span> (i = 0; srcprefs[i] != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>; i++);</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">1</div></td><td>Loop condition is false. Execution continues on line 65</td><td><div class="PathNav"><a href="#EndPath" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN63">63</td><td class="line">	<span class='keyword'>for</span> (i = 0; <span class="mrange">srcprefs[i] != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>; i++);</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">1</div></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 65</td><td><div class="PathNav"><a href="#EndPath" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN64">64</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN65">65</td><td class="line">	sp-&gt;specs = malloc (<span class="mrange"><span class='keyword'>sizeof</span> (GPatternSpec*) * i</span>);</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Call to 'malloc' has an allocation size of 0 bytes</td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Call to 'malloc' has an allocation size of 0 bytes</td></tr></table></div></td></tr>
 <tr><td class="num" id="LN66">66</td><td class="line">	sp-&gt;spec_count = i;</td></tr>
 <tr><td class="num" id="LN67">67</td><td class="line">	sp-&gt;ref_count = 1;</td></tr>
 <tr><td class="num" id="LN68">68</td><td class="line"> </td></tr>

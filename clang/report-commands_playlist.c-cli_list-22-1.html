@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -72,21 +80,20 @@
 
 <!-- BUGCOLUMN 6 -->
 
-<!-- BUGPATHLENGTH 9 -->
+<!-- BUGPATHLENGTH 10 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/clients/nycli/commands_playlist.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 345, column 6</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Function call argument is an uninitialized value</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 345, column 6</a><br />Function call argument is an uninitialized value</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
 <table class="code">
 <tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/*  XMMS2 - X Music Multiplexer System</span></td></tr>
-<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2016 XMMS2 Team</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2017 XMMS2 Team</span></td></tr>
 <tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>*</span></td></tr>
 <tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>*  PLUGINS ARE NOT CONSIDERED TO BE DERIVED WORK !!!</span></td></tr>
 <tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>*</span></td></tr>
@@ -188,11 +195,12 @@
 <tr><td class="num" id="LN101">101</td><td class="line">	xmmsc_connection_t *conn = cli_context_xmms_sync (ctx);</td></tr>
 <tr><td class="num" id="LN102">102</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN103">103</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">playlist</span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming 'playlist' is non-null</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Assuming 'playlist' is non-null</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN104">104</td><td class="line">		<span class='macro'>XMMS_CALL_CHAIN (XMMS_CALL_P (xmmsc_coll_get, conn, playlist, XMMS_COLLECTION_NS_PLAYLISTS),<span class='expansion'>do { xmmsv_t *XMMS_PREV_VALUE, *XMMS_FIRST_VALUE; XMMS_PREV_VALUE<br> = XMMS_FIRST_VALUE = ((void*)0); do { xmmsc_result_t *__result<br>; const gchar *__message; xmmsv_t *__value; __result = xmmsc_coll_get<br> (conn, playlist, "Playlists"); xmmsc_result_wait (__result);<br> if (XMMS_PREV_VALUE != ((void*)0)) xmmsv_unref (XMMS_PREV_VALUE<br>); XMMS_PREV_VALUE = ((void*)0); __value = xmmsc_result_get_value<br> (__result); if (xmmsv_get_error (__value, &amp;__message)) {<br> g_printf (gettext ("Server error: %s\n"), __message); } else<br> { XMMS_PREV_VALUE = xmmsv_ref (__value); } xmmsc_result_unref<br> (__result); } while(0); if (XMMS_PREV_VALUE != ((void*)0)) {<br> XMMS_FIRST_VALUE = xmmsv_ref (XMMS_PREV_VALUE); do { if (XMMS_PREV_VALUE<br> != ((void*)0)) { playlist_coll_attribute_get_position (XMMS_PREV_VALUE<br>, pos); } } while (0); } do { xmmsv_t *__values[] = { XMMS_PREV_VALUE<br>, XMMS_FIRST_VALUE, ((void*)0) }; gint __i = 0; for (__i = 0;<br> __i &lt; (sizeof (__values) / sizeof ((__values)[0])); __i++<br>) { if (__values[__i] != ((void*)0)) xmmsv_unref (__values[__i<br>]); } } while (0); } while (0)</span></span></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:17ex; max-width:100em"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Within the expansion of the macro 'XMMS_CALL_CHAIN':
-</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:17ex; max-width:100em"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Within the expansion of the macro 'XMMS_CALL_CHAIN':
+</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table><div class="msg msgEvent" style="width:94%; margin-left:5px"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">a</div></td><td valign="top">Assuming the condition is true</td></tr></table></div>
+</div></td></tr>
 <tr><td class="num" id="LN105">105</td><td class="line">		                 <span class='macro'>FUNC_CALL_P (playlist_coll_attribute_get_position, XMMS_PREV_VALUE, pos))<span class='expansion'>do { xmmsv_t *XMMS_PREV_VALUE, *XMMS_FIRST_VALUE; XMMS_PREV_VALUE<br> = XMMS_FIRST_VALUE = ((void*)0); do { xmmsc_result_t *__result<br>; const gchar *__message; xmmsv_t *__value; __result = xmmsc_coll_get<br> (conn, playlist, "Playlists"); xmmsc_result_wait (__result);<br> if (XMMS_PREV_VALUE != ((void*)0)) xmmsv_unref (XMMS_PREV_VALUE<br>); XMMS_PREV_VALUE = ((void*)0); __value = xmmsc_result_get_value<br> (__result); if (xmmsv_get_error (__value, &amp;__message)) {<br> g_printf (gettext ("Server error: %s\n"), __message); } else<br> { XMMS_PREV_VALUE = xmmsv_ref (__value); } xmmsc_result_unref<br> (__result); } while(0); if (XMMS_PREV_VALUE != ((void*)0)) {<br> XMMS_FIRST_VALUE = xmmsv_ref (XMMS_PREV_VALUE); do { if (XMMS_PREV_VALUE<br> != ((void*)0)) { playlist_coll_attribute_get_position (XMMS_PREV_VALUE<br>, pos); } } while (0); } do { xmmsv_t *__values[] = { XMMS_PREV_VALUE<br>, XMMS_FIRST_VALUE, ((void*)0) }; gint __i = 0; for (__i = 0;<br> __i &lt; (sizeof (__values) / sizeof ((__values)[0])); __i++<br>) { if (__values[__i] != ((void*)0)) xmmsv_unref (__values[__i<br>]); } } while (0); } while (0)</span></span>;</td></tr>
 <tr><td class="num" id="LN106">106</td><td class="line">	} <span class='keyword'>else</span> {</td></tr>
 <tr><td class="num" id="LN107">107</td><td class="line">		*pos = cli_context_current_position (ctx);</td></tr>
@@ -425,21 +433,22 @@
 <tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">1</div></td><td>'pos' declared without an initial value</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN334">334</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN335">335</td><td class="line">	<span class='comment'>/* Default to active playlist (from cache) */</span></td></tr>
-<tr><td class="num" id="LN336">336</td><td class="line">	<span class='keyword'>if</span> (!command_flag_string_get (cmd, <span class='string_literal'>"playlist"</span>, &amp;playlist)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN336">336</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">!command_flag_string_get (cmd, <span class='string_literal'>"playlist"</span>, &amp;playlist)</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN337">337</td><td class="line">		playlist = <span class='macro'>XMMS_ACTIVE_PLAYLIST<span class='expansion'>"_active"</span></span>;</td></tr>
 <tr><td class="num" id="LN338">338</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN339">339</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN340">340</td><td class="line">	<span class='keyword'>if</span> (!<span class="mrange"><span class="mrange">playlist_currpos_get (ctx, playlist, &amp;pos)</span></span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgEvent" style="margin-left:14ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Calling 'playlist_currpos_get'</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgEvent" style="margin-left:14ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Returning from 'playlist_currpos_get'</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:14ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Calling 'playlist_currpos_get'</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgEvent" style="margin-left:14ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Returning from 'playlist_currpos_get'</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN341">341</td><td class="line">		g_printf (<span class='macro'>_(<span class='string_literal'>"Error: failed to get current position in playlist.\n"</span>)<span class='expansion'>gettext ("Error: failed to get current position in playlist.\n"<br>)</span></span>);</td></tr>
 <tr><td class="num" id="LN342">342</td><td class="line">		<span class='keyword'>return</span> <span class='macro'>FALSE<span class='expansion'>(0)</span></span>;</td></tr>
 <tr><td class="num" id="LN343">343</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN344">344</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN345">345</td><td class="line">	<span class='keyword'>if</span> (command_arg_positions_get (cmd, 0, &amp;positions, <span class="mrange">pos</span>)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Function call argument is an uninitialized value</td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Function call argument is an uninitialized value</td></tr></table></div></td></tr>
 <tr><td class="num" id="LN346">346</td><td class="line">		filter_by_pos = <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>;</td></tr>
 <tr><td class="num" id="LN347">347</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (command_arg_longstring_get_escaped (cmd, 0, &amp;pattern)) {</td></tr>
 <tr><td class="num" id="LN348">348</td><td class="line">		<span class='keyword'>if</span> (!xmmsv_coll_parse (pattern, &amp;query)) {</td></tr>

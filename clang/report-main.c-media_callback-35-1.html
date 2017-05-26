@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -72,15 +80,14 @@
 
 <!-- BUGCOLUMN 3 -->
 
-<!-- BUGPATHLENGTH 8 -->
+<!-- BUGPATHLENGTH 9 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/tools/sqlite2s4/main.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 121, column 3</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Function call argument is an uninitialized value</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 121, column 3</a><br />Function call argument is an uninitialized value</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
@@ -183,10 +190,11 @@
 <tr><td class="num" id="LN95">95</td><td class="line">	<span class='keyword'>for</span> (i = 0; <span class="mrange"><span class="mrange">i &lt; argc</span></span>; i++) {</td></tr>
 <tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Assuming 'i' is &lt; 'argc'</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Assuming 'i' is &gt;= 'argc'</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 109</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num" id="LN96">96</td><td class="line">		<span class='keyword'>if</span> (!strcmp (<span class='string_literal'>"id"</span>, col[i])) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Assuming 'i' is &gt;= 'argc'</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 109</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN96">96</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange">!strcmp (<span class='string_literal'>"id"</span>, col[i])</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming the condition is true</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN97">97</td><td class="line">			id = atoi (argv[i]);</td></tr>
 <tr><td class="num" id="LN98">98</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (!strcmp (<span class='string_literal'>"key"</span>, col[i])) {</td></tr>
 <tr><td class="num" id="LN99">99</td><td class="line">			key = argv[i];</td></tr>
@@ -204,7 +212,7 @@
 <tr><td class="num" id="LN111">111</td><td class="line">	id_val = s4_val_new_int (id);</td></tr>
 <tr><td class="num" id="LN112">112</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN113">113</td><td class="line">	<span class='keyword'>if</span> (xmms_is_int (intrepr, &amp;intval)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN114">114</td><td class="line">		val_val = s4_val_new_int (intval);</td></tr>
 <tr><td class="num" id="LN115">115</td><td class="line">	} <span class='keyword'>else</span> {</td></tr>
 <tr><td class="num" id="LN116">116</td><td class="line">		val_val = s4_val_new_string (val);</td></tr>
@@ -213,7 +221,7 @@
 <tr><td class="num" id="LN119">119</td><td class="line">	<span class='keyword'>do</span> {</td></tr>
 <tr><td class="num" id="LN120">120</td><td class="line">		trans = s4_begin (s4, 0);</td></tr>
 <tr><td class="num" id="LN121">121</td><td class="line">		s4_add (trans, <span class='string_literal'>"song_id"</span>, id_val, <span class="mrange">key</span>, val_val, src);</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Function call argument is an uninitialized value</td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Function call argument is an uninitialized value</td></tr></table></div></td></tr>
 <tr><td class="num" id="LN122">122</td><td class="line">	} <span class='keyword'>while</span> (!s4_commit (trans));</td></tr>
 <tr><td class="num" id="LN123">123</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN124">124</td><td class="line">	s4_val_free (val_val);</td></tr>

@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -72,21 +80,20 @@
 
 <!-- BUGCOLUMN 7 -->
 
-<!-- BUGPATHLENGTH 10 -->
+<!-- BUGPATHLENGTH 14 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/clients/nycli/command.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 474, column 7</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Dereference of undefined pointer value</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 474, column 7</a><br />Dereference of undefined pointer value</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
 <table class="code">
 <tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/*  XMMS2 - X Music Multiplexer System</span></td></tr>
-<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2016 XMMS2 Team</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2017 XMMS2 Team</span></td></tr>
 <tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>*</span></td></tr>
 <tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>*  PLUGINS ARE NOT CONSIDERED TO BE DERIVED WORK !!!</span></td></tr>
 <tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>*</span></td></tr>
@@ -473,8 +480,9 @@
 <tr><td class="num" id="LN386">386</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN387">387</td><td class="line">	v = 0;</td></tr>
 <tr><td class="num" id="LN388">388</td><td class="line">	t = s;</td></tr>
-<tr><td class="num" id="LN389">389</td><td class="line">	<span class='keyword'>for</span> (i = 0; i &lt; 3 &amp;&amp; *t != '\0'; i++) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 394</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN389">389</td><td class="line">	<span class='keyword'>for</span> (i = 0; i &lt; 3 &amp;&amp; <span class="mrange">*t != '\0'; i++) {</td></tr></span>
+<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgEvent" style="margin-left:30ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 394</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN390">390</td><td class="line">		v = v*60 + strtol (t, endptr, 10);</td></tr>
 <tr><td class="num" id="LN391">391</td><td class="line">		t = *endptr+1;</td></tr>
 <tr><td class="num" id="LN392">392</td><td class="line">	}</td></tr>
@@ -501,11 +509,12 @@
 <tr><td class="num" id="LN413">413</td><td class="line">	gint i;</td></tr>
 <tr><td class="num" id="LN414">414</td><td class="line">	guint n, v;</td></tr>
 <tr><td class="num" id="LN415">415</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN416">416</td><td class="line">	<span class='keyword'>if</span> (strchr (s, ':') != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN416">416</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">strchr (s, ':') != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Assuming the condition is true</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN417">417</td><td class="line">		<span class='keyword'>return</span> <span class="mrange"><span class="mrange">parse_time_sep (s, endptr)</span></span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Calling 'parse_time_sep'</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Returning from 'parse_time_sep'</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Calling 'parse_time_sep'</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Returning from 'parse_time_sep'</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN418">418</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN419">419</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN420">420</td><td class="line">	n = 0;</td></tr>
@@ -549,8 +558,10 @@
 <tr><td class="num" id="LN457">457</td><td class="line">	<span class='keyword'>if</span> (at &lt; command_arg_count (cmd) &amp;&amp; command_arg_string_get (cmd, at, &amp;s)) {</td></tr>
 <tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN458">458</td><td class="line">		gchar *time_arg = g_strdup (s);</td></tr>
-<tr><td class="num" id="LN459">459</td><td class="line">		<span class='keyword'>if</span> (*time_arg == '+' || *time_arg == '-') {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN459">459</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange">*time_arg == '+' || <span class="mrange">*time_arg == '</span>-') {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr></span>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:41ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN460">460</td><td class="line">			v-&gt;type = COMMAND_ARG_TIME_OFFSET;</td></tr>
 <tr><td class="num" id="LN461">461</td><td class="line">			<span class='comment'>/* v-&gt;value.offset = strtol (s, &amp;endptr, 10); */</span></td></tr>
 <tr><td class="num" id="LN462">462</td><td class="line">			v-&gt;value.offset = parse_time (time_arg + 1, &amp;endptr, multipliers, separators);</td></tr>
@@ -562,13 +573,13 @@
 <tr><td class="num" id="LN468">468</td><td class="line">			v-&gt;type = COMMAND_ARG_TIME_POSITION;</td></tr>
 <tr><td class="num" id="LN469">469</td><td class="line">			<span class='comment'>/* v-&gt;value.pos = strtol (s, &amp;endptr, 10); */</span></td></tr>
 <tr><td class="num" id="LN470">470</td><td class="line">			v-&gt;value.pos = <span class="mrange"><span class="mrange">parse_time (time_arg, &amp;endptr, multipliers, separators)</span></span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:40ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Calling 'parse_time'</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgEvent" style="margin-left:40ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Returning from 'parse_time'</td><td><div class="PathNav"><a href="#EndPath" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgEvent" style="margin-left:40ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Calling 'parse_time'</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgEvent" style="margin-left:40ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td>Returning from 'parse_time'</td><td><div class="PathNav"><a href="#EndPath" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN471">471</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN472">472</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN473">473</td><td class="line">		<span class='comment'>/* FIXME: We can have cleverer parsing for '2:17' or '3min' etc */</span></td></tr>
 <tr><td class="num" id="LN474">474</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange">*endptr</span> == '\0') {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Dereference of undefined pointer value</td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Dereference of undefined pointer value</td></tr></table></div></td></tr>
 <tr><td class="num" id="LN475">475</td><td class="line">			retval = <span class='macro'>TRUE<span class='expansion'>(!(0))</span></span>;</td></tr>
 <tr><td class="num" id="LN476">476</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN477">477</td><td class="line"> </td></tr>

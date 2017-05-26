@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -72,21 +80,20 @@
 
 <!-- BUGCOLUMN 3 -->
 
-<!-- BUGPATHLENGTH 22 -->
+<!-- BUGPATHLENGTH 27 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/clients/nycli/cli_context.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 558, column 3</a></td></tr>
-<tr><td class="rowname">Description:</td><td>The left expression of the compound assignment is an uninitialized value. The computed value will also be garbage</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 558, column 3</a><br />The left expression of the compound assignment is an uninitialized value. The computed value will also be garbage</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
 <table class="code">
 <tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/*  XMMS2 - X Music Multiplexer System</span></td></tr>
-<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2016 XMMS2 Team</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2017 XMMS2 Team</span></td></tr>
 <tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>*</span></td></tr>
 <tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>*  PLUGINS ARE NOT CONSIDERED TO BE DERIVED WORK !!!</span></td></tr>
 <tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>*</span></td></tr>
@@ -408,36 +415,40 @@
 <tr><td class="num" id="LN321">321</td><td class="line"><span class='keyword'>void</span></td></tr>
 <tr><td class="num" id="LN322">322</td><td class="line">cli_context_execute_command (cli_context_t *ctx, gchar *input)</td></tr>
 <tr><td class="num" id="LN323">323</td><td class="line">{</td></tr>
-<tr><td class="num" id="LN324">324</td><td class="line">	<span class='keyword'>while</span> (input &amp;&amp; *input == ' ') ++input;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">1</div></td><td>Loop condition is false. Execution continues on line 326</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN324">324</td><td class="line">	<span class='keyword'>while</span> (<span class="mrange">input</span> &amp;&amp; <span class="mrange">*input == ' ') ++input;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgEvent" style="margin-left:16ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">1</div></td><td>Assuming 'input' is non-null</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr></span>
+<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 326</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN325">325</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN326">326</td><td class="line">	<span class='keyword'>if</span> (input == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN327">327</td><td class="line">		<span class='keyword'>if</span> (!cli_context_in_status (ctx, CLI_ACTION_STATUS_ALIAS)) {</td></tr>
 <tr><td class="num" id="LN328">328</td><td class="line">			<span class='comment'>/* End of stream, quit */</span></td></tr>
 <tr><td class="num" id="LN329">329</td><td class="line">			cli_context_loop_stop (ctx);</td></tr>
 <tr><td class="num" id="LN330">330</td><td class="line">			g_printf (<span class='string_literal'>"\n"</span>);</td></tr>
 <tr><td class="num" id="LN331">331</td><td class="line">		}</td></tr>
-<tr><td class="num" id="LN332">332</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (*input != 0) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:16ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN332">332</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (<span class="mrange">*input != 0</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgEvent" style="margin-left:20ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Assuming the condition is true</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:16ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN333">333</td><td class="line">		gint argc;</td></tr>
 <tr><td class="num" id="LN334">334</td><td class="line">		gchar **argv, *listop;</td></tr>
 <tr><td class="num" id="LN335">335</td><td class="line">		GError *error = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
 <tr><td class="num" id="LN336">336</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN337">337</td><td class="line">		<span class='keyword'>if</span> ((<span class="mrange">listop</span> = strchr (input, ';'))) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:22ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming 'listop' is null</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgEvent" style="margin-left:22ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Assuming 'listop' is null</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN338">338</td><td class="line">			*listop++ = '\0';</td></tr>
 <tr><td class="num" id="LN339">339</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN340">340</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN341">341</td><td class="line">		<span class='keyword'>if</span> (g_shell_parse_argv (input, &amp;argc, &amp;argv, &amp;error)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN341">341</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange">g_shell_parse_argv (input, &amp;argc, &amp;argv, &amp;error)</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Assuming the condition is true</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN342">342</td><td class="line">			<span class='keyword'>if</span> (!cli_context_in_status (ctx, CLI_ACTION_STATUS_ALIAS)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN343">343</td><td class="line">				add_history (input);</td></tr>
 <tr><td class="num" id="LN344">344</td><td class="line">			}</td></tr>
 <tr><td class="num" id="LN345">345</td><td class="line">			<span class="mrange">cli_context_command_dispatch (ctx, argc, argv)</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Calling 'cli_context_command_dispatch'</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Calling 'cli_context_command_dispatch'</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN346">346</td><td class="line">			g_strfreev (argv);</td></tr>
 <tr><td class="num" id="LN347">347</td><td class="line">			<span class='keyword'>if</span> (listop &amp;&amp; *listop) {</td></tr>
 <tr><td class="num" id="LN348">348</td><td class="line">				g_printf (<span class='string_literal'>"\n"</span>);</td></tr>
@@ -467,22 +478,22 @@
 <tr><td class="num" id="LN372">372</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN373">373</td><td class="line">	<span class='comment'>/* Get the cache ready if needed */</span></td></tr>
 <tr><td class="num" id="LN374">374</td><td class="line">	<span class='keyword'>if</span> (<span class='macro'>COMMAND_REQ_CHECK(action, COMMAND_REQ_CACHE)<span class='expansion'>(((COMMAND_REQ_CACHE) &amp; (action)-&gt;req) == (COMMAND_REQ_CACHE<br>))</span></span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path14" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path15" title="Next event (15)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path19" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">19</div></td><td><div class="PathNav"><a href="#Path18" title="Previous event (18)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path20" title="Next event (20)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN375">375</td><td class="line">		<span class='comment'>/* If executing an alias have to refresh manually */</span></td></tr>
 <tr><td class="num" id="LN376">376</td><td class="line">		<span class='keyword'>if</span> (cli_context_in_status (ctx, CLI_ACTION_STATUS_ALIAS)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path15" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">15</div></td><td><div class="PathNav"><a href="#Path14" title="Previous event (14)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path16" title="Next event (16)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path20" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">20</div></td><td><div class="PathNav"><a href="#Path19" title="Previous event (19)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path21" title="Next event (21)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN377">377</td><td class="line">			cli_context_cache_refresh (ctx);</td></tr>
 <tr><td class="num" id="LN378">378</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN379">379</td><td class="line">		<span class='keyword'>while</span> (cli_context_cache_refreshing (ctx)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path16" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">16</div></td><td><div class="PathNav"><a href="#Path15" title="Previous event (15)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path17" title="Next event (17)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path21" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">21</div></td><td><div class="PathNav"><a href="#Path20" title="Previous event (20)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path22" title="Next event (22)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN380">380</td><td class="line">			<span class='comment'>/* Obviously, there is a problem with updating the cache, abort */</span></td></tr>
 <tr><td class="num" id="LN381">381</td><td class="line">			<span class='keyword'>if</span> (n == <span class='macro'>MAX_CACHE_REFRESH_LOOP<span class='expansion'>200</span></span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path17" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">17</div></td><td><div class="PathNav"><a href="#Path16" title="Previous event (16)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path18" title="Next event (18)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path22" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">22</div></td><td><div class="PathNav"><a href="#Path21" title="Previous event (21)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path23" title="Next event (23)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN382">382</td><td class="line">				g_printf (<span class='macro'>_(<span class='string_literal'>"Failed to update the cache!"</span>)<span class='expansion'>gettext ("Failed to update the cache!")</span></span>);</td></tr>
 <tr><td class="num" id="LN383">383</td><td class="line">				<span class='keyword'>return</span> <span class='macro'>FALSE<span class='expansion'>(0)</span></span>;</td></tr>
 <tr><td class="num" id="LN384">384</td><td class="line">			}</td></tr>
 <tr><td class="num" id="LN385">385</td><td class="line">			<span class="mrange">cli_context_event_loop_select (ctx)</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path18" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">18</div></td><td><div class="PathNav"><a href="#Path17" title="Previous event (17)">&#x2190;</a></div></td></td><td>Calling 'cli_context_event_loop_select'</td><td><div class="PathNav"><a href="#Path19" title="Next event (19)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path23" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">23</div></td><td><div class="PathNav"><a href="#Path22" title="Previous event (22)">&#x2190;</a></div></td></td><td>Calling 'cli_context_event_loop_select'</td><td><div class="PathNav"><a href="#Path24" title="Next event (24)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN386">386</td><td class="line">			n++;</td></tr>
 <tr><td class="num" id="LN387">387</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN388">388</td><td class="line">	}</td></tr>
@@ -549,7 +560,7 @@
 <tr><td class="num" id="LN449">449</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN450">450</td><td class="line">	} <span class='keyword'>else</span> <span class='keyword'>if</span> (command_flag_boolean_get (cmd, <span class='string_literal'>"version"</span>, &amp;check) &amp;&amp; check) {</td></tr>
 <tr><td class="num" id="LN451">451</td><td class="line">		g_printf (<span class='macro'>_(<span class='string_literal'>"XMMS2 CLI version "</span> XMMS_VERSION <span class='string_literal'>"\n"</span>)<span class='expansion'>gettext ("XMMS2 CLI version " "clang-analysis" "\n")</span></span>);</td></tr>
-<tr><td class="num" id="LN452">452</td><td class="line">		g_printf (<span class='macro'>_(<span class='string_literal'>"Copyright (C) 2008-2016 XMMS2 Team\n"</span>)<span class='expansion'>gettext ("Copyright (C) 2008-2016 XMMS2 Team\n")</span></span>);</td></tr>
+<tr><td class="num" id="LN452">452</td><td class="line">		g_printf (<span class='macro'>_(<span class='string_literal'>"Copyright (C) 2008-2017 XMMS2 Team\n"</span>)<span class='expansion'>gettext ("Copyright (C) 2008-2017 XMMS2 Team\n")</span></span>);</td></tr>
 <tr><td class="num" id="LN453">453</td><td class="line">		g_printf (<span class='macro'>_(<span class='string_literal'>"This is free software; see the source for copying conditions.\n"</span>)<span class='expansion'>gettext ("This is free software; see the source for copying conditions.\n"<br>)</span></span>);</td></tr>
 <tr><td class="num" id="LN454">454</td><td class="line">		g_printf (<span class='macro'>_(<span class='string_literal'>"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"<span class='expansion'>gettext ("There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"<br> "PARTICULAR PURPOSE.\n")</span></span></span></td></tr>
 <tr><td class="num" id="LN455">455</td><td class="line">		            <span class='string_literal'><span class='macro'>"PARTICULAR PURPOSE.\n"</span>)<span class='expansion'>gettext ("There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"<br> "PARTICULAR PURPOSE.\n")</span></span>);</td></tr>
@@ -586,8 +597,8 @@
 <tr><td class="num" id="LN486">486</td><td class="line">	 <span class='comment'>* token. */</span></td></tr>
 <tr><td class="num" id="LN487">487</td><td class="line">	match = cli_context_find_command (ctx, &amp;argv, &amp;argc, &amp;action);</td></tr>
 <tr><td class="num" id="LN488">488</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">match == COMMAND_TRIE_MATCH_ACTION</span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Assuming 'match' is equal to COMMAND_TRIE_MATCH_ACTION</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td>Assuming 'match' is equal to COMMAND_TRIE_MATCH_ACTION</td><td><div class="PathNav"><a href="#Path14" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path14" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path15" title="Next event (15)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN489">489</td><td class="line">		gboolean help;</td></tr>
 <tr><td class="num" id="LN490">490</td><td class="line">		gboolean need_io;</td></tr>
 <tr><td class="num" id="LN491">491</td><td class="line">		command_t *cmd;</td></tr>
@@ -599,15 +610,16 @@
 <tr><td class="num" id="LN497">497</td><td class="line">		cmd = command_new (action-&gt;argdefs, argc + 1, argv - 1);</td></tr>
 <tr><td class="num" id="LN498">498</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN499">499</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange">cmd</span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Assuming 'cmd' is non-null</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num" id="LN500">500</td><td class="line">			<span class='keyword'>if</span> (command_flag_boolean_get (cmd, <span class='string_literal'>"help"</span>, &amp;help) &amp;&amp; help) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path15" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">15</div></td><td><div class="PathNav"><a href="#Path14" title="Previous event (14)">&#x2190;</a></div></td></td><td>Assuming 'cmd' is non-null</td><td><div class="PathNav"><a href="#Path16" title="Next event (16)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path16" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">16</div></td><td><div class="PathNav"><a href="#Path15" title="Previous event (15)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path17" title="Next event (17)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN500">500</td><td class="line">			<span class='keyword'>if</span> (<span class="mrange">command_flag_boolean_get (cmd, <span class='string_literal'>"help"</span>, &amp;help)</span> &amp;&amp; help) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path17" class="msg msgEvent" style="margin-left:29ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">17</div></td><td><div class="PathNav"><a href="#Path16" title="Previous event (16)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path18" title="Next event (18)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN501">501</td><td class="line">				<span class='comment'>/* Help flag passed, bypass action and show help */</span></td></tr>
 <tr><td class="num" id="LN502">502</td><td class="line">				<span class='comment'>/* FIXME(g): select aliasnames list if it's an alias */</span></td></tr>
 <tr><td class="num" id="LN503">503</td><td class="line">				help_command (ctx, cli_context_command_names (ctx),</td></tr>
 <tr><td class="num" id="LN504">504</td><td class="line">				              in_argv, in_argc, CMD_TYPE_COMMAND);</td></tr>
 <tr><td class="num" id="LN505">505</td><td class="line">			} <span class='keyword'>else</span> <span class='keyword'>if</span> (<span class="mrange">cli_context_command_runnable (ctx, action)</span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgEvent" style="margin-left:36ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td>Calling 'cli_context_command_runnable'</td><td><div class="PathNav"><a href="#Path14" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path18" class="msg msgEvent" style="margin-left:36ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">18</div></td><td><div class="PathNav"><a href="#Path17" title="Previous event (17)">&#x2190;</a></div></td></td><td>Calling 'cli_context_command_runnable'</td><td><div class="PathNav"><a href="#Path19" title="Next event (19)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN506">506</td><td class="line">				<span class='comment'>/* All fine, run the command */</span></td></tr>
 <tr><td class="num" id="LN507">507</td><td class="line">				command_name_set (cmd, action-&gt;name);</td></tr>
 <tr><td class="num" id="LN508">508</td><td class="line">				cli_context_loop_suspend (ctx);</td></tr>
@@ -640,8 +652,8 @@
 <tr><td class="num" id="LN535">535</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN536">536</td><td class="line">	<span class='comment'>/* Listen to xmms2 if connected */</span></td></tr>
 <tr><td class="num" id="LN537">537</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">conn</span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path19" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">19</div></td><td><div class="PathNav"><a href="#Path18" title="Previous event (18)">&#x2190;</a></div></td></td><td>Assuming 'conn' is null</td><td><div class="PathNav"><a href="#Path20" title="Next event (20)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path20" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">20</div></td><td><div class="PathNav"><a href="#Path19" title="Previous event (19)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path21" title="Next event (21)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path24" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">24</div></td><td><div class="PathNav"><a href="#Path23" title="Previous event (23)">&#x2190;</a></div></td></td><td>Assuming 'conn' is null</td><td><div class="PathNav"><a href="#Path25" title="Next event (25)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path25" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">25</div></td><td><div class="PathNav"><a href="#Path24" title="Previous event (24)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path26" title="Next event (26)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN538">538</td><td class="line">		xmms2fd = xmmsc_io_fd_get (conn);</td></tr>
 <tr><td class="num" id="LN539">539</td><td class="line">		<span class='keyword'>if</span> (xmms2fd == -1) {</td></tr>
 <tr><td class="num" id="LN540">540</td><td class="line">			g_printf (<span class='macro'>_(<span class='string_literal'>"Error: failed to retrieve XMMS2 file descriptor!"</span>)<span class='expansion'>gettext ("Error: failed to retrieve XMMS2 file descriptor!")</span></span>);</td></tr>
@@ -660,11 +672,11 @@
 <tr><td class="num" id="LN553">553</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN554">554</td><td class="line">	<span class='comment'>/* Listen to readline in shell mode or status mode */</span></td></tr>
 <tr><td class="num" id="LN555">555</td><td class="line">	<span class='keyword'>if</span> ((cli_context_in_mode (ctx, CLI_EXECUTION_MODE_SHELL) &amp;&amp;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path21" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">21</div></td><td><div class="PathNav"><a href="#Path20" title="Previous event (20)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (22)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path26" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">26</div></td><td><div class="PathNav"><a href="#Path25" title="Previous event (25)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (27)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN556">556</td><td class="line">	     cli_context_in_status (ctx, CLI_ACTION_STATUS_READY)) ||</td></tr>
 <tr><td class="num" id="LN557">557</td><td class="line">	    cli_context_in_status (ctx, CLI_ACTION_STATUS_REFRESH)) {</td></tr>
 <tr><td class="num" id="LN558">558</td><td class="line">		<span class='macro'>FD_SET(STDIN_FILENO, &amp;rfds)<span class='expansion'>((void) (((&amp;rfds)-&gt;__fds_bits)[((0) / (8 * (int) sizeof<br> (__fd_mask)))] |= ((__fd_mask) 1 &lt;&lt; ((0) % (8 * (int) sizeof<br> (__fd_mask))))))</span></span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgControl" style="margin-left:17ex; max-width:100em"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">22</div></td><td><div class="PathNav"><a href="#Path21" title="Previous event (21)">&#x2190;</a></div></td></td><td>Within the expansion of the macro 'FD_SET':
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgControl" style="margin-left:17ex; max-width:100em"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">27</div></td><td><div class="PathNav"><a href="#Path26" title="Previous event (26)">&#x2190;</a></div></td></td><td>Within the expansion of the macro 'FD_SET':
 </td></tr></table><div class="msg msgEvent" style="width:94%; margin-left:5px"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">a</div></td><td valign="top">The left expression of the compound assignment is an uninitialized value. The computed value will also be garbage</td></tr></table></div>
 </div></td></tr>
 <tr><td class="num" id="LN559">559</td><td class="line">		<span class='keyword'>if</span> (maxfds &lt; <span class='macro'>STDIN_FILENO<span class='expansion'>0</span></span>) {</td></tr>

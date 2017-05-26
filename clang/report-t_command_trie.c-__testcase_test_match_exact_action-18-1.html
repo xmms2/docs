@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -79,14 +87,13 @@
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../tests/client/t_command_trie.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 157, column 2</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Access to field 'callback' results in a dereference of a null pointer (loaded from variable 'action')</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 157, column 2</a><br />Access to field 'callback' results in a dereference of a null pointer (loaded from variable 'action')</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
 <table class="code">
 <tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/*  XMMS2 - X Music Multiplexer System</span></td></tr>
-<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2016 XMMS2 Team</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2017 XMMS2 Team</span></td></tr>
 <tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>*</span></td></tr>
 <tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>*  PLUGINS ARE NOT CONSIDERED TO BE DERIVED WORK !!!</span></td></tr>
 <tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>*</span></td></tr>
@@ -224,7 +231,8 @@
 <tr><td class="num" id="LN137">137</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN138">138</td><td class="line"><span class='macro'>CASE (test_match_exact_action)<span class='expansion'>static void __testcase_test_match_exact_action (void); void __testcase_wrapper_test_match_exact_action<br> (void); void __testcase_wrapper_test_match_exact_action (void<br>) { if (xcu_pre_case ("test_match_exact_action")) { __testsuite_setup<br> (); __testcase_test_match_exact_action (); __testsuite_cleanup<br> (); xcu_post_case ("test_match_exact_action"); } } static void<br> __testcase_test_match_exact_action (void)</span></span></td></tr>
 <tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgControl" style="margin-left:1ex; max-width:100em"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">1</div></td><td>Within the expansion of the macro 'CASE':
-</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table><div class="msg msgEvent" style="width:94%; margin-left:5px"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">a</div></td><td valign="top">Calling '__testcase_test_match_exact_action'</td></tr></table></div>
+</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table><div class="msg msgEvent" style="width:94%; margin-left:5px"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">a</div></td><td valign="top">Assuming the condition is true</td></tr></table></div>
+<div class="msg msgEvent" style="width:94%; margin-left:5px"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">b</div></td><td valign="top">Calling '__testcase_test_match_exact_action'</td></tr></table></div>
 </div></td></tr>
 <tr><td class="num" id="LN139">139</td><td class="line">{</td></tr>
 <tr><td class="num" id="LN140">140</td><td class="line">	command_action_t *action = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>

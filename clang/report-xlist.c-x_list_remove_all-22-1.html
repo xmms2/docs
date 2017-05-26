@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -72,21 +80,20 @@
 
 <!-- BUGCOLUMN 2 -->
 
-<!-- BUGPATHLENGTH 9 -->
+<!-- BUGPATHLENGTH 11 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/lib/xmmstypes/xlist.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 246, column 2</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Use of memory after it is freed</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 246, column 2</a><br />Use of memory after it is freed</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
 <table class="code">
 <tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/* GLIB - Library of useful routines for C programming</span></td></tr>
-<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2016 XMMS2 Team</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2017 XMMS2 Team</span></td></tr>
 <tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>*</span></td></tr>
 <tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>* This library is free software; you can redistribute it and/or</span></td></tr>
 <tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>* modify it under the terms of the GNU Lesser General Public</span></td></tr>
@@ -145,7 +152,7 @@
 <tr><td class="num" id="LN58">58</td><td class="line">x_list_free_1 (x_list_t *list)</td></tr>
 <tr><td class="num" id="LN59">59</td><td class="line">{</td></tr>
 <tr><td class="num" id="LN60">60</td><td class="line">	 <span class="mrange">free (list)</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgEvent" style="margin-left:10ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Memory is released</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgEvent" style="margin-left:10ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Memory is released</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN61">61</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN62">62</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN63">63</td><td class="line">x_list_t*</td></tr>
@@ -314,35 +321,37 @@
 <tr><td class="num" id="LN226">226</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN227">227</td><td class="line">	<span class='keyword'>while</span> (tmp) {</td></tr>
 <tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">1</div></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 246</td><td><div class="PathNav"><a href="#EndPath" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num" id="LN228">228</td><td class="line">		<span class='keyword'>if</span> (tmp-&gt;data != data) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 246</td><td><div class="PathNav"><a href="#EndPath" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN228">228</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange">tmp-&gt;data != data</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN229">229</td><td class="line">			tmp = tmp-&gt;next;</td></tr>
 <tr><td class="num" id="LN230">230</td><td class="line">		} <span class='keyword'>else</span> {</td></tr>
 <tr><td class="num" id="LN231">231</td><td class="line">			x_list_t *next = tmp-&gt;next;</td></tr>
 <tr><td class="num" id="LN232">232</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN233">233</td><td class="line">			<span class='keyword'>if</span> (tmp-&gt;prev) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN233">233</td><td class="line">			<span class='keyword'>if</span> (<span class="mrange">tmp-&gt;prev</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:29ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming the condition is true</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN234">234</td><td class="line">				tmp-&gt;prev-&gt;next = next;</td></tr>
 <tr><td class="num" id="LN235">235</td><td class="line">			} <span class='keyword'>else</span> {</td></tr>
 <tr><td class="num" id="LN236">236</td><td class="line">				list = next;</td></tr>
 <tr><td class="num" id="LN237">237</td><td class="line">			}</td></tr>
 <tr><td class="num" id="LN238">238</td><td class="line">			<span class='keyword'>if</span> (<span class="mrange">next</span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:29ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming 'next' is null</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgEvent" style="margin-left:29ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Assuming 'next' is null</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN239">239</td><td class="line">				next-&gt;prev = tmp-&gt;prev;</td></tr>
 <tr><td class="num" id="LN240">240</td><td class="line">			}</td></tr>
 <tr><td class="num" id="LN241">241</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN242">242</td><td class="line">			<span class='macro'>_x_list_free_1<span class='expansion'>x_list_free_1</span></span> (tmp);</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:25ex; max-width:100em"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Within the expansion of the macro '_x_list_free_1':
-</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table><div class="msg msgEvent" style="width:94%; margin-left:5px"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">a</div></td><td valign="top">Calling 'x_list_free_1'</td></tr></table></div>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:25ex; max-width:100em"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Within the expansion of the macro '_x_list_free_1':
+</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table><div class="msg msgEvent" style="width:94%; margin-left:5px"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">a</div></td><td valign="top">Calling 'x_list_free_1'</td></tr></table></div>
 <div class="msg msgEvent" style="width:94%; margin-left:5px"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">b</div></td><td valign="top">Returning; memory was released via 1st parameter</td></tr></table></div>
 </div></td></tr>
 <tr><td class="num" id="LN243">243</td><td class="line">			tmp = next;</td></tr>
 <tr><td class="num" id="LN244">244</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN245">245</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN246">246</td><td class="line">	<span class='keyword'>return</span> <span class="mrange">list</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Use of memory after it is freed</td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Use of memory after it is freed</td></tr></table></div></td></tr>
 <tr><td class="num" id="LN247">247</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN248">248</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN249">249</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>inline</span> x_list_t*</td></tr>

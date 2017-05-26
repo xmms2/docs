@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -72,21 +80,20 @@
 
 <!-- BUGCOLUMN 6 -->
 
-<!-- BUGPATHLENGTH 22 -->
+<!-- BUGPATHLENGTH 27 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/clients/lib/xmmsclient/result.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 576, column 6</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Use of memory after it is freed</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 576, column 6</a><br />Use of memory after it is freed</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
 <table class="code">
 <tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/*  XMMS2 - X Music Multiplexer System</span></td></tr>
-<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2016 XMMS2 Team</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>*  Copyright (C) 2003-2017 XMMS2 Team</span></td></tr>
 <tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>*</span></td></tr>
 <tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>*  PLUGINS ARE NOT CONSIDERED TO BE DERIVED WORK !!!</span></td></tr>
 <tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>*</span></td></tr>
@@ -241,20 +248,22 @@
 <tr><td class="num" id="LN154">154</td><td class="line">	<span class='macro'>x_return_if_fail (res)<span class='expansion'>if (!(res)) { xmmsc_log ("xmmsclient", XMMS_LOG_LEVEL_FAIL, "Check '%s' failed in %s at %s:%d"<br>, "res", __FUNCTION__, "../src/clients/lib/xmmsclient/result.c"<br>, 154); return; }</span></span>;</td></tr>
 <tr><td class="num" id="LN155">155</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN156">156</td><td class="line">	<span class='comment'>/* Free memory! */</span></td></tr>
-<tr><td class="num" id="LN157">157</td><td class="line">	<span class='keyword'>if</span> (res-&gt;ipc) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path14" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path15" title="Next event (15)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN157">157</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">res-&gt;ipc</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path17" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">17</div></td><td><div class="PathNav"><a href="#Path16" title="Previous event (16)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path18" title="Next event (18)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path18" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">18</div></td><td><div class="PathNav"><a href="#Path17" title="Previous event (17)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path19" title="Next event (19)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN158">158</td><td class="line">		xmmsc_ipc_result_unregister (res-&gt;ipc, res);</td></tr>
 <tr><td class="num" id="LN159">159</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN160">160</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN161">161</td><td class="line">	<span class='keyword'>if</span> (res-&gt;data) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path15" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">15</div></td><td><div class="PathNav"><a href="#Path14" title="Previous event (14)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path16" title="Next event (16)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN161">161</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">res-&gt;data</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path19" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">19</div></td><td><div class="PathNav"><a href="#Path18" title="Previous event (18)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path20" title="Next event (20)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path20" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">20</div></td><td><div class="PathNav"><a href="#Path19" title="Previous event (19)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path21" title="Next event (21)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN162">162</td><td class="line">		xmmsv_unref (res-&gt;data);</td></tr>
 <tr><td class="num" id="LN163">163</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN164">164</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN165">165</td><td class="line">	xmmsc_result_notifier_delete_all (res);</td></tr>
 <tr><td class="num" id="LN166">166</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN167">167</td><td class="line">	<span class="mrange">free (res)</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path16" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">16</div></td><td><div class="PathNav"><a href="#Path15" title="Previous event (15)">&#x2190;</a></div></td></td><td>Memory is released</td><td><div class="PathNav"><a href="#Path17" title="Next event (17)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path21" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">21</div></td><td><div class="PathNav"><a href="#Path20" title="Previous event (20)">&#x2190;</a></div></td></td><td>Memory is released</td><td><div class="PathNav"><a href="#Path22" title="Next event (22)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN168">168</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN169">169</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN170">170</td><td class="line"><span class='comment'>/**</span></td></tr>
@@ -396,11 +405,12 @@
 <tr><td class="num" id="LN306">306</td><td class="line">	<span class='macro'>x_api_error_if (res-&gt;ref &lt; 1, <span class='string_literal'>"with a freed result"</span>,)<span class='expansion'>if (res-&gt;ref &lt; 1) { xmmsc_log ("xmmsclient", XMMS_LOG_LEVEL_FAIL<br>, "%s was called %s", __FUNCTION__, ("with a freed result"));<br> return ; }</span></span>;</td></tr>
 <tr><td class="num" id="LN307">307</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN308">308</td><td class="line">	res-&gt;ref--;</td></tr>
-<tr><td class="num" id="LN309">309</td><td class="line">	<span class='keyword'>if</span> (res-&gt;ref == 0) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN309">309</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">res-&gt;ref == 0</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path14" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Assuming the condition is true</td><td><div class="PathNav"><a href="#Path15" title="Next event (15)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path15" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">15</div></td><td><div class="PathNav"><a href="#Path14" title="Previous event (14)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path16" title="Next event (16)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN310">310</td><td class="line">		<span class="mrange"><span class="mrange">xmmsc_result_free (res)</span></span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgEvent" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td>Calling 'xmmsc_result_free'</td><td><div class="PathNav"><a href="#Path14" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path17" class="msg msgEvent" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">17</div></td><td><div class="PathNav"><a href="#Path16" title="Previous event (16)">&#x2190;</a></div></td></td><td>Returning; memory was released via 1st parameter</td><td><div class="PathNav"><a href="#Path18" title="Next event (18)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path16" class="msg msgEvent" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">16</div></td><td><div class="PathNav"><a href="#Path15" title="Previous event (15)">&#x2190;</a></div></td></td><td>Calling 'xmmsc_result_free'</td><td><div class="PathNav"><a href="#Path17" title="Next event (17)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path22" class="msg msgEvent" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">22</div></td><td><div class="PathNav"><a href="#Path21" title="Previous event (21)">&#x2190;</a></div></td></td><td>Returning; memory was released via 1st parameter</td><td><div class="PathNav"><a href="#Path23" title="Next event (23)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN311">311</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN312">312</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN313">313</td><td class="line"> </td></tr>
@@ -655,21 +665,22 @@
 <tr><td class="num" id="LN558">558</td><td class="line">	n = res-&gt;notifiers;</td></tr>
 <tr><td class="num" id="LN559">559</td><td class="line">	<span class='keyword'>while</span> (n) {</td></tr>
 <tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path21" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">21</div></td><td><div class="PathNav"><a href="#Path20" title="Previous event (20)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 576</td><td><div class="PathNav"><a href="#EndPath" title="Next event (22)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path26" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">26</div></td><td><div class="PathNav"><a href="#Path25" title="Previous event (25)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 576</td><td><div class="PathNav"><a href="#EndPath" title="Next event (27)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN560">560</td><td class="line">		<span class='keyword'>int</span> keep;</td></tr>
 <tr><td class="num" id="LN561">561</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN562">562</td><td class="line">		next = <span class='macro'>x_list_next (n)<span class='expansion'>((n) ? (((x_list_t *)(n))-&gt;next) : ((void*)0))</span></span>;</td></tr>
 <tr><td class="num" id="LN563">563</td><td class="line">		cb = n-&gt;data;</td></tr>
 <tr><td class="num" id="LN564">564</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN565">565</td><td class="line">		keep = xmmsc_result_run_callback (res, cb);</td></tr>
-<tr><td class="num" id="LN566">566</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange"><span class="mrange">!keep</span></span> || res-&gt;type == XMMSC_RESULT_CLASS_DEFAULT) {</td></tr>
+<tr><td class="num" id="LN566">566</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange"><span class="mrange">!keep</span></span> || <span class="mrange">res-&gt;type == XMMSC_RESULT_CLASS_DEFAULT</span>) {</td></tr>
 <tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming 'keep' is not equal to 0</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Assuming 'keep' is 0</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgEvent" style="margin-left:30ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Assuming 'keep' is 0</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN567">567</td><td class="line">			<span class="mrange"><span class="mrange">xmmsc_result_notifier_delete (res, n)</span></span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Calling 'xmmsc_result_notifier_delete'</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path20" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">20</div></td><td><div class="PathNav"><a href="#Path19" title="Previous event (19)">&#x2190;</a></div></td></td><td>Returning; memory was released via 1st parameter</td><td><div class="PathNav"><a href="#Path21" title="Next event (21)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Calling 'xmmsc_result_notifier_delete'</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path25" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">25</div></td><td><div class="PathNav"><a href="#Path24" title="Previous event (24)">&#x2190;</a></div></td></td><td>Returning; memory was released via 1st parameter</td><td><div class="PathNav"><a href="#Path26" title="Next event (26)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN568">568</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN569">569</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN570">570</td><td class="line">		n = next;</td></tr>
@@ -679,7 +690,7 @@
 <tr><td class="num" id="LN574">574</td><td class="line">	 <span class='comment'>* we need to restart the signal.</span></td></tr>
 <tr><td class="num" id="LN575">575</td><td class="line">	 <span class='comment'>*/</span></td></tr>
 <tr><td class="num" id="LN576">576</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">res-&gt;notifiers</span> &amp;&amp; res-&gt;type == XMMSC_RESULT_CLASS_SIGNAL) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">22</div></td><td><div class="PathNav"><a href="#Path21" title="Previous event (21)">&#x2190;</a></div></td></td><td>Use of memory after it is freed</td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">27</div></td><td><div class="PathNav"><a href="#Path26" title="Previous event (26)">&#x2190;</a></div></td></td><td>Use of memory after it is freed</td></tr></table></div></td></tr>
 <tr><td class="num" id="LN577">577</td><td class="line">		<span class='comment'>/* We restart the signal using the same result. */</span></td></tr>
 <tr><td class="num" id="LN578">578</td><td class="line">		xmmsc_result_restart (res);</td></tr>
 <tr><td class="num" id="LN579">579</td><td class="line">	}</td></tr>
@@ -788,8 +799,8 @@
 <tr><td class="num" id="LN682">682</td><td class="line">	free (node-&gt;data); <span class='comment'>/* remove the callback struct, but not the udata */</span></td></tr>
 <tr><td class="num" id="LN683">683</td><td class="line">	res-&gt;notifiers = x_list_delete_link (res-&gt;notifiers, node);</td></tr>
 <tr><td class="num" id="LN684">684</td><td class="line">	<span class="mrange"><span class="mrange">xmmsc_result_unref (res)</span></span>; <span class='comment'>/* each cb has a reference to res */</span></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Calling 'xmmsc_result_unref'</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path18" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">18</div></td><td><div class="PathNav"><a href="#Path17" title="Previous event (17)">&#x2190;</a></div></td></td><td>Returning; memory was released via 1st parameter</td><td><div class="PathNav"><a href="#Path19" title="Next event (19)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td>Calling 'xmmsc_result_unref'</td><td><div class="PathNav"><a href="#Path14" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path23" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">23</div></td><td><div class="PathNav"><a href="#Path22" title="Previous event (22)">&#x2190;</a></div></td></td><td>Returning; memory was released via 1st parameter</td><td><div class="PathNav"><a href="#Path24" title="Next event (24)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN685">685</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN686">686</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN687">687</td><td class="line"><span class='comment'>/* Dereference a notifier from a result and delete its udata.</span></td></tr>
@@ -801,13 +812,14 @@
 <tr><td class="num" id="LN693">693</td><td class="line">	xmmsc_result_callback_t *cb = node-&gt;data;</td></tr>
 <tr><td class="num" id="LN694">694</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN695">695</td><td class="line">	<span class='comment'>/* remove the udata */</span></td></tr>
-<tr><td class="num" id="LN696">696</td><td class="line">	<span class='keyword'>if</span> (cb-&gt;free_func) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN696">696</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">cb-&gt;free_func</span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN697">697</td><td class="line">		cb-&gt;free_func (cb-&gt;user_data);</td></tr>
 <tr><td class="num" id="LN698">698</td><td class="line">	}</td></tr>
 <tr><td class="num" id="LN699">699</td><td class="line">	<span class="mrange"><span class="mrange">xmmsc_result_notifier_remove (res, node)</span></span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Calling 'xmmsc_result_notifier_remove'</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path19" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">19</div></td><td><div class="PathNav"><a href="#Path18" title="Previous event (18)">&#x2190;</a></div></td></td><td>Returning; memory was released via 1st parameter</td><td><div class="PathNav"><a href="#Path20" title="Next event (20)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Calling 'xmmsc_result_notifier_remove'</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path24" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">24</div></td><td><div class="PathNav"><a href="#Path23" title="Previous event (23)">&#x2190;</a></div></td></td><td>Returning; memory was released via 1st parameter</td><td><div class="PathNav"><a href="#Path25" title="Next event (25)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN700">700</td><td class="line">}</td></tr>
 <tr><td class="num" id="LN701">701</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN702">702</td><td class="line"><span class='comment'>/* Dereference all notifiers from a result and delete their udata. */</span></td></tr>

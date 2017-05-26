@@ -14,7 +14,7 @@
  .string_literal { color: red }
  .directive { color: darkmagenta }
  .expansion { display: none; }
- .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
  .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
  .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
  .num { text-align:right; font-size:8pt }
@@ -22,7 +22,9 @@
  .line { padding-left: 1ex; border-left: 3px solid #ccc }
  .line { white-space: pre }
  .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
  .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
  .msg { font-family:Helvetica, sans-serif; font-size:8pt }
  .msg { float:left }
  .msg { padding:0.25em 1ex 0.25em 1ex }
@@ -32,10 +34,12 @@
  .msgT { padding:0x; spacing:0x }
  .msgEvent { background-color:#fff8b4; color:#000000 }
  .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
  .mrange { background-color:#dfddf3 }
  .mrange { border-bottom:1px solid #6F9DBE }
  .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
  .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
  .PathIndexEvent { background-color:#bfba87 }
  .PathIndexControl { background-color:#8c8c8c }
  .PathNav a { text-decoration:none; font-size: larger }
@@ -49,8 +53,12 @@
    border-collapse: collapse; border-spacing: 0px;
  }
  td.rowname {
-   text-align:right; font-weight:bold; color:#444444;
-   padding-right:2ex; }
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
 </style>
 </head>
 <body>
@@ -72,15 +80,14 @@
 
 <!-- BUGCOLUMN 16 -->
 
-<!-- BUGPATHLENGTH 20 -->
+<!-- BUGPATHLENGTH 25 -->
 
 <!-- BUGMETAEND -->
 <!-- REPORTHEADER -->
 <h3>Bug Summary</h3>
 <table class="simpletable">
 <tr><td class="rowname">File:</td><td>build-analysis/../src/lib/s4/src/lib/s4.c</td></tr>
-<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 305, column 16</a></td></tr>
-<tr><td class="rowname">Description:</td><td>Assigned value is garbage or undefined</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 305, column 16</a><br />Assigned value is garbage or undefined</td></tr>
 </table>
 <!-- REPORTSUMMARYEXTRA -->
 <h3>Annotated Source Code</h3>
@@ -362,10 +369,10 @@
 <tr><td class="num" id="LN275">275</td><td class="line">	<span class='keyword'>int</span> row_no;</td></tr>
 <tr><td class="num" id="LN276">276</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN277">277</td><td class="line">	<span class='keyword'>for</span> (row_no = 0; s4_resultset_get_row (res, row_no, &amp;row); row_no++) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path14" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path15" title="Next event (15)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path17" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">17</div></td><td><div class="PathNav"><a href="#Path16" title="Previous event (16)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#Path18" title="Next event (18)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN278">278</td><td class="line">		int32_t <span class="mrange">va</span>, ka, i;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path15" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">15</div></td><td><div class="PathNav"><a href="#Path14" title="Previous event (14)">&#x2190;</a></div></td></td><td>'va' declared without an initial value</td><td><div class="PathNav"><a href="#Path16" title="Next event (16)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path18" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">18</div></td><td><div class="PathNav"><a href="#Path17" title="Previous event (17)">&#x2190;</a></div></td></td><td>'va' declared without an initial value</td><td><div class="PathNav"><a href="#Path19" title="Next event (19)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN279">279</td><td class="line">		<span class='keyword'>const</span> s4_val_t *val_a, *val_b;</td></tr>
 <tr><td class="num" id="LN280">280</td><td class="line">		<span class='keyword'>const</span> <span class='keyword'>char</span> *key_a, *key_b, *src, *str;</td></tr>
 <tr><td class="num" id="LN281">281</td><td class="line">		<span class='keyword'>const</span> s4_result_t *id_res, *val_res;</td></tr>
@@ -378,22 +385,26 @@
 <tr><td class="num" id="LN288">288</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN289">289</td><td class="line">		ka = _get_string_number (sd, key_a);</td></tr>
 <tr><td class="num" id="LN290">290</td><td class="line"> </td></tr>
-<tr><td class="num" id="LN291">291</td><td class="line">		<span class='keyword'>if</span> (s4_val_get_int (val_a, &amp;i)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path16" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">16</div></td><td><div class="PathNav"><a href="#Path15" title="Previous event (15)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path17" title="Next event (17)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN291">291</td><td class="line">		<span class='keyword'>if</span> (<span class="mrange"><span class="mrange">s4_val_get_int (val_a, &amp;i)</span></span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path19" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">19</div></td><td><div class="PathNav"><a href="#Path18" title="Previous event (18)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path20" title="Next event (20)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path20" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">20</div></td><td><div class="PathNav"><a href="#Path19" title="Previous event (19)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path21" title="Next event (21)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN292">292</td><td class="line">			va = i;</td></tr>
 <tr><td class="num" id="LN293">293</td><td class="line">			ka = -ka;</td></tr>
-<tr><td class="num" id="LN294">294</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (s4_val_get_str (val_a, &amp;str)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgControl" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path17" class="msg msgControl" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">17</div></td><td><div class="PathNav"><a href="#Path16" title="Previous event (16)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path18" title="Next event (18)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN294">294</td><td class="line">		} <span class='keyword'>else</span> <span class='keyword'>if</span> (<span class="mrange"><span class="mrange">s4_val_get_str (val_a, &amp;str)</span></span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgEvent" style="margin-left:28ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path14" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path14" class="msg msgControl" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path15" title="Next event (15)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path21" class="msg msgEvent" style="margin-left:28ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">21</div></td><td><div class="PathNav"><a href="#Path20" title="Previous event (20)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path22" title="Next event (22)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path22" class="msg msgControl" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">22</div></td><td><div class="PathNav"><a href="#Path21" title="Previous event (21)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path23" title="Next event (23)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN295">295</td><td class="line">			va = _get_string_number (sd, str);</td></tr>
 <tr><td class="num" id="LN296">296</td><td class="line">		}</td></tr>
 <tr><td class="num" id="LN297">297</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN298">298</td><td class="line">		<span class='keyword'>for</span> (; <span class="mrange"><span class="mrange">val_res != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span></span>; val_res = s4_result_next (val_res)) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Assuming 'val_res' is equal to null</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 277</td><td><div class="PathNav"><a href="#Path14" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path18" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">18</div></td><td><div class="PathNav"><a href="#Path17" title="Previous event (17)">&#x2190;</a></div></td></td><td>Assuming 'val_res' is not equal to null</td><td><div class="PathNav"><a href="#Path19" title="Next event (19)">&#x2192;</a></div></td></tr></table></div></td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path19" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">19</div></td><td><div class="PathNav"><a href="#Path18" title="Previous event (18)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#EndPath" title="Next event (20)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path15" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">15</div></td><td><div class="PathNav"><a href="#Path14" title="Previous event (14)">&#x2190;</a></div></td></td><td>Assuming 'val_res' is equal to NULL</td><td><div class="PathNav"><a href="#Path16" title="Next event (16)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path16" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">16</div></td><td><div class="PathNav"><a href="#Path15" title="Previous event (15)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 277</td><td><div class="PathNav"><a href="#Path17" title="Next event (17)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path23" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">23</div></td><td><div class="PathNav"><a href="#Path22" title="Previous event (22)">&#x2190;</a></div></td></td><td>Assuming 'val_res' is not equal to NULL</td><td><div class="PathNav"><a href="#Path24" title="Next event (24)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path24" class="msg msgControl" style="margin-left:17ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">24</div></td><td><div class="PathNav"><a href="#Path23" title="Previous event (23)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#EndPath" title="Next event (25)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN299">299</td><td class="line">			s4_intpair_t *pair = malloc (<span class='keyword'>sizeof</span> (s4_intpair_t));</td></tr>
 <tr><td class="num" id="LN300">300</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN301">301</td><td class="line">			val_b = s4_result_get_val (val_res);</td></tr>
@@ -401,7 +412,7 @@
 <tr><td class="num" id="LN303">303</td><td class="line">			src = s4_result_get_src (val_res);</td></tr>
 <tr><td class="num" id="LN304">304</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN305">305</td><td class="line">			pair-&gt;val_a = <span class="mrange">va</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:37ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">20</div></td><td><div class="PathNav"><a href="#Path19" title="Previous event (19)">&#x2190;</a></div></td></td><td>Assigned value is garbage or undefined</td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:37ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">25</div></td><td><div class="PathNav"><a href="#Path24" title="Previous event (24)">&#x2190;</a></div></td></td><td>Assigned value is garbage or undefined</td></tr></table></div></td></tr>
 <tr><td class="num" id="LN306">306</td><td class="line">			pair-&gt;key_a = ka;</td></tr>
 <tr><td class="num" id="LN307">307</td><td class="line">			pair-&gt;key_b = _get_string_number (sd, key_b);</td></tr>
 <tr><td class="num" id="LN308">308</td><td class="line">			pair-&gt;src = _get_string_number (sd, src);</td></tr>
@@ -440,7 +451,7 @@
 <tr><td class="num" id="LN341">341</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN342">342</td><td class="line">	file = fopen (s4-&gt;tmp_filename, <span class='string_literal'>"w"</span>);</td></tr>
 <tr><td class="num" id="LN343">343</td><td class="line">	<span class='keyword'>if</span> (<span class="mrange">file == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>) {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Assuming 'file' is not equal to null</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Assuming 'file' is not equal to NULL</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN344">344</td><td class="line">		_log_unlock_db (s4);</td></tr>
 <tr><td class="num" id="LN345">345</td><td class="line">		<span class='keyword'>return</span> 0;</td></tr>
@@ -457,14 +468,15 @@
 <tr><td class="num" id="LN356">356</td><td class="line">	s4_fetchspec_add (fs, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, <span class='macro'>S4_FETCH_DATA<span class='expansion'>2</span></span>);</td></tr>
 <tr><td class="num" id="LN357">357</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN358">358</td><td class="line">	<span class='keyword'>do</span> {</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Loop condition is false.  Exiting loop</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Loop condition is false.  Exiting loop</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN359">359</td><td class="line">		trans = s4_begin (s4, 0);</td></tr>
 <tr><td class="num" id="LN360">360</td><td class="line">		res = s4_query (trans, fs, cond);</td></tr>
 <tr><td class="num" id="LN361">361</td><td class="line">		_transaction_writing (trans);</td></tr>
-<tr><td class="num" id="LN362">362</td><td class="line">	} <span class='keyword'>while</span> (!s4_commit (trans));</td></tr>
+<tr><td class="num" id="LN362">362</td><td class="line">	} <span class='keyword'>while</span> (<span class="mrange">!s4_commit (trans)</span>);</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgEvent" style="margin-left:18ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN363">363</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN364">364</td><td class="line">	<span class="mrange">_result_to_pairs (res, &amp;sd)</span>;</td></tr>
-<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Calling '_result_to_pairs'</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Calling '_result_to_pairs'</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
 <tr><td class="num" id="LN365">365</td><td class="line"> </td></tr>
 <tr><td class="num" id="LN366">366</td><td class="line">	s4_cond_free (cond);</td></tr>
 <tr><td class="num" id="LN367">367</td><td class="line">	s4_fetchspec_free (fs);</td></tr>
